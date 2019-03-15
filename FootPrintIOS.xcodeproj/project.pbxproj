@@ -13,16 +13,25 @@
 		AF0BD170222D1798006FC80A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF0BD16E222D1798006FC80A /* LaunchScreen.storyboard */; };
 		AF0BD19C222E9A61006FC80A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF0BD19B222E9A60006FC80A /* Assets.xcassets */; };
 		AF0BD19F222F6F66006FC80A /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0BD19E222F6F66006FC80A /* ScheduleTableViewController.swift */; };
+		AF1BC92922354AC200C0E2F1 /* trip1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AF1BC92822354AC200C0E2F1 /* trip1.jpeg */; };
+		AF1BC92B22354B7F00C0E2F1 /* trip2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF1BC92A22354B7F00C0E2F1 /* trip2.jpg */; };
 		AF2C7652223243670008F84A /* HomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C7651223243670008F84A /* HomeStoryboard.storyboard */; };
 		AF2C7654223243E10008F84A /* ScheduleStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C7653223243E10008F84A /* ScheduleStoryboard.storyboard */; };
 		AF2C76562232443A0008F84A /* CameraStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C76552232443A0008F84A /* CameraStoryboard.storyboard */; };
 		AF2C7658223244840008F84A /* FriendStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C7657223244840008F84A /* FriendStoryboard.storyboard */; };
 		AF2C765C2232451A0008F84A /* PersonalStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2C765B2232451A0008F84A /* PersonalStoryboard.storyboard */; };
 		AF2E00E52232584C006B9A5A /* GroupAlbumCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E00E42232584C006B9A5A /* GroupAlbumCollectionViewController.swift */; };
+		AF2E00E822326C72006B9A5A /* GroupAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E00E722326C72006B9A5A /* GroupAlbumCollectionViewCell.swift */; };
+		AF2E00EA2234FAFA006B9A5A /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E00E92234FAFA006B9A5A /* ScheduleTableViewCell.swift */; };
+		AF2E00EE2234FF6B006B9A5A /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E00ED2234FF6B006B9A5A /* Trip.swift */; };
+		AF2E41A02237558400558AAF /* CreateTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E419F2237558400558AAF /* CreateTripViewController.swift */; };
 		AF5A350D222FD613003838E8 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A350C222FD613003838E8 /* user.png */; };
 		AF5A350F222FD649003838E8 /* sign.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A350E222FD649003838E8 /* sign.png */; };
 		AF5A3511222FD672003838E8 /* new-york.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A3510222FD671003838E8 /* new-york.jpg */; };
 		AF5A3513222FD67B003838E8 /* paristrip.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A3512222FD67B003838E8 /* paristrip.jpeg */; };
+		AF883E0B2239180200021940 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF883E0A2239180200021940 /* Common.swift */; };
+		AF883E0E22393E7F00021940 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF883E0D22393E7F00021940 /* Account.swift */; };
+		AF883E102239E1BA00021940 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF883E0F2239E1BA00021940 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,17 +42,26 @@
 		AF0BD16F222D1798006FC80A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF0BD171222D1798006FC80A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF0BD19B222E9A60006FC80A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AF0BD19E222F6F66006FC80A /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleTableViewController.swift; path = Schedule/ScheduleTableViewController.swift; sourceTree = "<group>"; };
+		AF0BD19E222F6F66006FC80A /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
+		AF1BC92822354AC200C0E2F1 /* trip1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = trip1.jpeg; sourceTree = "<group>"; };
+		AF1BC92A22354B7F00C0E2F1 /* trip2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = trip2.jpg; sourceTree = "<group>"; };
 		AF2C7651223243670008F84A /* HomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeStoryboard.storyboard; sourceTree = "<group>"; };
 		AF2C7653223243E10008F84A /* ScheduleStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScheduleStoryboard.storyboard; sourceTree = "<group>"; };
 		AF2C76552232443A0008F84A /* CameraStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CameraStoryboard.storyboard; sourceTree = "<group>"; };
 		AF2C7657223244840008F84A /* FriendStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FriendStoryboard.storyboard; sourceTree = "<group>"; };
 		AF2C765B2232451A0008F84A /* PersonalStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalStoryboard.storyboard; sourceTree = "<group>"; };
 		AF2E00E42232584C006B9A5A /* GroupAlbumCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAlbumCollectionViewController.swift; sourceTree = "<group>"; };
+		AF2E00E722326C72006B9A5A /* GroupAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF2E00E92234FAFA006B9A5A /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		AF2E00ED2234FF6B006B9A5A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		AF2E419F2237558400558AAF /* CreateTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewController.swift; sourceTree = "<group>"; };
 		AF5A350C222FD613003838E8 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		AF5A350E222FD649003838E8 /* sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign.png; sourceTree = "<group>"; };
 		AF5A3510222FD671003838E8 /* new-york.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "new-york.jpg"; sourceTree = "<group>"; };
 		AF5A3512222FD67B003838E8 /* paristrip.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paristrip.jpeg; sourceTree = "<group>"; };
+		AF883E0A2239180200021940 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		AF883E0D22393E7F00021940 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		AF883E0F2239E1BA00021940 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,16 +94,17 @@
 		AF0BD164222D1796006FC80A /* FootPrintIOS */ = {
 			isa = PBXGroup;
 			children = (
+				AF883E09223917DC00021940 /* Common */,
+				AF2E00E622326B69006B9A5A /* Schedule */,
 				AF0BD1A3222F75FA006FC80A /* Images */,
 				AF0BD165222D1796006FC80A /* AppDelegate.swift */,
-				AF0BD19E222F6F66006FC80A /* ScheduleTableViewController.swift */,
 				AF0BD167222D1796006FC80A /* ViewController.swift */,
+				AF883E0C22393DED00021940 /* Login */,
 				AF0BD169222D1796006FC80A /* Main.storyboard */,
 				AF2C765B2232451A0008F84A /* PersonalStoryboard.storyboard */,
 				AF2C7657223244840008F84A /* FriendStoryboard.storyboard */,
 				AF2C76552232443A0008F84A /* CameraStoryboard.storyboard */,
 				AF2C7653223243E10008F84A /* ScheduleStoryboard.storyboard */,
-				AF2E00E42232584C006B9A5A /* GroupAlbumCollectionViewController.swift */,
 				AF2C7651223243670008F84A /* HomeStoryboard.storyboard */,
 				AF0BD19B222E9A60006FC80A /* Assets.xcassets */,
 				AF0BD16E222D1798006FC80A /* LaunchScreen.storyboard */,
@@ -97,12 +116,44 @@
 		AF0BD1A3222F75FA006FC80A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AF1BC92822354AC200C0E2F1 /* trip1.jpeg */,
 				AF5A3512222FD67B003838E8 /* paristrip.jpeg */,
+				AF1BC92A22354B7F00C0E2F1 /* trip2.jpg */,
 				AF5A350E222FD649003838E8 /* sign.png */,
 				AF5A3510222FD671003838E8 /* new-york.jpg */,
 				AF5A350C222FD613003838E8 /* user.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		AF2E00E622326B69006B9A5A /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				AF2E00E42232584C006B9A5A /* GroupAlbumCollectionViewController.swift */,
+				AF2E00E722326C72006B9A5A /* GroupAlbumCollectionViewCell.swift */,
+				AF2E00ED2234FF6B006B9A5A /* Trip.swift */,
+				AF2E00E92234FAFA006B9A5A /* ScheduleTableViewCell.swift */,
+				AF0BD19E222F6F66006FC80A /* ScheduleTableViewController.swift */,
+				AF2E419F2237558400558AAF /* CreateTripViewController.swift */,
+			);
+			name = Schedule;
+			sourceTree = "<group>";
+		};
+		AF883E09223917DC00021940 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AF883E0A2239180200021940 /* Common.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		AF883E0C22393DED00021940 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				AF883E0D22393E7F00021940 /* Account.swift */,
+				AF883E0F2239E1BA00021940 /* SignInViewController.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,10 +216,12 @@
 			files = (
 				AF0BD170222D1798006FC80A /* LaunchScreen.storyboard in Resources */,
 				AF5A3511222FD672003838E8 /* new-york.jpg in Resources */,
+				AF1BC92922354AC200C0E2F1 /* trip1.jpeg in Resources */,
 				AF2C7652223243670008F84A /* HomeStoryboard.storyboard in Resources */,
 				AF5A3513222FD67B003838E8 /* paristrip.jpeg in Resources */,
 				AF5A350D222FD613003838E8 /* user.png in Resources */,
 				AF2C765C2232451A0008F84A /* PersonalStoryboard.storyboard in Resources */,
+				AF1BC92B22354B7F00C0E2F1 /* trip2.jpg in Resources */,
 				AF2C7654223243E10008F84A /* ScheduleStoryboard.storyboard in Resources */,
 				AF2C7658223244840008F84A /* FriendStoryboard.storyboard in Resources */,
 				AF5A350F222FD649003838E8 /* sign.png in Resources */,
@@ -185,9 +238,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF883E102239E1BA00021940 /* SignInViewController.swift in Sources */,
 				AF2E00E52232584C006B9A5A /* GroupAlbumCollectionViewController.swift in Sources */,
 				AF0BD19F222F6F66006FC80A /* ScheduleTableViewController.swift in Sources */,
+				AF2E00EA2234FAFA006B9A5A /* ScheduleTableViewCell.swift in Sources */,
+				AF2E41A02237558400558AAF /* CreateTripViewController.swift in Sources */,
+				AF883E0B2239180200021940 /* Common.swift in Sources */,
+				AF883E0E22393E7F00021940 /* Account.swift in Sources */,
 				AF0BD168222D1796006FC80A /* ViewController.swift in Sources */,
+				AF2E00E822326C72006B9A5A /* GroupAlbumCollectionViewCell.swift in Sources */,
+				AF2E00EE2234FF6B006B9A5A /* Trip.swift in Sources */,
 				AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,7 +395,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4MHD7B3F6Y;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -352,7 +414,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4MHD7B3F6Y;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
