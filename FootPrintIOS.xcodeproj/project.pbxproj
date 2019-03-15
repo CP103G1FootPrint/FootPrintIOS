@@ -23,6 +23,10 @@
 		AF5A350F222FD649003838E8 /* sign.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A350E222FD649003838E8 /* sign.png */; };
 		AF5A3511222FD672003838E8 /* new-york.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A3510222FD671003838E8 /* new-york.jpg */; };
 		AF5A3513222FD67B003838E8 /* paristrip.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A3512222FD67B003838E8 /* paristrip.jpeg */; };
+		D40C7CE6223A7E5300812C3C /* HomeNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40C7CE5223A7E5300812C3C /* HomeNewsTableViewController.swift */; };
+		D40C7CE8223A8F5A00812C3C /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40C7CE7223A8F5A00812C3C /* NewsTableViewCell.swift */; };
+		D40C7CEB223A909C00812C3C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40C7CEA223A909C00812C3C /* News.swift */; };
+		D40C7CEE223A93EF00812C3C /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40C7CED223A93EF00812C3C /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		AF5A350E222FD649003838E8 /* sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign.png; sourceTree = "<group>"; };
 		AF5A3510222FD671003838E8 /* new-york.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "new-york.jpg"; sourceTree = "<group>"; };
 		AF5A3512222FD67B003838E8 /* paristrip.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paristrip.jpeg; sourceTree = "<group>"; };
+		D40C7CE5223A7E5300812C3C /* HomeNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsTableViewController.swift; sourceTree = "<group>"; };
+		D40C7CE7223A8F5A00812C3C /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		D40C7CEA223A909C00812C3C /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		D40C7CED223A93EF00812C3C /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,8 @@
 		AF0BD164222D1796006FC80A /* FootPrintIOS */ = {
 			isa = PBXGroup;
 			children = (
+				D40C7CEC223A93C400812C3C /* Common */,
+				D40C7CE9223A905500812C3C /* HomeNews */,
 				AF0BD1A3222F75FA006FC80A /* Images */,
 				AF0BD165222D1796006FC80A /* AppDelegate.swift */,
 				AF0BD19E222F6F66006FC80A /* ScheduleTableViewController.swift */,
@@ -103,6 +113,24 @@
 				AF5A350C222FD613003838E8 /* user.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		D40C7CE9223A905500812C3C /* HomeNews */ = {
+			isa = PBXGroup;
+			children = (
+				D40C7CE5223A7E5300812C3C /* HomeNewsTableViewController.swift */,
+				D40C7CE7223A8F5A00812C3C /* NewsTableViewCell.swift */,
+				D40C7CEA223A909C00812C3C /* News.swift */,
+			);
+			name = HomeNews;
+			sourceTree = "<group>";
+		};
+		D40C7CEC223A93C400812C3C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D40C7CED223A93EF00812C3C /* Common.swift */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,10 +213,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D40C7CEE223A93EF00812C3C /* Common.swift in Sources */,
 				AF0BD19F222F6F66006FC80A /* ScheduleTableViewController.swift in Sources */,
 				AF0BD168222D1796006FC80A /* ViewController.swift in Sources */,
+				D40C7CE8223A8F5A00812C3C /* NewsTableViewCell.swift in Sources */,
 				AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */,
+				D40C7CEB223A909C00812C3C /* News.swift in Sources */,
 				027DFC1122327F1F00E9E097 /* MapViewController.swift in Sources */,
+				D40C7CE6223A7E5300812C3C /* HomeNewsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RS4MB6R946;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -352,6 +385,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RS4MB6R946;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
