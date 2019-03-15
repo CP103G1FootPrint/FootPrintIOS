@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		027DFC1122327F1F00E9E097 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027DFC1022327F1F00E9E097 /* MapViewController.swift */; };
 		AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0BD165222D1796006FC80A /* AppDelegate.swift */; };
 		AF0BD168222D1796006FC80A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0BD167222D1796006FC80A /* ViewController.swift */; };
 		AF0BD16B222D1796006FC80A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF0BD169222D1796006FC80A /* Main.storyboard */; };
@@ -25,6 +26,9 @@
 		AF2E00EA2234FAFA006B9A5A /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E00E92234FAFA006B9A5A /* ScheduleTableViewCell.swift */; };
 		AF2E00EE2234FF6B006B9A5A /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E00ED2234FF6B006B9A5A /* Trip.swift */; };
 		AF2E41A02237558400558AAF /* CreateTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E419F2237558400558AAF /* CreateTripViewController.swift */; };
+		AF47E67E223B8B50007AD656 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E67D223B8B50007AD656 /* NewsTableViewCell.swift */; };
+		AF47E680223B8B92007AD656 /* HomeNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E67F223B8B92007AD656 /* HomeNewsTableViewController.swift */; };
+		AF47E682223B8BA8007AD656 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E681223B8BA8007AD656 /* News.swift */; };
 		AF5A350D222FD613003838E8 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A350C222FD613003838E8 /* user.png */; };
 		AF5A350F222FD649003838E8 /* sign.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A350E222FD649003838E8 /* sign.png */; };
 		AF5A3511222FD672003838E8 /* new-york.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A3510222FD671003838E8 /* new-york.jpg */; };
@@ -35,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		027DFC1022327F1F00E9E097 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AF0BD162222D1796006FC80A /* FootPrintIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootPrintIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF0BD165222D1796006FC80A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF0BD167222D1796006FC80A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +60,9 @@
 		AF2E00E92234FAFA006B9A5A /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		AF2E00ED2234FF6B006B9A5A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		AF2E419F2237558400558AAF /* CreateTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewController.swift; sourceTree = "<group>"; };
+		AF47E67D223B8B50007AD656 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		AF47E67F223B8B92007AD656 /* HomeNewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNewsTableViewController.swift; sourceTree = "<group>"; };
+		AF47E681223B8BA8007AD656 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		AF5A350C222FD613003838E8 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		AF5A350E222FD649003838E8 /* sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign.png; sourceTree = "<group>"; };
 		AF5A3510222FD671003838E8 /* new-york.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "new-york.jpg"; sourceTree = "<group>"; };
@@ -62,6 +70,9 @@
 		AF883E0A2239180200021940 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		AF883E0D22393E7F00021940 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		AF883E0F2239E1BA00021940 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		D40C7CE5223A7E5300812C3C /* HomeNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsTableViewController.swift; sourceTree = "<group>"; };
+		D40C7CE7223A8F5A00812C3C /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		D40C7CEA223A909C00812C3C /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +91,7 @@
 			children = (
 				AF0BD164222D1796006FC80A /* FootPrintIOS */,
 				AF0BD163222D1796006FC80A /* Products */,
+				AF47E673223B89F1007AD656 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,12 +106,14 @@
 		AF0BD164222D1796006FC80A /* FootPrintIOS */ = {
 			isa = PBXGroup;
 			children = (
+				AF47E674223B8A9F007AD656 /* HomeNews */,
 				AF883E09223917DC00021940 /* Common */,
 				AF2E00E622326B69006B9A5A /* Schedule */,
 				AF0BD1A3222F75FA006FC80A /* Images */,
 				AF0BD165222D1796006FC80A /* AppDelegate.swift */,
 				AF0BD167222D1796006FC80A /* ViewController.swift */,
 				AF883E0C22393DED00021940 /* Login */,
+				027DFC1022327F1F00E9E097 /* MapViewController.swift */,
 				AF0BD169222D1796006FC80A /* Main.storyboard */,
 				AF2C765B2232451A0008F84A /* PersonalStoryboard.storyboard */,
 				AF2C7657223244840008F84A /* FriendStoryboard.storyboard */,
@@ -137,6 +151,26 @@
 				AF2E419F2237558400558AAF /* CreateTripViewController.swift */,
 			);
 			name = Schedule;
+			sourceTree = "<group>";
+		};
+		AF47E673223B89F1007AD656 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				D40C7CE7223A8F5A00812C3C /* NewsTableViewCell.swift */,
+				D40C7CEA223A909C00812C3C /* News.swift */,
+				D40C7CE5223A7E5300812C3C /* HomeNewsTableViewController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		AF47E674223B8A9F007AD656 /* HomeNews */ = {
+			isa = PBXGroup;
+			children = (
+				AF47E67F223B8B92007AD656 /* HomeNewsTableViewController.swift */,
+				AF47E681223B8BA8007AD656 /* News.swift */,
+				AF47E67D223B8B50007AD656 /* NewsTableViewCell.swift */,
+			);
+			name = HomeNews;
 			sourceTree = "<group>";
 		};
 		AF883E09223917DC00021940 /* Common */ = {
@@ -241,6 +275,7 @@
 				AF883E102239E1BA00021940 /* SignInViewController.swift in Sources */,
 				AF2E00E52232584C006B9A5A /* GroupAlbumCollectionViewController.swift in Sources */,
 				AF0BD19F222F6F66006FC80A /* ScheduleTableViewController.swift in Sources */,
+				AF47E682223B8BA8007AD656 /* News.swift in Sources */,
 				AF2E00EA2234FAFA006B9A5A /* ScheduleTableViewCell.swift in Sources */,
 				AF2E41A02237558400558AAF /* CreateTripViewController.swift in Sources */,
 				AF883E0B2239180200021940 /* Common.swift in Sources */,
@@ -249,6 +284,9 @@
 				AF2E00E822326C72006B9A5A /* GroupAlbumCollectionViewCell.swift in Sources */,
 				AF2E00EE2234FF6B006B9A5A /* Trip.swift in Sources */,
 				AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */,
+				AF47E680223B8B92007AD656 /* HomeNewsTableViewController.swift in Sources */,
+				027DFC1122327F1F00E9E097 /* MapViewController.swift in Sources */,
+				AF47E67E223B8B50007AD656 /* NewsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
