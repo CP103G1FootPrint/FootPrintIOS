@@ -15,8 +15,9 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordTextFild: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func clickLogin(_ sender: UIButton) {
@@ -44,7 +45,6 @@ class SignInViewController: UIViewController {
                     if let result = try? JSONDecoder().decode( Bool.self, from: data!) {
                          print("1234)")
                         if result {
-                            print("56788)")
                             let saved = saveUser(user)
                             print("saved = \(saved)")
                                     let userDefaults = UserDefaults.standard
@@ -62,22 +62,39 @@ class SignInViewController: UIViewController {
                             let action = UIAlertAction(title: "OK", style: .default)
                             alert.addAction(action)
                             self.present(alert, animated: true, completion: nil)
-                            
                         }
-                        
                     }
-                    
-                    /*
-                     // MARK: - Navigation
-                     
-                     // In a storyboard-based application, you will often want to do a little preparation before navigation
-                     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-                     // Get the new view controller using segue.destination.
-                     // Pass the selected object to the new view controller.
-                     }
-                     */
-                    
                 }
-                
-            }
-        }}}
+                }
+        }}
+    @objc func keyboardWillShow(notification: Notification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRect = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRect.height
+            view.frame.origin.y = -keyboardHeight
+        } else {
+            view.frame.origin.y = -view.frame.height / 3
+        }
+    }
+    @objc func keyboardWillHide(notification: Notification) {
+        view.frame.origin.y = 0
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @IBAction func tapGesture(_ sender: Any) {
+        hideKeyboard()
+    }
+    
+    @IBAction func didEndOnExit(_ sender: Any) {
+        hideKeyboard()
+    }
+    /** 隱藏鍵盤 */
+    func hideKeyboard(){
+        accountTextFild.resignFirstResponder()
+        passwordTextFild.resignFirstResponder()
+    }
+}

@@ -9,6 +9,8 @@
 import UIKit
 
 class ScheduleTableViewController: UITableViewController {
+    
+    
     var trips = [Trip]()
     let url_server = URL(string: common_url + "/TripServlet")
     
@@ -33,10 +35,10 @@ class ScheduleTableViewController: UITableViewController {
     @objc func showAllTrips() {
         
         var requestParam = [String: String]()
-        let user = UserDefaults.standard.object(forKey: "account") as? String
-        print("xxxx \(user)")
+//        let user = UserDefaults.standard.object(forKey: "account") as? String
+        
         requestParam["action"] = "All"
-        requestParam["createID"] = ""
+        requestParam["createID"] = "123"
         
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -68,13 +70,7 @@ class ScheduleTableViewController: UITableViewController {
         }
     }
     
-    
-    
-    
 
-
-
-    
     /* UITableViewDataSource的方法，定義表格的區塊數，預設值為1 */
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -116,8 +112,38 @@ class ScheduleTableViewController: UITableViewController {
         return cell
     }
     
+    // 左滑修改與刪除資料
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        // 左滑時顯示Delete按鈕
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
+            // 尚未刪除server資料
+            var requestParam = [String: Any]()
+            requestParam["action"] = "tripDelete"
+            requestParam["tripId"] = self.trips[indexPath.row].tripID
+            executeTask(self.url_server!, requestParam
+                , completionHandler: { (data, response, error) in
+                    if error == nil {
+                        if data != nil {
+                            if let result = String(data: data!, encoding: .utf8) {
+                                if let count = Int(result) {
+                                    // 確定server端刪除資料後，才將client端資料刪除
+                                    if count != 0 {
+                                        self.trips.remove(at: indexPath.row)
+                                        DispatchQueue.main.async {
+                                            tableView.deleteRows(at: [indexPath], with: .fade)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        print(error!.localizedDescription)
+                    }
+            })
+        })
+    return [delete]
     
-
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -164,4 +190,5 @@ class ScheduleTableViewController: UITableViewController {
     }
     */
 }
+
 

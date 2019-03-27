@@ -189,6 +189,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sign.png" translatesAutoresizingMaskIntoConstraints="NO" id="7EV-3U-HpV">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="XHv-HX-59V" appends="YES" id="3c6-n0-V9L"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wlecome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwU-hQ-WD4">
                                 <rect key="frame" x="146" y="477" width="122.5" height="36"/>
@@ -205,6 +209,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didEndOnExit:" destination="LCU-vz-P70" eventType="editingDidEndOnExit" id="fwT-Nu-VEx"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Oh4-18-QnV">
                                         <rect key="frame" x="0.0" y="53" width="314" height="30"/>
@@ -212,6 +219,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="didEndOnExit:" destination="LCU-vz-P70" eventType="editingDidEnd" id="5kz-jU-p8d"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVf-ck-8LI">
                                         <rect key="frame" x="0.0" y="106" width="314" height="30"/>
@@ -253,6 +263,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JwN-WI-lm0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="XHv-HX-59V">
+                    <connections>
+                        <action selector="tapGesture:" destination="LCU-vz-P70" id="xgs-Vd-hUu"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="875" y="215"/>
         </scene>
