@@ -78,7 +78,6 @@ class ScheduleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("count", trips.count)
         return trips.count
     }
 

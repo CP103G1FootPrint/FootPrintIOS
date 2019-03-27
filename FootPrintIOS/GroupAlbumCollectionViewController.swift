@@ -23,9 +23,15 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
     @IBOutlet weak var albumCollectionLayout: UICollectionViewFlowLayout!
     override func viewDidLoad() {
         super.viewDidLoad()
-        albumCollectionLayout.sectionInset = UIEdgeInsets(top: 5,left: 20,bottom: 5,right: 20)
-        albumCollectionLayout.itemSize = CGSize(width: fullScreanSize.width/2-50, height: 200)
+        //與邊界距離
+        albumCollectionLayout.sectionInset = UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
+        //圖片大小
+        albumCollectionLayout.itemSize = CGSize(width: fullScreanSize.width/3 - 10, height: 320)
+//        fullScreanSize.width/3
+        //上下行兼距
         albumCollectionLayout.minimumLineSpacing = 5
+        //圖片左右距離
+        albumCollectionLayout.minimumInteritemSpacing = 5
         albumCollectionLayout.scrollDirection = .vertical
         
     }
