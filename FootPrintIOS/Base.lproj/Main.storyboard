@@ -231,7 +231,6 @@
                                         </state>
                                         <connections>
                                             <action selector="clickLogin:" destination="LCU-vz-P70" eventType="touchUpInside" id="pw7-uO-l0T"/>
-                                            <segue destination="9NV-mJ-psM" kind="show" id="gko-1H-voS"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBq-6s-XO9">
@@ -260,6 +259,7 @@
                     <connections>
                         <outlet property="accountTextFild" destination="FFc-Q7-iXM" id="x8v-aB-rCW"/>
                         <outlet property="passwordTextFild" destination="Oh4-18-QnV" id="HEd-bf-2hG"/>
+                        <segue destination="9NV-mJ-psM" kind="presentation" identifier="next" id="4No-iJ-3yS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JwN-WI-lm0" userLabel="First Responder" sceneMemberID="firstResponder"/>
