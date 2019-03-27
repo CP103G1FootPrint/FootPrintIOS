@@ -8,8 +8,14 @@
 
 import UIKit
 
+
+
+
 class AddFriendListTableViewController: UITableViewController {
-    var coureSelect:[String:String]!
+//    let allItems = [Items]()
+//    var selectedItems = [Items]()
+    
+//    var coureSelect:[String:String]!
 //    var delegate : CreateTripViewController
     let url_server = URL(string: common_url + "/TripServlet")
 
@@ -23,6 +29,8 @@ class AddFriendListTableViewController: UITableViewController {
 
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.setEditing(true, animated: false)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     // MARK: - Table view data source
@@ -37,19 +45,21 @@ class AddFriendListTableViewController: UITableViewController {
         return friendArray.count
     }
 
-    
+    //設定cell要顯示的內容
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addFriendCell", for: indexPath) as! AddFriendListTableViewCell
         cell.friendNameLabel.text = friendArray[indexPath.row]
-
+        
         cell.checkboxButton.addTarget(self, action: #selector(clickCheckbox(sender:)), for: .touchUpInside)
 
         return cell
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+//        friendArray.items[indexPath.row].isSelected = true
     }
+    
     
     
     
@@ -117,15 +127,19 @@ class AddFriendListTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let controller = segue.destination as? CreateTripViewController
+        if segue.identifier == "showFriendDetail"{
+        let controller = segue.destination as? CreateTripViewController
+        if let selectRow = tableView.indexPathForSelectedRow?.row{
+            controller?.friendListTextView.text = friendArray[selectRow]
+        }
 //        controller?.coureSelect = self.coureSelect
-
+        }
     
     }
     
-    @IBAction func doneButtonPressed(_ sender: Any) {
-        
-        self.navigationController?.popViewController(animated: true)
-    }
+//    @IBAction func doneButtonPressed(_ sender: Any) {
+//
+//        self.navigationController?.popViewController(animated: true)
+//    }
     
 }

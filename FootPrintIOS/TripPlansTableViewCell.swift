@@ -1,17 +1,15 @@
 //
-//  AddFriendListTableViewCell.swift
+//  TripPlansTableViewCell.swift
 //  FootPrintIOS
 //
-//  Created by lulu on 2019/3/16.
+//  Created by lulu on 2019/3/27.
 //  Copyright © 2019 lulu. All rights reserved.
 //
 
 import UIKit
 
-class AddFriendListTableViewCell: UITableViewCell {
+class TripPlansTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var friendNameLabel: UILabel!
-    @IBOutlet weak var checkboxButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,6 +20,5 @@ class AddFriendListTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 
 }

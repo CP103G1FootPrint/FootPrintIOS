@@ -24,6 +24,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     let datePicker = UIDatePicker()
     var picker = UIPickerView()
     var days = ["1","2","3","4","5","6","7","8","9","10"]
+    var addFriends:String?
     
     //挑選照片
     @IBAction func clickPickPhoto(_ sender: Any) {
@@ -65,6 +66,13 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         dayPicker.inputAccessoryView = toolBar
+        
+        //加入行程的好友
+        friendListTextView.text = addFriends
+//        if let name = addFriends{
+//            
+//        }
+        
     }
     
     @objc func donePicker(){

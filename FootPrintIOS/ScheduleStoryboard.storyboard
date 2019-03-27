@@ -148,7 +148,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LdQ-Wi-lAl">
-                                <rect key="frame" x="60" y="348" width="294" height="328"/>
+                                <rect key="frame" x="60" y="348" width="294" height="279"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Trip Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vjN-SV-llC">
                                         <rect key="frame" x="0.0" y="0.0" width="294" height="30"/>
@@ -196,7 +196,7 @@
                                         </subviews>
                                     </stackView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AKX-gh-xgG">
-                                        <rect key="frame" x="0.0" y="200" width="294" height="128"/>
+                                        <rect key="frame" x="0.0" y="200" width="294" height="79"/>
                                         <color key="backgroundColor" red="0.95243099620000005" green="0.95243099620000005" blue="0.95243099620000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -307,7 +307,7 @@
                     <navigationItem key="navigationItem" title="Title" id="pSk-3t-TLD">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="bkw-bp-zK1">
                             <connections>
-                                <action selector="doneButtonPressed:" destination="kyv-Ul-6t0" id="FB1-f8-cNS"/>
+                                <segue destination="a3I-FN-yvn" kind="show" identifier="showFriendDetail" id="qQc-YY-Qli"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -565,4 +565,7 @@
         <image name="unchecked" width="512" height="512"/>
         <image name="user2.png" width="280" height="280"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="qQc-YY-Qli"/>
+    </inferredMetricsTieBreakers>
 </document>
