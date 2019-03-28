@@ -30,4 +30,9 @@ class News: Codable {
         self.nickName = nickName
         self.landMarkName = landMarkName
     }
+    
+    public init(_ likesCount: String, _ imageID: Int){
+        self.likesCount = likesCount
+        self.imageID = imageID
+    }
 }

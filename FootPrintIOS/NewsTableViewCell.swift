@@ -24,66 +24,104 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var lb_LikesCount: UILabel!
     @IBOutlet weak var lb_description: UILabel!
     var news: News!
+    var like: Likes!
+    lazy var likeCount = Int(news.likesCount)
     
     
     
     @IBAction func bt_Like(_ sender: Any) {
         if self.bt_Like.isSelected{
+            //取消按讚
             self.bt_Like.isSelected = false
-            if let likeCount = Int(news.likesCount) {
-                lb_LikesCount.text = String(likeCount) + " people likes"
-            }
-            bt_Like.setImage(UIImage(named: "like-1"), for: .normal)
+                likeCount! -= 1
+                lb_LikesCount.text = String(likeCount!) + " people likes"
+                bt_Like.setImage(UIImage(named: "like-1"), for: .normal)
             
-            //            let url_server = URL(string: common_url + "LikesServlet")
-            //            var requestParam = [String: String]()
-            //            requestParam["action"] = "insert"
-            //            requestParam["share"] =
-            //            executeTask(url_server!, requestParam) { (data, response, error) in
-            //                if error == nil {
-            //                    if data != nil {
-            //                        // 將輸入資料列印出來除錯用
-            //                        print("input: \(String(data: data!, encoding: .utf8)!)")
-            //                    }
-            //                } else {
-            //                    print(error!.localizedDescription)
-            //                }
-            //            }
-        }else{
-            self.bt_Like.isSelected = true
-            if var likeCount = Int(news.likesCount) {
-                likeCount += 1
-                lb_LikesCount.text = String(likeCount) + " people likes"
-                //              lb_LikesCount.text = "\( likeCount + 1)"
+            let url_server = URL(string: common_url + "/LikesServlet")
+            var requestParam = [String: String]()
+            requestParam["action"] = "delete"
+            requestParam["delete"] = try! String(data: JSONEncoder().encode(like), encoding: .utf8)
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        print("input: \(String(data: data!, encoding: .utf8)!)")
+                    }
+                }
             }
-            bt_Like.setImage(UIImage(named: "like-2"), for: .normal)
+        }else{
+            //按讚
+            self.bt_Like.isSelected = true
+                likeCount! += 1
+                lb_LikesCount.text = String(likeCount!) + " people likes"
+                bt_Like.setImage(UIImage(named: "like-2"), for: .normal)
+            
+            let url_server = URL(string: common_url + "/LikesServlet")
+            var requestParam = [String: String]()
+            requestParam["action"] = "insert"
+            requestParam["share"] = try! String(data: JSONEncoder().encode(like), encoding: .utf8)
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        print("input: \(String(data: data!, encoding: .utf8)!)")
+                    }
+                }
+            }
+        }
+        //更新按讚人數
+        let new = News(String(likeCount!),news.imageID!)
+        let url_server = URL(string: common_url + "/PicturesServlet")
+        var requestParam = [String: String]()
+        requestParam["action"] = "update"
+        requestParam["update"] = try! String(data: JSONEncoder().encode(new), encoding: .utf8)
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    print("input: \(String(data: data!, encoding: .utf8)!)")
+                }
+            }
         }
     }
     
-    
-    
-    
+
     @IBAction func bt_Message(_ sender: Any) {
+    
     }
+    
+    
+    
     @IBAction func bt_Collection(_ sender: Any) {
         if self.bt_Collection.isSelected{
+            //取消收藏
             self.bt_Collection.isSelected = false
             bt_Collection.setImage(UIImage(named: "collection2"), for: .normal)
+            
+            let url_server = URL(string: common_url + "/CollectionServlet")
+            var requestParam = [String: String]()
+            requestParam["action"] = "delete"
+            requestParam["delete"] = try! String(data: JSONEncoder().encode(like), encoding: .utf8)
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        print("input: \(String(data: data!, encoding: .utf8)!)")
+                    }
+                }
+            }
         }else{
+            //收藏
             self.bt_Collection.isSelected = true
             bt_Collection.setImage(UIImage(named: "collection"), for: .normal)
+            
+            let url_server = URL(string: common_url + "/CollectionServlet")
+            var requestParam = [String: String]()
+            requestParam["action"] = "insert"
+            requestParam["share"] = try! String(data: JSONEncoder().encode(like), encoding: .utf8)
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        print("input: \(String(data: data!, encoding: .utf8)!)")
+                    }
+                }
+            }
         }
     }
-    
-    //    override func awakeFromNib() {
-    //        super.awakeFromNib()
-    //        // Initialization code
-    //    }
-    //
-    //    override func setSelected(_ selected: Bool, animated: Bool) {
-    //        super.setSelected(selected, animated: animated)
-    //
-    //        // Configure the view for the selected state
-    //    }
-    
 }

@@ -37,7 +37,7 @@ class HomeNewsTableViewController: UITableViewController {
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    print("input: \(String(data: data!, encoding: .utf8)!)")
                     
                     if let result = try? JSONDecoder().decode([News].self, from: data!) {
                         self.news = result
@@ -75,10 +75,11 @@ class HomeNewsTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellId = "newsCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! NewsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as! NewsTableViewCell
         let new = news[indexPath.row]
         
+        let likes = Likes("123", new.imageID!)
+        cell.like = likes
         cell.news = new
         // 尚未取得圖片，另外開啟task請求
         var requestParam = [String: Any]()
@@ -188,15 +189,29 @@ class HomeNewsTableViewController: UITableViewController {
      }
      */
     
-    /*
+    
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    @IBAction func bt_Comment(_ sender: UIButton) {
+//            let indexPath = self.tableView.indexPath(for: sender as! NewsTab
+//                leViewCell)
+//            let new = news[indexPath!.row]
+//            let newscomment = segue.destination as! NewsCommentViewController
+//            newscomment.news = new
+//    }
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "newscomment"{
+//            let indexPath = self.tableView.indexPath(for: sender as! NewsTableViewCell)
+//            let new = news[indexPath!.row]
+//            let newscomment = segue.destination as! NewsCommentViewController
+//            newscomment.news = new
+//        }
+        
+        
      // Get the new view controller using segue.destination.
      // Pass the selected object to the new view controller.
-     }
-     */
-    
+//     }
+
 }
 

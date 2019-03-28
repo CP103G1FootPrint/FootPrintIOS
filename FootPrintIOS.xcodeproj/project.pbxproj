@@ -48,6 +48,7 @@
 		AF883E0E22393E7F00021940 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF883E0D22393E7F00021940 /* Account.swift */; };
 		AF883E102239E1BA00021940 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF883E0F2239E1BA00021940 /* SignInViewController.swift */; };
 		AFFAC23F2247965F00386107 /* TripPlanFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFAC23E2247965F00386107 /* TripPlanFriend.swift */; };
+		D4440D9C224B9C9500E83240 /* NewsCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		D40C7CE5223A7E5300812C3C /* HomeNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsTableViewController.swift; sourceTree = "<group>"; };
 		D40C7CE7223A8F5A00812C3C /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		D40C7CEA223A909C00812C3C /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				AF47E681223B8BA8007AD656 /* News.swift */,
 				AF47E67D223B8B50007AD656 /* NewsTableViewCell.swift */,
 				AF1DA0BC224B460C00B80E09 /* Likes.swift */,
+				D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */,
 			);
 			name = HomeNews;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				AF883E0B2239180200021940 /* Common.swift in Sources */,
 				AF883E0E22393E7F00021940 /* Account.swift in Sources */,
 				AF0BD168222D1796006FC80A /* ViewController.swift in Sources */,
+				D4440D9C224B9C9500E83240 /* NewsCommentViewController.swift in Sources */,
 				AF2E00E822326C72006B9A5A /* GroupAlbumCollectionViewCell.swift in Sources */,
 				AF1DA0C1224B470000B80E09 /* HomeTripTableViewController.swift in Sources */,
 				AF28AA93223CEFCE0081DE1A /* AddFriendListTableViewCell.swift in Sources */,
