@@ -27,7 +27,7 @@ func showSimpleAlert(message: String, viewController: UIViewController) {
     viewController.present(alertController, animated: true, completion:nil)
 }
 
-func saveUser(_ user: Account) -> Bool {
+func saveUser(_ user: [String: String]) -> Bool {
     if let jsonData = try? JSONEncoder().encode(user) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(jsonData, forKey: "user")
@@ -37,3 +37,19 @@ func saveUser(_ user: Account) -> Bool {
     }
 }
 
+func loadData() ->( account : String, password : String){
+    let userDefaults = UserDefaults.standard
+    let user = userDefaults.data(forKey: "user")
+    let result = try! JSONDecoder().decode([String: String].self, from: user!)
+    let account = result["userId"]
+    let password = result["password"]
+    return (account!, password!)
+}
+
+
+/*  除讀取帳密用法
+let user = loadData()
+let account = user.account
+let password = user.password
+print("\(user.account) + \(user.password)")
+ */

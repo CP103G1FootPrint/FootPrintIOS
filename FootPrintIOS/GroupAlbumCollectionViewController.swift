@@ -8,6 +8,7 @@
 
 import UIKit
 var groupAlbums = [GroupAlbum]()
+var pickedImage = UIImage()
 let url_server = URL(string: common_url + "/GroupAlbumServlet")
 
 var imagePicker = UIImagePickerController()
@@ -93,7 +94,6 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
     //每個section有幾筆資料
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        print("count",groupAlbums.count)
         return groupAlbums.count
     }
 
@@ -170,7 +170,10 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
     
     // 選擇照片
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        let pickedImage = info[.originalImage] as! UIImage
+         pickedImage = info[.originalImage] as! UIImage
+        
+        
+        
 //        //添加圖片
 //        groupAlbums.append(pickedImage)
         dismiss(animated: true, completion: nil)
@@ -180,4 +183,7 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
 }
+
