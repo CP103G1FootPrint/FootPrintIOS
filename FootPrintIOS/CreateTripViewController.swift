@@ -10,7 +10,7 @@ import UIKit
 
 class CreateTripViewController: UIViewController ,UIPickerViewDataSource,UIPickerViewDelegate,
 UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-    var coureSelect:[String:String]!
+    var tripfriend = [String]()
     
     
     let url_server = URL(string: common_url + "/TripServlet")
@@ -67,8 +67,10 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         toolBar.isUserInteractionEnabled = true
         dayPicker.inputAccessoryView = toolBar
         
+        
+        
         //加入行程的好友
-        friendListTextView.text = addFriends
+        friendListTextView.text = tripfriend.joined(separator: ",")
 //        if let name = addFriends{
 //            
 //        }

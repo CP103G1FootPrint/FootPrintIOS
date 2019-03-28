@@ -20,6 +20,8 @@ class AddFriendListTableViewController: UITableViewController {
     let url_server = URL(string: common_url + "/TripServlet")
 
     var friendArray: [String] = Array()
+//    var b = Set<String>()
+    var addfriend = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         friendArray.append("Tom")
@@ -55,9 +57,32 @@ class AddFriendListTableViewController: UITableViewController {
         return cell
     }
     
+    //移除勾選掉的好友
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        let name = friendArray[indexPath.row]
+        for i in 0 ..< addfriend.count{
+            if(addfriend[i].contains(name)){
+                addfriend.remove(at: i)
+                break
+            }
+        }
+        
+        print("friendremovw :\(addfriend)")
+    }
     
+    //點選加入行程的好友
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        friendArray.items[indexPath.row].isSelected = true
+        addfriend.append(friendArray[indexPath.row])
+
+//        if(a.contains(x)){
+//            a.remove(at: indexPath.row)
+//        }else{
+//            a.append(x)
+//        }
+
+        print("friendadd :\(addfriend)")
     }
     
     
@@ -126,20 +151,26 @@ class AddFriendListTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showFriendDetail"{
-        let controller = segue.destination as? CreateTripViewController
-        if let selectRow = tableView.indexPathForSelectedRow?.row{
-            controller?.friendListTextView.text = friendArray[selectRow]
-        }
-//        controller?.coureSelect = self.coureSelect
-        }
-    
-    }
-    
-//    @IBAction func doneButtonPressed(_ sender: Any) {
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showFriendDetail"{
+//        let controller = segue.destination as? CreateTripViewController
+//        if let selectRow = tableView.indexPathForSelectedRow?.row{
+//            controller?.friendListTextView.text = friendArray[selectRow]
+//        }
+//        }
 //
-//        self.navigationController?.popViewController(animated: true)
 //    }
+    
+    @IBAction func doneButtonPressed(_ sender: Any) {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "createTripViewController") as? CreateTripViewController{
+            controller.tripfriend = addfriend
+            present(controller,animated: true,completion: nil)
+        }
+        
+        
+////        let mySet = Set<String>(a);
+////        print("test\(mySet)")
+//        self.navigationController?.popViewController(animated: true)
+    }
     
 }
