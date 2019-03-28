@@ -32,26 +32,25 @@ class SignInViewController: UIViewController {
             present(alert, animated: true, completion: nil)
             
         }
-        let user = Account(account!,password!)
-        var requestParam = [String: Any]()
+//        let user = Account(account!,password!)
+        var requestParam = [String: String]()
         requestParam["action"] = "accountValid"
         requestParam["userId"] = account
         requestParam["password"] = password
         
-        executeTask(url_server!, requestParam as! [String : String]) { (data, response, error) in
+        executeTask(url_server!, requestParam) { (data, response, error) in
 
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    print("input: \(String(data: data!, encoding: .utf8)!)")
                     
                      if String(data:data!,encoding: .utf8)! == "true" {
-                         print("1234)")
-                            let saved = saveUser(user)
-                            print("saved = \(saved)")
-                                    let userDefaults = UserDefaults.standard
-                            userDefaults.set(self.account, forKey: "account")
-                                    userDefaults.synchronize()
+                                let result = saveUser(requestParam)
+                                print("save result \(result)")
+//                            let userDefaults = UserDefaults.standard
+//                            userDefaults.set(user, forKey: "user")
+//                            userDefaults.synchronize()
                             // 開啟下一頁
                             DispatchQueue.main.async {
                                 self.performSegue(withIdentifier: "next", sender: self)
