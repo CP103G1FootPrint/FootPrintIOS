@@ -81,13 +81,7 @@ class NewsTableViewCell: UITableViewCell {
             }
         }
     }
-    
 
-    @IBAction func bt_Message(_ sender: Any) {
-    
-    }
-    
-    
     
     @IBAction func bt_Collection(_ sender: Any) {
         if self.bt_Collection.isSelected{

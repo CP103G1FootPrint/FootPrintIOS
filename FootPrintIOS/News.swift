@@ -17,8 +17,9 @@ class News: Codable {
     var collectionId: Int?
     var nickName: String?
     var landMarkName: String?
+    var headImageString: String?
     
-    public init(_ imageID: Int, _ description: String, _ openState: String, _ userID: String, _ landMarkID: Int, _ likesCount: String, _ likeId: Int, _ collectionId: Int, _ nickName: String, _ landMarkName: String) {
+    public init(_ imageID: Int, _ description: String, _ openState: String, _ userID: String, _ landMarkID: Int, _ likesCount: String, _ likeId: Int, _ collectionId: Int, _ nickName: String, _ landMarkName: String, _ headImageString:String) {
         self.imageID = imageID
         self.description = description
         self.openState = openState
@@ -29,10 +30,12 @@ class News: Codable {
         self.collectionId = collectionId
         self.nickName = nickName
         self.landMarkName = landMarkName
+        self.headImageString = headImageString
     }
     
     public init(_ likesCount: String, _ imageID: Int){
         self.likesCount = likesCount
         self.imageID = imageID
     }
+    
 }
