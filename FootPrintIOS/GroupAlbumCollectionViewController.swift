@@ -7,17 +7,22 @@
 //
 
 import UIKit
-var groupAlbums = [GroupAlbum]()
-var pickedImage = UIImage()
-let url_server = URL(string: common_url + "/GroupAlbumServlet")
 
-var imagePicker = UIImagePickerController()
+
+
+
 //var dataArray:[UIImage] = [UIImage]()
 
 
 class GroupAlbumCollectionViewController: UICollectionViewController,
     UIImagePickerControllerDelegate,UINavigationBarDelegate{
     
+    @IBOutlet var showActivityIndicator: UIActivityIndicatorView!
+    var groupAlbums = [GroupAlbum]()
+    var pickedImage = UIImage()
+    let url_server = URL(string: common_url + "/GroupAlbumServlet")
+    var imagePicker = UIImagePickerController()
+    var trips: Trip!
     let fullScreanSize = UIScreen.main.bounds.size
 
     @IBOutlet var albumCollectionView: UICollectionView!
@@ -43,7 +48,7 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
     @objc func showAllphotos(){
         var requestParam = [String: Any]()
         requestParam["action"] = "findAblumId"
-        requestParam["tripID"] = "1"
+        requestParam["tripID"] = trips.tripID
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -51,7 +56,7 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
                     print("input: \(String(data: data!, encoding: .utf8)!)")
                     //沒有包含圖片的旅遊景點
                     if let result = try? JSONDecoder().decode([GroupAlbum].self, from: data!) {
-                        groupAlbums = result
+                        self.groupAlbums = result
                         DispatchQueue.main.async {
                             //取得更新後讓下來更新動畫結束
                             if let control = self.collectionView.refreshControl {
@@ -103,7 +108,7 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
         let cellId = "albumCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! GroupAlbumCollectionViewCell
         let groupAlbum = groupAlbums[indexPath.row]
-        
+      
         // 尚未取得圖片，另外開啟task請求
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
@@ -170,12 +175,49 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
     
     // 選擇照片
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-         pickedImage = info[.originalImage] as! UIImage
+            pickedImage = info[.originalImage] as! UIImage
+            let activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
+                showActivityIndicator.addSubview(activityIndicatorView)
         
+//                var requestParam = [String: String]()
+//                requestParam["action"] = "groupalbumInsert"
+//                requestParam["tripId"] = trips.tripID
+//        //主轉成jason 字串 只有文字沒有圖
+//        // 有圖才上傳 圖轉乘的imageBase64 字串
+//        if self.image != nil {
+//            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 0.0)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
+//        }
+//        executeTask(self.url_server!, requestParam) { (data, response, error) in
+//            if error == nil {
+//                if data != nil {
+//                    if let result = String(data: data!, encoding: .utf8) {
+//                        if let count = Int(result) {
+//                            DispatchQueue.main.async {
+//                                // 新增成功則回前頁
+//                                if count != 0 {                                            self.navigationController?.popViewController(animated: true)
+//                                } else {
+//                                    let alertController = UIAlertController(title: "insert fail",
+//                                                                            message: nil, preferredStyle: .alert)
+//                                    self.present(alertController, animated: true, completion: nil)
+//                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+//                                        self.presentedViewController?.dismiss(animated: false, completion: nil)
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            } else {
+//                print(error!.localizedDescription)
+//            }
+//        }
         
+//             groupAlbums.append(pickedImage)
+            collectionView.reloadData()
         
-//        //添加圖片
-//        groupAlbums.append(pickedImage)
+
+
+       
         dismiss(animated: true, completion: nil)
     }
     
@@ -185,5 +227,8 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
     }
     
     
+    
+    
 }
+
 

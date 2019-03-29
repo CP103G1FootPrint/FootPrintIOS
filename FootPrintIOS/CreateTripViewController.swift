@@ -70,10 +70,8 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         
         
         //加入行程的好友
-        friendListTextView.text = tripfriend.joined(separator: ",")
-//        if let name = addFriends{
-//            
-//        }
+//        friendListTextView.text = tripfriend.joined(separator: ",")
+       
         
     }
     
@@ -132,9 +130,13 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     */
     
     @IBAction func clickSave(_ sender: Any) {
+        let user = loadData()
+        let account = user.account
+//        let tripID =
+        
         let title = tripNameTextFild.text == nil ? "" : tripNameTextFild.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-//        let date = datePickerTextFild.text == nil ? "" : datePickerTextFild.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+
         let formater = DateFormatter();
         formater.dateFormat = "yyyy-MM-dd"
         let dateStr = formater.string(from: (datePicker.date))
@@ -147,8 +149,9 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         }else {
             type = "Group"
         }
+        let createID = account
     
-        let trip = Trip(9,title,dateStr,type,day)
+        let trip = Trip(0,title,dateStr,type,createID,day)
         var requestParam = [String: String]()
         requestParam["action"] = "tripInsert"
         requestParam["trip"] = try! String(data: JSONEncoder().encode(trip), encoding: .utf8) //主轉成jason 字串 只有文字沒有圖
@@ -188,6 +191,10 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     }
     //按下 return 鍵收鍵盤
     @IBAction func didEndOnExit(_ sender: Any) {
+    }
+    
+    @IBAction func unwindToCreateTripViewController(segue: UIStoryboardSegue){
+        friendListTextView.text = tripfriend.joined(separator: ",")
     }
     
     

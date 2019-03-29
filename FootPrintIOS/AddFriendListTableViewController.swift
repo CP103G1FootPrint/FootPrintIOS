@@ -150,27 +150,25 @@ class AddFriendListTableViewController: UITableViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showFriendDetail"{
-//        let controller = segue.destination as? CreateTripViewController
-//        if let selectRow = tableView.indexPathForSelectedRow?.row{
-//            controller?.friendListTextView.text = friendArray[selectRow]
-//        }
-//        }
-//
-//    }
-    
-    @IBAction func doneButtonPressed(_ sender: Any) {
-        if let controller = storyboard?.instantiateViewController(withIdentifier: "createTripViewController") as? CreateTripViewController{
-            controller.tripfriend = addfriend
-            present(controller,animated: true,completion: nil)
-        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       let controller = segue.destination as? CreateTripViewController
+        controller?.tripfriend = addfriend
         
+
+    }
+    
+//    @IBAction func doneButtonPressed(_ sender: Any) {
+//        if let controller = storyboard?.instantiateViewController(withIdentifier: "createTripViewController") as? CreateTripViewController{
+//            controller.tripfriend = addfriend
+//            present(controller,animated: true,completion: nil)
+//        }
+    
         
 ////        let mySet = Set<String>(a);
 ////        print("test\(mySet)")
 //        self.navigationController?.popViewController(animated: true)
-    }
+    
+    
+    
     
 }

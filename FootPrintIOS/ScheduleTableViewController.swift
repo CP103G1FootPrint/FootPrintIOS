@@ -33,12 +33,16 @@ class ScheduleTableViewController: UITableViewController {
         showAllTrips()
     }
     @objc func showAllTrips() {
+        let user = loadData()
+        let account = user.account
         
         var requestParam = [String: String]()
 //        let user = UserDefaults.standard.object(forKey: "account") as? String
         
         requestParam["action"] = "All"
-        requestParam["createID"] = "123"
+        requestParam["createID"] = account
+        
+        
         
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -86,6 +90,8 @@ class ScheduleTableViewController: UITableViewController {
         let cellId = "tripCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! ScheduleTableViewCell
         let trip = trips[indexPath.row]
+        cell.aButton.tag = indexPath.row
+//        cell.trips = trip
         // 尚未取得圖片，另外開啟task請求
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
@@ -179,15 +185,30 @@ class ScheduleTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+//    override func prepare(for segue: UIStoryboardSegue, sender: UIButton) {
+//        let controller = segue.destination as? GroupAlbumCollectionViewController
+//        let buttontag = sender.tag
+//        let trip = trips[buttontag]
+//        controller?.trips = trip
+////        controller?.tripfriend = addfriend
+//
+//        show(, sender: )
+//
+//    }
+    
+    
+    @IBAction func albumButton(_ sender: UIButton) {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "groupAlbum") as? GroupAlbumCollectionViewController{
+            let buttontag = sender.tag
+            let trip = trips[buttontag]
+            controller.trips = trip
+       navigationController?.pushViewController(controller, animated: true)
+//            present(controller,animated: true,completion: nil)
     }
-    */
-}
-
+    
+    }}
 

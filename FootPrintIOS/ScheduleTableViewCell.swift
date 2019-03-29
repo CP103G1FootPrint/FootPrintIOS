@@ -10,11 +10,19 @@ import UIKit
 
 class ScheduleTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var aButton: UIButton!
     @IBOutlet weak var tripNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
-    
+    var trips: Trip!
         
+//    @IBAction func albumButton(_ sender: Any) {
+//        let x = trips.tripID
+//        print("test : \(x)")
+//        
+//    }
+    
     
     
     override func awakeFromNib() {
