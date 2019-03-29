@@ -10,6 +10,9 @@ import UIKit
 
 class HomeNewsTableViewController: UITableViewController {
     var news = [News]()
+    
+    @IBOutlet weak var nv: UINavigationItem!
+    
     let url_server = URL(string: common_url + "PicturesServlet")
     
     override func viewDidLoad() {
@@ -37,7 +40,7 @@ class HomeNewsTableViewController: UITableViewController {
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    print("input: \(String(data: data!, encoding: .utf8)!)")
                     
                     if let result = try? JSONDecoder().decode([News].self, from: data!) {
                         self.news = result
@@ -75,11 +78,13 @@ class HomeNewsTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellId = "newsCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! NewsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as! NewsTableViewCell
         let new = news[indexPath.row]
         
+        let likes = Likes("123", new.imageID!)
+        cell.like = likes
         cell.news = new
+        cell.bt_Message.tag = indexPath.row
         // 尚未取得圖片，另外開啟task請求
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
@@ -112,7 +117,12 @@ class HomeNewsTableViewController: UITableViewController {
             if error == nil {
                 if data != nil {
                     headImage = UIImage(data: data!)
-                    //                    print("get head image", indexPath.row)
+//                    let byte = [UInt8] (data!)
+//                    let headImageString = String(bytes: byte, encoding: .utf8)
+//                    new.headImageString = headImageString
+//                    print("homenews\(headImageString!)")
+//                    new.x = try? JSONDecoder().decode(String.self, from: data!)
+                    //print("get head image", indexPath.row)
                 }
                 if headImage == nil {
                     headImage = UIImage(named: "album")
@@ -128,11 +138,11 @@ class HomeNewsTableViewController: UITableViewController {
             }
         }
         
-        
         cell.lb_LikesCount.text = new.likesCount + " people likes"
         cell.bt_LandMark.setTitle(new.landMarkName, for: .normal)
         cell.bt_NickName.setTitle(new.nickName, for: .normal)
         cell.lb_description.text = new.description
+        cell.bt_Message.tag = indexPath.row
         
         if new.likeId == 0{
             cell.bt_Like.isSelected = false
@@ -153,50 +163,17 @@ class HomeNewsTableViewController: UITableViewController {
         }
         return cell
     }
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
     
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    @IBAction func bt_Comment(_ sender: UIButton) {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "NewsCommentViewController") as? NewsCommentViewController{
+//            let buttontag = sender.tag
+            let new = news[sender.tag]
+            controller.news = new
+            let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? NewsTableViewCell
+            let image = cell?.bt_HeadPicture.image(for: .normal)
+            controller.headImage = image
+            navigationController?.pushViewController(controller, animated: true)
+//          present(controller, animated: true, completion: nil)
+        }
+    }
 }
-
