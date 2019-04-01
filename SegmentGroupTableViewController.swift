@@ -1,15 +1,14 @@
 //
-//  GroupMessageTableViewController.swift
+//  SegmentGroupTableViewController.swift
 //  FootPrintIOS
 //
-//  Created by lulu on 2019/3/24.
+//  Created by lulu on 2019/3/31.
 //  Copyright © 2019 lulu. All rights reserved.
 //
 
 import UIKit
 
-class GroupMessageTableViewController: UITableViewController {
-    var trips: Trip!
+class SegmentGroupTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

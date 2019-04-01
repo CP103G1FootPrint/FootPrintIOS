@@ -33,7 +33,6 @@
         <!--PersonalVC-->
         <scene sceneID="WGK-Yu-ojl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XsV-p9-6ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="PersonalVC" id="Bex-fs-2Yh" customClass="PersonalVC" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2cM-uu-HS6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -129,13 +128,13 @@
                         <outlet property="viewRecord" destination="xsD-gD-Uee" id="eui-u2-ln4"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XsV-p9-6ja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3705.7971014492755" y="3040.8482142857142"/>
         </scene>
         <!--Personal SettingVC-->
         <scene sceneID="WgC-pf-2Om">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LYd-67-iMn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="nTS-fc-Nv8" customClass="PersonalSettingVC" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bhZ-gA-Xaq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -229,13 +228,13 @@
                         <outlet property="tvResult" destination="bFl-KR-EjM" id="lct-IJ-eBl"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LYd-67-iMn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4373.913043478261" y="3040.8482142857142"/>
         </scene>
         <!--Selfie EditVC-->
         <scene sceneID="ZCm-gC-d2D">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PRT-1H-uza" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="AzI-pt-VPI" customClass="SelfieEditVC" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s8B-hr-eDg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -280,13 +279,13 @@
                         <outlet property="selfie" destination="XHE-Jc-0lv" id="xZg-Vy-7gl"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PRT-1H-uza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5181" y="3041"/>
         </scene>
         <!--Personal CollectVC-->
         <scene sceneID="g8m-0V-hdM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QFj-6R-cT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="jzo-9A-h2f" customClass="PersonalCollectVC" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="aDx-63-TeF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="551"/>
@@ -320,13 +319,13 @@
                         </connections>
                     </collectionView>
                 </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QFj-6R-cT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4528.985507246377" y="3617.7455357142853"/>
         </scene>
         <!--Personal RecordVC-->
         <scene sceneID="9qp-nG-C6h">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T7y-f5-w5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="Jv4-dy-sQm" customClass="PersonalRecordVC" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="wDQ-Kt-RYe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="551"/>
@@ -365,13 +364,13 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="551"/>
                 </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T7y-f5-w5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5157.971014492754" y="3617.7455357142853"/>
         </scene>
         <!--Personal NotifyVC-->
         <scene sceneID="Kza-kg-NGZ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZFs-I8-bFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="P3" id="ibo-um-bkX" customClass="PersonalNotifyVC" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JBC-yO-bEI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="551"/>
@@ -439,13 +438,13 @@
                         <viewLayoutGuide key="safeArea" id="Mqx-JC-veQ"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZFs-I8-bFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3896" y="3619"/>
         </scene>
         <!--Personal ExchangeVC-->
         <scene sceneID="1oo-g7-CHn">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hrj-lg-4JM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Voy-X1-ivC" customClass="PersonalExchangeVC" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sac-q6-WC1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="551"/>
@@ -540,13 +539,13 @@
                         <outlet property="exchangeTBV" destination="vEG-u6-wYP" id="zWA-yX-vWl"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hrj-lg-4JM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3250.7246376811595" y="3617.7455357142853"/>
         </scene>
         <!--PersonalQ Rcode-->
         <scene sceneID="Sxd-vh-0yp">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="27i-oN-h6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="aat-JN-VW5" customClass="PersonalQRcode" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SZi-Tc-PW0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="551"/>
@@ -585,17 +584,18 @@
                         <outlet property="lbproductName" destination="87P-3N-gc4" id="E9u-3K-adT"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="27i-oN-h6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2597" y="3618"/>
         </scene>
     </scenes>
     <resources>
         <image name="congratulations" width="16" height="16"/>
-        <image name="money" width="16" height="16"/>
+        <image name="money" width="512" height="512"/>
         <image name="noImage.jpg" width="16" height="16"/>
         <image name="personal" width="25" height="25"/>
-        <image name="qrcode" width="16" height="16"/>
-        <image name="setting" width="16" height="16"/>
+        <image name="qrcode" width="572" height="784"/>
+        <image name="setting" width="48" height="48"/>
         <image name="sign.png" width="375" height="812"/>
         <image name="user.png" width="828" height="855"/>
     </resources>

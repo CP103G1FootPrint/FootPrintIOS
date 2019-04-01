@@ -11,7 +11,10 @@ import UIKit
 class ScheduleTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var aButton: UIButton!
+    @IBOutlet weak var messageButton: UIButton!
+    @IBOutlet weak var photoButton: UIButton!
+    
+    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var tripNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!

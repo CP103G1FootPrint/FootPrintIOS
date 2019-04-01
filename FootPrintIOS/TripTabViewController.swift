@@ -21,6 +21,7 @@ class TripTabViewController: UIViewController {
         print(getIndex)
         switch (getIndex) {
         case 0:
+            
             test.isHidden = true
             scheduletableview.isHidden = false
         case 1:
@@ -32,6 +33,9 @@ class TripTabViewController: UIViewController {
 //            scheduletableview.isHidden = false
         }
     }
+    
+    
+        
     
     
     

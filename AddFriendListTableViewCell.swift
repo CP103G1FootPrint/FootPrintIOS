@@ -11,7 +11,10 @@ import UIKit
 class AddFriendListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var friendNameLabel: UILabel!
-    @IBOutlet weak var checkboxButton: UIButton!
+    
+    @IBOutlet weak var friendImageView: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

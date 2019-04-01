@@ -10,9 +10,8 @@ import UIKit
 
 class CreateTripViewController: UIViewController ,UIPickerViewDataSource,UIPickerViewDelegate,
 UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    
     var tripfriend = [String]()
-    
-    
     let url_server = URL(string: common_url + "/TripServlet")
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dayPicker: UITextField!
@@ -25,6 +24,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     var picker = UIPickerView()
     var days = ["1","2","3","4","5","6","7","8","9","10"]
     var addFriends:String?
+    var tripID:Int?
     
     //挑選照片
     @IBAction func clickPickPhoto(_ sender: Any) {
@@ -67,13 +67,15 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         toolBar.isUserInteractionEnabled = true
         dayPicker.inputAccessoryView = toolBar
         
-        
+        findTripId()
         
         //加入行程的好友
 //        friendListTextView.text = tripfriend.joined(separator: ",")
-       
-        
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        findTripId()
+//    }
+    
     
     @objc func donePicker(){
         dayPicker.resignFirstResponder()
@@ -128,15 +130,34 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         // Pass the selected object to the new view controller.
     }
     */
+    func findTripId(){
+        var requestParam = [String: String]()
+        requestParam["action"] = "findTripId"
+        executeTask(self.url_server!, requestParam
+            , completionHandler: { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        if let result = String(data: data!, encoding: .utf8) {
+                              self.tripID = Int(result)
+//                            print("trip\(self.tripID)")
+                        }
+                    }
+                } else {
+                    print(error!.localizedDescription)
+                }
+        })
+    }
+    
+    
     
     @IBAction func clickSave(_ sender: Any) {
         let user = loadData()
         let account = user.account
-//        let tripID =
         
+        
+        
+//        let tripID = count
         let title = tripNameTextFild.text == nil ? "" : tripNameTextFild.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-
         let formater = DateFormatter();
         formater.dateFormat = "yyyy-MM-dd"
         let dateStr = formater.string(from: (datePicker.date))
@@ -151,13 +172,14 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         }
         let createID = account
     
-        let trip = Trip(0,title,dateStr,type,createID,day)
-        var requestParam = [String: String]()
+        let trip = Trip(tripID!+1,title,dateStr,type,createID,day)
+        
+       var requestParam = [String: String]()
         requestParam["action"] = "tripInsert"
         requestParam["trip"] = try! String(data: JSONEncoder().encode(trip), encoding: .utf8) //主轉成jason 字串 只有文字沒有圖
         // 有圖才上傳 圖轉乘的imageBase64 字串
         if self.image != nil {
-            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 0.0)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
+            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
         }
         executeTask(self.url_server!, requestParam) { (data, response, error) in
             if error == nil {
