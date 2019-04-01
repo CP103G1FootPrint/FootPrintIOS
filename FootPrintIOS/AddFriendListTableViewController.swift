@@ -8,31 +8,70 @@
 
 import UIKit
 
-
-
-
 class AddFriendListTableViewController: UITableViewController {
-//    let allItems = [Items]()
-//    var selectedItems = [Items]()
+    var list_item :[String]?
+    var friendList = [CreateTripFriends]()
+    let url_server = URL(string: common_url + "/FriendsServlet")
+    var requestParam = [String: String]()
     
-//    var coureSelect:[String:String]!
-//    var delegate : CreateTripViewController
-    let url_server = URL(string: common_url + "/TripServlet")
-
     var friendArray: [String] = Array()
-//    var b = Set<String>()
+
     var addfriend = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        friendArray.append("Tom")
-        friendArray.append("Vivian")
-        friendArray.append("Sandy")
-        friendArray.append("May")
+//        friendArray.append("Tom")
+//        friendArray.append("Vivian")
+//        friendArray.append("Sandy")
+//        friendArray.append("May")
 
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.setEditing(true, animated: false)
         tableView.delegate = self
         tableView.dataSource = self
+        
+        getAllFriends()
+        
+    }
+    
+    func getAllFriends(){
+        let user = loadData()
+        let account = user.account
+        requestParam["action"] = "getAllFriends"
+        requestParam["userId"] = account
+        
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    // 將輸入資料列印出來除錯用
+                    print("input: \(String(data: data!, encoding: .utf8)!)")
+                    if let result = try? JSONDecoder().decode([CreateTripFriends].self, from: data!) {
+                        self.friendList = result
+                        
+//                        var size = self.friendList.count
+////                        let list_item = [mount]
+//                        for i in 0 ..< size{
+//                            if self.friendList.inviter = userId{
+//                                
+//                            }
+//                        }
+                        
+                        _ = try? JSONDecoder().decode(String.self, from: data!)
+                        
+                        DispatchQueue.main.async {
+                            if let control = self.tableView.refreshControl {
+                                if control.isRefreshing {
+                                    // 停止下拉更新動作
+                                    control.endRefreshing()
+                                }
+                            }
+                            /* 抓到資料後重刷table view */
+                            self.tableView.reloadData()
+                        }
+                    }}
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -43,37 +82,78 @@ class AddFriendListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return friendArray.count
+        
+//        return friendArray.count
+        return friendList.count
     }
 
     //設定cell要顯示的內容
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let user = loadData()
+        let account = user.account
         let cell = tableView.dequeueReusableCell(withIdentifier: "addFriendCell", for: indexPath) as! AddFriendListTableViewCell
-        cell.friendNameLabel.text = friendArray[indexPath.row]
         
-        cell.checkboxButton.addTarget(self, action: #selector(clickCheckbox(sender:)), for: .touchUpInside)
+//        cell.friendNameLabel.text = friendArray[indexPath.row]
+        cell.friendNameLabel.text = friendList[indexPath.row].inviter
+        
+        //抓取頭像
+        let url_server = URL(string: common_url + "PicturesServlet")
+        requestParam["action"] = "findUserHeadImage"
+        requestParam["userId"] = account
+        requestParam["imageSize"] = "30"
+        var headImage: UIImage?
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    headImage = UIImage(data: data!)
+                }
+                if headImage == nil {
+                    headImage = UIImage(named: "album")
+                }
+                DispatchQueue.main.async {
+                    //圓形大頭照
+                    cell.friendImageView.frame = CGRect(x:35, y:10, width:30, height:30)
+                    cell.friendImageView.contentMode = .scaleAspectFill
+                    cell.friendImageView.layer.masksToBounds = true
+                    cell.friendImageView.layer.cornerRadius = cell.friendImageView.frame.width/2
+                    cell.friendImageView.image = headImage
+//                    self.view.addSubview(cell.friendImageView)
+                }
+                
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+        
+        
+        
+//        cell.checkboxButton.addTarget(self, action: #selector(clickCheckbox(sender:)), for: .touchUpInside)
 
         return cell
     }
     
     //移除勾選掉的好友
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let name = friendList[indexPath.row]
         
-        let name = friendArray[indexPath.row]
-        for i in 0 ..< addfriend.count{
-            if(addfriend[i].contains(name)){
-                addfriend.remove(at: i)
-                break
-            }
-        }
+        
+//        let name = friendArray[indexPath.row]
+//        for i in 0 ..< addfriend.count{
+//            if(addfriend[i].contains(name)){
+//                addfriend.remove(at: i)
+//                break
+//            }
+//        }
         
         print("friendremovw :\(addfriend)")
     }
     
+    
+    
+    
     //點選加入行程的好友
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        friendArray.items[indexPath.row].isSelected = true
+        
         addfriend.append(friendArray[indexPath.row])
 
 //        if(a.contains(x)){
@@ -85,32 +165,20 @@ class AddFriendListTableViewController: UITableViewController {
         print("friendadd :\(addfriend)")
     }
     
+
     
     
-    
-    
-    
-    
-    @objc func clickCheckbox (sender : UIButton){
-        print("button pressed")
-        if sender.isSelected{
-            sender.isSelected = false
-        }else{
-            sender.isSelected = true
-        }
-        
-    }
-    
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let indexPath = tableView.indexPathForSelectedRow
-//        let currentCell = tableView.cellForRow(at: indexPath) as! AddFriendListTableViewCell
-//        let currentItem = currentCell.friendNameLabel!.text
-//        let alertController = UIAlertController(title: "Invite friends", message: "You Selected " + currentItem! , preferredStyle: .alert)
-//        let defaultAction = UIAlertAction(title: "Close Alert", style: .default, handler: nil)
-//        alertController.addAction(defaultAction)
+//    @objc func clickCheckbox (sender : UIButton){
+//        print("button pressed")
+//        if sender.isSelected{
+//            sender.isSelected = false
+//        }else{
+//            sender.isSelected = true
+//        }
 //
-//        present(alertController, animated: true, completion: nil)
 //    }
+    
+
     
     /*
     // Override to support conditional editing of the table view.

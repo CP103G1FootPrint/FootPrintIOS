@@ -25,6 +25,9 @@ class Trip: Codable {
         
     }
     
+    func getId () -> Int{
+        return self.tripID!
+    }
     
     
 }

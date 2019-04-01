@@ -179,38 +179,39 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
             let activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
                 showActivityIndicator.addSubview(activityIndicatorView)
         
-//                var requestParam = [String: String]()
-//                requestParam["action"] = "groupalbumInsert"
-//                requestParam["tripId"] = trips.tripID
-//        //主轉成jason 字串 只有文字沒有圖
-//        // 有圖才上傳 圖轉乘的imageBase64 字串
-//        if self.image != nil {
-//            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 0.0)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
+                var requestParam = [String: Any]()
+                requestParam["action"] = "groupalbumInsert"
+            requestParam["tripId"] = trips.tripID
+        //主轉成jason 字串 只有文字沒有圖
+        // 有圖才上傳 圖轉乘的imageBase64 字串
+        requestParam["imageBase64"] = collectionView.image().jpegData(compressionQuality: 1.0)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
+//        if collectionView.image() != nil {
+//            
 //        }
-//        executeTask(self.url_server!, requestParam) { (data, response, error) in
-//            if error == nil {
-//                if data != nil {
-//                    if let result = String(data: data!, encoding: .utf8) {
-//                        if let count = Int(result) {
-//                            DispatchQueue.main.async {
-//                                // 新增成功則回前頁
-//                                if count != 0 {                                            self.navigationController?.popViewController(animated: true)
-//                                } else {
-//                                    let alertController = UIAlertController(title: "insert fail",
-//                                                                            message: nil, preferredStyle: .alert)
-//                                    self.present(alertController, animated: true, completion: nil)
-//                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-//                                        self.presentedViewController?.dismiss(animated: false, completion: nil)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            } else {
-//                print(error!.localizedDescription)
-//            }
-//        }
+        executeTask(self.url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    if let result = String(data: data!, encoding: .utf8) {
+                        if let count = Int(result) {
+                            DispatchQueue.main.async {
+                                // 新增成功則回前頁
+                                if count != 0 {                                            self.navigationController?.popViewController(animated: true)
+                                } else {
+                                    let alertController = UIAlertController(title: "insert fail",
+                                                                            message: nil, preferredStyle: .alert)
+                                    self.present(alertController, animated: true, completion: nil)
+                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                                        self.presentedViewController?.dismiss(animated: false, completion: nil)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
         
 //             groupAlbums.append(pickedImage)
             collectionView.reloadData()

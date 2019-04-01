@@ -40,7 +40,6 @@
 		AF47E682223B8BA8007AD656 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E681223B8BA8007AD656 /* News.swift */; };
 		AF47E684223CCC77007AD656 /* user2.png in Resources */ = {isa = PBXBuildFile; fileRef = AF47E683223CCC77007AD656 /* user2.png */; };
 		AF4E4C8E22422B1C00864DD1 /* TripTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E4C8D22422B1C00864DD1 /* TripTabViewController.swift */; };
-		AF4E4C9022422FDD00864DD1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4E4C8F22422FDD00864DD1 /* SecondViewController.swift */; };
 		AF5A350D222FD613003838E8 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A350C222FD613003838E8 /* user.png */; };
 		AF5A350F222FD649003838E8 /* sign.png in Resources */ = {isa = PBXBuildFile; fileRef = AF5A350E222FD649003838E8 /* sign.png */; };
 		AF5A3511222FD672003838E8 /* new-york.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF5A3510222FD671003838E8 /* new-york.jpg */; };
@@ -60,6 +59,8 @@
 		AFB1607F224E29F100F675E5 /* PersonalQRcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB1607E224E29F100F675E5 /* PersonalQRcode.swift */; };
 		AFB16082224E2A9700F675E5 /* PersonalRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB16081224E2A9700F675E5 /* PersonalRecordVC.swift */; };
 		AFB16084224E2ACD00F675E5 /* PersonalRecordCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB16083224E2ACD00F675E5 /* PersonalRecordCVCell.swift */; };
+		AFE8DBC12250C43F005F585A /* SegmentGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE8DBC02250C43F005F585A /* SegmentGroupTableViewController.swift */; };
+		AFE8DBC32251B83D005F585A /* CreateTripFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE8DBC22251B83D005F585A /* CreateTripFriends.swift */; };
 		AFFAC23F2247965F00386107 /* TripPlanFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFAC23E2247965F00386107 /* TripPlanFriend.swift */; };
 		D4440D9C224B9C9500E83240 /* NewsCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */; };
 		D4A7739C224E8D1300C3867C /* NewsCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A7739B224E8D1300C3867C /* NewsCommentTableViewCell.swift */; };
@@ -111,7 +112,6 @@
 		AF47E681223B8BA8007AD656 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		AF47E683223CCC77007AD656 /* user2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user2.png; sourceTree = "<group>"; };
 		AF4E4C8D22422B1C00864DD1 /* TripTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTabViewController.swift; sourceTree = "<group>"; };
-		AF4E4C8F22422FDD00864DD1 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AF5A350C222FD613003838E8 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		AF5A350E222FD649003838E8 /* sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign.png; sourceTree = "<group>"; };
 		AF5A3510222FD671003838E8 /* new-york.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "new-york.jpg"; sourceTree = "<group>"; };
@@ -131,6 +131,8 @@
 		AFB1607E224E29F100F675E5 /* PersonalQRcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalQRcode.swift; sourceTree = "<group>"; };
 		AFB16081224E2A9700F675E5 /* PersonalRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRecordVC.swift; sourceTree = "<group>"; };
 		AFB16083224E2ACD00F675E5 /* PersonalRecordCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRecordCVCell.swift; sourceTree = "<group>"; };
+		AFE8DBC02250C43F005F585A /* SegmentGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SegmentGroupTableViewController.swift; path = ../SegmentGroupTableViewController.swift; sourceTree = "<group>"; };
+		AFE8DBC22251B83D005F585A /* CreateTripFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripFriends.swift; sourceTree = "<group>"; };
 		AFFAC23E2247965F00386107 /* TripPlanFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlanFriend.swift; sourceTree = "<group>"; };
 		D40C7CE5223A7E5300812C3C /* HomeNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsTableViewController.swift; sourceTree = "<group>"; };
 		D40C7CE7223A8F5A00812C3C /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -230,11 +232,12 @@
 				AF2E419F2237558400558AAF /* CreateTripViewController.swift */,
 				AF28AA90223CEF910081DE1A /* AddFriendListTableViewController.swift */,
 				AFFAC23E2247965F00386107 /* TripPlanFriend.swift */,
+				AFE8DBC22251B83D005F585A /* CreateTripFriends.swift */,
 				AF28AA92223CEFCE0081DE1A /* AddFriendListTableViewCell.swift */,
 				AF4E4C8D22422B1C00864DD1 /* TripTabViewController.swift */,
-				AF4E4C8F22422FDD00864DD1 /* SecondViewController.swift */,
 				AF3034912247611F0035CAA1 /* GroupMessageTableViewController.swift */,
 				AF2E176F224C9A6E0073466E /* PhotoUploadViewController.swift */,
+				AFE8DBC02250C43F005F585A /* SegmentGroupTableViewController.swift */,
 			);
 			name = Schedule;
 			sourceTree = "<group>";
@@ -486,7 +489,6 @@
 				AFB1606C224E19DF00F675E5 /* User.swift in Sources */,
 				AF2E41A02237558400558AAF /* CreateTripViewController.swift in Sources */,
 				AF28AA95223E0CD90081DE1A /* GroupAlbum.swift in Sources */,
-				AF4E4C9022422FDD00864DD1 /* SecondViewController.swift in Sources */,
 				AFB1606A224E19B300F675E5 /* PersonalVC.swift in Sources */,
 				AF1DA0C3224B4BBA00B80E09 /* HomeViewController.swift in Sources */,
 				AF883E0B2239180200021940 /* Common.swift in Sources */,
@@ -504,6 +506,7 @@
 				AFFAC23F2247965F00386107 /* TripPlanFriend.swift in Sources */,
 				D4A7739E224E8D3D00C3867C /* Comment.swift in Sources */,
 				AF2E00EE2234FF6B006B9A5A /* Trip.swift in Sources */,
+				AFE8DBC12250C43F005F585A /* SegmentGroupTableViewController.swift in Sources */,
 				AF1DA0BD224B460C00B80E09 /* Likes.swift in Sources */,
 				D4A7739C224E8D1300C3867C /* NewsCommentTableViewCell.swift in Sources */,
 				AFB16084224E2ACD00F675E5 /* PersonalRecordCVCell.swift in Sources */,
@@ -511,6 +514,7 @@
 				D4A773AC2250FAB400C3867C /* PersonalPictureCollectionViewCell.swift in Sources */,
 				AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */,
 				AF47E680223B8B92007AD656 /* HomeNewsTableViewController.swift in Sources */,
+				AFE8DBC32251B83D005F585A /* CreateTripFriends.swift in Sources */,
 				AFB16079224E295300F675E5 /* ExchangeGoods.swift in Sources */,
 				AF4E4C8E22422B1C00864DD1 /* TripTabViewController.swift in Sources */,
 				027DFC1122327F1F00E9E097 /* MapViewController.swift in Sources */,
