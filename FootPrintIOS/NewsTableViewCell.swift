@@ -44,7 +44,7 @@ class NewsTableViewCell: UITableViewCell {
             executeTask(url_server!, requestParam) { (data, response, error) in
                 if error == nil {
                     if data != nil {
-                        print("input: \(String(data: data!, encoding: .utf8)!)")
+//                        print("input: \(String(data: data!, encoding: .utf8)!)")
                     }
                 }
             }
@@ -62,7 +62,7 @@ class NewsTableViewCell: UITableViewCell {
             executeTask(url_server!, requestParam) { (data, response, error) in
                 if error == nil {
                     if data != nil {
-                        print("input: \(String(data: data!, encoding: .utf8)!)")
+//                        print("input: \(String(data: data!, encoding: .utf8)!)")
                     }
                 }
             }
@@ -76,7 +76,7 @@ class NewsTableViewCell: UITableViewCell {
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    print("input: \(String(data: data!, encoding: .utf8)!)")
                 }
             }
         }
@@ -96,7 +96,7 @@ class NewsTableViewCell: UITableViewCell {
             executeTask(url_server!, requestParam) { (data, response, error) in
                 if error == nil {
                     if data != nil {
-                        print("input: \(String(data: data!, encoding: .utf8)!)")
+//                        print("input: \(String(data: data!, encoding: .utf8)!)")
                     }
                 }
             }
@@ -112,7 +112,7 @@ class NewsTableViewCell: UITableViewCell {
             executeTask(url_server!, requestParam) { (data, response, error) in
                 if error == nil {
                     if data != nil {
-                        print("input: \(String(data: data!, encoding: .utf8)!)")
+//                        print("input: \(String(data: data!, encoding: .utf8)!)")
                     }
                 }
             }
