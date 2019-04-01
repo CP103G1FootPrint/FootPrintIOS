@@ -1,0 +1,6 @@
+framework module Pods_FootPrintIOS {
+  umbrella header "Pods-FootPrintIOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
