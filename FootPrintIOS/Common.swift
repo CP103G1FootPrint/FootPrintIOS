@@ -26,7 +26,7 @@ func showSimpleAlert(message: String, viewController: UIViewController) {
     /* 呼叫present()才會跳出Alert Controller */
     viewController.present(alertController, animated: true, completion:nil)
 }
-
+//存帳密
 func saveUser(_ user: [String: String]) -> Bool {
     if let jsonData = try? JSONEncoder().encode(user) {
         let userDefaults = UserDefaults.standard
@@ -36,7 +36,7 @@ func saveUser(_ user: [String: String]) -> Bool {
         return false
     }
 }
-
+//讀帳密
 func loadData() ->( account : String, password : String){
     let userDefaults = UserDefaults.standard
     let user = userDefaults.data(forKey: "user")
@@ -45,11 +45,40 @@ func loadData() ->( account : String, password : String){
     let password = result["password"]
     return (account!, password!)
 }
-
-
+//存頭像
+func saveUserHead( userHead : Data ){
+    let userDefaults = UserDefaults.standard
+    userDefaults.set(userHead, forKey: "userHead")
+    userDefaults.synchronize()
+}
+//讀頭像
+func loadHead() ->( Data ){
+    let userDefaults = UserDefaults.standard
+    let userHead = userDefaults.data(forKey: "userHead")
+    return userHead!
+}
+//存個人資訊
+func saveInfo( _ account : Account){
+    let userDefaults = UserDefaults.standard
+    let jsonData = try! JSONEncoder().encode(account)
+    userDefaults.set(jsonData, forKey: "userInfo")
+    userDefaults.synchronize()
+}
+//讀個人資訊
+func loadInfo() -> (account : String, password : String, nickName : String, birthday : String, constellation : String){
+    let userDefaults = UserDefaults.standard
+    let userInfo = userDefaults.data(forKey: "userInfo")
+    let result = try! JSONDecoder().decode(Account.self, from: userInfo!)
+    let userId = result.account
+    let password = result.password
+    let nickName = result.nickname
+    let birthday = result.birthday
+    let constellation = result.constellation
+    return (userId!,password!,nickName!,birthday!,constellation!)
+}
 /*  除讀取帳密用法
-let user = loadData()
-let account = user.account
-let password = user.password
-print("\(user.account) + \(user.password)")
+ let user = loadData()
+ let account = user.account
+ let password = user.password
+ print("\(user.account) + \(user.password)")
  */
