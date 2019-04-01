@@ -10,6 +10,8 @@ import UIKit
 
 class HomeNewsTableViewController: UITableViewController {
     var news = [News]()
+    let user = loadData()
+
     
     @IBOutlet weak var nv: UINavigationItem!
     
@@ -17,6 +19,7 @@ class HomeNewsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.tableFooterView =  UIView()
         tableViewAddRefreshControl()
     }
     
@@ -35,7 +38,7 @@ class HomeNewsTableViewController: UITableViewController {
     @objc func showAllNews() {
         var requestParam = [String: String]()
         requestParam["action"] = "getAlls"
-        requestParam["userId"] = "123"
+        requestParam["userId"] = user.account
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -81,10 +84,13 @@ class HomeNewsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as! NewsTableViewCell
         let new = news[indexPath.row]
         
-        let likes = Likes("123", new.imageID!)
+        let likes = Likes(user.account, new.imageID!)
         cell.like = likes
         cell.news = new
         cell.bt_Message.tag = indexPath.row
+        cell.bt_HeadPicture.tag = indexPath.row
+        cell.bt_LandMark.tag = indexPath.row
+        cell.bt_NickName.tag = indexPath.row
         // 尚未取得圖片，另外開啟task請求
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
@@ -117,12 +123,6 @@ class HomeNewsTableViewController: UITableViewController {
             if error == nil {
                 if data != nil {
                     headImage = UIImage(data: data!)
-//                    let byte = [UInt8] (data!)
-//                    let headImageString = String(bytes: byte, encoding: .utf8)
-//                    new.headImageString = headImageString
-//                    print("homenews\(headImageString!)")
-//                    new.x = try? JSONDecoder().decode(String.self, from: data!)
-                    //print("get head image", indexPath.row)
                 }
                 if headImage == nil {
                     headImage = UIImage(named: "album")
@@ -164,6 +164,30 @@ class HomeNewsTableViewController: UITableViewController {
         return cell
     }
     
+    @IBAction func bt_Personal(_ sender: UIButton) {
+         if let controller = storyboard?.instantiateViewController(withIdentifier: "HomeNewsPersonalViewController") as? HomeNewsPersonalViewController{
+             let new = news[sender.tag]
+             let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? NewsTableViewCell
+             let image = cell?.bt_HeadPicture.image(for: .normal)
+             controller.news = new
+            controller.headimage = image
+            navigationController?.pushViewController(controller, animated: true)
+
+
+        }
+    }
+    @IBAction func bt_PersonalPage(_ sender: UIButton) {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "HomeNewsPersonalViewController") as? HomeNewsPersonalViewController{
+             let new = news[sender.tag]
+             let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? NewsTableViewCell
+             let image = cell?.bt_HeadPicture.image(for: .normal)
+             controller.news = new
+             controller.headimage = image
+            navigationController?.pushViewController(controller, animated: true)
+
+        }
+        
+    }
     @IBAction func bt_Comment(_ sender: UIButton) {
         if let controller = storyboard?.instantiateViewController(withIdentifier: "NewsCommentViewController") as? NewsCommentViewController{
 //            let buttontag = sender.tag

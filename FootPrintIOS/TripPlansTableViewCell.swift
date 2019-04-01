@@ -9,16 +9,9 @@
 import UIKit
 
 class TripPlansTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    @IBOutlet weak var iv_HeadPicture: UIImageView!
+    @IBOutlet weak var lb_NickName: UILabel!
+    @IBOutlet weak var iv_TripPicture: UIImageView!
+    @IBOutlet weak var lb_TripTitle: UILabel!
+    @IBOutlet weak var lb_TripDate: UILabel!
 }
