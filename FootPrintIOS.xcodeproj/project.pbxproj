@@ -10,6 +10,7 @@
 		022022EF225237C600856352 /* AccountCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022022EE225237C600856352 /* AccountCreateViewController.swift */; };
 		022022F12252390900856352 /* facebook_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 022022F02252390900856352 /* facebook_logo.png */; };
 		022022F32252391300856352 /* 375.png in Resources */ = {isa = PBXBuildFile; fileRef = 022022F22252391200856352 /* 375.png */; };
+		027A64D42252F5A8002476D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027A64D32252F5A8002476D4 /* AppDelegate.swift */; };
 		027DFC1122327F1F00E9E097 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027DFC1022327F1F00E9E097 /* MapViewController.swift */; };
 		523BD923965BC87BE8613FBD /* Pods_FootPrintIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B091C17AA193086CA73D36 /* Pods_FootPrintIOS.framework */; };
 		AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0BD165222D1796006FC80A /* AppDelegate.swift */; };
@@ -84,6 +85,7 @@
 		022022EE225237C600856352 /* AccountCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreateViewController.swift; sourceTree = "<group>"; };
 		022022F02252390900856352 /* facebook_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_logo.png; sourceTree = "<group>"; };
 		022022F22252391200856352 /* 375.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 375.png; sourceTree = "<group>"; };
+		027A64D32252F5A8002476D4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		027DFC1022327F1F00E9E097 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		46B091C17AA193086CA73D36 /* Pods_FootPrintIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FootPrintIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF0BD162222D1796006FC80A /* FootPrintIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootPrintIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +207,7 @@
 				AF883E0C22393DED00021940 /* Login */,
 				027DFC1022327F1F00E9E097 /* MapViewController.swift */,
 				AF1DA0C2224B4BBA00B80E09 /* HomeViewController.swift */,
+				027A64D32252F5A8002476D4 /* AppDelegate.swift */,
 				AF0BD169222D1796006FC80A /* Main.storyboard */,
 				AF2C765B2232451A0008F84A /* PersonalStoryboard.storyboard */,
 				AF2C7657223244840008F84A /* FriendStoryboard.storyboard */,
@@ -355,7 +358,6 @@
 				DF80EA61C6992E8299C98CC6 /* Pods-FootPrintIOS.debug.xcconfig */,
 				EB4D1211BFB6E43D4D846DEE /* Pods-FootPrintIOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -606,6 +608,7 @@
 				D4A773AC2250FAB400C3867C /* PersonalPictureCollectionViewCell.swift in Sources */,
 				AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */,
 				AF47E680223B8B92007AD656 /* HomeNewsTableViewController.swift in Sources */,
+				027A64D42252F5A8002476D4 /* AppDelegate.swift in Sources */,
 				AFE8DBC32251B83D005F585A /* CreateTripFriends.swift in Sources */,
 				AFB16079224E295300F675E5 /* ExchangeGoods.swift in Sources */,
 				AF4E4C8E22422B1C00864DD1 /* TripTabViewController.swift in Sources */,
