@@ -12,6 +12,12 @@
 		022022F32252391300856352 /* 375.png in Resources */ = {isa = PBXBuildFile; fileRef = 022022F22252391200856352 /* 375.png */; };
 		027A64D42252F5A8002476D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027A64D32252F5A8002476D4 /* AppDelegate.swift */; };
 		027DFC1122327F1F00E9E097 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027DFC1022327F1F00E9E097 /* MapViewController.swift */; };
+		028DDF35225441BF006DD7EB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DDF34225441BF006DD7EB /* CameraViewController.swift */; };
+		028DDF37225441DE006DD7EB /* CreateLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DDF36225441DE006DD7EB /* CreateLocationViewController.swift */; };
+		028DDF39225441FF006DD7EB /* NearLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DDF38225441FF006DD7EB /* NearLocationTableViewController.swift */; };
+		028DDF3B22544219006DD7EB /* NearLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DDF3A22544219006DD7EB /* NearLocationTableViewCell.swift */; };
+		028DDF3D22544266006DD7EB /* CameraImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DDF3C22544266006DD7EB /* CameraImage.swift */; };
+		028DDF3F22544277006DD7EB /* LandMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DDF3E22544277006DD7EB /* LandMark.swift */; };
 		523BD923965BC87BE8613FBD /* Pods_FootPrintIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B091C17AA193086CA73D36 /* Pods_FootPrintIOS.framework */; };
 		AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0BD165222D1796006FC80A /* AppDelegate.swift */; };
 		AF0BD168222D1796006FC80A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0BD167222D1796006FC80A /* ViewController.swift */; };
@@ -87,6 +93,12 @@
 		022022F22252391200856352 /* 375.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 375.png; sourceTree = "<group>"; };
 		027A64D32252F5A8002476D4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		027DFC1022327F1F00E9E097 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		028DDF34225441BF006DD7EB /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		028DDF36225441DE006DD7EB /* CreateLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLocationViewController.swift; sourceTree = "<group>"; };
+		028DDF38225441FF006DD7EB /* NearLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearLocationTableViewController.swift; sourceTree = "<group>"; };
+		028DDF3A22544219006DD7EB /* NearLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearLocationTableViewCell.swift; sourceTree = "<group>"; };
+		028DDF3C22544266006DD7EB /* CameraImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImage.swift; sourceTree = "<group>"; };
+		028DDF3E22544277006DD7EB /* LandMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMark.swift; sourceTree = "<group>"; };
 		46B091C17AA193086CA73D36 /* Pods_FootPrintIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FootPrintIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF0BD162222D1796006FC80A /* FootPrintIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootPrintIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF0BD165222D1796006FC80A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +187,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		027A64D722540E38002476D4 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				028DDF34225441BF006DD7EB /* CameraViewController.swift */,
+				028DDF36225441DE006DD7EB /* CreateLocationViewController.swift */,
+				028DDF38225441FF006DD7EB /* NearLocationTableViewController.swift */,
+				028DDF3A22544219006DD7EB /* NearLocationTableViewCell.swift */,
+				028DDF3C22544266006DD7EB /* CameraImage.swift */,
+			);
+			name = Camera;
+			sourceTree = "<group>";
+		};
+		027A64D822540E7A002476D4 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				027DFC1022327F1F00E9E097 /* MapViewController.swift */,
+				028DDF3E22544277006DD7EB /* LandMark.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		AF0BD159222D1796006FC80A = {
 			isa = PBXGroup;
 			children = (
@@ -203,11 +236,12 @@
 				AF883E09223917DC00021940 /* Common */,
 				AF2E00E622326B69006B9A5A /* Schedule */,
 				AF0BD1A3222F75FA006FC80A /* Images */,
-				AF0BD167222D1796006FC80A /* ViewController.swift */,
+				027A64D722540E38002476D4 /* Camera */,
+				027A64D822540E7A002476D4 /* Map */,
 				AF883E0C22393DED00021940 /* Login */,
-				027DFC1022327F1F00E9E097 /* MapViewController.swift */,
 				AF1DA0C2224B4BBA00B80E09 /* HomeViewController.swift */,
 				027A64D32252F5A8002476D4 /* AppDelegate.swift */,
+				AF0BD167222D1796006FC80A /* ViewController.swift */,
 				AF0BD169222D1796006FC80A /* Main.storyboard */,
 				AF2C765B2232451A0008F84A /* PersonalStoryboard.storyboard */,
 				AF2C7657223244840008F84A /* FriendStoryboard.storyboard */,
@@ -567,10 +601,12 @@
 				D4A773B32252079D00C3867C /* FriendViewController.swift in Sources */,
 				AF0BD19F222F6F66006FC80A /* ScheduleTableViewController.swift in Sources */,
 				AF3034922247611F0035CAA1 /* GroupMessageTableViewController.swift in Sources */,
+				028DDF3D22544266006DD7EB /* CameraImage.swift in Sources */,
 				AFB16070224E1A8400F675E5 /* SelfieEditVC.swift in Sources */,
 				D4A773A82250F6A500C3867C /* HomeNewsPersonalViewController.swift in Sources */,
 				AF47E682223B8BA8007AD656 /* News.swift in Sources */,
 				AF2E00EA2234FAFA006B9A5A /* ScheduleTableViewCell.swift in Sources */,
+				028DDF35225441BF006DD7EB /* CameraViewController.swift in Sources */,
 				AFB1607D224E29C100F675E5 /* PersonalExchangeVC.swift in Sources */,
 				AFB1606E224E1A4700F675E5 /* PersonalSettingVC.swift in Sources */,
 				AFB1607F224E29F100F675E5 /* PersonalQRcode.swift in Sources */,
@@ -599,20 +635,24 @@
 				AFFAC23F2247965F00386107 /* TripPlanFriend.swift in Sources */,
 				D4A7739E224E8D3D00C3867C /* Comment.swift in Sources */,
 				AF2E00EE2234FF6B006B9A5A /* Trip.swift in Sources */,
+				028DDF3B22544219006DD7EB /* NearLocationTableViewCell.swift in Sources */,
 				AFE8DBC12250C43F005F585A /* SegmentGroupTableViewController.swift in Sources */,
 				AF1DA0BD224B460C00B80E09 /* Likes.swift in Sources */,
 				D4A7739C224E8D1300C3867C /* NewsCommentTableViewCell.swift in Sources */,
 				022022EF225237C600856352 /* AccountCreateViewController.swift in Sources */,
 				AFB16084224E2ACD00F675E5 /* PersonalRecordCVCell.swift in Sources */,
+				028DDF37225441DE006DD7EB /* CreateLocationViewController.swift in Sources */,
 				D4A773C1225214A200C3867C /* Friends.swift in Sources */,
 				D4A773AC2250FAB400C3867C /* PersonalPictureCollectionViewCell.swift in Sources */,
 				AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */,
+				028DDF3F22544277006DD7EB /* LandMark.swift in Sources */,
 				AF47E680223B8B92007AD656 /* HomeNewsTableViewController.swift in Sources */,
 				027A64D42252F5A8002476D4 /* AppDelegate.swift in Sources */,
 				AFE8DBC32251B83D005F585A /* CreateTripFriends.swift in Sources */,
 				AFB16079224E295300F675E5 /* ExchangeGoods.swift in Sources */,
 				AF4E4C8E22422B1C00864DD1 /* TripTabViewController.swift in Sources */,
 				027DFC1122327F1F00E9E097 /* MapViewController.swift in Sources */,
+				028DDF39225441FF006DD7EB /* NearLocationTableViewController.swift in Sources */,
 				AF47E67E223B8B50007AD656 /* NewsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

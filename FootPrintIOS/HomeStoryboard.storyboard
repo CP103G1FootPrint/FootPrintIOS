@@ -295,7 +295,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loadpicture" translatesAutoresizingMaskIntoConstraints="NO" id="CRE-qR-uXT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="126" height="126"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
