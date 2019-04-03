@@ -14,6 +14,7 @@ class NewsCommentViewController: UIViewController,UITableViewDataSource{
     @IBOutlet weak var bt_HeadImage: UIButton!
     @IBOutlet weak var tv_TableView: UITableView!
     @IBOutlet weak var tf_Comment: UITextField!
+    @IBOutlet weak var iv_PersonalHeadPicture: UIImageView!
     
     var comments = [Comment]()
     var news: News!
@@ -28,7 +29,10 @@ class NewsCommentViewController: UIViewController,UITableViewDataSource{
         bt_HeadImage.setImage(headImage, for: .normal)
         bt_HeadImage.imageView?.layer.cornerRadius = bt_HeadImage.frame.width/2
         self.tv_TableView.tableFooterView = UIView()
-
+        //抓取userdefult 的頭像
+        let headPicture = UIImage(data: loadHead())
+        iv_PersonalHeadPicture.image = headPicture
+        iv_PersonalHeadPicture.layer.cornerRadius = iv_PersonalHeadPicture.frame.width/2
 //        showAllNews()
         
     }
@@ -85,7 +89,7 @@ class NewsCommentViewController: UIViewController,UITableViewDataSource{
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    print("input: \(String(data: data!, encoding: .utf8)!)")
                     DispatchQueue.main.async {
                          self.tv_TableView.scrollToRow(at: IndexPath(row: self.comments.count - 1, section: 0), at: .bottom, animated: true)
                     }

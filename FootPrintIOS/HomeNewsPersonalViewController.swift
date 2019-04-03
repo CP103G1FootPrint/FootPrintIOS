@@ -18,6 +18,7 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
     var news: News!
     var headimage: UIImage!
     var pictures = [PersonalPicture]()
+    var user = loadInfo()
     let fullScreenSize = UIScreen.main.bounds.size
     @IBOutlet weak var collectionlayout: UICollectionViewFlowLayout!
     @IBOutlet weak var navationitem: UINavigationItem!
@@ -30,7 +31,7 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         lb_Userid.text = news.userID
         lb_UserNickName.text = news.nickName
         navationitem.title = news.nickName
-//      lb_Birthday.text =
+        lb_Birthday.text = user.birthday
 //      getAllPicturesId()
         
         //設置上下左右的間距

@@ -66,6 +66,7 @@
 		AFE8DBC12250C43F005F585A /* SegmentGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE8DBC02250C43F005F585A /* SegmentGroupTableViewController.swift */; };
 		AFE8DBC32251B83D005F585A /* CreateTripFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE8DBC22251B83D005F585A /* CreateTripFriends.swift */; };
 		AFFAC23F2247965F00386107 /* TripPlanFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFAC23E2247965F00386107 /* TripPlanFriend.swift */; };
+		D43635F922534A7400052CE2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43635F822534A7400052CE2 /* Message.swift */; };
 		D4440D9C224B9C9500E83240 /* NewsCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */; };
 		D4A7739C224E8D1300C3867C /* NewsCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A7739B224E8D1300C3867C /* NewsCommentTableViewCell.swift */; };
 		D4A7739E224E8D3D00C3867C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A7739D224E8D3D00C3867C /* Comment.swift */; };
@@ -145,6 +146,7 @@
 		D40C7CE5223A7E5300812C3C /* HomeNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsTableViewController.swift; sourceTree = "<group>"; };
 		D40C7CE7223A8F5A00812C3C /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		D40C7CEA223A909C00812C3C /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		D43635F822534A7400052CE2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentViewController.swift; sourceTree = "<group>"; };
 		D4A7739B224E8D1300C3867C /* NewsCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentTableViewCell.swift; sourceTree = "<group>"; };
 		D4A7739D224E8D3D00C3867C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -355,7 +357,6 @@
 				DF80EA61C6992E8299C98CC6 /* Pods-FootPrintIOS.debug.xcconfig */,
 				EB4D1211BFB6E43D4D846DEE /* Pods-FootPrintIOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -414,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				D4A773C0225214A200C3867C /* Friends.swift */,
+				D43635F822534A7400052CE2 /* Message.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -579,6 +581,7 @@
 				D4A773B9225211D200C3867C /* FriendShipListTableViewCell.swift in Sources */,
 				AFB1606C224E19DF00F675E5 /* User.swift in Sources */,
 				AF2E41A02237558400558AAF /* CreateTripViewController.swift in Sources */,
+				D43635F922534A7400052CE2 /* Message.swift in Sources */,
 				AF28AA95223E0CD90081DE1A /* GroupAlbum.swift in Sources */,
 				AFB1606A224E19B300F675E5 /* PersonalVC.swift in Sources */,
 				AF1DA0C3224B4BBA00B80E09 /* HomeViewController.swift in Sources */,
