@@ -10,7 +10,7 @@ import UIKit
 
 class CreateTripViewController: UIViewController ,UIPickerViewDataSource,UIPickerViewDelegate,
 UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-    
+    var requestParam = [String: String]()
     var tripfriend = [String]()
     let url_server = URL(string: common_url + "/TripServlet")
     @IBOutlet weak var imageView: UIImageView!
@@ -18,6 +18,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     @IBOutlet weak var datePickerTextFild: UITextField!
     @IBOutlet weak var tripNameTextFild: UITextField!
     @IBOutlet weak var friendListTextView: UITextView!
+    
     
     var image: UIImage?
     let datePicker = UIDatePicker()
@@ -165,16 +166,35 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         let days = dayPicker.text == nil ? "" : dayPicker.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let day:Int = Int(days)!
         let type: String
+        var tripPlanFriendss = [TripPlanFriend]()
         if friendListTextView.text.isEmpty {
             type = "Personal"
         }else {
             type = "Group"
-        }
+            for i in 0 ..< tripfriend.count{
+                let items = tripfriend[i]
+                let tripPlanFriends = TripPlanFriend(user.account,items,tripID!+1)
+                tripPlanFriendss.append(tripPlanFriends)
+                }
+            }
+            //新增好友到行程
+            requestParam["action"] = "tripPlanFriendInsert"
+            requestParam["tripPlanFriends"] = try! String(data: JSONEncoder().encode(tripPlanFriendss), encoding: .utf8)
+            executeTask(self.url_server!, requestParam
+                , completionHandler: { (data, response, error) in
+                    if error == nil {
+                        if data != nil {
+                            if let result = String(data: data!, encoding: .utf8) {
+                                let count = Int(result)
+                                //                            print("trip\(self.tripID)")
+                            }
+                        }
+                    } else {
+                        print(error!.localizedDescription)
+                    }
+            })
         let createID = account
-    
         let trip = Trip(tripID!+1,title,dateStr,type,createID,day)
-        
-       var requestParam = [String: String]()
         requestParam["action"] = "tripInsert"
         requestParam["trip"] = try! String(data: JSONEncoder().encode(trip), encoding: .utf8) //主轉成jason 字串 只有文字沒有圖
         // 有圖才上傳 圖轉乘的imageBase64 字串

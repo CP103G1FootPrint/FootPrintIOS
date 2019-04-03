@@ -297,17 +297,42 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     @IBAction func messageButtonClick(_ sender:UIButton) {
-        if let controller = storyboard?.instantiateViewController(withIdentifier: "groupMessage") as? GroupMessageTableViewController{
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "groupMessage") as? GroupMessageViewController{
             let buttontag = sender.tag
             let trip = trips[buttontag]
             controller.trips = trip
             navigationController?.pushViewController(controller, animated: true)
         }
     }
+   
     
-    
-    @IBAction func tripFriendButtonClick(_ sender: Any) {
+    @IBAction func tripFriendButtonClick(_ sender: UIButton) {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "groupFriends") as? AddFriendListTableViewController{
+            let buttontag = sender.tag
+            let trip = trips[buttontag]
+            controller.trips = trip
+            navigationController?.pushViewController(controller, animated: true)
+        }
         
+        
+//        let tableViewController = FriendsAlertViewTableViewController()
+//        let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
+//        alertController.setValue(tableViewController, forKey: "contentViewController")
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler:nil)
+//        alertController.addAction(cancelAction)
+//        self.present(alertController, animated: true, completion: nil)
+//
+//        alertController.setValue(tableViewController, forKey: "contentViewController")
+        
+        
+//        let actionSheet = UIAlertController(title: "\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
+//        var view = UITableView(frame: CGRect(x: 8.0, y: 8.0, width: actionSheet.view.bounds.size.width - 8.0 * 4.5, height: 120.0))
+//        view.backgroundColor = UIColor.green
+//        actionSheet.view.addSubview(view)
+//        actionSheet.addAction(UIAlertAction(title: "將好友加入群組", style: .default,handler: { action in
+//        }))
+//        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//        present(actionSheet, animated: true, completion: nil)
         
     }
     

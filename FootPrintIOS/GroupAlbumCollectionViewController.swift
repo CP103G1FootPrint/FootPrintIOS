@@ -15,7 +15,7 @@ import UIKit
 
 
 class GroupAlbumCollectionViewController: UICollectionViewController,
-    UIImagePickerControllerDelegate,UINavigationBarDelegate{
+    UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     @IBOutlet var showActivityIndicator: UIActivityIndicatorView!
     var groupAlbums = [GroupAlbum]()
@@ -167,7 +167,7 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
     
     //新增照片 Info.plist加上Privacy
     @IBAction func clickAddPhoto(_ sender: UIBarButtonItem) {
-        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        imagePicker.delegate = self
         /* 照片來源為相簿 */
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
@@ -176,18 +176,23 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
     // 選擇照片
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             pickedImage = info[.originalImage] as! UIImage
-            let activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
-                showActivityIndicator.addSubview(activityIndicatorView)
+        pickedImage = collectionView.image()
+        print("!!!!!!1")
+        //載圖圈圈
+//            let activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
+//                showActivityIndicator.addSubview(activityIndicatorView)
         
                 var requestParam = [String: Any]()
                 requestParam["action"] = "groupalbumInsert"
-            requestParam["tripId"] = trips.tripID
+                requestParam["tripId"] = trips.tripID
+        print("!!!!!!2")
         //主轉成jason 字串 只有文字沒有圖
         // 有圖才上傳 圖轉乘的imageBase64 字串
-        requestParam["imageBase64"] = collectionView.image().jpegData(compressionQuality: 1.0)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
-//        if collectionView.image() != nil {
-//            
-//        }
+        if pickedImage.images != nil {
+            print("!!!!!!5")
+            requestParam["imageBase64"] = pickedImage.jpegData(compressionQuality: 1.0)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
+        }
+        print("!!!!!!3")
         executeTask(self.url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -195,7 +200,9 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
                         if let count = Int(result) {
                             DispatchQueue.main.async {
                                 // 新增成功則回前頁
-                                if count != 0 {                                            self.navigationController?.popViewController(animated: true)
+                                if count != 0 {
+                                    print("!!!!!!4")
+                                    self.navigationController?.popViewController(animated: true)
                                 } else {
                                     let alertController = UIAlertController(title: "insert fail",
                                                                             message: nil, preferredStyle: .alert)
@@ -215,11 +222,7 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
         
 //             groupAlbums.append(pickedImage)
             collectionView.reloadData()
-        
-
-
-       
-        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true, completion: nil)
     }
     
     /* 挑選照片過程中如果按了Cancel，關閉挑選畫面 */
