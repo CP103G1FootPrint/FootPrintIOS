@@ -58,6 +58,8 @@ class HomeNewsTableViewController: UITableViewController {
                             self.tableView.reloadData()
                         }
                     }
+//                    self.tableView.reloadData()
+
                 }
             } else {
                 print(error!.localizedDescription)

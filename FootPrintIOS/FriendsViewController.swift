@@ -13,41 +13,22 @@ class FriendsViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var lb_FriendsCounter: UILabel!
     let user = loadData()
     var friend:String?
-
     var friends = [Friends]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tv_TableView.tableFooterView = UIView()
-
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let friendViewController = parent as? FriendViewController
+        friends = friendViewController!.friends
+        self.lb_FriendsCounter.text = "好友數量:\(self.friends.count)人"
+        tv_TableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-            getAllFriends()
-    }
-    
-    @objc func getAllFriends(){
-        let url_server = URL(string: common_url + "FriendsServlet")
-        var requestParam = [String: String]()
-        requestParam["action"] = "getAllFriends"
-        requestParam["userId"] =  user.account
-        executeTask(url_server!, requestParam) { (data, response, error) in
-            if error == nil{
-                if data != nil{
-//                    print("input: \(String(data: data!, encoding: .utf8)!)")
-                    if let result = try? JSONDecoder().decode([Friends].self, from: data!){
-                        print(result)
-                        self.friends = result
-                    }
-                    DispatchQueue.main.async {
-                        self.lb_FriendsCounter.text = "好友數量:\(self.friends.count)人"
-                    }
-                }
-            }else{
-                print(error!.localizedDescription)
-            }
-        }
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,7 +63,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource {
                 print(error!.localizedDescription)
             }
         }
-        
+    
         //抓取好友頭像
         let url_imageServer = URL(string: common_url + "PicturesServlet")
         var requsetParam2 = [String: Any]()
@@ -106,16 +87,4 @@ class FriendsViewController: UIViewController, UITableViewDataSource {
         }
         return cell
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

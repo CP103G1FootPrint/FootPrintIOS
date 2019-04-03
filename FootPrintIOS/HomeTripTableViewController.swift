@@ -37,7 +37,7 @@ class HomeTripTableViewController: UITableViewController {
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    print("input: \(String(data: data!, encoding: .utf8)!)")
                     
                     if let result = try? JSONDecoder().decode([Trip].self, from: data!) {
                         self.trips = result
@@ -124,7 +124,7 @@ class HomeTripTableViewController: UITableViewController {
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    print("input: \(String(data: data!, encoding: .utf8)!)")
                     let resultNickeName = String(data: data!, encoding: .utf8)!
 //                    print ("nicekname\(resultNickeName)")
                     DispatchQueue.main.async {
