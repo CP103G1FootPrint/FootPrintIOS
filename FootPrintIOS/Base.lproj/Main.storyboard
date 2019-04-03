@@ -107,7 +107,7 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jXO-8T-R0Z">
-                                <rect key="frame" x="50" y="454" width="314" height="388"/>
+                                <rect key="frame" x="50" y="452" width="314" height="852"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fYn-ts-7ub">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="48"/>
@@ -203,10 +203,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zWA-tH-onv">
-                                        <rect key="frame" x="0.0" y="272" width="314" height="48"/>
+                                        <rect key="frame" x="0.0" y="272" width="314" height="512"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93S-oZ-Wtr">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="512"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="XpB-o4-jbe"/>
                                                     <constraint firstAttribute="width" constant="48" id="ioK-1B-sCA"/>
@@ -215,7 +215,7 @@
                                                 <state key="normal" image="galaxy"/>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="constellation" translatesAutoresizingMaskIntoConstraints="NO" id="N0I-x1-7JL">
-                                                <rect key="frame" x="56" y="0.0" width="258" height="48"/>
+                                                <rect key="frame" x="56" y="0.0" width="258" height="512"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -224,7 +224,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0a-Zo-xAc">
-                                        <rect key="frame" x="0.0" y="340" width="314" height="48"/>
+                                        <rect key="frame" x="0.0" y="804" width="314" height="48"/>
                                         <color key="backgroundColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Y5t-qu-CXz"/>
@@ -238,8 +238,11 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pso-Gn-Hid">
-                                <rect key="frame" x="100" y="163" width="214" height="216"/>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pso-Gn-Hid">
+                                <rect key="frame" x="100" y="163" width="214" height="214"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Pso-Gn-Hid" secondAttribute="height" multiplier="108:108" id="yAa-rQ-x4S"/>
+                                </constraints>
                                 <color key="tintColor" red="0.32322421670000001" green="0.84100896120000002" blue="0.67449223999999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button" image="user.png"/>
                                 <connections>
@@ -393,7 +396,7 @@
     </scenes>
     <resources>
         <image name="cake" width="512" height="512"/>
-        <image name="galaxy" width="16" height="16"/>
+        <image name="galaxy" width="512" height="512"/>
         <image name="identification" width="480" height="480"/>
         <image name="lock" width="512" height="512"/>
         <image name="login" width="480" height="480"/>
