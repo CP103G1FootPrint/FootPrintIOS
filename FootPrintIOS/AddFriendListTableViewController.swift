@@ -9,7 +9,10 @@
 import UIKit
 
 class AddFriendListTableViewController: UITableViewController {
-    var list_item :[String]?
+    var trips: Trip!
+    var friend:String?
+    
+    var list_item = [String]()
     var friendList = [CreateTripFriends]()
     let url_server = URL(string: common_url + "/FriendsServlet")
     var requestParam = [String: String]()
@@ -29,7 +32,13 @@ class AddFriendListTableViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
         getAllFriends()
+        
+        self.tableView.reloadData()
         
     }
     
@@ -38,7 +47,6 @@ class AddFriendListTableViewController: UITableViewController {
         let account = user.account
         requestParam["action"] = "getAllFriends"
         requestParam["userId"] = account
-        
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -46,6 +54,8 @@ class AddFriendListTableViewController: UITableViewController {
                     print("input: \(String(data: data!, encoding: .utf8)!)")
                     if let result = try? JSONDecoder().decode([CreateTripFriends].self, from: data!) {
                         self.friendList = result
+                        
+                        
                         
 //                        var size = self.friendList.count
 ////                        let list_item = [mount]
@@ -55,7 +65,7 @@ class AddFriendListTableViewController: UITableViewController {
 //                            }
 //                        }
                         
-                        _ = try? JSONDecoder().decode(String.self, from: data!)
+                        
                         
                         DispatchQueue.main.async {
                             if let control = self.tableView.refreshControl {
@@ -89,17 +99,59 @@ class AddFriendListTableViewController: UITableViewController {
 
     //設定cell要顯示的內容
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let user = loadData()
-        let account = user.account
-        let cell = tableView.dequeueReusableCell(withIdentifier: "addFriendCell", for: indexPath) as! AddFriendListTableViewCell
         
+        let user = loadData()
+//        let account = user.account
+        let cell = tableView.dequeueReusableCell(withIdentifier: "addFriendCell", for: indexPath) as! AddFriendListTableViewCell
+
+       
+            let friendship = friendList[indexPath.row]
+            
+            if friendship.invitee == user.account{
+                friend = friendship.inviter
+                list_item.append(friend!)
+//                list_item?.insert(friend!, at: indexPath.row)
+                
+            }else{
+                friend = friendship.invitee
+//                list_item?.insert(friend!, at: indexPath.row)
+                list_item.append(friend!)
+                
+            }
+            print("321\(indexPath.row)")
+        print("123\(list_item[indexPath.row])")
+            
+        
+        
+//        list_item![indexPath.row] = friend!
 //        cell.friendNameLabel.text = friendArray[indexPath.row]
-        cell.friendNameLabel.text = friendList[indexPath.row].inviter
+//        cell.friendNameLabel.text = friendList[indexPath.row].inviter
+        
+       
+        //抓取好友暱稱
+        var requestParam = [String: String]()
+        let url_server = URL(string: common_url + "PicturesServlet")
+        requestParam["action"] = "findUserNickName"
+        requestParam["id"] = friend
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    // 將輸入資料列印出來除錯用
+                    // print("input: \(String(data: data!, encoding: .utf8)!)")
+                    let result = String(data: data!, encoding: .utf8)!
+                    DispatchQueue.main.async {
+                        cell.friendNameLabel.text = result
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+        
         
         //抓取頭像
-        let url_server = URL(string: common_url + "PicturesServlet")
         requestParam["action"] = "findUserHeadImage"
-        requestParam["userId"] = account
+        requestParam["userId"] = friend
         requestParam["imageSize"] = "30"
         var headImage: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
@@ -134,27 +186,24 @@ class AddFriendListTableViewController: UITableViewController {
     
     //移除勾選掉的好友
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let name = friendList[indexPath.row]
-        
-        
+        print("a8")
+        let name = list_item[indexPath.row]
 //        let name = friendArray[indexPath.row]
-//        for i in 0 ..< addfriend.count{
-//            if(addfriend[i].contains(name)){
-//                addfriend.remove(at: i)
-//                break
-//            }
-//        }
+        for i in 0 ..< addfriend.count{
+            if(addfriend[i].contains(name)){
+                addfriend.remove(at: i)
+                break
+            }
+        }
         
         print("friendremovw :\(addfriend)")
     }
-    
-    
-    
+
     
     //點選加入行程的好友
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        addfriend.append(friendArray[indexPath.row])
+        print("a9\(list_item[indexPath.row])")
+        addfriend.append(list_item[indexPath.row])
 
 //        if(a.contains(x)){
 //            a.remove(at: indexPath.row)
