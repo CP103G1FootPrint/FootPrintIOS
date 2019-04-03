@@ -93,8 +93,4 @@ class FriendViewController: UIViewController, UIScrollViewDelegate{
             break
         }
     }
-    
-    
-    
-    
 }

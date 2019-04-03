@@ -128,4 +128,14 @@ class FriendsMessageTableViewController: UITableViewController {
         cell.lb_Message.text = friend.content
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+            let friend = friendsMessage[indexPath.row]
+            let destination = segue.destination as! ChatViewController
+            destination.friend = friend.receiver
+//            destination.socket = socket
+        }
+    }
+    
 }

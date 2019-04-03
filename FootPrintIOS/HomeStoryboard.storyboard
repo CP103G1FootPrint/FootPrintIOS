@@ -237,12 +237,6 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="0W6-pG-uUI" firstAttribute="leading" secondItem="291-Wo-RBM" secondAttribute="leading" id="0zl-qP-z3H"/>
-                                            <constraint firstItem="0W6-pG-uUI" firstAttribute="top" secondItem="291-Wo-RBM" secondAttribute="top" id="4b1-Gy-hhY"/>
-                                            <constraint firstAttribute="bottom" secondItem="0W6-pG-uUI" secondAttribute="bottom" id="OCC-bI-YeA"/>
-                                            <constraint firstItem="wGA-DV-ox9" firstAttribute="leading" secondItem="0W6-pG-uUI" secondAttribute="trailing" id="awi-7r-okx"/>
-                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vhQ-yt-bhl">
                                         <rect key="frame" x="0.0" y="40.5" width="81.5" height="20.5"/>
@@ -264,13 +258,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K7P-df-XFL">
                                         <rect key="frame" x="0.0" y="81" width="81.5" height="20.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生日:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LW7-f6-k98">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生日:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LW7-f6-k98">
                                                 <rect key="frame" x="0.0" y="0.0" width="39.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAa-CY-W7X">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAa-CY-W7X">
                                                 <rect key="frame" x="39.5" y="0.0" width="42" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
