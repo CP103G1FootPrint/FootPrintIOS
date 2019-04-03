@@ -221,6 +221,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     if let result = try? JSONDecoder().decode(Account.self, from: data!) {
                         //儲存到userDefault
                         //account , password, nickName, birthday, constellation
+                        result.account = account
                         saveInfo(result)
                     }
                 }

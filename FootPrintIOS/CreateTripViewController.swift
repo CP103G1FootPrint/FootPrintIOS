@@ -50,6 +50,10 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         dismiss(animated: true, completion: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        findTripId()
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +72,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         toolBar.isUserInteractionEnabled = true
         dayPicker.inputAccessoryView = toolBar
         
-        findTripId()
+//        findTripId()
         
         //加入行程的好友
 //        friendListTextView.text = tripfriend.joined(separator: ",")
@@ -163,7 +167,10 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         formater.dateFormat = "yyyy-MM-dd"
         let dateStr = formater.string(from: (datePicker.date))
         
-        let days = dayPicker.text == nil ? "" : dayPicker.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        var days = dayPicker.text == nil ? "1" : dayPicker.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        if days.isEmpty {
+             days = "1"
+        }
         let day:Int = Int(days)!
         let type: String
         var tripPlanFriendss = [TripPlanFriend]()
