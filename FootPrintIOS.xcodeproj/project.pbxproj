@@ -24,6 +24,9 @@
 		028DDF3B22544219006DD7EB /* NearLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DDF3A22544219006DD7EB /* NearLocationTableViewCell.swift */; };
 		028DDF3D22544266006DD7EB /* CameraImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DDF3C22544266006DD7EB /* CameraImage.swift */; };
 		028DDF3F22544277006DD7EB /* LandMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DDF3E22544277006DD7EB /* LandMark.swift */; };
+		0783AF48225C6BE200677526 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF47225C6BE200677526 /* Record.swift */; };
+		0783AF4A225C6CA200677526 /* PersonalCollectionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */; };
+		0783AF4C225C6CC400677526 /* Collect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF4B225C6CC400677526 /* Collect.swift */; };
 		523BD923965BC87BE8613FBD /* Pods_FootPrintIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B091C17AA193086CA73D36 /* Pods_FootPrintIOS.framework */; };
 		AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0BD165222D1796006FC80A /* AppDelegate.swift */; };
 		AF0BD168222D1796006FC80A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0BD167222D1796006FC80A /* ViewController.swift */; };
@@ -122,6 +125,9 @@
 		028DDF3A22544219006DD7EB /* NearLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearLocationTableViewCell.swift; sourceTree = "<group>"; };
 		028DDF3C22544266006DD7EB /* CameraImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImage.swift; sourceTree = "<group>"; };
 		028DDF3E22544277006DD7EB /* LandMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMark.swift; sourceTree = "<group>"; };
+		0783AF47225C6BE200677526 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCollectionTVCell.swift; sourceTree = "<group>"; };
+		0783AF4B225C6CC400677526 /* Collect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collect.swift; sourceTree = "<group>"; };
 		46B091C17AA193086CA73D36 /* Pods_FootPrintIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FootPrintIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF0BD162222D1796006FC80A /* FootPrintIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootPrintIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF0BD165222D1796006FC80A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -404,6 +410,8 @@
 			isa = PBXGroup;
 			children = (
 				AFB16075224E28E800F675E5 /* PersonalCollectVC.swift */,
+				0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */,
+				0783AF4B225C6CC400677526 /* Collect.swift */,
 			);
 			name = Collect;
 			sourceTree = "<group>";
@@ -423,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				AFB16081224E2A9700F675E5 /* PersonalRecordVC.swift */,
+				0783AF47225C6BE200677526 /* Record.swift */,
 				AFB16083224E2ACD00F675E5 /* PersonalRecordCVCell.swift */,
 			);
 			name = Record;
@@ -686,6 +695,7 @@
 				AFB1606C224E19DF00F675E5 /* User.swift in Sources */,
 				AF2E41A02237558400558AAF /* CreateTripViewController.swift in Sources */,
 				D43635F922534A7400052CE2 /* Message.swift in Sources */,
+				0783AF4C225C6CC400677526 /* Collect.swift in Sources */,
 				AF28AA95223E0CD90081DE1A /* GroupAlbum.swift in Sources */,
 				AFB1606A224E19B300F675E5 /* PersonalVC.swift in Sources */,
 				AF1DA0C3224B4BBA00B80E09 /* HomeViewController.swift in Sources */,
@@ -701,6 +711,7 @@
 				AFB16082224E2A9700F675E5 /* PersonalRecordVC.swift in Sources */,
 				AFDDF368225393E200198321 /* GroupMessageViewController.swift in Sources */,
 				AF1DA0C1224B470000B80E09 /* HomeTripTableViewController.swift in Sources */,
+				0783AF48225C6BE200677526 /* Record.swift in Sources */,
 				020777F522571232001BE30A /* FindLocationTableViewCell.swift in Sources */,
 				0283E99B225B924700F491B4 /* LandMarkImagesCollectionViewCell.swift in Sources */,
 				AF2E1770224C9A6E0073466E /* PhotoUploadViewController.swift in Sources */,
@@ -734,6 +745,7 @@
 				AF4E4C8E22422B1C00864DD1 /* TripTabViewController.swift in Sources */,
 				027DFC1122327F1F00E9E097 /* MapViewController.swift in Sources */,
 				D4363608225B334E00052CE2 /* NotifyTableViewCell.swift in Sources */,
+				0783AF4A225C6CA200677526 /* PersonalCollectionTVCell.swift in Sources */,
 				028DDF39225441FF006DD7EB /* NearLocationTableViewController.swift in Sources */,
 				AF47E67E223B8B50007AD656 /* NewsTableViewCell.swift in Sources */,
 				AF9F0EB22258813400DF17E5 /* ScheduleFriendsTableViewController.swift in Sources */,
@@ -885,7 +897,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4MHD7B3F6Y;
+				DEVELOPMENT_TEAM = CRYR872K7A;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -905,7 +917,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4MHD7B3F6Y;
+				DEVELOPMENT_TEAM = CRYR872K7A;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

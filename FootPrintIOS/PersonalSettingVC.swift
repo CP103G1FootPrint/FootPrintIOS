@@ -3,8 +3,9 @@ import UIKit
 class PersonalSettingVC: UIViewController {
     
     let url_server = URL(string:common_url + "AccountServlet")
-    //    var user : User!
-    let userDefault = UserDefaults.standard
+//    let userDefault = UserDefaults.standard
+    var userInfo : User?
+     let user = loadData()
     
     @IBOutlet weak var btSelfie: UIButton!
     @IBOutlet weak var lbAccount: UILabel!
@@ -19,23 +20,17 @@ class PersonalSettingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        user.account? = "1234"
-        lbAccount.text = "1234"
-        //        顯示在textfield
-        //        lbAccount.text = self.userDefault.string(forKey: "account")
-        //        tfPassword.text = self.userDefault.string(forKey: "password")
-        //        tfNickName.text = self.userDefault.string(forKey: "nickName")
-        //        tfBirthday.text = self.userDefault.string(forKey: "birthday")
-        //        tfConstellation.text = self.userDefault.string(forKey: "constellation")
+//        lbAccount.text = userDefault.string(forKey: "user")
+        lbAccount.text = user.account
+        tfPassword.text = userInfo?.password
+        tfBirthday.text = userInfo?.birthday
+        tfNickName.text = userInfo?.nickname
+        tfConstellation.text = userInfo?.constellation
     }
     
     
+    
     @IBAction func btDone(_ sender: Any) {
-        
-        /*取值*/
-        
-        //        user.account = self.userDefault.string(forKey: "account")
-        
         //取當下textfield的值
         let password = tfPassword.text == nil ? "":
             tfPassword.text?.trimmingCharacters(in:.whitespacesAndNewlines)
@@ -45,29 +40,22 @@ class PersonalSettingVC: UIViewController {
             tfBirthday.text?.trimmingCharacters(in:.whitespacesAndNewlines)
         let constellation = tfConstellation.text == nil ? "":
             tfConstellation.text?.trimmingCharacters(in:.whitespacesAndNewlines)
-        
         let account = lbAccount.text
-        
-        
         if password!.isEmpty || nickName!.isEmpty || birthday!.isEmpty || constellation!.isEmpty {
             return //動作無法送出
         }
-        
-        
         let user = User(password!,nickName!,birthday!,constellation!,account!)
         let userJson = try?String(data: JSONEncoder().encode(user),encoding: .utf8)
         /*打包*/ //把要傳送的值打包
         var requsetParam = [String:String]() //[String:String]()是dicitionary是方法要加()
         requsetParam["action"] = "accountUpdate"
-        requsetParam["account"] = userJson!
-        
+        requsetParam["account"] = userJson! //eclipse端accountUpdate裡的account
         executeTask(url_server!,requsetParam)
     }
     /*傳送*/
     func executeTask(_ url_server: URL, _ requestParam: [String: String]) {
         // 將輸出資料列印出來除錯用
         print("output: \(requestParam)")
-        
         let jsonData = try! JSONEncoder().encode(requestParam)
         var request = URLRequest(url: url_server)
         request.httpMethod = "POST"
@@ -95,6 +83,7 @@ class PersonalSettingVC: UIViewController {
         task.resume()
     }
     
+    
     func showResult(_ result: String) {
         if result == "1" {
             self.tvResult.text = "更改成功！"
@@ -108,4 +97,27 @@ class PersonalSettingVC: UIViewController {
         }
         
     }
+    
+    @IBAction func clickLogout(_ sender: Any) {
+        
+//        let text : String? = ""
+//        let account = Account(text!,text!,text!,text!,text!)
+//        saveInfo(account)
+//
+//        var requestParam = [String: String]()
+//        requestParam["userId"] = text
+//        requestParam["password"] = text
+//        _ = saveUser(requestParam)
+        
+        DispatchQueue.main.async {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil) //storyboard
+            let destination = storyboard.instantiateViewController(withIdentifier:"SignInViewController")
+            self.present(destination,animated:true,completion:nil)
+            
+            
+        }
+        
+    }
 }
+
+
