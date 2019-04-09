@@ -15,13 +15,18 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var lb_UserNickName: UILabel!
     @IBOutlet weak var lb_Birthday: UILabel!
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var bt_AddFriend: UIBarButtonItem!
     var news: News!
     var headimage: UIImage!
     var pictures = [PersonalPicture]()
     var user = loadInfo()
+    var image: UIImage?
+    var friendship = [Friends]()
+    
     let fullScreenSize = UIScreen.main.bounds.size
     @IBOutlet weak var collectionlayout: UICollectionViewFlowLayout!
     @IBOutlet weak var navationitem: UINavigationItem!
+    @IBOutlet weak var tableview: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +37,7 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         lb_UserNickName.text = news.nickName
         navationitem.title = news.nickName
         lb_Birthday.text = user.birthday
+        
 //      getAllPicturesId()
         
         //設置上下左右的間距
@@ -44,11 +50,50 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         collectionlayout.itemSize = CGSize(width: fullScreenSize.width/3 - 4, height: 100)
         //設置header的尺寸
         collectionlayout.headerReferenceSize = CGSize(width: fullScreenSize.width, height: 40)
+        
+        
+        
+        if user.account == news.userID{
+
+        }else{
+            let url_server = URL(string: common_url + "FriendsServlet")
+            var requestparam = [String:String]()
+            requestparam["action"] = "findFriendIdCheckFriendShip"
+            requestparam["userId"] = user.account
+            requestparam["inviteeId"] = news.userID
+            
+            executeTask(url_server!, requestparam) { (data, response, error) in
+                if error == nil{
+                    if data != nil{
+                        if let result = try? JSONDecoder().decode([Friends].self, from: data!){
+                             print("input: \(String(data: data!, encoding: .utf8)!)")
+                            self.friendship = result
+                            if result.isEmpty{
+                                let addFriendButton = UIButton(type: .custom)
+                                addFriendButton.setImage(UIImage (named: "addfriend-1"), for: .normal)
+                                addFriendButton.addTarget(self, action: #selector(self.AddFriend), for: .touchUpInside)
+                                self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addFriendButton)
+                            }else{
+                                if self.friendship.first?.state == 0 {
+                                   self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage (named: "friendshipcheck"), style: .plain, target: nil, action: nil)
+                                }else{
+                                   self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage (named: "checkfriend"), style: .plain, target: nil, action: nil)
+                                }
+                            }
+//                            self.friendship = result
+                        }
+                    }
+                }
+            }
+//            let addFriendButton = UIButton(type: .custom)
+//            addFriendButton.setImage(UIImage (named: "addfriend-1"), for: .normal)
+//            addFriendButton.addTarget(self, action: #selector(AddFriend), for: .touchUpInside)
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addFriendButton)
+        }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-         getAllPicturesId()
-
+    override func viewDidAppear(_ animated: Bool) {
+        getAllPicturesId()
     }
     
     @objc func getAllPicturesId() {
@@ -62,6 +107,10 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
 //                  print("input: \(String(data: data!, encoding: .utf8)!)")
                     if let result = try? JSONDecoder().decode([PersonalPicture].self, from: data!){
                         self.pictures = result
+                        DispatchQueue.main.async {
+                            self.tableview.reloadData()
+
+                        }
                     }
                 }
             }else{
@@ -85,23 +134,39 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         requestParam["action"] = "getImage"
         requestParam["id"] = picture.imageID
         requestParam["imageSize"] = cell.frame.width
-        var image: UIImage?
+//        var image: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
                     print(data!)
-                    image = UIImage(data: data!)
+                    self.image = UIImage(data: data!)
                 }
-                if image == nil {
-                    image = UIImage(named: "noImage.jpg")
+                if self.image == nil {
+                    self.image = UIImage(named: "noImage.jpg")
                 }
                 DispatchQueue.main.async {
-                    cell.iv_Pictures.image = image
+                    cell.iv_Pictures.image = self.image
                 }
             }else{
                 print(error!.localizedDescription)
             }
         }
         return cell
+    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "addfriend"{
+//            let destination = segue.destination as! AddFriendViewController
+//            destination.headimage = headimage
+//            destination.friend = news.userID
+//        }
+//    }
+    
+    
+    @objc func AddFriend(_ sender: UIButton) {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "AddFriendViewController") as? AddFriendViewController{
+            controller.headimage = headimage
+            controller.friend = news.userID
+            navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }

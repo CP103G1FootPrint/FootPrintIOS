@@ -15,6 +15,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource {
     var friend:String?
     var friends = [Friends]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tv_TableView.tableFooterView = UIView()
@@ -25,10 +26,14 @@ class FriendsViewController: UIViewController, UITableViewDataSource {
         friends = friendViewController!.friends
         self.lb_FriendsCounter.text = "好友數量:\(self.friends.count)人"
         tv_TableView.reloadData()
+
+//        if friends.count == 0 {
+//            tv_TableView.reloadData()
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+       
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

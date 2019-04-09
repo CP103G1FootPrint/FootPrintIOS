@@ -9,6 +9,7 @@
 import UIKit
 
 class AddFriendListTableViewController: UITableViewController {
+    
     var trips: Trip!
     var friend:String?
     
@@ -18,7 +19,7 @@ class AddFriendListTableViewController: UITableViewController {
     var requestParam = [String: String]()
     
     var friendArray: [String] = Array()
-
+    
     var addfriend = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,15 +32,12 @@ class AddFriendListTableViewController: UITableViewController {
         tableView.setEditing(true, animated: false)
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
-        
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         getAllFriends()
         
         self.tableView.reloadData()
-        
     }
     
     func getAllFriends(){
@@ -56,17 +54,7 @@ class AddFriendListTableViewController: UITableViewController {
                         self.friendList = result
                         
                         
-                        
-//                        var size = self.friendList.count
-////                        let list_item = [mount]
-//                        for i in 0 ..< size{
-//                            if self.friendList.inviter = userId{
-//                                
-//                            }
-//                        }
-                        
-                        
-                        
+                      
                         DispatchQueue.main.async {
                             if let control = self.tableView.refreshControl {
                                 if control.isRefreshing {
@@ -99,12 +87,10 @@ class AddFriendListTableViewController: UITableViewController {
 
     //設定cell要顯示的內容
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let user = loadData()
 //        let account = user.account
         let cell = tableView.dequeueReusableCell(withIdentifier: "addFriendCell", for: indexPath) as! AddFriendListTableViewCell
 
-       
             let friendship = friendList[indexPath.row]
             
             if friendship.invitee == user.account{
@@ -120,8 +106,6 @@ class AddFriendListTableViewController: UITableViewController {
             }
             print("321\(indexPath.row)")
         print("123\(list_item[indexPath.row])")
-            
-        
         
 //        list_item![indexPath.row] = friend!
 //        cell.friendNameLabel.text = friendArray[indexPath.row]
@@ -164,7 +148,7 @@ class AddFriendListTableViewController: UITableViewController {
                 }
                 DispatchQueue.main.async {
                     //圓形大頭照
-                    cell.friendImageView.frame = CGRect(x:35, y:10, width:30, height:30)
+                    cell.friendImageView.frame = CGRect(x:12, y:10, width:30, height:30)
                     cell.friendImageView.contentMode = .scaleAspectFill
                     cell.friendImageView.layer.masksToBounds = true
                     cell.friendImageView.layer.cornerRadius = cell.friendImageView.frame.width/2
@@ -176,9 +160,6 @@ class AddFriendListTableViewController: UITableViewController {
                 print(error!.localizedDescription)
             }
         }
-        
-        
-        
 //        cell.checkboxButton.addTarget(self, action: #selector(clickCheckbox(sender:)), for: .touchUpInside)
 
         return cell
@@ -186,7 +167,7 @@ class AddFriendListTableViewController: UITableViewController {
     
     //移除勾選掉的好友
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        print("a8")
+       
         let name = list_item[indexPath.row]
 //        let name = friendArray[indexPath.row]
         for i in 0 ..< addfriend.count{
@@ -202,9 +183,10 @@ class AddFriendListTableViewController: UITableViewController {
     
     //點選加入行程的好友
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("a9\(list_item[indexPath.row])")
         addfriend.append(list_item[indexPath.row])
 
+        
+        
 //        if(a.contains(x)){
 //            a.remove(at: indexPath.row)
 //        }else{
@@ -269,6 +251,7 @@ class AddFriendListTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        let controller = segue.destination as? CreateTripViewController
+        
         controller?.tripfriend = addfriend
         
 
