@@ -99,6 +99,16 @@ class PersonalSettingVC: UIViewController {
     }
     
     @IBAction func clickLogout(_ sender: Any) {
+        
+//        let text : String? = ""
+//        let account = Account(text!,text!,text!,text!,text!)
+//        saveInfo(account)
+//
+//        var requestParam = [String: String]()
+//        requestParam["userId"] = text
+//        requestParam["password"] = text
+//        _ = saveUser(requestParam)
+        
         DispatchQueue.main.async {
             let storyboard = UIStoryboard(name: "Main", bundle: nil) //storyboard
             let destination = storyboard.instantiateViewController(withIdentifier:"SignInViewController")

@@ -281,11 +281,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="6rh-ek-asT">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="6rh-ek-asT">
                                 <rect key="frame" x="59" y="229" width="297" height="183"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQy-UN-YF4">
+                            <button opaque="NO" clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQy-UN-YF4">
                                 <rect key="frame" x="90" y="482" width="234" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" title="拍照"/>
@@ -293,8 +295,9 @@
                                     <action selector="clickTakePicture:" destination="2rM-Xv-Dp4" eventType="touchUpInside" id="XNT-5o-mfS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggb-71-xFX">
+                            <button opaque="NO" clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggb-71-xFX">
                                 <rect key="frame" x="90" y="529" width="234" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" title="從相片圖庫中選取"/>
@@ -304,18 +307,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="6rh-ek-asT" firstAttribute="leading" secondItem="cXe-yy-Zc4" secondAttribute="leading" constant="59" id="A3c-Ce-Dug"/>
-                            <constraint firstItem="ggb-71-xFX" firstAttribute="top" secondItem="LQy-UN-YF4" secondAttribute="bottom" constant="8" id="SlD-lS-Lr2"/>
-                            <constraint firstItem="cXe-yy-Zc4" firstAttribute="trailing" secondItem="ggb-71-xFX" secondAttribute="trailing" constant="90" id="XWQ-kv-rgX"/>
-                            <constraint firstItem="LQy-UN-YF4" firstAttribute="leading" secondItem="cXe-yy-Zc4" secondAttribute="leading" constant="90" id="dB4-Hc-MF3"/>
-                            <constraint firstItem="cXe-yy-Zc4" firstAttribute="bottom" secondItem="ggb-71-xFX" secondAttribute="bottom" constant="294" id="kuK-Rd-Twx"/>
-                            <constraint firstItem="ggb-71-xFX" firstAttribute="leading" secondItem="cXe-yy-Zc4" secondAttribute="leading" constant="90" id="n6V-5R-pcf"/>
-                            <constraint firstItem="cXe-yy-Zc4" firstAttribute="trailing" secondItem="LQy-UN-YF4" secondAttribute="trailing" constant="90" id="oMQ-15-EVH"/>
-                            <constraint firstItem="LQy-UN-YF4" firstAttribute="top" secondItem="6rh-ek-asT" secondAttribute="bottom" constant="61" id="wRo-NC-geh"/>
-                            <constraint firstItem="cXe-yy-Zc4" firstAttribute="trailing" secondItem="6rh-ek-asT" secondAttribute="trailing" constant="58" id="yTB-JL-Akr"/>
-                            <constraint firstItem="6rh-ek-asT" firstAttribute="top" secondItem="cXe-yy-Zc4" secondAttribute="top" constant="141" id="zKO-Nq-WAG"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cXe-yy-Zc4"/>
                     </view>
                     <navigationItem key="navigationItem" id="Kjs-QL-otS">
@@ -355,7 +346,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fer-V0-UVu">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fer-V0-UVu">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="0.0"/>
                                         </imageView>
                                     </subviews>
@@ -403,7 +394,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mzo-Lh-Ko0">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mzo-Lh-Ko0">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="0.0"/>
                                         </imageView>
                                     </subviews>
