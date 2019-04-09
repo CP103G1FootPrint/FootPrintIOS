@@ -732,7 +732,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="uT0-Ng-iDR">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="GBo-WU-HDe"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="GBo-WU-HDe">
+                            <connections>
+                                <action selector="doneButton:" destination="I8r-Rg-6PG" id="xQm-PF-lmO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
