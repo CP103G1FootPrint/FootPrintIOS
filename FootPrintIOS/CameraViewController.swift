@@ -1,25 +1,62 @@
 
 
 import UIKit
+import CoreLocation
 
-class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate{
     
     @IBOutlet weak var imageDescriptionUITextField: UITextField!
     @IBOutlet weak var openStateUISwitch: UISwitch!
     @IBOutlet weak var showLocationUILabel: UILabel!
     
+
+    @IBOutlet weak var chooseLocationUIButton: UIButton!
     @IBOutlet weak var newPostUIButton: UIButton!
     
-    
+    var locationManager: CLLocationManager?
+    var fromLocation: CLLocation?
     var newPostImage: UIImage?
+    var gpslatitude: Double?
+    var gpslongitude: Double?
+    var showLandMark: LandMark?
+    var result : LandMark?
+    var landMarkID : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+
+
+
+        
+        
+        //locationManager
+        locationManagers()
+        
+        //框顏色
+        self.chooseLocationUIButton.layer.borderWidth = 1.0
+        self.chooseLocationUIButton.layer.borderColor = UIColor.lightGray.cgColor
+        self.chooseLocationUIButton.layer.cornerRadius = 5.0
         
         //鍵盤
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let notificationName = Notification.Name("locationCreate")
+        NotificationCenter.default.addObserver(self, selector: #selector(songUpdated(noti:)), name: notificationName, object: nil)
+        
+//        showLocationUILabel.text = "999"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+
+
+//        print("ee \(String(describing: showLandMark?.address))")
     }
 
     //選照片動作
@@ -51,16 +88,20 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         }
         
         let user = loadData()
-        let account = user.account
+        
+//        let landMarkID = result?.id
         
         if newPostImage == nil {
             let text = "Image is empty"
             self.alertNote(text)
-        }else if imageDescriptionUITextField == nil {
+        }else if imageDescription!.isEmpty {
             let text = "Image description is empty"
             self.alertNote(text)
+        }else if landMarkID == nil {
+            let text = "landMark is empty"
+            self.alertNote(text)
         }else{
-            let cameraImage = CameraImage(0,imageDescription!,openSateText!,account,1)
+            let cameraImage = CameraImage(0,imageDescription!,openSateText!,user.account,landMarkID!)
             self.insertNewPost(cameraImage: cameraImage, image: newPostImage!)
         }
         
@@ -100,7 +141,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRect = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRect.height
-            view.frame.origin.y = -keyboardHeight
+            view.frame.origin.y = -50
         } else {
             view.frame.origin.y = -view.frame.height / 3
         }
@@ -159,4 +200,78 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
             }
         }
     }
+    
+    //傳GPS給NearLocationTableViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        let cameraViewController = segue.destination as? NearLocationTableViewController
+        if gpslatitude != nil && gpslongitude != nil {
+            cameraViewController?.requestParam["latitude"] = gpslatitude
+            cameraViewController?.requestParam["longitude"] = gpslongitude
+        }
+    }
+    
+    func locationManagers() {
+        //取得問位置管理權限
+        locationManager = CLLocationManager()
+        //請求user同意時取的位置
+        locationManager?.requestWhenInUseAuthorization()
+        //監聽器
+        locationManager?.delegate = self
+        //精準度
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        //位置移動多少後再去抓新值 會去呼叫 didUpdateLocations方法
+        locationManager?.distanceFilter = 10
+        //開始更新
+        locationManager?.startUpdatingLocation()
+    }
+    
+    /* 實作CLLocationManagerDelegate */
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        /* 若無起點，就將第一次更新取得的位置當作起點 */
+        let newLocation = locations[0]
+        if fromLocation == nil {
+            fromLocation = newLocation
+            gpslatitude = fromLocation?.coordinate.latitude
+            gpslongitude = fromLocation?.coordinate.longitude
+//            showLocationUILabel.text = "li \(String(describing: gpslatitude)) lo \(String(describing: gpslongitude))"
+        }else {
+//            let line = fromLocation?.distance(from: locations.last!)
+            fromLocation = locations.last!
+            gpslatitude = fromLocation?.coordinate.latitude
+            gpslongitude = fromLocation?.coordinate.longitude
+//            showLocationUILabel.text = "li \(String(describing: gpslatitude)) lo \(String(describing: gpslongitude))"
+        }
+    }
+    
+    /* 實作CLLocationManagerDelegate */
+    //當抓不到值得時候
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        let text = error.localizedDescription
+        self.alertNote(text)
+    }
+    
+
+    func updateInfo(){
+//        showLocationUILabel.text = "777"
+    }
+    
+    
+    @objc func songUpdated(noti:Notification) {
+        result = noti.userInfo!["location"] as? LandMark
+//        showLocationUILabel.text = result?.address
+        DispatchQueue.main.async {
+            self.showLocationUILabel.text = "555"
+        }
+        
+        print(result?.address)
+        updateInfo()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
 }

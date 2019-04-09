@@ -1,18 +1,18 @@
 //
-//  NearLocationTableViewCell.swift
+//  LandMarkImagesTableViewCell.swift
 //  FootPrintIOS
 //
-//  Created by Molder on 2019/4/3.
+//  Created by Molder on 2019/4/8.
 //  Copyright © 2019 lulu. All rights reserved.
 //
 
 import UIKit
 
-class NearLocationTableViewCell: UITableViewCell {
-    @IBOutlet weak var naerLocationImage: UIImageView!
-    @IBOutlet weak var nearLocationName: UILabel!
-    @IBOutlet weak var nearLocationAddress: UILabel!
-    @IBOutlet weak var nearLocationType: UILabel!
+class LandMarkImagesTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userNameUILabel: UILabel!
+    @IBOutlet weak var locationImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

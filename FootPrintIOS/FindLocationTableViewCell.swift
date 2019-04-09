@@ -1,19 +1,15 @@
 //
-//  NearLocationTableViewCell.swift
+//  FindLocationTableViewCell.swift
 //  FootPrintIOS
 //
-//  Created by Molder on 2019/4/3.
+//  Created by Molder on 2019/4/5.
 //  Copyright © 2019 lulu. All rights reserved.
 //
 
 import UIKit
 
-class NearLocationTableViewCell: UITableViewCell {
-    @IBOutlet weak var naerLocationImage: UIImageView!
-    @IBOutlet weak var nearLocationName: UILabel!
-    @IBOutlet weak var nearLocationAddress: UILabel!
-    @IBOutlet weak var nearLocationType: UILabel!
-    
+class FindLocationTableViewCell: UITableViewCell {
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

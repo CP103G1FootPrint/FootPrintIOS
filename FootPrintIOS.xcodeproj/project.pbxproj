@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020777F522571232001BE30A /* FindLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020777F422571232001BE30A /* FindLocationTableViewCell.swift */; };
+		020777F72257126E001BE30A /* FindLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020777F62257126E001BE30A /* FindLocationTableViewController.swift */; };
 		022022EF225237C600856352 /* AccountCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022022EE225237C600856352 /* AccountCreateViewController.swift */; };
 		022022F12252390900856352 /* facebook_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 022022F02252390900856352 /* facebook_logo.png */; };
 		022022F32252391300856352 /* 375.png in Resources */ = {isa = PBXBuildFile; fileRef = 022022F22252391200856352 /* 375.png */; };
 		027A64D42252F5A8002476D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027A64D32252F5A8002476D4 /* AppDelegate.swift */; };
 		027DFC1122327F1F00E9E097 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027DFC1022327F1F00E9E097 /* MapViewController.swift */; };
+		0283E997225B916E00F491B4 /* LandMarkImagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283E996225B916E00F491B4 /* LandMarkImagesTableViewController.swift */; };
+		0283E999225B918400F491B4 /* LandMarkImagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283E998225B918400F491B4 /* LandMarkImagesTableViewCell.swift */; };
+		0283E99B225B924700F491B4 /* LandMarkImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283E99A225B924700F491B4 /* LandMarkImagesCollectionViewCell.swift */; };
+		0283E99D225B93BF00F491B4 /* LandMarkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283E99C225B93BF00F491B4 /* LandMarkDetailViewController.swift */; };
 		028DDF35225441BF006DD7EB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DDF34225441BF006DD7EB /* CameraViewController.swift */; };
 		028DDF37225441DE006DD7EB /* CreateLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DDF36225441DE006DD7EB /* CreateLocationViewController.swift */; };
 		028DDF39225441FF006DD7EB /* NearLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028DDF38225441FF006DD7EB /* NearLocationTableViewController.swift */; };
@@ -97,11 +103,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		020777F422571232001BE30A /* FindLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationTableViewCell.swift; sourceTree = "<group>"; };
+		020777F62257126E001BE30A /* FindLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationTableViewController.swift; sourceTree = "<group>"; };
 		022022EE225237C600856352 /* AccountCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreateViewController.swift; sourceTree = "<group>"; };
 		022022F02252390900856352 /* facebook_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_logo.png; sourceTree = "<group>"; };
 		022022F22252391200856352 /* 375.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 375.png; sourceTree = "<group>"; };
 		027A64D32252F5A8002476D4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		027DFC1022327F1F00E9E097 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0283E996225B916E00F491B4 /* LandMarkImagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMarkImagesTableViewController.swift; sourceTree = "<group>"; };
+		0283E998225B918400F491B4 /* LandMarkImagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMarkImagesTableViewCell.swift; sourceTree = "<group>"; };
+		0283E99A225B924700F491B4 /* LandMarkImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMarkImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		0283E99C225B93BF00F491B4 /* LandMarkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMarkDetailViewController.swift; sourceTree = "<group>"; };
 		028DDF34225441BF006DD7EB /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		028DDF36225441DE006DD7EB /* CreateLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLocationViewController.swift; sourceTree = "<group>"; };
 		028DDF38225441FF006DD7EB /* NearLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearLocationTableViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +225,8 @@
 				028DDF38225441FF006DD7EB /* NearLocationTableViewController.swift */,
 				028DDF3A22544219006DD7EB /* NearLocationTableViewCell.swift */,
 				028DDF3C22544266006DD7EB /* CameraImage.swift */,
+				020777F422571232001BE30A /* FindLocationTableViewCell.swift */,
+				020777F62257126E001BE30A /* FindLocationTableViewController.swift */,
 			);
 			name = Camera;
 			sourceTree = "<group>";
@@ -222,6 +236,10 @@
 			children = (
 				027DFC1022327F1F00E9E097 /* MapViewController.swift */,
 				028DDF3E22544277006DD7EB /* LandMark.swift */,
+				0283E996225B916E00F491B4 /* LandMarkImagesTableViewController.swift */,
+				0283E998225B918400F491B4 /* LandMarkImagesTableViewCell.swift */,
+				0283E99A225B924700F491B4 /* LandMarkImagesCollectionViewCell.swift */,
+				0283E99C225B93BF00F491B4 /* LandMarkDetailViewController.swift */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -668,6 +686,7 @@
 				AF1DA0C3224B4BBA00B80E09 /* HomeViewController.swift in Sources */,
 				AF883E0B2239180200021940 /* Common.swift in Sources */,
 				AF883E0E22393E7F00021940 /* Account.swift in Sources */,
+				0283E99D225B93BF00F491B4 /* LandMarkDetailViewController.swift in Sources */,
 				D4A773B722520EA400C3867C /* FriendsMessageTableViewController.swift in Sources */,
 				D4A773AE2250FE2200C3867C /* PersonalPicture.swift in Sources */,
 				AF0BD168222D1796006FC80A /* ViewController.swift in Sources */,
@@ -677,17 +696,21 @@
 				AFB16082224E2A9700F675E5 /* PersonalRecordVC.swift in Sources */,
 				AFDDF368225393E200198321 /* GroupMessageViewController.swift in Sources */,
 				AF1DA0C1224B470000B80E09 /* HomeTripTableViewController.swift in Sources */,
+				020777F522571232001BE30A /* FindLocationTableViewCell.swift in Sources */,
+				0283E99B225B924700F491B4 /* LandMarkImagesCollectionViewCell.swift in Sources */,
 				AF2E1770224C9A6E0073466E /* PhotoUploadViewController.swift in Sources */,
 				AF28AA93223CEFCE0081DE1A /* AddFriendListTableViewCell.swift in Sources */,
 				D4A773B522520E8400C3867C /* FriendsViewController.swift in Sources */,
 				AFFAC23F2247965F00386107 /* TripPlanFriend.swift in Sources */,
 				D4A7739E224E8D3D00C3867C /* Comment.swift in Sources */,
 				AF2E00EE2234FF6B006B9A5A /* Trip.swift in Sources */,
+				020777F72257126E001BE30A /* FindLocationTableViewController.swift in Sources */,
 				028DDF3B22544219006DD7EB /* NearLocationTableViewCell.swift in Sources */,
 				AFE8DBC12250C43F005F585A /* SegmentGroupTableViewController.swift in Sources */,
 				AF1DA0BD224B460C00B80E09 /* Likes.swift in Sources */,
 				D4A7739C224E8D1300C3867C /* NewsCommentTableViewCell.swift in Sources */,
 				022022EF225237C600856352 /* AccountCreateViewController.swift in Sources */,
+				0283E999225B918400F491B4 /* LandMarkImagesTableViewCell.swift in Sources */,
 				AFB16084224E2ACD00F675E5 /* PersonalRecordCVCell.swift in Sources */,
 				028DDF37225441DE006DD7EB /* CreateLocationViewController.swift in Sources */,
 				D43635FF2254A96A00052CE2 /* RightChatTableViewCell.swift in Sources */,
@@ -699,6 +722,7 @@
 				AF47E680223B8B92007AD656 /* HomeNewsTableViewController.swift in Sources */,
 				027A64D42252F5A8002476D4 /* AppDelegate.swift in Sources */,
 				AFE8DBC32251B83D005F585A /* CreateTripFriends.swift in Sources */,
+				0283E997225B916E00F491B4 /* LandMarkImagesTableViewController.swift in Sources */,
 				AFB16079224E295300F675E5 /* ExchangeGoods.swift in Sources */,
 				AF4E4C8E22422B1C00864DD1 /* TripTabViewController.swift in Sources */,
 				027DFC1122327F1F00E9E097 /* MapViewController.swift in Sources */,
