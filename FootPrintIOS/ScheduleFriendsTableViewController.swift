@@ -15,11 +15,15 @@ class ScheduleFriendsTableViewController: UITableViewController {
     var requestParam = [String: Any]()
     
     var friendList = [Friends]()
-    var list_item = [String]()
+    var list_item = [String]()//ㄑ全部朋友
+    var trip_item = [String]()
     var addfriend = [String]()
-    var oldFriend = [TripPlanFriend]()
+    var oldFriend = [String]()
     
-
+    var final = [String]()
+    
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.allowsMultipleSelectionDuringEditing = true
@@ -30,7 +34,7 @@ class ScheduleFriendsTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        getTripFriends()
+//        getTripFriends()
         getAllFriends()
         
         
@@ -51,6 +55,17 @@ class ScheduleFriendsTableViewController: UITableViewController {
                     if let result = try? JSONDecoder().decode([Friends].self, from: data!) {
                         
                         self.friendList = result
+                        for itemFirst in self.friendList{
+                            if itemFirst.invitee != account{
+                                //                                x.app[itemFirst.invitee]
+                                self.list_item.append(itemFirst.invitee!)
+                            }else{
+                                //                                x.app[itemFirst.inviter]
+                                self.list_item.append(itemFirst.inviter!)
+                            }
+                        }
+                        
+                        print("5555 \(self.list_item)")
                         
         
                         DispatchQueue.main.async {
@@ -68,21 +83,37 @@ class ScheduleFriendsTableViewController: UITableViewController {
                 print(error!.localizedDescription)
             }
         }
-    }
-    
-    
-    func getTripFriends(){
-        //        //抓取已加入行程好友
-        let url_server = URL(string: common_url + "/TripServlet")
+        
+        let url_trip = URL(string: common_url + "/TripServlet")
         requestParam["action"] = "getTripFriends"
         requestParam["tripId"] = trips.tripID
-        executeTask(url_server!, requestParam) { (data, response, error) in
+        executeTask(url_trip!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
                     print("input: \(String(data: data!, encoding: .utf8)!)")
-                    if let result = try? JSONDecoder().decode([TripPlanFriend].self, from: data!) {
+                    if let result = try? JSONDecoder().decode([String].self, from: data!) {
                         self.oldFriend = result
+//                        for itemSe in self.oldFriend{
+//                            if itemSe != account{
+//                                self.trip_item.append(itemSe)
+//                            }else{
+//                                break
+//                            }
+//                        }
+                        
+                        self.trip_item = [self.oldFriend.remove(at: 1)]
+                        
+                        
+                        print("rrr \(self.trip_item)")
+                        
+                        let all = self.list_item + self.trip_item
+                        print("222 \(all)")
+                        self.final = all.removingDuplicates()
+                        print("0000 \(self.final)")
+                        
+                        
+                        
                         DispatchQueue.main.async {
                             if let control = self.tableView.refreshControl {
                                 if control.isRefreshing {
@@ -98,7 +129,18 @@ class ScheduleFriendsTableViewController: UITableViewController {
                 print(error!.localizedDescription)
             }
         }
+        
+        
+        
     }
+    
+    
+//    func getTripFriends(){
+//        //        //抓取已加入行程好友
+//        let user = loadData()
+//        let account = user.account
+//
+//    }
     
     
 
@@ -111,35 +153,34 @@ class ScheduleFriendsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return friendList.count
+        return final.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let user = loadData()
-        //        let account = user.account
-        let cell = tableView.dequeueReusableCell(withIdentifier: "addFriendCell", for: indexPath) as! AddFriendListTableViewCell
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "addFriendCell", for: indexPath) as! AddFriendListTableViewCell
+        let finally = final[indexPath.row]
 //        friendList.removeAll { (friendlist) -> Bool in
 //            let friend = friendlist.invitee == user.account
 //            return friend
 //        }
         
        
-        print("321\(indexPath.row)")
-        print("123\(list_item[indexPath.row])")
-        
-        
-        
-        let b = list_item.filter{$0 != oldFriend[indexPath.row].invitee }
-        less = b.joined(separator:",")
-        
+//        print("321\(indexPath.row)")
+//        print("123\(list_item[indexPath.row])")
+//
+//
+//
+//        let b = list_item.filter{$0 != oldFriend[indexPath.row].invitee }
+//        less = b.joined(separator:",")
+//        let friend = final.
     
         //抓取好友暱稱
         var requestParam = [String: String]()
         let url_server = URL(string: common_url + "PicturesServlet")
         requestParam["action"] = "findUserNickName"
-        requestParam["id"] = less
+        requestParam["id"] = finally
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -158,7 +199,7 @@ class ScheduleFriendsTableViewController: UITableViewController {
         
         //抓取頭像
         requestParam["action"] = "findUserHeadImage"
-        requestParam["userId"] = less
+        requestParam["userId"] = finally
         requestParam["imageSize"] = "30"
         var headImage: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
@@ -260,6 +301,59 @@ class ScheduleFriendsTableViewController: UITableViewController {
     }
     */
     
+    @IBAction func doneButton(_ sender: Any) {
+        //新增好友到行程
+        let user = loadData()
+        let account = user.account
+        var tripPlanFriendss = [TripPlanFriend]()
+        for i in 0 ..< addfriend.count{
+            let items = addfriend[i]
+            let tripPlanFriends = TripPlanFriend(account,items,trips.tripID!)
+            tripPlanFriendss.append(tripPlanFriends)
+        }
+        let url_trip = URL(string: common_url + "/TripServlet")
+        requestParam["action"] = "tripPlanFriendInsert"
+        requestParam["tripPlanFriends"] = try! String(data: JSONEncoder().encode(tripPlanFriendss), encoding: .utf8)
+        executeTask(url_trip!, requestParam
+            , completionHandler: { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        if let result = String(data: data!, encoding: .utf8) {
+                            if let count = Int(result) {
+                                DispatchQueue.main.async {
+                                    // 新增成功則回前頁
+                                    if count != 0 {                                            self.navigationController?.popViewController(animated: true)
+                                    } else {
+                                        let alertController = UIAlertController(title: "insert fail",
+                                                                                message: nil, preferredStyle: .alert)
+                                        self.present(alertController, animated: true, completion: nil)
+                                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                                            self.presentedViewController?.dismiss(animated: false, completion: nil)
+                                        }
+                                    }
+                                }
+                        }
+                    }
+                } else {
+                    print(error!.localizedDescription)
+                }
+        }
+        
+    }
     
+   ) }
+}
 
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+        
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+    
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
 }

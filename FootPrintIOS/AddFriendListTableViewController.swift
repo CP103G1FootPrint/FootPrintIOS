@@ -52,13 +52,9 @@ class AddFriendListTableViewController: UITableViewController {
                     print("input: \(String(data: data!, encoding: .utf8)!)")
                     if let result = try? JSONDecoder().decode([CreateTripFriends].self, from: data!) {
                         self.friendList = result
-//                        var size = self.friendList.count
-////                        let list_item = [mount]
-//                        for i in 0 ..< size{
-//                            if self.friendList.inviter = userId{
-//                                
-//                            }
-//                        }
+                        
+                        
+                      
                         DispatchQueue.main.async {
                             if let control = self.tableView.refreshControl {
                                 if control.isRefreshing {
