@@ -8,14 +8,9 @@
 
 import UIKit
 
-
-
-
-//var dataArray:[UIImage] = [UIImage]()
-
-
 class GroupAlbumCollectionViewController: UICollectionViewController,
     UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+//    var a: UIImage?
     
     @IBOutlet var showActivityIndicator: UIActivityIndicatorView!
     var groupAlbums = [GroupAlbum]()
@@ -32,10 +27,10 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
         //與邊界距離
         albumCollectionLayout.sectionInset = UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
         //圖片大小
-        albumCollectionLayout.itemSize = CGSize(width: fullScreanSize.width/3 - 10, height: 320)
+        albumCollectionLayout.itemSize = CGSize(width: fullScreanSize.width/3 - 10, height: 120)
 //        fullScreanSize.width/3
         //上下行兼距
-        albumCollectionLayout.minimumLineSpacing = 5
+        albumCollectionLayout.minimumLineSpacing = 2
         //圖片左右距離
         albumCollectionLayout.minimumInteritemSpacing = 5
         albumCollectionLayout.scrollDirection = .vertical
@@ -108,6 +103,7 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
         let cellId = "albumCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! GroupAlbumCollectionViewCell
         let groupAlbum = groupAlbums[indexPath.row]
+//        cell.imageViewCell.image = a
       
         // 尚未取得圖片，另外開啟task請求
         var requestParam = [String: Any]()
@@ -176,11 +172,12 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
     // 選擇照片
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             pickedImage = info[.originalImage] as! UIImage
-        pickedImage = collectionView.image()
-        print("!!!!!!1")
+//        pickedImage = collectionView.image()
+//        print("!!!!!!1")
         //載圖圈圈
-//            let activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
-//                showActivityIndicator.addSubview(activityIndicatorView)
+            let activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
+                showActivityIndicator.addSubview(activityIndicatorView)
+                activityIndicatorView.startAnimating()
         
                 var requestParam = [String: Any]()
                 requestParam["action"] = "groupalbumInsert"
@@ -188,9 +185,9 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
         print("!!!!!!2")
         //主轉成jason 字串 只有文字沒有圖
         // 有圖才上傳 圖轉乘的imageBase64 字串
-        if pickedImage.images != nil {
+        if pickedImage != nil {
             print("!!!!!!5")
-            requestParam["imageBase64"] = pickedImage.jpegData(compressionQuality: 1.0)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
+            requestParam["imageBase64"] = pickedImage.jpegData(compressionQuality: 0.5)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
         }
         print("!!!!!!3")
         executeTask(self.url_server!, requestParam) { (data, response, error) in
@@ -201,8 +198,8 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
                             DispatchQueue.main.async {
                                 // 新增成功則回前頁
                                 if count != 0 {
-                                    print("!!!!!!4")
-                                    self.navigationController?.popViewController(animated: true)
+                                   activityIndicatorView.stopAnimating()
+                                    self.dismiss(animated: true, completion: nil)
                                 } else {
                                     let alertController = UIAlertController(title: "insert fail",
                                                                             message: nil, preferredStyle: .alert)
@@ -229,10 +226,6 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
-    
 }
 
 

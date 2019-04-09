@@ -72,6 +72,11 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         toolBar.isUserInteractionEnabled = true
         dayPicker.inputAccessoryView = toolBar
         
+        
+        //鍵盤
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
 //        findTripId()
         
         //加入行程的好友
@@ -238,13 +243,43 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     @IBAction func clickCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    //按下 return 鍵收鍵盤
-    @IBAction func didEndOnExit(_ sender: Any) {
-    }
+    
     
     @IBAction func unwindToCreateTripViewController(segue: UIStoryboardSegue){
+        
         friendListTextView.text = tripfriend.joined(separator: ",")
     }
+    
+    //鍵盤
+    @objc func keyboardWillShow(notification: Notification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRect = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRect.height
+            view.frame.origin.y = -50
+        } else {
+            view.frame.origin.y = -view.frame.height / 3
+        }
+    }
+    @objc func keyboardWillHide(notification: Notification) {
+        view.frame.origin.y = 0
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    @IBAction func tapGesture(_ sender: Any) {
+        hideKeyboard()
+    }
+   
+    @IBAction func didEndOnExit(_ sender: Any) {
+        hideKeyboard()
+    }
+    /** 隱藏鍵盤 */
+    func hideKeyboard(){
+        tripNameTextFild.resignFirstResponder()
+        
+    }
+
     
     
     

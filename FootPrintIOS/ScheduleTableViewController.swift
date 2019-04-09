@@ -43,10 +43,11 @@ class ScheduleTableViewController: UITableViewController {
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    print("input: \(String(data: data!, encoding: .utf8)!)")
                     
                     if let result = try? JSONDecoder().decode([Trip].self, from: data!) {
                         self.trips = result
+                        self.trips.reverse()
                         _ = try? JSONDecoder().decode(String.self, from: data!)
                         
 
@@ -188,13 +189,14 @@ class ScheduleTableViewController: UITableViewController {
         let buttontag = sender.tag
         let trip = trips[buttontag]
        
-        let actionSheet = UIAlertController(title: "\n\n\n\n\n\n", message: trip.title, preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController.init(title: "", message: trip.date, preferredStyle: .actionSheet)
+        let titleAttributes = [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.black]
+        let titleString = NSAttributedString(string: trip.title!, attributes: titleAttributes)
+        actionSheet.setValue(titleString, forKey: "attributedTitle")
         
-        let view = UIView(frame: CGRect(x: 8.0, y: 8.0, width: actionSheet.view.bounds.size.width - 8.0 * 4.5, height: 120.0))
-        view.backgroundColor = UIColor.green
-        actionSheet.view.addSubview(view)
+
         
-        actionSheet.addAction(UIAlertAction(title: "分享至動態", style: .default,handler: { action in
+        actionSheet.addAction(UIAlertAction.init(title: "分享至動態", style: .default,handler: { action in
             
             var requestParam = [String: Any]()
             requestParam["action"] = "tripShare"
@@ -228,8 +230,8 @@ class ScheduleTableViewController: UITableViewController {
         }))
         
         
-        
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.view.tintColor = .orange
+        actionSheet.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
         present(actionSheet, animated: true, completion: nil)
     }
     
@@ -270,19 +272,17 @@ class ScheduleTableViewController: UITableViewController {
     */
 
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: UIButton) {
-//        let controller = segue.destination as? GroupAlbumCollectionViewController
-//        let buttontag = sender.tag
-//        let trip = trips[buttontag]
-//        controller?.trips = trip
-////        controller?.tripfriend = addfriend
-//
-//        show(, sender: )
-//
-//    }
+    /* 因為拉UITableViewCell與detail頁面連結，所以sender是UITableViewCell */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "planDetail" {
+            /* indexPath(for:)可以取得UITableViewCell的indexPath */
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+            let trip = trips[indexPath!.row]
+            let detailVC = segue.destination as! PlanViewController
+            detailVC.trip = trip
+        }
+    }
+   
     
     
     @IBAction func albumButton(_ sender: UIButton) {
@@ -307,7 +307,7 @@ class ScheduleTableViewController: UITableViewController {
    
     
     @IBAction func tripFriendButtonClick(_ sender: UIButton) {
-        if let controller = storyboard?.instantiateViewController(withIdentifier: "groupFriends") as? AddFriendListTableViewController{
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "shedulefriend") as? ScheduleFriendsTableViewController{
             let buttontag = sender.tag
             let trip = trips[buttontag]
             controller.trips = trip
