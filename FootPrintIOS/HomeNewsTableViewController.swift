@@ -132,7 +132,6 @@ class HomeNewsTableViewController: UITableViewController {
                 DispatchQueue.main.async {
                     cell.bt_HeadPicture.setImage(headImage, for: .normal)
                     cell.bt_HeadPicture.imageView?.layer.cornerRadius = cell.bt_HeadPicture.frame.width/2
-                    
                 }
                 //設定button為圓形
             } else {
@@ -153,7 +152,6 @@ class HomeNewsTableViewController: UITableViewController {
         }else{
             cell.bt_Like.isSelected = true
             cell.bt_Like.setImage(UIImage(named: "like-2"), for: .normal)
-            
         }
         
         if new.collectionId == 0{
@@ -174,8 +172,6 @@ class HomeNewsTableViewController: UITableViewController {
              controller.news = new
             controller.headimage = image
             navigationController?.pushViewController(controller, animated: true)
-
-
         }
     }
     @IBAction func bt_PersonalPage(_ sender: UIButton) {

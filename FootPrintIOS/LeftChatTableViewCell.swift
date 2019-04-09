@@ -10,6 +10,7 @@ import UIKit
 
 class LeftChatTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lb_NickName: UILabel!
     @IBOutlet weak var iv_HeadPicture: UIImageView!
     @IBOutlet weak var lb_ChatLabel: UILabel!
 }

@@ -23,4 +23,19 @@ class Message:Codable{
         self.messageType = messageType
         self.timeStamp = timeStamp
     }
+    public init(_ chatId:Int,_ sender: String, _ receiver: String, _ content:String,_ timeStamp: String){
+        self.chatId = chatId
+        self.sender = sender
+        self.receiver = receiver
+        self.content = content
+        self.timeStamp = timeStamp
+    }
+    
+    public init(_ type: String,_ sender: String, _ receiver: String, _ content: String, _ messageType: String) {
+        self.type = type
+        self.sender = sender
+        self.receiver = receiver
+        self.content = content
+        self.messageType = messageType
+    }
 }
