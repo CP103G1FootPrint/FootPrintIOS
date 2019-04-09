@@ -106,163 +106,170 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jXO-8T-R0Z">
-                                <rect key="frame" x="50" y="454" width="314" height="388"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="X1e-Tc-wIT">
+                                <rect key="frame" x="50" y="98" width="314" height="622"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fYn-ts-7ub">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="48"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5J-bz-lLm">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="48" id="5RB-V7-c9c"/>
-                                                    <constraint firstAttribute="height" constant="48" id="zzv-Ed-XPz"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.32322421670000001" green="0.84100896120000002" blue="0.67449223999999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <state key="normal" image="login"/>
-                                            </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e-mail" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="mgw-j2-bY3">
-                                                <rect key="frame" x="56" y="0.0" width="258" height="48"/>
-                                                <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="didEndOnExit:" destination="jtI-M9-oxm" eventType="editingDidEnd" id="jb1-qa-EuQ"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Ix-2S-vd0">
-                                        <rect key="frame" x="0.0" y="68" width="314" height="48"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvj-AC-2mj">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="48" id="Wy1-3a-5c4"/>
-                                                    <constraint firstAttribute="width" constant="48" id="ofk-6P-lWS"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <state key="normal" image="lock"/>
-                                            </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="chc-Li-BfZ">
-                                                <rect key="frame" x="56" y="0.0" width="258" height="48"/>
-                                                <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="didEndOnExit:" destination="jtI-M9-oxm" eventType="editingDidEnd" id="2Eq-iS-ihG"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f28-Dq-ftj">
-                                        <rect key="frame" x="0.0" y="136" width="314" height="48"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gfj-ug-Kxq">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="48" id="380-lZ-Y5S"/>
-                                                    <constraint firstAttribute="height" constant="48" id="rPw-KK-KhT"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <state key="normal" image="identification"/>
-                                            </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="nick name" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="24e-LG-Xou">
-                                                <rect key="frame" x="56" y="0.0" width="258" height="48"/>
-                                                <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <connections>
-                                                    <action selector="didEndOnExit:" destination="jtI-M9-oxm" eventType="editingDidEnd" id="gKE-8J-Mjr"/>
-                                                </connections>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0H0-uH-1bc">
-                                        <rect key="frame" x="0.0" y="204" width="314" height="48"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTW-Lq-pj3">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="48" id="QjY-LI-ske"/>
-                                                    <constraint firstAttribute="width" constant="48" id="wBw-qB-sxn"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <state key="normal" image="cake"/>
-                                            </button>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="birthday" translatesAutoresizingMaskIntoConstraints="NO" id="AL9-rQ-cTa">
-                                                <rect key="frame" x="56" y="0.0" width="258" height="48"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zWA-tH-onv">
-                                        <rect key="frame" x="0.0" y="272" width="314" height="48"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93S-oZ-Wtr">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="48" id="XpB-o4-jbe"/>
-                                                    <constraint firstAttribute="width" constant="48" id="ioK-1B-sCA"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <state key="normal" image="galaxy"/>
-                                            </button>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="constellation" translatesAutoresizingMaskIntoConstraints="NO" id="N0I-x1-7JL">
-                                                <rect key="frame" x="56" y="0.0" width="258" height="48"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0a-Zo-xAc">
-                                        <rect key="frame" x="0.0" y="340" width="314" height="48"/>
-                                        <color key="backgroundColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pso-Gn-Hid">
+                                        <rect key="frame" x="50" y="0.0" width="214" height="214"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="Y5t-qu-CXz"/>
+                                            <constraint firstAttribute="width" secondItem="Pso-Gn-Hid" secondAttribute="height" multiplier="1:1" id="K7h-ho-bVO"/>
                                         </constraints>
-                                        <state key="normal" title="Create">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
+                                        <color key="tintColor" red="0.32322421670000001" green="0.84100896120000002" blue="0.67449223999999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button" image="user.png"/>
                                         <connections>
-                                            <action selector="createAccountAction:" destination="jtI-M9-oxm" eventType="touchUpInside" id="cM6-nc-YjU"/>
+                                            <action selector="headImageAction:" destination="jtI-M9-oxm" eventType="touchUpInside" id="Chz-NQ-RPZ"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jXO-8T-R0Z">
+                                        <rect key="frame" x="0.0" y="234" width="314" height="388"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fYn-ts-7ub">
+                                                <rect key="frame" x="0.0" y="0.0" width="314" height="48"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5J-bz-lLm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="48" id="5RB-V7-c9c"/>
+                                                            <constraint firstAttribute="height" constant="48" id="zzv-Ed-XPz"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.32322421670000001" green="0.84100896120000002" blue="0.67449223999999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <state key="normal" image="login"/>
+                                                    </button>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e-mail" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="mgw-j2-bY3">
+                                                        <rect key="frame" x="56" y="0.0" width="258" height="48"/>
+                                                        <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="didEndOnExit:" destination="jtI-M9-oxm" eventType="editingDidEnd" id="jb1-qa-EuQ"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Ix-2S-vd0">
+                                                <rect key="frame" x="0.0" y="68" width="314" height="48"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvj-AC-2mj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="48" id="Wy1-3a-5c4"/>
+                                                            <constraint firstAttribute="width" constant="48" id="ofk-6P-lWS"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <state key="normal" image="lock"/>
+                                                    </button>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="chc-Li-BfZ">
+                                                        <rect key="frame" x="56" y="0.0" width="258" height="48"/>
+                                                        <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="didEndOnExit:" destination="jtI-M9-oxm" eventType="editingDidEnd" id="2Eq-iS-ihG"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f28-Dq-ftj">
+                                                <rect key="frame" x="0.0" y="136" width="314" height="48"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gfj-ug-Kxq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="48" id="380-lZ-Y5S"/>
+                                                            <constraint firstAttribute="height" constant="48" id="rPw-KK-KhT"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <state key="normal" image="identification"/>
+                                                    </button>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="nick name" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="24e-LG-Xou">
+                                                        <rect key="frame" x="56" y="0.0" width="258" height="48"/>
+                                                        <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="didEndOnExit:" destination="jtI-M9-oxm" eventType="editingDidEnd" id="gKE-8J-Mjr"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0H0-uH-1bc">
+                                                <rect key="frame" x="0.0" y="204" width="314" height="48"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTW-Lq-pj3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="48" id="QjY-LI-ske"/>
+                                                            <constraint firstAttribute="width" constant="48" id="wBw-qB-sxn"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <state key="normal" image="cake"/>
+                                                    </button>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="birthday" translatesAutoresizingMaskIntoConstraints="NO" id="AL9-rQ-cTa">
+                                                        <rect key="frame" x="56" y="0.0" width="258" height="48"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zWA-tH-onv">
+                                                <rect key="frame" x="0.0" y="272" width="314" height="48"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93S-oZ-Wtr">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="48" id="XpB-o4-jbe"/>
+                                                            <constraint firstAttribute="width" constant="48" id="ioK-1B-sCA"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <state key="normal" image="galaxy"/>
+                                                    </button>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="constellation" translatesAutoresizingMaskIntoConstraints="NO" id="N0I-x1-7JL">
+                                                        <rect key="frame" x="56" y="0.0" width="258" height="48"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J0a-Zo-xAc">
+                                                <rect key="frame" x="0.0" y="340" width="314" height="48"/>
+                                                <color key="backgroundColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="Y5t-qu-CXz"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <state key="normal" title="Create">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="createAccountAction:" destination="jtI-M9-oxm" eventType="touchUpInside" id="cM6-nc-YjU"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pso-Gn-Hid">
-                                <rect key="frame" x="100" y="138" width="214" height="214"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Pso-Gn-Hid" secondAttribute="height" multiplier="108:108" id="K7h-ho-bVO"/>
+                                    <constraint firstItem="jXO-8T-R0Z" firstAttribute="leading" secondItem="X1e-Tc-wIT" secondAttribute="leading" id="71c-RM-43Z"/>
+                                    <constraint firstAttribute="trailing" secondItem="jXO-8T-R0Z" secondAttribute="trailing" id="PUi-Tq-Nz7"/>
+                                    <constraint firstItem="Pso-Gn-Hid" firstAttribute="leading" secondItem="X1e-Tc-wIT" secondAttribute="leading" constant="50" id="Q4G-yd-Yj9"/>
                                 </constraints>
-                                <color key="tintColor" red="0.32322421670000001" green="0.84100896120000002" blue="0.67449223999999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button" image="user.png"/>
-                                <connections>
-                                    <action selector="headImageAction:" destination="jtI-M9-oxm" eventType="touchUpInside" id="Chz-NQ-RPZ"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="0VC-Gl-V0Z" firstAttribute="top" secondItem="ezR-yh-8Eh" secondAttribute="top" id="12W-aa-tHB"/>
                             <constraint firstItem="0VC-Gl-V0Z" firstAttribute="leading" secondItem="ezR-yh-8Eh" secondAttribute="leading" id="3rD-sL-oOR"/>
-                            <constraint firstItem="ezR-yh-8Eh" firstAttribute="trailing" secondItem="Pso-Gn-Hid" secondAttribute="trailing" constant="100" id="4BA-me-ilO"/>
-                            <constraint firstItem="jXO-8T-R0Z" firstAttribute="leading" secondItem="ezR-yh-8Eh" secondAttribute="leading" constant="50" id="5mW-8V-snr"/>
-                            <constraint firstItem="Pso-Gn-Hid" firstAttribute="top" secondItem="0VC-Gl-V0Z" secondAttribute="bottom" constant="50" id="JIh-HG-Yl6"/>
-                            <constraint firstItem="ezR-yh-8Eh" firstAttribute="bottom" secondItem="jXO-8T-R0Z" secondAttribute="bottom" constant="20" id="Qn1-6U-Hnc"/>
+                            <constraint firstAttribute="trailing" secondItem="X1e-Tc-wIT" secondAttribute="trailing" constant="50" id="6Y7-1d-K5g"/>
+                            <constraint firstItem="X1e-Tc-wIT" firstAttribute="top" secondItem="0VC-Gl-V0Z" secondAttribute="bottom" constant="10" id="WIC-a6-Wvr"/>
+                            <constraint firstItem="X1e-Tc-wIT" firstAttribute="leading" secondItem="ezR-yh-8Eh" secondAttribute="leading" constant="50" id="X0A-St-Tv1"/>
                             <constraint firstItem="0VC-Gl-V0Z" firstAttribute="trailing" secondItem="ezR-yh-8Eh" secondAttribute="trailing" id="Yef-pl-YPJ"/>
-                            <constraint firstItem="Pso-Gn-Hid" firstAttribute="leading" secondItem="ezR-yh-8Eh" secondAttribute="leading" constant="100" id="fQj-r7-DEf"/>
-                            <constraint firstItem="jXO-8T-R0Z" firstAttribute="centerX" secondItem="ezR-yh-8Eh" secondAttribute="centerX" id="hdt-RU-LJo"/>
-                            <constraint firstItem="ezR-yh-8Eh" firstAttribute="trailing" secondItem="jXO-8T-R0Z" secondAttribute="trailing" constant="50" id="rHB-a3-WfG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ezR-yh-8Eh"/>
                         <connections>
@@ -326,7 +333,7 @@
                                         <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <connections>
                                             <action selector="didEndOnExit:" destination="1CD-5F-dBq" eventType="editingDidEnd" id="okV-KY-gSf"/>
                                         </connections>
