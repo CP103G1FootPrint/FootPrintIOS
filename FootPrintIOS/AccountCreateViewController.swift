@@ -41,7 +41,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         //星座挑選器
         picker.dataSource = self
         picker.delegate = self
-        constellationUITextView.text = days[0]
+//        constellationUITextView.text = days[0]
         constellationUITextView.inputView = picker
         let toolBar = UIToolbar()
         toolBar.sizeToFit()

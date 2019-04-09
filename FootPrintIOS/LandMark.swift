@@ -5,6 +5,7 @@ class LandMark: Codable  {
     var latitude : Double?
     var longitude : Double?
     var description : String?
+    var openingHours: String?
     var openState : String?
     var type : String?
     
@@ -15,25 +16,25 @@ class LandMark: Codable  {
     var account : String?
     var star : Double?
     
-    public init(_ id: Int, _ name: String, _ address: String, _ latitude: Double, _ longitude: Double, _ description: String, _ openState: String, _ type: String) {
+    public init(_ id: Int, _ name: String, _ address: String, _ latitude: Double, _ longitude: Double, _ description: String, _ openingHours: String, _ type: String) {
         self.id = id
         self.name = name
         self.address = address
         self.latitude = latitude
         self.longitude = longitude
         self.description = description
-        self.openState = openState
+        self.openingHours = openingHours
         self.type = type
     }
     
-    public init(_ id: Int, _ name: String, _ address: String, _ latitude: Double, _ longitude: Double, _ description: String, _ openState: String, _ type: String, _ star: Double) {
+    public init(_ id: Int, _ name: String, _ address: String, _ latitude: Double, _ longitude: Double, _ description: String, _ openingHours: String, _ type: String, _ star: Double) {
         self.id = id
         self.name = name
         self.address = address
         self.latitude = latitude
         self.longitude = longitude
         self.description = description
-        self.openState = openState
+        self.openingHours = openingHours
         self.type = type
         self.star = star
     }
@@ -42,6 +43,17 @@ class LandMark: Codable  {
         self.account = account
         self.imageID = imageID
         self.nickName = nickName
+    }
+    
+    public init(_ account: String, _ address: String, _ nickName: String) {
+        self.account = account
+        self.address = address
+        self.nickName = nickName
+    }
+    
+    public init(_ id: Int, _ address: String) {
+        self.id = id
+        self.address = address
     }
     
 }
