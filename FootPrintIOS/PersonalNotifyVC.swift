@@ -7,24 +7,115 @@
 //
 
 import UIKit
+import Starscream
 
-class PersonalNotifyVC: UIViewController {
+class PersonalNotifyVC: UIViewController,UITableViewDataSource {
+    var notifies = [Friends]()
+    var user = loadData()
+    var socket: WebSocket!
+    let url_server = "ws://127.0.0.1:8080/FootPrint/FriendShipServer/"
+    @IBOutlet weak var notifyTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        socket = WebSocket(url: URL(string: url_server + user.account)!)
+        addSocketCallBacks()
+        socket.connect()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getAllNotify()
+    }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func addSocketCallBacks() {
+        socket.onText = { (text: String) in
+            if let chatMessage = try? JSONDecoder().decode(Friends.self, from: text.data(using: .utf8)!) {
+                let invitee = chatMessage.invitee
+                // 接收到聊天訊息，若發送者與目前聊天對象相同，就將訊息顯示在TextView
+                if invitee == self.user.account {
+                    self.notifies.insert(chatMessage, at: self.notifies.count)
+                    self.notifyTableView.reloadData()
+                }
+            }
+        }
+    }
     
+    @objc func getAllNotify(){
+        let url_server = URL(string: common_url + "FriendsServlet")
+        var requestParam = [String: String]()
+        requestParam["action"] = "getAllFriendsNotify"
+        requestParam["userId"] = user.account
+
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    print("input: \(String(data: data!, encoding: .utf8)!)")
+                    if let result = try? JSONDecoder().decode([Friends].self, from: data!){
+                        self.notifies = result
+                        DispatchQueue.main.async {
+                            self.notifyTableView.reloadData()
+                        
+                        }
+                    }
+                }
+            }
+        }
+    }
+                    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(notifies)
+        return notifies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "notifycell") as! NotifyTableViewCell
+        let notify = notifies[indexPath.row]
+        cell.lb_Message.text = notify.message
+        
+        //抓取頭像
+        let url_server = URL(string: common_url + "PicturesServlet")
+        var requestParam = [String: Any]()
+        requestParam["action"] = "findUserHeadImage"
+        requestParam["userId"] = notify.inviter
+        requestParam["imageSize"] = cell.frame.width
+        var headImage: UIImage?
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    headImage = UIImage(data: data!)
+                }
+                if headImage == nil {
+                    headImage = UIImage(named: "album")
+                }
+                DispatchQueue.main.async {
+                    cell.iv_HeadPicture.image = headImage
+                    cell.iv_HeadPicture.layer.cornerRadius = cell.iv_HeadPicture.frame.width/2
+                }
+                //設定button為圓形
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+        
+        //抓使用者暱稱
+        var nickNameRequestParam = [String: String]()
+        nickNameRequestParam["action"] = "findUserNickName"
+        nickNameRequestParam["id"] = notify.inviter
+        executeTask(url_server!, nickNameRequestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    // 將輸入資料列印出來除錯用
+                    // print("input: \(String(data: data!, encoding: .utf8)!)")
+                    let result = String(data: data!, encoding: .utf8)!
+                    DispatchQueue.main.async {
+                        cell.lb_UserNickName.text = result + " 想加你為好友"
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+        
+        return cell
+    }
 }

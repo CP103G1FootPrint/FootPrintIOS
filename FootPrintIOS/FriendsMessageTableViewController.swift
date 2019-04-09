@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Starscream
+
 
 class FriendsMessageTableViewController: UITableViewController {
     var friends = [Friends]()
@@ -34,6 +36,13 @@ class FriendsMessageTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         let friendViewController = parent as? FriendViewController
         friends = friendViewController!.friends
+        getAllFriendsMessage()
+    }
+    
+    @objc func getAllFriendsMessage(){
+        let url_server = URL(string: common_url + "FriendsMessageServlet")
+        var requestParam = [String: String]()
+        friendship = []
         for i in 0 ..< friends.count{
             if(friends[i].invitee == user.account){
                 friendship.insert(friends[i].inviter!, at: i)
@@ -41,19 +50,13 @@ class FriendsMessageTableViewController: UITableViewController {
                 friendship.insert(friends[i].invitee!, at: i)
             }
         }
-        getAllFriendsMessage()
-    }
-    
-    @objc func getAllFriendsMessage(){
-        let url_server = URL(string: common_url + "FriendsMessageServlet")
-        var requestParam = [String: String]()
         requestParam["action"] = "findMessageList"
         requestParam["userId"] = user.account
         requestParam["friendList"] = try! String(data: JSONEncoder().encode(friendship), encoding: .utf8)
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil{
                 if data != nil {
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    print("input: \(String(data: data!, encoding: .utf8)!)")
                     if let result = try? JSONDecoder().decode([Message].self, from: data!){
                         self.friendsMessage = result
                         DispatchQueue.main.async {
@@ -67,7 +70,6 @@ class FriendsMessageTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(friendsMessage.count)
         return friendsMessage.count
     }
     
@@ -114,7 +116,7 @@ class FriendsMessageTableViewController: UITableViewController {
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    print("input: \(String(data: data!, encoding: .utf8)!)")
                     let result = String(data: data!, encoding: .utf8)!
                     DispatchQueue.main.async {
                         cell.lb_UserNickName.text = result
@@ -124,18 +126,25 @@ class FriendsMessageTableViewController: UITableViewController {
                 print(error!.localizedDescription)
             }
         }
-        
         cell.lb_Message.text = friend.content
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-            let friend = friendsMessage[indexPath.row]
-            let destination = segue.destination as! ChatViewController
-            destination.friend = friend.receiver
-//            destination.socket = socket
+        if segue.identifier == "chat"{
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+                let friend = friendsMessage[indexPath!.row]
+            
+                let friendId:String
+                if friend.sender == user.account{
+                   friendId = friend.receiver!
+                }else{
+                   friendId = friend.sender!
+                }
+            
+                let destination = segue.destination as! ChatViewController
+                destination.friend = friendId
+//              destination.socket = socket
         }
     }
-    
 }

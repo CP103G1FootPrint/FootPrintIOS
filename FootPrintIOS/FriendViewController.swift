@@ -14,12 +14,12 @@ class FriendViewController: UIViewController, UIScrollViewDelegate{
     @IBOutlet weak var scrollViewController: UIScrollView!
     @IBOutlet weak var container_Friends: UIView!
     @IBOutlet weak var container_Message: UIView!
+//    let friendsViewController = FriendsViewController()
+    var tv_TableView: FriendsViewController?
     let user = loadData()
     var friends = [Friends]()
 //    let serialQueue: DispatchQueue = DispatchQueue(label: "serialQueue")
-
 //    let queue = ispatch
-
     let myDataQueue = DispatchQueue(label: "ConcurrentQueue",
                                           qos: .background,
                                           attributes: .concurrent,
@@ -35,7 +35,9 @@ class FriendViewController: UIViewController, UIScrollViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        getAllFriends()
         scrollViewController.delegate = self
+        tv_TableView = storyboard?.instantiateViewController(withIdentifier: "FriendsViewController") as? FriendsViewController
     }
     
     @objc func getAllFriends(){
@@ -46,12 +48,17 @@ class FriendViewController: UIViewController, UIScrollViewDelegate{
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil{
                 if data != nil{
-                    // print("input: \(String(data: data!, encoding: .utf8)!)")
+                     print("input: \(String(data: data!, encoding: .utf8)!)")
                     if let result = try? JSONDecoder().decode([Friends].self, from: data!){
                         self.friends = result
                         
                         self.myDataQueue.async(flags: .barrier) {
                             self.friends = result
+//                            let tv_TableView = storyboard?.instantiateViewController(withIdentifier: "FriendsViewController") as! FriendsViewController
+//                            let tv_TableView = self.friendsViewController.tv_TableView
+//                            self.tv_TableView!.tv_TableView.reloadData()
+//                            print("123run")
+            
 //                        self.serialQueue.sync {
 //                            self.friends = result
 //                            print(1)

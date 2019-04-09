@@ -15,13 +15,17 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var lb_UserNickName: UILabel!
     @IBOutlet weak var lb_Birthday: UILabel!
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var bt_AddFriend: UIBarButtonItem!
     var news: News!
     var headimage: UIImage!
     var pictures = [PersonalPicture]()
     var user = loadInfo()
+    var image: UIImage?
+    
     let fullScreenSize = UIScreen.main.bounds.size
     @IBOutlet weak var collectionlayout: UICollectionViewFlowLayout!
     @IBOutlet weak var navationitem: UINavigationItem!
+    @IBOutlet weak var tableview: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +48,15 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         collectionlayout.itemSize = CGSize(width: fullScreenSize.width/3 - 4, height: 100)
         //設置header的尺寸
         collectionlayout.headerReferenceSize = CGSize(width: fullScreenSize.width, height: 40)
+        
+        
+        
+        if user.account == news.userID{
+            bt_AddFriend.isEnabled = false
+//          navigationItem.rightBarButtonItem?.isEnabled = false
+        }else{
+            bt_AddFriend.isEnabled = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +75,10 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
 //                  print("input: \(String(data: data!, encoding: .utf8)!)")
                     if let result = try? JSONDecoder().decode([PersonalPicture].self, from: data!){
                         self.pictures = result
+                        DispatchQueue.main.async {
+                            self.tableview.reloadData()
+
+                        }
                     }
                 }
             }else{
@@ -85,23 +102,30 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         requestParam["action"] = "getImage"
         requestParam["id"] = picture.imageID
         requestParam["imageSize"] = cell.frame.width
-        var image: UIImage?
+//        var image: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
                     print(data!)
-                    image = UIImage(data: data!)
+                    self.image = UIImage(data: data!)
                 }
-                if image == nil {
-                    image = UIImage(named: "noImage.jpg")
+                if self.image == nil {
+                    self.image = UIImage(named: "noImage.jpg")
                 }
                 DispatchQueue.main.async {
-                    cell.iv_Pictures.image = image
+                    cell.iv_Pictures.image = self.image
                 }
             }else{
                 print(error!.localizedDescription)
             }
         }
         return cell
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addfriend"{
+            let destination = segue.destination as! AddFriendViewController
+            destination.headimage = headimage
+            destination.friend = news.userID
+        }
     }
 }
