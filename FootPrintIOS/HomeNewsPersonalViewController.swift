@@ -21,6 +21,7 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
     var pictures = [PersonalPicture]()
     var user = loadInfo()
     var image: UIImage?
+    var friendship = [Friends]()
     
     let fullScreenSize = UIScreen.main.bounds.size
     @IBOutlet weak var collectionlayout: UICollectionViewFlowLayout!
@@ -36,6 +37,7 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         lb_UserNickName.text = news.nickName
         navationitem.title = news.nickName
         lb_Birthday.text = user.birthday
+        
 //      getAllPicturesId()
         
         //設置上下左右的間距
@@ -52,16 +54,46 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         
         
         if user.account == news.userID{
-            bt_AddFriend.isEnabled = false
-//          navigationItem.rightBarButtonItem?.isEnabled = false
+
         }else{
-            bt_AddFriend.isEnabled = true
+            let url_server = URL(string: common_url + "FriendsServlet")
+            var requestparam = [String:String]()
+            requestparam["action"] = "findFriendIdCheckFriendShip"
+            requestparam["userId"] = user.account
+            requestparam["inviteeId"] = news.userID
+            
+            executeTask(url_server!, requestparam) { (data, response, error) in
+                if error == nil{
+                    if data != nil{
+                        if let result = try? JSONDecoder().decode([Friends].self, from: data!){
+                             print("input: \(String(data: data!, encoding: .utf8)!)")
+                            self.friendship = result
+                            if result.isEmpty{
+                                let addFriendButton = UIButton(type: .custom)
+                                addFriendButton.setImage(UIImage (named: "addfriend-1"), for: .normal)
+                                addFriendButton.addTarget(self, action: #selector(self.AddFriend), for: .touchUpInside)
+                                self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addFriendButton)
+                            }else{
+                                if self.friendship.first?.state == 0 {
+                                   self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage (named: "friendshipcheck"), style: .plain, target: nil, action: nil)
+                                }else{
+                                   self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage (named: "checkfriend"), style: .plain, target: nil, action: nil)
+                                }
+                            }
+//                            self.friendship = result
+                        }
+                    }
+                }
+            }
+//            let addFriendButton = UIButton(type: .custom)
+//            addFriendButton.setImage(UIImage (named: "addfriend-1"), for: .normal)
+//            addFriendButton.addTarget(self, action: #selector(AddFriend), for: .touchUpInside)
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addFriendButton)
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-         getAllPicturesId()
-
+    override func viewDidAppear(_ animated: Bool) {
+        getAllPicturesId()
     }
     
     @objc func getAllPicturesId() {
@@ -121,11 +153,20 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         }
         return cell
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addfriend"{
-            let destination = segue.destination as! AddFriendViewController
-            destination.headimage = headimage
-            destination.friend = news.userID
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "addfriend"{
+//            let destination = segue.destination as! AddFriendViewController
+//            destination.headimage = headimage
+//            destination.friend = news.userID
+//        }
+//    }
+    
+    
+    @objc func AddFriend(_ sender: UIButton) {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "AddFriendViewController") as? AddFriendViewController{
+            controller.headimage = headimage
+            controller.friend = news.userID
+            navigationController?.pushViewController(controller, animated: true)
         }
     }
 }
