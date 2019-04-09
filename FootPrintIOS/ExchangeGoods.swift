@@ -2,15 +2,16 @@
 import Foundation
 
 class ExchangeGoods: Codable{
-    var productPic = ""
-    var productName = ""
-    var productScr = ""
-    var integral = ""
+    var id : Int
+    var productId = ""
+    var description = ""
+    var point = ""
     
-    init(_ productPic:String,_ productName:String,_ productScr:String,_ integral:String) {
-        self.productPic = productPic
-        self.productName = productName
-        self.productScr = productScr
-        self.integral = integral
+    init(_ id:Int,_ productId:String,_ description:String,_ point:String) {
+        //        self.productPic = productPic
+        self.id = id
+        self.productId = productId
+        self.description = description
+        self.point = point
     }
 }
