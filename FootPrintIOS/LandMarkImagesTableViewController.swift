@@ -52,9 +52,9 @@ class LandMarkImagesTableViewController: UITableViewController {
         let location = locationinfo[indexPath.row]
         cell.userNameUILabel.text = location.nickName
         findLocationImage(location.imageID!, cell)
-        DispatchQueue.main.async {
-            self.findImageHead(location.account!, cell)
-        }
+        
+            findImageHead(location.account!, cell)
+        
         return cell
     }
     
@@ -92,9 +92,9 @@ class LandMarkImagesTableViewController: UITableViewController {
     func findImageHead(_ landMarkID:String, _ cell:LandMarkImagesTableViewCell) {
         let url_server3 = URL(string: common_url + "/AccountServlet")
         var requestParam3 = [String: Any]()
-        requestParam3["action1"] = "headImage"
-        requestParam3["id1"] = landMarkID
-        requestParam3["imageSize1"] = 512
+        requestParam3["action"] = "headImage"
+        requestParam3["userId"] = landMarkID
+        requestParam3["imageSize"] = 512
         //        requestParam["imageSize"] = "\(UIScreen.main.bounds)"
         var image: UIImage?
         executeTask(url_server3!, requestParam3) { (data, response, error) in

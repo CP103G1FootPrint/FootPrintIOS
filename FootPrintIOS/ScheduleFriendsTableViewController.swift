@@ -295,7 +295,7 @@ class ScheduleFriendsTableViewController: UITableViewController {
         print("friendremovw :\(addfriend)")
     }
     
-    
+    //....
     //點選加入行程的好友
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("a9\(list_item[indexPath.row])")
