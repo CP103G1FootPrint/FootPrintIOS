@@ -12,7 +12,8 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
     UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 //    var a: UIImage?
     
-    @IBOutlet var showActivityIndicator: UIActivityIndicatorView!
+    
+    var activityIndicatorView: UIActivityIndicatorView!
     var groupAlbums = [GroupAlbum]()
     var pickedImage = UIImage()
     let url_server = URL(string: common_url + "/GroupAlbumServlet")
@@ -22,22 +23,33 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
 
     @IBOutlet var albumCollectionView: UICollectionView!
     @IBOutlet weak var albumCollectionLayout: UICollectionViewFlowLayout!
+    override func loadView() {
+        super.loadView()
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        collectionView.backgroundView = activityIndicatorView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //與邊界距離
-        albumCollectionLayout.sectionInset = UIEdgeInsets(top: 5,left: 5,bottom: 5,right: 5)
-        //圖片大小
-        albumCollectionLayout.itemSize = CGSize(width: fullScreanSize.width/3 - 10, height: 120)
-//        fullScreanSize.width/3
-        //上下行兼距
-        albumCollectionLayout.minimumLineSpacing = 2
-        //圖片左右距離
-        albumCollectionLayout.minimumInteritemSpacing = 5
-        albumCollectionLayout.scrollDirection = .vertical
+        let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
+        //距離螢幕邊框
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        //CELL大小
+        layout.itemSize = CGSize(width: (fullScreanSize.width)/3, height:(fullScreanSize.width)/3 )
+        //上下CELL間距
+        layout.minimumLineSpacing = 0
+        //左右CELL間距
+        layout.minimumInteritemSpacing = 0
+        //捲動方向
+        layout.scrollDirection = .vertical
         
     }
     override func viewWillAppear(_ animated: Bool) {
         showAllphotos()
+        if groupAlbums.count == 0 {
+            activityIndicatorView.startAnimating()
+        }
     }
     
     @objc func showAllphotos(){
@@ -53,9 +65,11 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
                     if let result = try? JSONDecoder().decode([GroupAlbum].self, from: data!) {
                         self.groupAlbums = result
                         DispatchQueue.main.async {
+                            self.activityIndicatorView.stopAnimating()
                             //取得更新後讓下來更新動畫結束
                             if let control = self.collectionView.refreshControl {
                                 if control.isRefreshing {
+                                    
                                     // 停止下拉更新動作
                                     control.endRefreshing()
                                 }
@@ -174,10 +188,7 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
             pickedImage = info[.originalImage] as! UIImage
 //        pickedImage = collectionView.image()
 //        print("!!!!!!1")
-        //載圖圈圈
-            let activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
-                showActivityIndicator.addSubview(activityIndicatorView)
-                activityIndicatorView.startAnimating()
+        
         
                 var requestParam = [String: Any]()
                 requestParam["action"] = "groupalbumInsert"
@@ -198,8 +209,9 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
                             DispatchQueue.main.async {
                                 // 新增成功則回前頁
                                 if count != 0 {
-                                   activityIndicatorView.stopAnimating()
+                                    self.activityIndicatorView.stopAnimating()
                                     self.dismiss(animated: true, completion: nil)
+                                    
                                 } else {
                                     let alertController = UIAlertController(title: "insert fail",
                                                                             message: nil, preferredStyle: .alert)

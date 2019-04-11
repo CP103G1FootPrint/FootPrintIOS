@@ -52,6 +52,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
         requestParam["action"] = "accountValid"
         requestParam["userId"] = account
         requestParam["password"] = password
+        let url_server = URL(string: common_url + "/AccountServlet")
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
