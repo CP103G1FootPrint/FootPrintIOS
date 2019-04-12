@@ -9,7 +9,7 @@
 import UIKit
 
 class AddFriendListTableViewController: UITableViewController {
-    
+    var activityIndicatorView: UIActivityIndicatorView!
     var trips: Trip!
     var friend:String?
     
@@ -21,8 +21,23 @@ class AddFriendListTableViewController: UITableViewController {
     var friendArray: [String] = Array()
     
     var addfriend = [String]()
+    
+    override func loadView() {
+        super.loadView()
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        tableView.backgroundView = activityIndicatorView
+    }
+    
+    /** tableView加上下拉更新功能 */
+    func tableViewAddRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(getAllFriends), for: .valueChanged)
+        self.tableView.refreshControl = refreshControl
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+         tableViewAddRefreshControl()
 //        friendArray.append("Tom")
 //        friendArray.append("Vivian")
 //        friendArray.append("Sandy")
@@ -36,11 +51,14 @@ class AddFriendListTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         getAllFriends()
+    
+        activityIndicatorView.startAnimating()
+        
         
         self.tableView.reloadData()
     }
     
-    func getAllFriends(){
+    @objc func getAllFriends(){
         let user = loadData()
         let account = user.account
         requestParam["action"] = "getAllFriends"
@@ -53,13 +71,13 @@ class AddFriendListTableViewController: UITableViewController {
                     if let result = try? JSONDecoder().decode([CreateTripFriends].self, from: data!) {
                         self.friendList = result
                         
-                        
-                      
                         DispatchQueue.main.async {
                             if let control = self.tableView.refreshControl {
+                                self.activityIndicatorView.stopAnimating()
                                 if control.isRefreshing {
                                     // 停止下拉更新動作
                                     control.endRefreshing()
+                                    self.tableView.setEmptyView(title: "No friends to show.", message: "", messageImage: UIImage(named: "friendship")!)
                                 }
                             }
                             /* 抓到資料後重刷table view */

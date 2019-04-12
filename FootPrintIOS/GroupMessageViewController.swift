@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupMessageViewController: UIViewController,UITableViewDataSource {
+class GroupMessageViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     var trips: Trip!
     var chatmessages = [ChatMessage]()
@@ -47,7 +47,9 @@ class GroupMessageViewController: UIViewController,UITableViewDataSource {
                     // print("input: \(String(data: data!, encoding: .utf8)!)")
                     if let result = try? JSONDecoder().decode([ChatMessage].self, from: data!){
                         self.chatmessages = result
+                        
                         DispatchQueue.main.async {
+                            
                             /* 抓到資料後重刷table view */
                             self.tv_tableView.reloadData()
                             /* 捲動到最下面 */

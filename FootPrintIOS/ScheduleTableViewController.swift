@@ -10,9 +10,16 @@ import UIKit
 
 class ScheduleTableViewController: UITableViewController {
     
-    
+    var activityIndicatorView: UIActivityIndicatorView!
     var trips = [Trip]()
     let url_server = URL(string: common_url + "/TripServlet")
+    
+    
+    override func loadView() {
+        super.loadView()
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        tableView.backgroundView = activityIndicatorView
+    }
     
     
     override func viewDidLoad() {
@@ -29,6 +36,9 @@ class ScheduleTableViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         showAllTrips()
+        if trips.count == 0 {
+            activityIndicatorView.startAnimating()
+        }
     }
     @objc func showAllTrips() {
         let user = loadData()
@@ -47,15 +57,17 @@ class ScheduleTableViewController: UITableViewController {
                     
                     if let result = try? JSONDecoder().decode([Trip].self, from: data!) {
                         self.trips = result
-                        self.trips.reverse()
-                        _ = try? JSONDecoder().decode(String.self, from: data!)
-                        
-
+//                        self.trips.reverse()
+//                        _ = try? JSONDecoder().decode(String.self, from: data!)
+            
                         DispatchQueue.main.async {
                             if let control = self.tableView.refreshControl {
+                                self.activityIndicatorView.stopAnimating()
+                                self.tableView.setEmptyView(title: "You don't have any trip.", message: "Start creating your trip", messageImage: UIImage(named: "airplane1")!)
                                 if control.isRefreshing {
                                     // 停止下拉更新動作
                                     control.endRefreshing()
+                                    
                                 }
                             }
                             /* 抓到資料後重刷table view */
@@ -89,6 +101,7 @@ class ScheduleTableViewController: UITableViewController {
         cell.photoButton.tag = indexPath.row
         cell.messageButton.tag = indexPath.row
         cell.shareButton.tag = indexPath.row
+        cell.friendButton.tag = indexPath.row
 //        cell.trips = trip
         // 尚未取得圖片，另外開啟task請求
         var requestParam = [String: Any]()
@@ -352,3 +365,5 @@ extension UIView {
         return image!
     }
 }
+
+

@@ -11,6 +11,7 @@ import UIKit
 class ScheduleTableViewCell: UITableViewCell {
 
     
+    @IBOutlet weak var friendButton: UIButton!
     @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var photoButton: UIButton!
     

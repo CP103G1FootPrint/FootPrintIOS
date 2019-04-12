@@ -13,7 +13,8 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     var requestParam = [String: String]()
     var tripfriend = [String]()
     let url_server = URL(string: common_url + "/TripServlet")
-    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var imageButton: UIButton!
     @IBOutlet weak var dayPicker: UITextField!
     @IBOutlet weak var datePickerTextFild: UITextField!
     @IBOutlet weak var tripNameTextFild: UITextField!
@@ -41,7 +42,8 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let tripImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             image = tripImage
-            imageView.image = tripImage
+            imageButton.setImage(tripImage, for: .normal)
+            
         }
         dismiss(animated: true, completion: nil)
     }
@@ -211,7 +213,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         requestParam["trip"] = try! String(data: JSONEncoder().encode(trip), encoding: .utf8) //主轉成jason 字串 只有文字沒有圖
         // 有圖才上傳 圖轉乘的imageBase64 字串
         if self.image != nil {
-            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
+            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 0.5)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
         }
         executeTask(self.url_server!, requestParam) { (data, response, error) in
             if error == nil {

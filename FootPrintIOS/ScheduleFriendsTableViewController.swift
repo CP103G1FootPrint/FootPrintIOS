@@ -9,18 +9,17 @@
 import UIKit
 
 class ScheduleFriendsTableViewController: UITableViewController {
+    
     var trips: Trip!
-    var friend:String?
-    var less:String?
     var requestParam = [String: Any]()
     
     var friendList = [Friends]()
-    var list_item = [String]()//ㄑ全部朋友
+    var list_item = [String]()//全部朋友
     var trip_item = [String]()
-    var addfriend = [String]()
-    var oldFriend = [String]()
+    var addfriend = [String]()//勾選加入行程好友
+    var oldFriend = [String]()//已存在群組行程內的好友
     
-    var final = [String]()
+    var final = [String]()//全部好友扣掉已在行程內的好友
     
    
     
@@ -36,116 +35,177 @@ class ScheduleFriendsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
 //        getTripFriends()
         getAllFriends()
-        
-        
         self.tableView.reloadData()
     }
     
     func getAllFriends(){
+//        let q = DispatchQueue(label: "q")
+//        q.sync {
+        
+        
         let user = loadData()
         let account = user.account
         let url_server = URL(string: common_url + "/FriendsServlet")
         requestParam["action"] = "getAllFriends"
         requestParam["userId"] = account
-        executeTask(url_server!, requestParam) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
-                    if let result = try? JSONDecoder().decode([Friends].self, from: data!) {
-                        
-                        self.friendList = result
-                        for itemFirst in self.friendList{
-                            if itemFirst.invitee != account{
-                                //                                x.app[itemFirst.invitee]
-                                self.list_item.append(itemFirst.invitee!)
-                            }else{
-                                //                                x.app[itemFirst.inviter]
-                                self.list_item.append(itemFirst.inviter!)
-                            }
-                        }
-                        
-                        print("5555 \(self.list_item)")
-                        
         
-                        DispatchQueue.main.async {
-                            if let control = self.tableView.refreshControl {
-                                if control.isRefreshing {
-                                    // 停止下拉更新動作
-                                    control.endRefreshing()
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        // 將輸入資料列印出來除錯用
+                        print("input3: \(String(data: data!, encoding: .utf8)!)")
+                        if let result = try? JSONDecoder().decode([Friends].self, from: data!) {
+                            
+                            self.friendList = result
+                            for itemFirst in self.friendList{
+                                if itemFirst.invitee != account{
+                                    //                                x.app[itemFirst.invitee]
+                                    self.list_item.append(itemFirst.invitee!)
+                                }else{
+                                    //                                x.app[itemFirst.inviter]
+                                    self.list_item.append(itemFirst.inviter!)
                                 }
                             }
-                            /* 抓到資料後重刷table view */
-                            self.tableView.reloadData()
-                        }
-                    }}
-            } else {
-                print(error!.localizedDescription)
+                            print("5555 \(self.list_item)")
+                            //                        DispatchQueue.main.async {
+                            //                            if let control = self.tableView.refreshControl {
+                            //                                if control.isRefreshing {
+                            //                                    // 停止下拉更新動作
+                            //                                    control.endRefreshing()
+                            //                                }
+                            //                            }
+                            //                            /* 抓到資料後重刷table view */
+                            //                            self.tableView.reloadData()
+                            //                        }
+                            print("ipip \(self.list_item)")
+                            let url_trip = URL(string: common_url + "/TripServlet")
+                            self.requestParam["action"] = "getTripFriends"
+                            self.requestParam["tripId"] = self.trips.tripID
+                            
+                            executeTask(url_trip!, self.requestParam) { (data, response, error) in
+                                if error == nil {
+                                    if data != nil {
+                                        // 將輸入資料列印出來除錯用
+                                        print("input1: \(String(data: data!, encoding: .utf8)!)")
+                                        if let result = try? JSONDecoder().decode([String].self, from: data!) {
+                                            self.oldFriend = result
+                                            if result.isEmpty {
+                                                self.final = self.list_item
+                                                print("input2: \(self.final)")
+                                                print("no tripfriends")
+                                                DispatchQueue.main.async {
+                                                    if let control = self.tableView.refreshControl {
+                                                        if control.isRefreshing {
+                                                            // 停止下拉更新動作
+                                                            control.endRefreshing()
+                                                        }
+                                                    }
+                                                    /* 抓到資料後重刷table view */
+                                                    self.tableView.reloadData()
+                                                }
+                                                
+                                                
+                                            }else{
+                                                //移除creatID
+//                                                self.trip_item = [self.oldFriend.remove(at: 1)]
+                                                // array轉set
+//                                                print("trip_item:: \(self.trip_item)")
+                                                let set1FromArr = Set(self.oldFriend)
+//                                                print("list_item:: \(self.list_item)")
+                                                let set2FromArr = Set(self.list_item)
+                                                let set3 = set2FromArr.subtracting(set1FromArr).sorted()
+//                                                let differenceSet = set2FromArr.symmetricDifference(set1FromArr)
+                                                //set轉array
+                                                self.final = Array(set3)
+                                                print("rrr \(set3)")
+                                                
+                                                //                        let all = self.list_item + self.trip_item
+                                                //                        print("222 \(all)")
+                                                //                        self.final = all.removingDuplicates()
+                                                //                        print("0000 \(self.final)")
+                                                
+                                                DispatchQueue.main.async {
+                                                    if let control = self.tableView.refreshControl {
+                                                        if control.isRefreshing {
+                                                            // 停止下拉更新動作
+                                                            control.endRefreshing()
+                                                        }
+                                                    }
+                                                    /* 抓到資料後重刷table view */
+                                                    self.tableView.reloadData()
+                                                }
+                                            }}
+                                    }
+                                } else {
+                                    print(error!.localizedDescription)
+                                }
+                            }
+                        }}
+                } else {
+                    print(error!.localizedDescription)
+                }
             }
-        }
+//        }
         
-        let url_trip = URL(string: common_url + "/TripServlet")
-        requestParam["action"] = "getTripFriends"
-        requestParam["tripId"] = trips.tripID
-        executeTask(url_trip!, requestParam) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
-                    if let result = try? JSONDecoder().decode([String].self, from: data!) {
-                        self.oldFriend = result
-//                        for itemSe in self.oldFriend{
-//                            if itemSe != account{
-//                                self.trip_item.append(itemSe)
+//        print("ipip \(self.list_item)")
+//        let url_trip = URL(string: common_url + "/TripServlet")
+//        requestParam["action"] = "getTripFriends"
+//        requestParam["tripId"] = trips.tripID
+//
+//            executeTask(url_trip!, self.requestParam) { (data, response, error) in
+//                if error == nil {
+//                    if data != nil {
+//                        // 將輸入資料列印出來除錯用
+//                        print("input1: \(String(data: data!, encoding: .utf8)!)")
+//                        if let result = try? JSONDecoder().decode([String].self, from: data!) {
+//                            self.oldFriend = result
+//                            if result.isEmpty {
+//                                self.final = self.list_item
+//                                print("input2: \(self.list_item)")
+//                                print("no tripfriends")
+//
+//
 //                            }else{
-//                                break
-//                            }
-//                        }
-                        
-                        self.trip_item = [self.oldFriend.remove(at: 1)]
-                        
-                        
-                        print("rrr \(self.trip_item)")
-                        
-                        let all = self.list_item + self.trip_item
-                        print("222 \(all)")
-                        self.final = all.removingDuplicates()
-                        print("0000 \(self.final)")
-                        
-                        
-                        
-                        DispatchQueue.main.async {
-                            if let control = self.tableView.refreshControl {
-                                if control.isRefreshing {
-                                    // 停止下拉更新動作
-                                    control.endRefreshing()
-                                }
-                            }
-                            /* 抓到資料後重刷table view */
-                            self.tableView.reloadData()
-                        }
-                    }}
-            } else {
-                print(error!.localizedDescription)
-            }
-        }
+//                                //移除creatID
+//                                self.trip_item = [self.oldFriend.remove(at: 1)]
+//                                // array轉set
+//                                let set1FromArr = Set(self.trip_item)
+//                                let set2FromArr = Set(self.list_item)
+//                                let differenceSet = set2FromArr.symmetricDifference(set1FromArr)
+//                                //set轉array
+//                                self.final = Array(differenceSet)
+//
+//
+//                                print("rrr \(differenceSet)")
+//
+//                                //                        let all = self.list_item + self.trip_item
+//                                //                        print("222 \(all)")
+//                                //                        self.final = all.removingDuplicates()
+//                                //                        print("0000 \(self.final)")
+//
+//                                DispatchQueue.main.async {
+//                                    if let control = self.tableView.refreshControl {
+//                                        if control.isRefreshing {
+//                                            // 停止下拉更新動作
+//                                            control.endRefreshing()
+//                                        }
+//                                    }
+//                                    /* 抓到資料後重刷table view */
+//                                    self.tableView.reloadData()
+//                                }
+//                            }}
+//                    }
+//                } else {
+//                    print(error!.localizedDescription)
+//                }
+//        }
         
-        
+       
         
     }
     
     
-//    func getTripFriends(){
-//        //        //抓取已加入行程好友
-//        let user = loadData()
-//        let account = user.account
-//
-//    }
     
-    
-
-    
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
@@ -166,12 +226,6 @@ class ScheduleFriendsTableViewController: UITableViewController {
 //            return friend
 //        }
         
-       
-//        print("321\(indexPath.row)")
-//        print("123\(list_item[indexPath.row])")
-//
-//
-//
 //        let b = list_item.filter{$0 != oldFriend[indexPath.row].invitee }
 //        less = b.joined(separator:",")
 //        let friend = final.
