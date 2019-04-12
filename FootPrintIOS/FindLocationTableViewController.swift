@@ -60,7 +60,7 @@ class FindLocationTableViewController: UITableViewController, UISearchResultsUpd
     
     //取得所有地標
     func findAllLocationInfo(_ searchController:UISearchController) {
-        let url_server = URL(string: common_url + "/LocationServlet")
+        let url_server = URL(string: common_url + "LocationServlet")
         var requestParam = [String: Any]()
         requestParam["action"] = "All"
         executeTask(url_server!, requestParam) { (data, response, error) in

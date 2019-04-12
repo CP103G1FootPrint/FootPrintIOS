@@ -34,7 +34,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     //地圖設定
     func setMapRegion() {
-        let span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         var region = MKCoordinateRegion()
         region.span = span
         appleMapView.setRegion(region, animated: true)
@@ -62,7 +62,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         annotationView?.canShowCallout = true
         //圖針樣式
-        annotationView?.image = UIImage(named: "pin_drop")
+        annotationView?.image = UIImage(named: "placeholder")
         /* 預設圖示中心點會在地點上，應改成圖示底部對齊地點，負值代表向上移動 */
         let height = annotationView?.frame.height
         annotationView?.centerOffset = CGPoint(x: 0, y: -(height!) / 2)
@@ -110,7 +110,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     //取得所有地標
     func findAllLocationInfo() {
-        let url_server = URL(string: common_url + "/LocationServlet")
+        let url_server = URL(string: common_url + "LocationServlet")
         var requestParam = [String: Any]()
         requestParam["action"] = "AllwithStar"
         executeTask(url_server!, requestParam) { (data, response, error) in

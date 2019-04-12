@@ -111,7 +111,7 @@ class NearLocationTableViewController: UITableViewController {
     
     //取得地標圖片
     func findImage(_ landMarkID:Int, _ cell:NearLocationTableViewCell) {
-        let url_server = URL(string: common_url + "/LocationServlet")
+        let url_server = URL(string: common_url + "LocationServlet")
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
         requestParam["id"] = landMarkID
@@ -138,7 +138,7 @@ class NearLocationTableViewController: UITableViewController {
     
     //取得使用者附近地標
     func findNearLocationInfo( _ latitude:Double, _ longitude:Double) {
-        let url_server = URL(string: common_url + "/LocationServlet")
+        let url_server = URL(string: common_url + "LocationServlet")
         var requestParam = [String: Any]()
         requestParam["action"] = "nearByMySelf"
         requestParam["latitude"] = latitude
@@ -169,7 +169,7 @@ class NearLocationTableViewController: UITableViewController {
     
     //取得所有地標
     func findAllLocationInfo() {
-        let url_server = URL(string: common_url + "/LocationServlet")
+        let url_server = URL(string: common_url + "LocationServlet")
         var requestParam = [String: Any]()
         requestParam["action"] = "All"
         executeTask(url_server!, requestParam) { (data, response, error) in

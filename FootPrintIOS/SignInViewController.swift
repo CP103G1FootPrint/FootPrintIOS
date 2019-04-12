@@ -12,7 +12,7 @@ import FBSDKLoginKit
 
 class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-    let url_server = URL(string: common_url + "/AccountServlet")
+    let url_server = URL(string: common_url + "AccountServlet")
     var account:String? = ""
     var password:String? = ""
     
@@ -21,7 +21,8 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var passwordTextFild: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let a:URL  = URL(string: common_url )!
+        print("123=\(String(describing: a))")
         fbButton.readPermissions = ["email"]
         fbButton.delegate = self
         
@@ -52,6 +53,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
         requestParam["action"] = "accountValid"
         requestParam["userId"] = account
         requestParam["password"] = password
+        let url_server = URL(string: common_url + "/AccountServlet")
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -140,7 +142,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                         //                        print(text)
                         //檢查資料庫FB使用者帳號是否已申請
                         var requestParam = [String: Any]()
-                        let url_server = URL(string: common_url + "/AccountServlet")
+                        let url_server = URL(string: common_url + "AccountServlet")
                         requestParam["action"] = "accountValidFB"
                         requestParam["userId"] = id
                         requestParam["fbId"] = 1
@@ -209,7 +211,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     //取得使用者資訊
     func findUserInfo(account:String) {
-        let url_server = URL(string: common_url + "/AccountServlet")
+        let url_server = URL(string: common_url + "AccountServlet")
         var requestParam = [String: String]()
         requestParam["action"] = "findSelfInfo"
         requestParam["id"] = account
@@ -233,7 +235,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     //取得使用者頭像
     func findUserHead(account:String) {
-        let url_server = URL(string: common_url + "/AccountServlet")
+        let url_server = URL(string: common_url + "AccountServlet")
         var requestParam = [String: Any]()
         requestParam["action"] = "headImage"
         requestParam["userId"] = account
@@ -276,7 +278,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     //新增使用者資訊fb
     func insertUserFB(account:Account,image:UIImage) {
         var requestParam = [String: String]()
-        let url_server = URL(string: common_url + "/AccountServlet")
+        let url_server = URL(string: common_url + "AccountServlet")
         requestParam["action"] = "accountInsert"
         requestParam["account"] = try! String(data: JSONEncoder().encode(account), encoding: .utf8)
         requestParam["imageBase64"] = image.jpegData(compressionQuality: 1.0)!.base64EncodedString()

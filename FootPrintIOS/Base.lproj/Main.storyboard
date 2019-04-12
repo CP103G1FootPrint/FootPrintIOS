@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1CD-5F-dBq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1CD-5F-dBq">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.47"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -305,9 +305,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign.png" translatesAutoresizingMaskIntoConstraints="NO" id="WRw-f5-tb5">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Z8d-Q1-cg9" appends="YES" id="tKq-PL-hZe"/>
-                                </connections>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7CL-iv-dji">
                                 <rect key="frame" x="50" y="541.5" width="314" height="300.5"/>
@@ -382,6 +379,9 @@
                             <constraint firstItem="WRw-f5-tb5" firstAttribute="leading" secondItem="yQq-37-FaC" secondAttribute="leading" id="zqs-QC-ZNP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lJ5-Rr-8uk"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Z8d-Q1-cg9" appends="YES" id="4Md-cf-uYm"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="accountTextFild" destination="8FC-xd-Oa4" id="jAh-v8-r2C"/>
