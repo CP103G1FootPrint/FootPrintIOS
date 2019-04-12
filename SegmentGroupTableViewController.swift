@@ -268,7 +268,6 @@ class SegmentGroupTableViewController: UITableViewController {
             navigationController?.pushViewController(controller, animated: true)
             //            present(controller,animated: true,completion: nil)
         }
-        
     }
     
     @IBAction func messageButtonClick(_ sender:UIButton) {
@@ -346,9 +345,7 @@ class SegmentGroupTableViewController: UITableViewController {
     }
     */
     }
-    
-    
-    
+ 
 }
 //客制tableView 往左滑UIView
 //extension UIView {
