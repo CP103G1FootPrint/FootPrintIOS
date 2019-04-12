@@ -72,20 +72,22 @@ class LandMarkDetailViewController: UIViewController,UICollectionViewDelegate, U
     //collection layout setting
     func collectionViewSetting() {
         //設置上下左右的間距
-        landMarkImageCollectionLayout.sectionInset = UIEdgeInsets(top: 5, left: 2, bottom: 5, right: 2)
+        landMarkImageCollectionLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //設置Cell的size，在func viewDidLoad()外面宣告 let fullScreenSize = UIScreen.main.bounds.size，來得到手機螢幕的大小
-        landMarkImageCollectionLayout.itemSize = CGSize(width: fullScreenSize.width/3 - 4, height: 100)
+        landMarkImageCollectionLayout.itemSize = CGSize(width: (fullScreenSize.width)/2 - 25, height: (fullScreenSize.width)/2)
         //設置cell與cell的間距
+        landMarkImageCollectionLayout.minimumLineSpacing = 0
+        //上下CELL間距
         landMarkImageCollectionLayout.minimumLineSpacing = 5
         //vertical為上下捲動，horizontal為左右捲動
         landMarkImageCollectionLayout.scrollDirection = .vertical
         //設置header的尺寸
-        landMarkImageCollectionLayout.headerReferenceSize = CGSize(width: fullScreenSize.width, height: 40)
+//        landMarkImageCollectionLayout.headerReferenceSize = CGSize(width: fullScreenSize.width, height: 40)
     }
     
     //找出地標裡所有照片id
     func getImagesId(_ landMarkId : Int) {
-        let url_server = URL(string: common_url + "/LocationServlet")
+        let url_server = URL(string: common_url + "LocationServlet")
         var requestParam = [String: Any]()
         requestParam["action"] = "findImageId"
         requestParam["id"] = landMarkId

@@ -52,15 +52,15 @@ class LandMarkImagesTableViewController: UITableViewController {
         let location = locationinfo[indexPath.row]
         cell.userNameUILabel.text = location.nickName
         findLocationImage(location.imageID!, cell)
-        DispatchQueue.main.async {
-            self.findImageHead(location.account!, cell)
-        }
+        
+            findImageHead(location.account!, cell)
+        
         return cell
     }
     
     //取得所有地標
     func findAllLocationInfo(_ locationId:Int) {
-        let url_server = URL(string: common_url + "/LocationServlet")
+        let url_server = URL(string: common_url + "LocationServlet")
         var requestParam = [String: Any]()
         requestParam["action"] = "findImageAndUserNickName"
         requestParam["id"] = locationId
@@ -90,11 +90,11 @@ class LandMarkImagesTableViewController: UITableViewController {
 
     //取得頭像圖片
     func findImageHead(_ landMarkID:String, _ cell:LandMarkImagesTableViewCell) {
-        let url_server3 = URL(string: common_url + "/AccountServlet")
+        let url_server3 = URL(string: common_url + "AccountServlet")
         var requestParam3 = [String: Any]()
-        requestParam3["action1"] = "headImage"
-        requestParam3["id1"] = landMarkID
-        requestParam3["imageSize1"] = 512
+        requestParam3["action"] = "headImage"
+        requestParam3["userId"] = landMarkID
+        requestParam3["imageSize"] = 512
         //        requestParam["imageSize"] = "\(UIScreen.main.bounds)"
         var image: UIImage?
         executeTask(url_server3!, requestParam3) { (data, response, error) in
@@ -117,7 +117,7 @@ class LandMarkImagesTableViewController: UITableViewController {
     
     //取得圖片
     func findLocationImage(_ landMarkID:Int, _ cell:LandMarkImagesTableViewCell) {
-        let url_server2 = URL(string: common_url + "/LocationServlet")
+        let url_server2 = URL(string: common_url + "LocationServlet")
         var requestParam2 = [String: Any]()
         requestParam2["action"] = "getInfoImage"
         requestParam2["id"] = landMarkID
