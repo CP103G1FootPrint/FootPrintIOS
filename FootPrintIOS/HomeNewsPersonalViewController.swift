@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeNewsPersonalViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var iv_HeadPicture: UIImageView!
     @IBOutlet weak var lb_Userid: UILabel!
@@ -48,19 +48,24 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         //設置header的尺寸
         collectionlayout.headerReferenceSize = CGSize(width: fullScreenSize.width, height: 40)
         
+        getAllPicturesId()
+
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        getAllPicturesId()
+        
+        super.viewWillAppear(animated)
+        
         if user.account == news.userID{
-            
+
         }else{
             let url_server = URL(string: common_url + "FriendsServlet")
             var requestparam = [String:String]()
             requestparam["action"] = "findFriendId"
             requestparam["userId"] = user.account
             requestparam["inviteeId"] = news.userID
-            
+
             executeTask(url_server!, requestparam) { (data, response, error) in
                 if error == nil{
                     if data != nil{
@@ -106,6 +111,7 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
     
     
     @objc func getAllPicturesId() {
+        
         let url_server = URL(string: common_url + "PicturesServlet")
         var requestParam = [String: String]()
         requestParam["action"] = "findPersonalImageId"
@@ -116,6 +122,10 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
 //                  print("input: \(String(data: data!, encoding: .utf8)!)")
                     if let result = try? JSONDecoder().decode([PersonalPicture].self, from: data!){
                         self.pictures = result
+                        print("pic count", self.pictures.count)
+                        self.pictures.forEach({ (pic) in
+                            print(pic.imageID)
+                        })
                         DispatchQueue.main.async {
                             self.tableview.reloadData()
                         }
@@ -140,8 +150,12 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
         requestParam["id"] = picture.imageID
+        // requestParam["id"] = 7
+        print("cellForItemAt ", picture.imageID)
         requestParam["imageSize"] = cell.frame.width
+        cell.tag = indexPath.item
 //        var image: UIImage?
+        
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -152,7 +166,10 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
                     self.image = UIImage(named: "noImage.jpg")
                 }
                 DispatchQueue.main.async {
-                    cell.iv_Pictures.image = self.image
+                    if cell.tag == indexPath.item {
+                        cell.iv_Pictures.image = self.image
+
+                    }
                 }
             }else{
                 print(error!.localizedDescription)

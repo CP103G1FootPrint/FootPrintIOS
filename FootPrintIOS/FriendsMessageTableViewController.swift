@@ -19,7 +19,6 @@ class FriendsMessageTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
-        
 //        let friendViewController = parent as? FriendViewController
 //        friends = friendViewController!.friends
 //        for i in 0 ..< friends.count{

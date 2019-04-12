@@ -73,6 +73,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmJ-vx-Vwt">
                                                     <rect key="frame" x="100" y="16.5" width="30" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <connections>
+                                                        <action selector="bt_LandMark:" destination="0JS-4F-tZc" eventType="touchUpInside" id="GcD-c6-PIb"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -316,7 +319,6 @@
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="iMK-eK-zPM" id="ZzT-HI-HxK"/>
-                                    <outlet property="delegate" destination="iMK-eK-zPM" id="gRv-Wj-fTd"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -820,7 +822,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dI-nl-lAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5145" y="1398"/>
+            <point key="canvasLocation" x="5013" y="1398"/>
         </scene>
         <!--Add Friend View Controller-->
         <scene sceneID="rkH-I8-OmW">
