@@ -131,7 +131,7 @@ class ScheduleTableViewController: UITableViewController {
                         self.imageDic[trip.tripID!] = image
                     }
                     if image == nil {
-                        image = UIImage(named: "noImage.jpg")
+                        image = UIImage(named: "noimage.jpg")
                     }
                     DispatchQueue.main.async { cell.photoImageView.image = image }
                 } else {
