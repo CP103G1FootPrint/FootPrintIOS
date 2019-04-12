@@ -12,6 +12,7 @@
 		022022EF225237C600856352 /* AccountCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022022EE225237C600856352 /* AccountCreateViewController.swift */; };
 		022022F12252390900856352 /* facebook_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 022022F02252390900856352 /* facebook_logo.png */; };
 		022022F32252391300856352 /* 375.png in Resources */ = {isa = PBXBuildFile; fileRef = 022022F22252391200856352 /* 375.png */; };
+		02627CE7225E38D4006CC749 /* FindLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02627CE6225E38D4006CC749 /* FindLocationViewController.swift */; };
 		027A64D42252F5A8002476D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027A64D32252F5A8002476D4 /* AppDelegate.swift */; };
 		027DFC1122327F1F00E9E097 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027DFC1022327F1F00E9E097 /* MapViewController.swift */; };
 		0283E997225B916E00F491B4 /* LandMarkImagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283E996225B916E00F491B4 /* LandMarkImagesTableViewController.swift */; };
@@ -113,6 +114,7 @@
 		022022EE225237C600856352 /* AccountCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreateViewController.swift; sourceTree = "<group>"; };
 		022022F02252390900856352 /* facebook_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_logo.png; sourceTree = "<group>"; };
 		022022F22252391200856352 /* 375.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 375.png; sourceTree = "<group>"; };
+		02627CE6225E38D4006CC749 /* FindLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationViewController.swift; sourceTree = "<group>"; };
 		027A64D32252F5A8002476D4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		027DFC1022327F1F00E9E097 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0283E996225B916E00F491B4 /* LandMarkImagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMarkImagesTableViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				028DDF3C22544266006DD7EB /* CameraImage.swift */,
 				020777F422571232001BE30A /* FindLocationTableViewCell.swift */,
 				020777F62257126E001BE30A /* FindLocationTableViewController.swift */,
+				02627CE6225E38D4006CC749 /* FindLocationViewController.swift */,
 			);
 			name = Camera;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				AF0BD19F222F6F66006FC80A /* ScheduleTableViewController.swift in Sources */,
 				028DDF3D22544266006DD7EB /* CameraImage.swift in Sources */,
 				AFB16070224E1A8400F675E5 /* SelfieEditVC.swift in Sources */,
+				02627CE7225E38D4006CC749 /* FindLocationViewController.swift in Sources */,
 				D4A773A82250F6A500C3867C /* HomeNewsPersonalViewController.swift in Sources */,
 				AF47E682223B8BA8007AD656 /* News.swift in Sources */,
 				AF2E00EA2234FAFA006B9A5A /* ScheduleTableViewCell.swift in Sources */,
@@ -896,8 +900,9 @@
 			baseConfigurationReference = DF80EA61C6992E8299C98CC6 /* Pods-FootPrintIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CRYR872K7A;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -906,6 +911,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lulu.FootPrintIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -916,8 +922,9 @@
 			baseConfigurationReference = EB4D1211BFB6E43D4D846DEE /* Pods-FootPrintIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CRYR872K7A;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -926,6 +933,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lulu.FootPrintIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

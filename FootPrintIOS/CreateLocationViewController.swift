@@ -213,7 +213,7 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
     //新增地標
     func insertLandMark(landMark:LandMark) {
         var requestParam = [String: String]()
-        let url_server = URL(string: common_url + "/LocationServlet")
+        let url_server = URL(string: common_url + "LocationServlet")
         requestParam["action"] = "landMarkInsert"
         requestParam["landMark"] = try! String(data: JSONEncoder().encode(landMark), encoding: .utf8)
         //1.0品質最好 0.0品質最差
@@ -221,7 +221,7 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
-                    // print("input: \(String(data: data!, encoding: .utf8)!)")
+                     print("input: \(String(data: data!, encoding: .utf8)!)")
                     if let result = String(data: data!, encoding: .utf8) {
                         if let count = Int(result) {
                             if count != 0 {
@@ -239,7 +239,7 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
     //新增地標
     func findLandMarkID() {
         var requestParam = [String: String]()
-        let url_server = URL(string: common_url + "/LocationServlet")
+        let url_server = URL(string: common_url + "LocationServlet")
         requestParam["action"] = "findLandMarkLastId"
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
