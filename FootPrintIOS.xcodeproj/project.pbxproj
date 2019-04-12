@@ -71,7 +71,6 @@
 		AFB1606A224E19B300F675E5 /* PersonalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB16069224E19B300F675E5 /* PersonalVC.swift */; };
 		AFB1606C224E19DF00F675E5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB1606B224E19DF00F675E5 /* User.swift */; };
 		AFB1606E224E1A4700F675E5 /* PersonalSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB1606D224E1A4700F675E5 /* PersonalSettingVC.swift */; };
-		AFB16070224E1A8400F675E5 /* SelfieEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB1606F224E1A8400F675E5 /* SelfieEditVC.swift */; };
 		AFB16073224E289100F675E5 /* PersonalNotifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB16072224E289100F675E5 /* PersonalNotifyVC.swift */; };
 		AFB16076224E28E800F675E5 /* PersonalCollectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB16075224E28E800F675E5 /* PersonalCollectVC.swift */; };
 		AFB16079224E295300F675E5 /* ExchangeGoods.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB16078224E295300F675E5 /* ExchangeGoods.swift */; };
@@ -174,7 +173,6 @@
 		AFB16069224E19B300F675E5 /* PersonalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVC.swift; sourceTree = "<group>"; };
 		AFB1606B224E19DF00F675E5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AFB1606D224E1A4700F675E5 /* PersonalSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSettingVC.swift; sourceTree = "<group>"; };
-		AFB1606F224E1A8400F675E5 /* SelfieEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieEditVC.swift; sourceTree = "<group>"; };
 		AFB16072224E289100F675E5 /* PersonalNotifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalNotifyVC.swift; sourceTree = "<group>"; };
 		AFB16075224E28E800F675E5 /* PersonalCollectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCollectVC.swift; sourceTree = "<group>"; };
 		AFB16078224E295300F675E5 /* ExchangeGoods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeGoods.swift; sourceTree = "<group>"; };
@@ -392,7 +390,6 @@
 				AFB16069224E19B300F675E5 /* PersonalVC.swift */,
 				AFB1606B224E19DF00F675E5 /* User.swift */,
 				AFB1606D224E1A4700F675E5 /* PersonalSettingVC.swift */,
-				AFB1606F224E1A8400F675E5 /* SelfieEditVC.swift */,
 			);
 			name = Personal;
 			sourceTree = "<group>";
@@ -678,7 +675,6 @@
 				D4A773B32252079D00C3867C /* FriendViewController.swift in Sources */,
 				AF0BD19F222F6F66006FC80A /* ScheduleTableViewController.swift in Sources */,
 				028DDF3D22544266006DD7EB /* CameraImage.swift in Sources */,
-				AFB16070224E1A8400F675E5 /* SelfieEditVC.swift in Sources */,
 				D4A773A82250F6A500C3867C /* HomeNewsPersonalViewController.swift in Sources */,
 				AF47E682223B8BA8007AD656 /* News.swift in Sources */,
 				AF2E00EA2234FAFA006B9A5A /* ScheduleTableViewCell.swift in Sources */,

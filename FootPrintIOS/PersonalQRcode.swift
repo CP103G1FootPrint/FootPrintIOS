@@ -15,7 +15,7 @@ class PersonalQRcode: UIViewController {
         super.viewDidLoad()
         lbproductName.text = productName!
         lbproductName.clipsToBounds = true
-        lbproductName.layer.cornerRadius = 30
+        lbproductName.layer.cornerRadius = 9
     }
     
     

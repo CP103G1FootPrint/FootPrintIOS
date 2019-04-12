@@ -75,7 +75,7 @@
         <!--PersonalStoryboard-->
         <scene sceneID="QWO-NZ-JUq">
             <objects>
-                <viewControllerPlaceholder storyboardName="PersonalStoryboard" id="8Hg-M2-MPH" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="personalTab" storyboardName="PersonalStoryboard" id="8Hg-M2-MPH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Sub-qp-8b0"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xtg-C4-M4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
