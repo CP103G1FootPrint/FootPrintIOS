@@ -29,7 +29,7 @@ class ChatViewController: UIViewController,UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "rightcell") as! RightChatTableViewCell
             cell.lb_ChatLabel.text  = friendMessage.content
             cell.lb_ChatLabel.layer.cornerRadius = 10
-//            cell.lb_ChatLabel.layer.borderWidth = 1
+//          cell.lb_ChatLabel.layer.borderWidth = 1
             cell.lb_ChatLabel.layer.masksToBounds = true
 
             return cell
@@ -39,7 +39,6 @@ class ChatViewController: UIViewController,UITableViewDataSource {
             
             cell.lb_ChatLabel.layer.cornerRadius = 10
             cell.lb_ChatLabel.layer.masksToBounds = true
-
 //            cell.lb_ChatLabel.layer.borderWidth = 1
             
             //抓取頭像
@@ -174,4 +173,9 @@ class ChatViewController: UIViewController,UITableViewDataSource {
             }
         }
     }
+    
+    
+    
+    
+    
 }
