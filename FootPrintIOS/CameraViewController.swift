@@ -25,12 +25,6 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-
-
-
-        
-        
         //locationManager
         locationManagers()
         
@@ -42,21 +36,21 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         //鍵盤
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let notificationName = Notification.Name("locationCreate")
-        NotificationCenter.default.addObserver(self, selector: #selector(songUpdated(noti:)), name: notificationName, object: nil)
-        
-//        showLocationUILabel.text = "999"
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
 
-
-//        print("ee \(String(describing: showLandMark?.address))")
+    }
+    
+    //Unwind segue
+    @IBAction func toresult(segue: UIStoryboardSegue) {
+        let notificationName = Notification.Name("locationCreate")
+        NotificationCenter.default.addObserver(self, selector: #selector(songUpdated(noti:)), name: notificationName, object: nil)
     }
 
     //選照片動作
@@ -89,7 +83,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         
         let user = loadData()
         
-//        let landMarkID = result?.id
+        let landMarkID = result?.id
         
         if newPostImage == nil {
             let text = "Image is empty"
@@ -175,7 +169,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
     //新增貼文
     func insertNewPost(cameraImage:CameraImage,image:UIImage) {
         var requestParam = [String: String]()
-        let url_server = URL(string: common_url + "/PictureServlet")
+        let url_server = URL(string: common_url + "PictureServlet")
         requestParam["action"] = "shareInsert"
         requestParam["share"] = try! String(data: JSONEncoder().encode(cameraImage), encoding: .utf8)
         requestParam["imageBase64"] = image.jpegData(compressionQuality: 1.0)!.base64EncodedString()
@@ -205,7 +199,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        let cameraViewController = segue.destination as? NearLocationTableViewController
+        let cameraViewController = segue.destination as? FindLocationViewController
         if gpslatitude != nil && gpslongitude != nil {
             cameraViewController?.requestParam["latitude"] = gpslatitude
             cameraViewController?.requestParam["longitude"] = gpslongitude
@@ -235,13 +229,10 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
             fromLocation = newLocation
             gpslatitude = fromLocation?.coordinate.latitude
             gpslongitude = fromLocation?.coordinate.longitude
-//            showLocationUILabel.text = "li \(String(describing: gpslatitude)) lo \(String(describing: gpslongitude))"
         }else {
-//            let line = fromLocation?.distance(from: locations.last!)
             fromLocation = locations.last!
             gpslatitude = fromLocation?.coordinate.latitude
             gpslongitude = fromLocation?.coordinate.longitude
-//            showLocationUILabel.text = "li \(String(describing: gpslatitude)) lo \(String(describing: gpslongitude))"
         }
     }
     
@@ -262,11 +253,9 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         result = noti.userInfo!["location"] as? LandMark
 //        showLocationUILabel.text = result?.address
         DispatchQueue.main.async {
-            self.showLocationUILabel.text = "555"
+            self.showLocationUILabel.text = self.result?.address
         }
-        
-        print(result?.address)
-        updateInfo()
+//        updateInfo()
     }
     
     override func didReceiveMemoryWarning() {

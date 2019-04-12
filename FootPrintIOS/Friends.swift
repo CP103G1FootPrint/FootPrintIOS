@@ -28,6 +28,12 @@ public class Friends: Codable{
         self.inviter = inviter
         self.invitee = invitee
     }
+    public init(_ inviter: String, _ invitee: String, _ message: String){
+        self.inviter = inviter
+        self.invitee = invitee
+        self.message = message
+
+    }
     
     public init(_ type: String, _ inviter: String, _ invitee: String, _ message: String, _ messageType: String){
         self.type = type

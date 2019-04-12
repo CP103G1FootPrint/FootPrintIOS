@@ -92,4 +92,21 @@ class FriendsViewController: UIViewController, UITableViewDataSource {
         }
         return cell
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "friendchat"{
+            let indexPath = self.tv_TableView.indexPath(for: sender as! UITableViewCell)
+            let friend = friends[indexPath!.row]
+            
+            let friendId:String
+            if friend.inviter == user.account{
+                friendId = friend.invitee!
+            }else{
+                friendId = friend.inviter!
+            }
+            let destination = segue.destination as! ChatViewController
+            let cell = tv_TableView.cellForRow(at: indexPath!) as? FriendShipListTableViewCell
+            destination.friend = friendId
+            destination.ng_Item.title = cell?.lb_NickName.text
+        }
+    }
 }

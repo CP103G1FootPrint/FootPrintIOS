@@ -17,6 +17,7 @@ class ChatViewController: UIViewController,UITableViewDataSource {
     let url_server = "ws://127.0.0.1:8080/FootPrint/ChatServer/"
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var tf_ChatMessage: UITextField!
+    @IBOutlet weak var ng_Item: UINavigationItem!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friendMessages.count

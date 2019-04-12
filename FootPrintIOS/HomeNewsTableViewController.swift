@@ -11,6 +11,7 @@ import UIKit
 class HomeNewsTableViewController: UITableViewController {
     var news = [News]()
     let user = loadData()
+    var imageDic = [Int : UIImage]()
 
     
     @IBOutlet weak var nv: UINavigationItem!
@@ -44,7 +45,6 @@ class HomeNewsTableViewController: UITableViewController {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
 //                    print("input: \(String(data: data!, encoding: .utf8)!)")
-                    
                     if let result = try? JSONDecoder().decode([News].self, from: data!) {
                         self.news = result
                         DispatchQueue.main.async {
@@ -58,8 +58,6 @@ class HomeNewsTableViewController: UITableViewController {
                             self.tableView.reloadData()
                         }
                     }
-//                    self.tableView.reloadData()
-
                 }
             } else {
                 print(error!.localizedDescription)
@@ -68,9 +66,7 @@ class HomeNewsTableViewController: UITableViewController {
     }
     
     @IBAction func bt_Like(_ sender: Any) {
-        
     }
-    
     
     /* UITableViewDataSource的方法，定義表格的區塊數，預設值為1 */
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -81,18 +77,27 @@ class HomeNewsTableViewController: UITableViewController {
         return news.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell") as! NewsTableViewCell
         let new = news[indexPath.row]
         
         let likes = Likes(user.account, new.imageID!)
+//        cell.iv_NewsPicture.image = nil
+//        cell.bt_HeadPicture.imageView = nil
         cell.like = likes
         cell.news = new
         cell.bt_Message.tag = indexPath.row
         cell.bt_HeadPicture.tag = indexPath.row
         cell.bt_LandMark.tag = indexPath.row
         cell.bt_NickName.tag = indexPath.row
+        
+        //存圖片
+        if let image = self.imageDic[new.imageID!]{
+            cell.iv_NewsPicture.image = image
+        }else{
+            cell.iv_NewsPicture.image = nil
+        
+        
         // 尚未取得圖片，另外開啟task請求
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
@@ -110,7 +115,6 @@ class HomeNewsTableViewController: UITableViewController {
                     image = UIImage(named: "noImage.jpg")
                 }
                 DispatchQueue.main.async { cell.iv_NewsPicture.image = image }
-                
             } else {
                 print(error!.localizedDescription)
             }
@@ -131,12 +135,13 @@ class HomeNewsTableViewController: UITableViewController {
                 }
                 DispatchQueue.main.async {
                     cell.bt_HeadPicture.setImage(headImage, for: .normal)
+                    //設定button圖案為圓形
                     cell.bt_HeadPicture.imageView?.layer.cornerRadius = cell.bt_HeadPicture.frame.width/2
                 }
-                //設定button為圓形
             } else {
                 print(error!.localizedDescription)
             }
+        }
         }
         
         cell.lb_LikesCount.text = new.likesCount + " people likes"
@@ -148,7 +153,6 @@ class HomeNewsTableViewController: UITableViewController {
         if new.likeId == 0{
             cell.bt_Like.isSelected = false
             cell.bt_Like.setImage(UIImage(named: "like-1"), for: .normal)
-            
         }else{
             cell.bt_Like.isSelected = true
             cell.bt_Like.setImage(UIImage(named: "like-2"), for: .normal)
@@ -182,7 +186,6 @@ class HomeNewsTableViewController: UITableViewController {
              controller.news = new
              controller.headimage = image
             navigationController?.pushViewController(controller, animated: true)
-
         }
         
     }
