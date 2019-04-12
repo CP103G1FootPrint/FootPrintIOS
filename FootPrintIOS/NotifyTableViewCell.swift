@@ -13,4 +13,6 @@ class NotifyTableViewCell: UITableViewCell {
     @IBOutlet weak var iv_HeadPicture: UIImageView!
     @IBOutlet weak var lb_UserNickName: UILabel!
     @IBOutlet weak var lb_Message: UILabel!
+    @IBOutlet weak var bt_Agree: UIButton!
+    @IBOutlet weak var bt_DissAgree: UIButton!
 }

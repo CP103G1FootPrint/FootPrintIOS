@@ -14,7 +14,7 @@ class FriendViewController: UIViewController, UIScrollViewDelegate{
     @IBOutlet weak var scrollViewController: UIScrollView!
     @IBOutlet weak var container_Friends: UIView!
     @IBOutlet weak var container_Message: UIView!
-//    let friendsViewController = FriendsViewController()
+    let friendsViewController = FriendsViewController()
     var tv_TableView: FriendsViewController?
     let user = loadData()
     var friends = [Friends]()
@@ -37,7 +37,11 @@ class FriendViewController: UIViewController, UIScrollViewDelegate{
         super.viewDidLoad()
 //        getAllFriends()
         scrollViewController.delegate = self
-        tv_TableView = storyboard?.instantiateViewController(withIdentifier: "FriendsViewController") as? FriendsViewController
+//        tv_TableView = storyboard?.instantiateViewController(withIdentifier: "FriendsViewController") as? FriendsViewController
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        self.friendsViewController.tv_TableView.reloadData()
     }
     
     @objc func getAllFriends(){
@@ -56,7 +60,11 @@ class FriendViewController: UIViewController, UIScrollViewDelegate{
                             self.friends = result
 //                            let tv_TableView = storyboard?.instantiateViewController(withIdentifier: "FriendsViewController") as! FriendsViewController
 //                            let tv_TableView = self.friendsViewController.tv_TableView
-//                            self.tv_TableView!.tv_TableView.reloadData()
+//                            DispatchQueue.main.async {
+//                                self.friendsViewController.tv_TableView.reloadData()
+////                            self.tv_TableView!.tv_TableView.reloadData()
+//                                print("123run")
+//                            }
 //                            print("123run")
             
 //                        self.serialQueue.sync {

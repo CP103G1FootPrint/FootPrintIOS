@@ -1090,7 +1090,7 @@
                     </view>
                     <connections>
                         <outlet property="iv_HeadPicture" destination="EXI-9m-waf" id="m3X-SM-l3c"/>
-                        <outlet property="tf_Message" destination="Y2m-Nk-9b6" id="ugc-oe-VZg"/>
+                        <outlet property="tf_Message" destination="Y2m-Nk-9b6" id="WYY-Lh-784"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUU-4D-uVk" userLabel="First Responder" sceneMemberID="firstResponder"/>

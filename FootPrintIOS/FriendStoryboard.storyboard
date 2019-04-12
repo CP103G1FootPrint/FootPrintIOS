@@ -156,6 +156,7 @@
                                         <connections>
                                             <outlet property="iv_HeadPicture" destination="KH1-uo-szm" id="Xah-qE-69f"/>
                                             <outlet property="lb_NickName" destination="j61-6Z-mI0" id="0TF-zR-oRw"/>
+                                            <segue destination="Pft-8f-I19" kind="show" identifier="friendchat" id="jaL-Ay-Ykh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -204,7 +205,7 @@
             </objects>
             <point key="canvasLocation" x="3473.913043478261" y="3158.3705357142858"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--Title-->
         <scene sceneID="bAd-qV-EiZ">
             <objects>
                 <viewController storyboardIdentifier="ChatViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pft-8f-I19" customClass="ChatViewController" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -212,7 +213,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="773"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-F8-HT8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v2D-F8-HT8">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="678"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -220,7 +221,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4HI-Kt-gdI" id="68u-rN-Wx3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdq-o2-Kpv">
@@ -246,7 +247,7 @@
                                         <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8hP-Wl-4lu" id="Fdr-4t-3n5">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PjU-CM-nUL">
@@ -296,18 +297,18 @@
                                 </connections>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iad-8v-ZIa">
-                                <rect key="frame" x="0.0" y="709" width="341" height="30"/>
+                                <rect key="frame" x="10" y="709" width="331" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="341" id="aE9-od-1Ap"/>
+                                    <constraint firstAttribute="width" constant="331" id="aE9-od-1Ap"/>
                                     <constraint firstAttribute="height" constant="30" id="j7h-01-iG7"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2w-ks-3yo">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2w-ks-3yo">
                                 <rect key="frame" x="349" y="708" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Button" image="send"/>
                                 <connections>
                                     <action selector="bt_Send:" destination="Pft-8f-I19" eventType="touchUpInside" id="Rnh-bY-cfV"/>
                                 </connections>
@@ -319,7 +320,7 @@
                             <constraint firstItem="S2w-ks-3yo" firstAttribute="leading" secondItem="Iad-8v-ZIa" secondAttribute="trailing" constant="8" id="Aie-Tb-kZa"/>
                             <constraint firstItem="v2D-F8-HT8" firstAttribute="trailing" secondItem="SFZ-vg-yk1" secondAttribute="trailing" id="EXR-ar-NJD"/>
                             <constraint firstItem="S2w-ks-3yo" firstAttribute="top" secondItem="v2D-F8-HT8" secondAttribute="bottom" constant="30" id="Jly-oE-tHK"/>
-                            <constraint firstItem="Iad-8v-ZIa" firstAttribute="leading" secondItem="SFZ-vg-yk1" secondAttribute="leading" id="NCf-Tr-mW4"/>
+                            <constraint firstItem="Iad-8v-ZIa" firstAttribute="leading" secondItem="SFZ-vg-yk1" secondAttribute="leading" constant="10" id="NCf-Tr-mW4"/>
                             <constraint firstItem="v2D-F8-HT8" firstAttribute="leading" secondItem="SFZ-vg-yk1" secondAttribute="leading" id="Uw1-Q9-HPv"/>
                             <constraint firstItem="SFZ-vg-yk1" firstAttribute="trailing" secondItem="S2w-ks-3yo" secondAttribute="trailing" constant="19" id="iXz-kd-ic3"/>
                             <constraint firstItem="Iad-8v-ZIa" firstAttribute="bottom" secondItem="SFZ-vg-yk1" secondAttribute="bottom" id="m7H-Sn-O3i"/>
@@ -328,14 +329,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SFZ-vg-yk1"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="LKO-LX-9eu"/>
                     <connections>
                         <outlet property="chatTableView" destination="v2D-F8-HT8" id="qF5-4L-gOM"/>
+                        <outlet property="ng_Item" destination="LKO-LX-9eu" id="uJQ-Vb-dhV"/>
                         <outlet property="tf_ChatMessage" destination="Iad-8v-ZIa" id="ath-EN-IuA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9k9-1t-uhU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3213.04347826087" y="3803.2366071428569"/>
+            <point key="canvasLocation" x="3777" y="3851"/>
         </scene>
         <!--Friends Message Table View Controller-->
         <scene sceneID="JSg-O9-rAt">
@@ -408,5 +411,9 @@
     </scenes>
     <resources>
         <image name="friendship" width="25" height="20"/>
+        <image name="send" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="jaL-Ay-Ykh"/>
+    </inferredMetricsTieBreakers>
 </document>

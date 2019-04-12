@@ -675,10 +675,16 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAL-kJ-Z7m">
                                                     <rect key="frame" x="324" y="31" width="31" height="30"/>
                                                     <state key="normal" title="確認"/>
+                                                    <connections>
+                                                        <action selector="bt_Agree:" destination="EIS-Hc-RtH" eventType="touchUpInside" id="XUf-cn-3ma"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nce-MF-WVd">
                                                     <rect key="frame" x="371" y="31" width="31" height="30"/>
                                                     <state key="normal" title="婉拒"/>
+                                                    <connections>
+                                                        <action selector="bt_DissAgree:" destination="EIS-Hc-RtH" eventType="touchUpInside" id="u9R-kx-l7U"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2L6-1d-4pn">
                                                     <rect key="frame" x="56" y="18" width="42" height="21"/>
@@ -707,6 +713,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bt_Agree" destination="PAL-kJ-Z7m" id="BVj-y7-ghE"/>
+                                            <outlet property="bt_DissAgree" destination="Nce-MF-WVd" id="Wcm-DP-nr1"/>
                                             <outlet property="iv_HeadPicture" destination="qQF-SL-R5R" id="lNf-fN-spZ"/>
                                             <outlet property="lb_Message" destination="jsq-M0-7Qh" id="ba6-JL-GhM"/>
                                             <outlet property="lb_UserNickName" destination="2L6-1d-4pn" id="6Sa-OX-eW6"/>
