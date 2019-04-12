@@ -11,7 +11,9 @@ class PersonalCollectVC: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getImage()
+        
+        collectionViewRefreshControl()
+        
         let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
         //距離螢幕邊框
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -26,8 +28,16 @@ class PersonalCollectVC: UICollectionViewController {
         //header 距離螢幕上方。 footer 距離螢幕下方
         //        layout.headerReferenceSize = CGSize( width: fullScreenSize.width, height: 40)
     }
+    /** tableView加上下拉更新功能 */
     
-    func getImage(){
+    func collectionViewRefreshControl(){
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(getImage), for: .valueChanged)
+        self.collectionView.refreshControl = refreshControl
+    }
+    
+    @objc func getImage(){
         var requestParam = [String: String]()
         requestParam["action"] = "findImageId"
         requestParam["id"] = user.account
@@ -51,6 +61,12 @@ class PersonalCollectVC: UICollectionViewController {
                     if let result = try? JSONDecoder().decode([Collect].self, from: data!) {
                         self.collectionImageId = result
                         DispatchQueue.main.async {
+                            if let control = self.collectionView.refreshControl {
+                                if control.isRefreshing {
+                                    // 停止下拉更新動作
+                                    control.endRefreshing()
+                                }
+                            }
                             /* 抓到資料後重刷table view */
                             self.collectionView.reloadData()
                         }

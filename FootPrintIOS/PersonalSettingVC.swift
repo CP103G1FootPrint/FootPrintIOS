@@ -54,6 +54,7 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
         alertController.addAction(albumAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
     //照片來源方式
     func takePicture(){
         imagePicker(type: .camera)
@@ -165,8 +166,10 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
                                     let head = self.image!.pngData()
                                     saveUserHead(userHead: head!)
                                     print("updata success")
-//                                    self.dismiss(animated: true, completion: nil)
-                                    
+                                    //                                    if let controller = self.storyboard?.instantiateViewController(withIdentifier: "PersonalVC"){
+                                    //                                        self.present(controller, animated: true, completion: nil)
+                                    //                                    }
+                                    self.dismiss(animated: true, completion: nil)
                                 } else {
                                     print("updata faild")
                                 }
