@@ -57,6 +57,7 @@
                                                     </constraints>
                                                     <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" image="album"/>
+                                                    <state key="selected" image="add"/>
                                                     <connections>
                                                         <action selector="albumButton:" destination="fXi-Jc-YLt" eventType="touchUpInside" id="33Z-v2-aqY"/>
                                                         <segue destination="gaw-CT-84Y" kind="unwind" unwindAction="unwindGroupAlbumCollectionViewControllerWithSegue:" id="fIp-w3-f1h"/>
@@ -235,6 +236,7 @@
                             <constraint firstItem="z8E-pw-Ulz" firstAttribute="top" secondItem="9F6-ql-1jD" secondAttribute="bottom" constant="20" id="FsA-Nj-6mm"/>
                             <constraint firstItem="9F6-ql-1jD" firstAttribute="top" secondItem="3JK-ps-oOh" secondAttribute="bottom" id="Ltl-bB-0do"/>
                             <constraint firstItem="9F6-ql-1jD" firstAttribute="leading" secondItem="mRF-7f-Ndt" secondAttribute="leading" id="nPl-Em-raf"/>
+                            <constraint firstAttribute="trailing" secondItem="9F6-ql-1jD" secondAttribute="trailing" id="pVM-Ky-rAW"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="4Oc-Lo-sok" appends="YES" id="dxs-Em-v0O"/>
@@ -639,7 +641,7 @@
                         <viewControllerLayoutGuide type="bottom" id="1DX-5w-gYr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Twj-I2-aYE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="689"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m10-m8-P1l">
@@ -887,6 +889,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="11" height="11"/>
         <image name="album" width="50" height="50"/>
         <image name="appmessage" width="30" height="30"/>
         <image name="friends" width="480" height="480"/>
@@ -902,6 +905,6 @@
         <image name="柯基" width="168" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="krf-y8-uDZ"/>
+        <segue reference="CuL-CR-Bms"/>
     </inferredMetricsTieBreakers>
 </document>
