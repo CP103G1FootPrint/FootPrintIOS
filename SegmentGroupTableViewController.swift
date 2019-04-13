@@ -129,7 +129,7 @@ class SegmentGroupTableViewController: UITableViewController {
                     image = UIImage(data: data!)
                 }
                 if image == nil {
-                    image = UIImage(named: "noImage.jpg")
+                    image = UIImage(named: "noimage.jpg")
                 }
                 DispatchQueue.main.async { cell.photoImageView.image = image }
             } else {
@@ -268,7 +268,6 @@ class SegmentGroupTableViewController: UITableViewController {
             navigationController?.pushViewController(controller, animated: true)
             //            present(controller,animated: true,completion: nil)
         }
-        
     }
     
     @IBAction func messageButtonClick(_ sender:UIButton) {

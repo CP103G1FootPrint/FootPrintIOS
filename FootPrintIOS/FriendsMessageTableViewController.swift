@@ -18,6 +18,7 @@ class FriendsMessageTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.tableFooterView = UIView()
 //        let friendViewController = parent as? FriendViewController
 //        friends = friendViewController!.friends
 //        for i in 0 ..< friends.count{
@@ -141,10 +142,10 @@ class FriendsMessageTableViewController: UITableViewController {
                 }else{
                    friendId = friend.sender!
                 }
-            
+                let cell = tableView.cellForRow(at: indexPath!) as? FriendsMessageListTableViewCell
                 let destination = segue.destination as! ChatViewController
                 destination.friend = friendId
-//              destination.socket = socket
+                destination.ng_Item.title = cell?.lb_UserNickName.text
         }
     }
 }

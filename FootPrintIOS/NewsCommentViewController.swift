@@ -28,6 +28,7 @@ class NewsCommentViewController: UIViewController,UITableViewDataSource{
         lb_userNickName.setTitle(news.nickName, for: .normal)
         bt_HeadImage.setImage(headImage, for: .normal)
         bt_HeadImage.imageView?.layer.cornerRadius = bt_HeadImage.frame.width/2
+        //取消多餘的格線
         self.tv_TableView.tableFooterView = UIView()
         //抓取userdefult 的頭像
         let headPicture = UIImage(data: loadHead())

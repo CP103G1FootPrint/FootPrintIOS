@@ -27,6 +27,7 @@ class ScheduleTableViewCell: UITableViewCell {
 //        
 //    }
     
+   
     
     
     override func awakeFromNib() {

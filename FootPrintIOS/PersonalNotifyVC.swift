@@ -19,6 +19,8 @@ class PersonalNotifyVC: UIViewController,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         socket = WebSocket(url: URL(string: url_server + user.account)!)
+        //取消多餘的格線
+        self.notifyTableView.tableFooterView = UIView()
         addSocketCallBacks()
         socket.connect()
     }
@@ -54,7 +56,6 @@ class PersonalNotifyVC: UIViewController,UITableViewDataSource {
                         self.notifies = result
                         DispatchQueue.main.async {
                             self.notifyTableView.reloadData()
-                        
                         }
                     }
                 }
@@ -71,6 +72,8 @@ class PersonalNotifyVC: UIViewController,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "notifycell") as! NotifyTableViewCell
         let notify = notifies[indexPath.row]
         cell.lb_Message.text = notify.message
+        cell.bt_Agree.tag = indexPath.row
+        cell.bt_DissAgree.tag = indexPath.row
         
         //抓取頭像
         let url_server = URL(string: common_url + "PicturesServlet")
@@ -117,5 +120,37 @@ class PersonalNotifyVC: UIViewController,UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    @IBAction func bt_Agree(_ sender: UIButton) {
+        let buttontag = sender.tag
+        let notify = notifies[buttontag]
+        let friend = Friends(notify.inviter!, notify.invitee!)
+        let url_server = URL(string: common_url + "FriendsServlet")
+        var requestParam = [String: String]()
+        requestParam["action"] = "update"
+        requestParam["update"] = try! String(data: JSONEncoder().encode(friend), encoding: .utf8)
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            // 將輸入資料列印出來除錯用
+            // print("input: \(String(data: data!, encoding: .utf8)!)")
+        }
+        notifies.remove(at: buttontag)
+        self.notifyTableView.reloadData()
+    }
+    
+    @IBAction func bt_DissAgree(_ sender: UIButton) {
+        let buttontag = sender.tag
+        let notify = notifies[buttontag]
+        let friend = Friends(notify.inviter!, notify.invitee!)
+        let url_server = URL(string: common_url + "FriendsServlet")
+        var requestParam = [String: String]()
+        requestParam["action"] = "delete"
+        requestParam["delete"] = try! String(data: JSONEncoder().encode(friend), encoding: .utf8)
+         executeTask(url_server!, requestParam) { (data, response, error) in
+            // 將輸入資料列印出來除錯用
+            // print("input: \(String(data: data!, encoding: .utf8)!)")
+        }
+        notifies.remove(at: buttontag)
+        self.notifyTableView.reloadData()
     }
 }

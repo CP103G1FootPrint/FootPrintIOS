@@ -6,8 +6,7 @@ class PersonalVC: UIViewController {
 //    let userDefault = UserDefaults.standard
     let url_server = URL(string:common_url + "AccountServlet")
     let user = loadData()
-    
-    
+    let userHead = loadHead()
     var userInfo : User?
     @IBOutlet weak var p1: UISegmentedControl!
     @IBOutlet weak var ivSelfie: UIImageView!
@@ -21,8 +20,7 @@ class PersonalVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        
+        ivSelfie.image = UIImage(data: userHead)
         viewRecord.isHidden = false
         viewCollect.isHidden = true
         viewNotify.isHidden = true
@@ -33,8 +31,6 @@ class PersonalVC: UIViewController {
         requsetParam["id"] = user.account
         executeTask(url_server!,requsetParam)
     }
-    
-    
     
     @IBAction func segma(_ sender: UISegmentedControl) {
         switch p1.selectedSegmentIndex {

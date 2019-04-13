@@ -9,6 +9,7 @@
 import UIKit
 
 class ScheduleTableViewController: UITableViewController {
+    var imageDic = [Int: UIImage]()
     
     var activityIndicatorView: UIActivityIndicatorView!
     var trips = [Trip]()
@@ -41,6 +42,7 @@ class ScheduleTableViewController: UITableViewController {
         }
     }
     @objc func showAllTrips() {
+        
         let user = loadData()
         let account = user.account
         
@@ -48,6 +50,8 @@ class ScheduleTableViewController: UITableViewController {
         
         requestParam["action"] = "All"
         requestParam["createID"] = account
+        
+
         
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -70,6 +74,8 @@ class ScheduleTableViewController: UITableViewController {
                                     
                                 }
                             }
+                            print("reloadData")
+
                             /* 抓到資料後重刷table view */
                             self.tableView.reloadData()
                         }
@@ -102,6 +108,8 @@ class ScheduleTableViewController: UITableViewController {
         cell.messageButton.tag = indexPath.row
         cell.shareButton.tag = indexPath.row
         cell.friendButton.tag = indexPath.row
+//        cell.photoButton.addTarget(self, action:#selector(albumButton), for: .touchUpInside)
+        
 //        cell.trips = trip
         // 尚未取得圖片，另外開啟task請求
         var requestParam = [String: Any]()
@@ -110,19 +118,28 @@ class ScheduleTableViewController: UITableViewController {
         // 圖片寬度為tableViewCell的1/4，ImageView的寬度也建議在storyboard加上比例設定的constraint
         requestParam["imageSize"] = cell.frame.width / 4
         var image: UIImage?
-        executeTask(url_server!, requestParam) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    image = UIImage(data: data!)
+        
+        if let image = self.imageDic[trip.tripID!] {
+            cell.photoImageView.image = image
+        } else {
+            cell.photoImageView.image = nil
+            
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        image = UIImage(data: data!)
+                        self.imageDic[trip.tripID!] = image
+                    }
+                    if image == nil {
+                        image = UIImage(named: "noimage.jpg")
+                    }
+                    DispatchQueue.main.async { cell.photoImageView.image = image }
+                } else {
+                    print(error!.localizedDescription)
                 }
-                if image == nil {
-                    image = UIImage(named: "noImage.jpg")
-                }
-                DispatchQueue.main.async { cell.photoImageView.image = image }
-            } else {
-                print(error!.localizedDescription)
             }
         }
+       
         cell.tripNameLabel.text = trip.title
         cell.dateLabel.text = trip.date
         return cell
@@ -310,6 +327,8 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     @IBAction func messageButtonClick(_ sender:UIButton) {
+        
+        
         if let controller = storyboard?.instantiateViewController(withIdentifier: "groupMessage") as? GroupMessageViewController{
             let buttontag = sender.tag
             let trip = trips[buttontag]
@@ -326,6 +345,18 @@ class ScheduleTableViewController: UITableViewController {
             controller.trips = trip
             navigationController?.pushViewController(controller, animated: true)
         }
+        
+        
+//        func clickButton (sender : UIButton){
+//                    print("button pressed")
+//                    if sender.isSelected{
+//                        sender.isSelected = false
+//                    }else{
+//                        sender.isSelected = true
+//                    }
+//
+//                }
+        
         
         
 //        let tableViewController = FriendsAlertViewTableViewController()

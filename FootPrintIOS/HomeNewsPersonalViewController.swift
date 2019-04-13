@@ -8,14 +8,14 @@
 
 import UIKit
 
-class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeNewsPersonalViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var iv_HeadPicture: UIImageView!
     @IBOutlet weak var lb_Userid: UILabel!
     @IBOutlet weak var lb_UserNickName: UILabel!
     @IBOutlet weak var lb_Birthday: UILabel!
     @IBOutlet weak var collection: UICollectionView!
-    @IBOutlet weak var bt_AddFriend: UIBarButtonItem!
+//    @IBOutlet weak var bt_AddFriend: UIBarButtonItem!
     var news: News!
     var headimage: UIImage!
     var pictures = [PersonalPicture]()
@@ -37,9 +37,6 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         lb_UserNickName.text = news.nickName
         navationitem.title = news.nickName
         lb_Birthday.text = user.birthday
-        
-//      getAllPicturesId()
-        
         //設置上下左右的間距
         collectionlayout.sectionInset = UIEdgeInsets(top: 5, left: 2, bottom: 5, right: 2)
         //設置cell與cell的間距
@@ -51,52 +48,70 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         //設置header的尺寸
         collectionlayout.headerReferenceSize = CGSize(width: fullScreenSize.width, height: 40)
         
+        getAllPicturesId()
+
         
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
         
         if user.account == news.userID{
 
         }else{
             let url_server = URL(string: common_url + "FriendsServlet")
             var requestparam = [String:String]()
-            requestparam["action"] = "findFriendIdCheckFriendShip"
+            requestparam["action"] = "findFriendId"
             requestparam["userId"] = user.account
             requestparam["inviteeId"] = news.userID
-            
+
             executeTask(url_server!, requestparam) { (data, response, error) in
                 if error == nil{
                     if data != nil{
                         if let result = try? JSONDecoder().decode([Friends].self, from: data!){
-                             print("input: \(String(data: data!, encoding: .utf8)!)")
-                            self.friendship = result
+                            print("input: \(String(data: data!, encoding: .utf8)!)")
+                            // self.friendship = result
                             if result.isEmpty{
-                                let addFriendButton = UIButton(type: .custom)
-                                addFriendButton.setImage(UIImage (named: "addfriend-1"), for: .normal)
-                                addFriendButton.addTarget(self, action: #selector(self.AddFriend), for: .touchUpInside)
-                                self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addFriendButton)
+                                requestparam["action"] = "findFriendIdCheckFriendShip"
+                                requestparam["userId"] = self.user.account
+                                requestparam["inviteeId"] = self.news.userID
+                                executeTask(url_server!, requestparam) { (data, response, error) in
+                                    if error == nil{
+                                        if data != nil{
+                                            if let result = try? JSONDecoder().decode([Friends].self, from: data!){
+                                                print("input: \(String(data: data!, encoding: .utf8)!)")
+                                                if result.isEmpty{
+                                                    DispatchQueue.main.async {
+                                                        let addFriendButton = UIButton(type: .custom)
+                                                        addFriendButton.setImage(UIImage (named: "addfriend-1"), for: .normal)
+                                                        addFriendButton.addTarget(self, action: #selector(self.AddFriend), for: .touchUpInside)
+                                                        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addFriendButton)
+                                                    }
+                                                }else{
+                                                    DispatchQueue.main.async {
+                                                        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage (named: "friendshipcheck"), style: .plain, target: nil, action: nil)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }else{
-                                if self.friendship.first?.state == 0 {
-                                   self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage (named: "friendshipcheck"), style: .plain, target: nil, action: nil)
-                                }else{
-                                   self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage (named: "checkfriend"), style: .plain, target: nil, action: nil)
+                                DispatchQueue.main.async {
+                                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage (named: "checkfriend"), style: .plain, target: nil, action: nil)
                                 }
                             }
-//                            self.friendship = result
                         }
                     }
                 }
             }
-//            let addFriendButton = UIButton(type: .custom)
-//            addFriendButton.setImage(UIImage (named: "addfriend-1"), for: .normal)
-//            addFriendButton.addTarget(self, action: #selector(AddFriend), for: .touchUpInside)
-//            navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addFriendButton)
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        getAllPicturesId()
-    }
     
     @objc func getAllPicturesId() {
+        
         let url_server = URL(string: common_url + "PicturesServlet")
         var requestParam = [String: String]()
         requestParam["action"] = "findPersonalImageId"
@@ -107,9 +122,12 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
 //                  print("input: \(String(data: data!, encoding: .utf8)!)")
                     if let result = try? JSONDecoder().decode([PersonalPicture].self, from: data!){
                         self.pictures = result
+                        print("pic count", self.pictures.count)
+                        self.pictures.forEach({ (pic) in
+                            print(pic.imageID)
+                        })
                         DispatchQueue.main.async {
                             self.tableview.reloadData()
-
                         }
                     }
                 }
@@ -126,15 +144,18 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"personalPictureCell", for: indexPath) as! PersonalPictureCollectionViewCell
-//        getAllPicturesId()
         let picture = pictures[indexPath.row]
         let url_server = URL(string: common_url + "PicturesServlet")
         
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
         requestParam["id"] = picture.imageID
+        // requestParam["id"] = 7
+        print("cellForItemAt ", picture.imageID)
         requestParam["imageSize"] = cell.frame.width
+        cell.tag = indexPath.item
 //        var image: UIImage?
+        
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -145,7 +166,10 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
                     self.image = UIImage(named: "noImage.jpg")
                 }
                 DispatchQueue.main.async {
-                    cell.iv_Pictures.image = self.image
+                    if cell.tag == indexPath.item {
+                        cell.iv_Pictures.image = self.image
+
+                    }
                 }
             }else{
                 print(error!.localizedDescription)
@@ -153,15 +177,7 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         }
         return cell
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "addfriend"{
-//            let destination = segue.destination as! AddFriendViewController
-//            destination.headimage = headimage
-//            destination.friend = news.userID
-//        }
-//    }
-    
-    
+
     @objc func AddFriend(_ sender: UIButton) {
         if let controller = storyboard?.instantiateViewController(withIdentifier: "AddFriendViewController") as? AddFriendViewController{
             controller.headimage = headimage

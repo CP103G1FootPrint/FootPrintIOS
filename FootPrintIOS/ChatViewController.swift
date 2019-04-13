@@ -17,6 +17,7 @@ class ChatViewController: UIViewController,UITableViewDataSource {
     let url_server = "ws://127.0.0.1:8080/FootPrint/ChatServer/"
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var tf_ChatMessage: UITextField!
+    @IBOutlet weak var ng_Item: UINavigationItem!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friendMessages.count
@@ -28,7 +29,7 @@ class ChatViewController: UIViewController,UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "rightcell") as! RightChatTableViewCell
             cell.lb_ChatLabel.text  = friendMessage.content
             cell.lb_ChatLabel.layer.cornerRadius = 10
-//            cell.lb_ChatLabel.layer.borderWidth = 1
+//          cell.lb_ChatLabel.layer.borderWidth = 1
             cell.lb_ChatLabel.layer.masksToBounds = true
 
             return cell
@@ -38,7 +39,6 @@ class ChatViewController: UIViewController,UITableViewDataSource {
             
             cell.lb_ChatLabel.layer.cornerRadius = 10
             cell.lb_ChatLabel.layer.masksToBounds = true
-
 //            cell.lb_ChatLabel.layer.borderWidth = 1
             
             //抓取頭像
@@ -173,4 +173,9 @@ class ChatViewController: UIViewController,UITableViewDataSource {
             }
         }
     }
+    
+    
+    
+    
+    
 }

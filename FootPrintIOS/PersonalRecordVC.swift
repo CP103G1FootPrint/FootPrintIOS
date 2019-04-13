@@ -6,13 +6,14 @@ class PersonalRecordVC: UICollectionViewController {
     let url_server = URL(string: common_url + "RecordServlet")
     var recordImageId = [Record]()
      let user = loadData()
-    
-    //    var animailImages = ["柴犬","柯基","啾啾","柴犬","柯基","啾啾","柴犬","柯基","啾啾"]
+
     let fullScreenSize = UIScreen.main.bounds.size
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getImage()
+//        self.collectionView.tableFooterView =  UIView()
+        collectionViewRefreshControl()
+        
         let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
         //距離螢幕邊框
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -28,7 +29,20 @@ class PersonalRecordVC: UICollectionViewController {
         //        layout.headerReferenceSize = CGSize( width: fullScreenSize.width, height: 40)
     }
     
-    func getImage(){
+        /** tableView加上下拉更新功能 */
+        
+        func collectionViewRefreshControl(){
+            let refreshControl = UIRefreshControl()
+            refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+            refreshControl.addTarget(self, action: #selector(getImage), for: .valueChanged)
+            self.collectionView.refreshControl = refreshControl
+        }
+    
+    override func viewWillAppear(_ animated: Bool) {
+            getImage()
+    }
+    
+    @objc func getImage(){
         var requestParam = [String: String]()
         requestParam["action"] = "findImageId"
         requestParam["id"] = user.account
@@ -53,6 +67,12 @@ class PersonalRecordVC: UICollectionViewController {
                     if let result = try? JSONDecoder().decode([Record].self, from: data!) {
                         self.recordImageId = result
                         DispatchQueue.main.async {
+                            if let control = self.collectionView.refreshControl {
+                                if control.isRefreshing {
+                                    // 停止下拉更新動作
+                                    control.endRefreshing()
+                                }
+                            }
                             /* 抓到資料後重刷table view */
                             self.collectionView.reloadData()
                         }
@@ -103,5 +123,7 @@ class PersonalRecordVC: UICollectionViewController {
         }
         return cell
     }
+    
+    
 }
 

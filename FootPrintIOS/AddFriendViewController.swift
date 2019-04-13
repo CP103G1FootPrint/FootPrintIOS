@@ -36,13 +36,24 @@ class AddFriendViewController: UIViewController {
             return
         }
         let sender = loadData()
-//        let chatMessage = Friends(type:"chat", inviter:sender.account, invitee: friend!, message: message!, messageType: "text")
-        let chatMessage = Friends("chat", sender.account, friend!, message!, "text")
-//        let chatMessage = Friends("chat", sender.account, friend!, message!, "text")
-        if let jsonData = try? JSONEncoder().encode(chatMessage) {
+        let addfriendMessage = Friends("chat", sender.account, friend!, message!, "text")
+        let addfriend = Friends(sender.account,friend!,message!)
+
+        var requestParam = [String: String]()
+        let url_server = URL(string: common_url + "FriendsServlet")
+        requestParam["action"] = "insert"
+        requestParam["share"] = try! String(data: JSONEncoder().encode(addfriend), encoding: .utf8)
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                }
+            }
+        }
+        if let jsonData = try? JSONEncoder().encode(addfriendMessage) {
            let text = String(data: jsonData, encoding: .utf8)
            self.socket.write(string: text!)
            tf_Message.text = nil
        }
+       
     }
 }
