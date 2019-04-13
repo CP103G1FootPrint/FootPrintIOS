@@ -56,4 +56,10 @@ class LandMark: Codable  {
         self.address = address
     }
     
+    public init(name: String, address: String,  latitude: Double, longitude: Double){
+        self.name = name
+        self.address = address
+        self.latitude = latitude
+        self.longitude = longitude
+    }
 }

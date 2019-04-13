@@ -289,16 +289,18 @@ class SegmentGroupTableViewController: UITableViewController {
             navigationController?.pushViewController(controller, animated: true)
         }
         
+    }
         
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "groupplanDetail" {
-                /* indexPath(for:)可以取得UITableViewCell的indexPath */
-                let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
-                let trip = trips[indexPath!.row]
-                let detailVC = segue.destination as! PlanViewController
-                detailVC.trip = trip
-            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "groupplanDetail" {
+            /* indexPath(for:)可以取得UITableViewCell的indexPath */
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+            let trip = trips[indexPath!.row]
+            let detailVC = segue.destination as! PlanViewController
+            detailVC.trip = trip
         }
+    }
+        
         
 
     /*
@@ -345,7 +347,7 @@ class SegmentGroupTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    }
+    
     
     
     

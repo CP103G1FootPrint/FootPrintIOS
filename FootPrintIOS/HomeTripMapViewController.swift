@@ -1,16 +1,16 @@
 //
-//  PlanViewController.swift
+//  HomeTripMapViewController.swift
 //  FootPrintIOS
 //
-//  Created by lulu on 2019/4/7.
+//  Created by Molder on 2019/4/13.
 //  Copyright © 2019 lulu. All rights reserved.
 //
 
 import UIKit
 import MapKit
 
-class PlanViewController: UIViewController {
-    var trip: Trip!
+class HomeTripMapViewController: UIViewController {
+    var tripMap: Trip!
     var name:String?
     var lat:Double?
     var long:Double?
@@ -28,7 +28,7 @@ class PlanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("trip \(String(describing: trip.title))")
+        print("trip \(String(describing: tripMap.title))")
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(detectPan(recognizer:)))
         panGesture.delaysTouchesBegan = false
         panGesture.delaysTouchesEnded = false
@@ -44,7 +44,7 @@ class PlanViewController: UIViewController {
             self.startingConstant = self.spViewCenterConstraint.constant
         case .changed:
             let translation = recognizer.translation(in: self.view)
-//            print("result view size \(self.startingConstant + translation.y)")
+            //            print("result view size \(self.startingConstant + translation.y)")
             if self.startingConstant + translation.y > 250 {
                 self.spViewCenterConstraint.constant = 250
             } else if self.startingConstant + translation.y < -240 {
@@ -57,7 +57,7 @@ class PlanViewController: UIViewController {
         }
         
     }
-
+    
     func presentAnnotation(){
         let lattitude = lat
         let longitude = long
@@ -71,8 +71,8 @@ class PlanViewController: UIViewController {
     }
     
     //Unwind segue
-    @IBAction func unwindsegueMapController(segue: UIStoryboardSegue) {
-        if let controller = segue.source as? PlanDetailViewController,let data = controller.placeSelected{
+    @IBAction func homeUnwindsegueMapController(segue: UIStoryboardSegue) {
+        if let controller = segue.source as? HomeTripDetailViewController,let data = controller.placeSelected{
             name = data.name
             lat = data.latitude
             long = data.longitude
@@ -81,11 +81,9 @@ class PlanViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        print("\(self) \(#function)" )
-        if segue.identifier == "planDetailViewController" {
-            /* indexPath(for:)可以取得UITableViewCell的indexPath */
-            let detailVC = segue.destination as! PlanDetailViewController
-            detailVC.tripForDetail = trip
-        }
+        
+            let detailVC = segue.destination as! HomeTripDetailViewController
+            detailVC.homeTripForDetail = tripMap
+        
     }
 }

@@ -139,4 +139,16 @@ class HomeTripTableViewController: UITableViewController {
         cell.lb_TripDate.text = trip.date
         return cell
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "HomeTrip" {
+            /* indexPath(for:)可以取得UITableViewCell的indexPath */
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+            let trip = trips[indexPath!.row]
+            print("a1 \(trip.title)")
+            let detailVC = segue.destination as! HomeTripMapViewController
+            detailVC.tripMap = trip
+        }
+    }
 }
