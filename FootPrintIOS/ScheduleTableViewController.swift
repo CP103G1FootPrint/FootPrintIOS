@@ -63,11 +63,14 @@ class ScheduleTableViewController: UITableViewController {
                         self.trips = result
 //                        self.trips.reverse()
 //                        _ = try? JSONDecoder().decode(String.self, from: data!)
-            
+                        if result.isEmpty{
+                             self.tableView.setEmptyView(title: "You don't have any trip.", message: "Start creating your trip", messageImage: UIImage(named: "airplane1")!)
+                        }
+              
                         DispatchQueue.main.async {
                             if let control = self.tableView.refreshControl {
                                 self.activityIndicatorView.stopAnimating()
-                                self.tableView.setEmptyView(title: "You don't have any trip.", message: "Start creating your trip", messageImage: UIImage(named: "airplane1")!)
+                               
                                 if control.isRefreshing {
                                     // 停止下拉更新動作
                                     control.endRefreshing()
@@ -116,7 +119,7 @@ class ScheduleTableViewController: UITableViewController {
         requestParam["action"] = "getImage"
         requestParam["id"] = trip.tripID
         // 圖片寬度為tableViewCell的1/4，ImageView的寬度也建議在storyboard加上比例設定的constraint
-        requestParam["imageSize"] = cell.frame.width / 4
+        requestParam["imageSize"] = cell.frame.width 
         var image: UIImage?
         
         if let image = self.imageDic[trip.tripID!] {

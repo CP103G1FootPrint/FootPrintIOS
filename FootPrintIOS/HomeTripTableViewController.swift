@@ -77,7 +77,7 @@ class HomeTripTableViewController: UITableViewController {
         requestParam["action"] = "getImage"
         requestParam["id"] = trip.tripID
         // 圖片寬度為tableViewCell的1/4，ImageView的寬度也建議在storyboard加上比例設定的constraint
-        requestParam["imageSize"] = cell.frame.width / 4
+        requestParam["imageSize"] = cell.frame.width / 2
         var image: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
