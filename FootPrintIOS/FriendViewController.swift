@@ -62,6 +62,8 @@ class FriendViewController: UIViewController, UIScrollViewDelegate{
                                 let friendsViewController = self.children[0] as! FriendsViewController
                                 friendsViewController.friends = self.friends
                                 friendsViewController.tv_TableView.reloadData()
+                                friendsViewController.lb_FriendsCounter.text = "好友數量:\(self.friends.count)人"
+                                
                                 let friendsMessageTableViewController = self.children[1] as! FriendsMessageTableViewController
                                 friendsMessageTableViewController.friends = self.friends
                                 friendsMessageTableViewController.getAllFriendsMessage()

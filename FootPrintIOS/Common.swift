@@ -84,6 +84,7 @@ func loadInfo() -> (account : String, password : String, nickName : String, birt
  let password = user.password
  print("\(user.account) + \(user.password)")
  */
+
 extension UITableView {
     
     func setEmptyView(title: String, message: String, messageImage: UIImage) {

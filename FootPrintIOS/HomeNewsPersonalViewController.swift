@@ -54,9 +54,7 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDataSour
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
-        
         if user.account == news.userID{
 
         }else{
