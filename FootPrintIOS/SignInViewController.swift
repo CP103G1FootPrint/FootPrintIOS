@@ -31,7 +31,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             //fetchProfile()
         }
         //自動登入
-//                loadDataLogin()
+                loadDataLogin()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
