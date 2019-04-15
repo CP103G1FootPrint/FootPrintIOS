@@ -4,7 +4,7 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
     
     
     let url_server = URL(string:common_url + "AccountServlet")
-    //    let userDefault = UserDefaults.standard
+        let userDefault = UserDefaults.standard
     var userInfo : User?
     let user = loadData()
     var newPostImage: UIImage?
@@ -23,6 +23,9 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        btSelfie.clipsToBounds = true
+        btSelfie.layer.cornerRadius = 90
+        
         
         //鍵盤
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -54,6 +57,8 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
         alertController.addAction(albumAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    
     
     //照片來源方式
     func takePicture(){
@@ -116,7 +121,10 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
     }
     
     @IBAction func gesture(_ sender: Any) {
+        hideKeyboard()
     }
+    
+    
     
     /** 隱藏鍵盤 */
     func hideKeyboard(){
@@ -143,10 +151,25 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
         let user = User(password!,nickName!,birthday!,constellation!,account!)
         let userJson = try?String(data: JSONEncoder().encode(user),encoding: .utf8)
         /*打包*/ //把要傳送的值打包
-        var requsetParam = [String:String]() //[String:String]()是dicitionary是方法要加()
-        requsetParam["action"] = "accountUpdate"
-        requsetParam["account"] = userJson! //eclipse端accountUpdate裡的account
-        executeTasks(url_server!,requsetParam)
+        var requestParam = [String:String]() //[String:String]()是dicitionary是方法要加()
+        requestParam["action"] = "accountUpdate"
+        requestParam["account"] = userJson! //eclipse端accountUpdate裡的account
+        executeTask(self.url_server!, requestParam
+            , completionHandler: { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        
+                        DispatchQueue.main.async {
+                            let storyboard = UIStoryboard(name: "Main", bundle:nil)
+                            let home = storyboard.instantiateViewController(withIdentifier: "PersonalVC")
+                            self.present(home,animated: true,completion: nil)
+                        }
+                    }
+                } else {
+                    print(error!.localizedDescription)
+                }
+        })
+        
         //照片
         var picParam = [String: String]()
         picParam["action"] = "changePic"
@@ -154,77 +177,61 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
         if self.image != nil {
             picParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
         }
-        executeTask(self.url_server!, picParam) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    if let result = String(data: data!, encoding: .utf8) {
-                        print("input321:\(result)")
-                        if let count = Int(result) {
-                            DispatchQueue.main.async {
-                                // 新增成功則回前頁
-                                if count != 0 {
-                                    let head = self.image!.pngData()
-                                    saveUserHead(userHead: head!)
-                                    print("updata success")
-                                    //                                    if let controller = self.storyboard?.instantiateViewController(withIdentifier: "PersonalVC"){
-                                    //                                        self.present(controller, animated: true, completion: nil)
-                                    //                                    }
-                                    self.dismiss(animated: true, completion: nil)
-                                } else {
-                                    print("updata faild")
-                                }
-                            }
+        executeTask(self.url_server!, picParam
+            , completionHandler: { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        
+                        DispatchQueue.main.async {
+                            self.navigationController?.popViewController(animated: true)
                         }
+                        
                     }
+                } else {
+                    print(error!.localizedDescription)
                 }
-            } else {
-                print(error!.localizedDescription)
-            }
-        }
+        })
+        
+        
     }
     
-    /*傳送*/
-    func executeTasks(_ url_server: URL, _ requestParam: [String: String]) {
-        // 將輸出資料列印出來除錯用
-        print("output: \(requestParam)")
-        let jsonData = try! JSONEncoder().encode(requestParam)
-        var request = URLRequest(url: url_server)
-        request.httpMethod = "POST"
-        // 不使用cache
-        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData
-        // 請求參數為JSON data，無需再轉成JSON字串
-        request.httpBody = jsonData
-        let session = URLSession.shared
-        // 建立連線並發出請求，取得結果後會呼叫closure執行後續處理
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
-                    
-                    // 將結果顯示在UI元件上必須轉給main thread
-                    //                    DispatchQueue.main.async {
-                    //                        self.showResult(String(data: data!, encoding: .utf8)!)
-                }
-            }
+    @IBAction func btLogout(_ sender: Any) {
+        //                let text : String? = ""
+        //                let account = Account(text!,text!,text!,text!,text!)
+        //                saveInfo(account)
+        //
+        //                var requestParam = [String: String]()
+        //                requestParam["userId"] = text
+        //                requestParam["password"] = text
+        //                _ = saveUser(requestParam)
+        //
+        //                        DispatchQueue.main.async {
+        //                            let storyboard = UIStoryboard(name: "Main", bundle: nil) //storyboard
+        //                            let destination = storyboard.instantiateViewController(withIdentifier:"SignInViewController")
+        //                            self.present(destination,animated:true,completion:nil)
+        //                        }
+        //
+        //
+        let alertController = UIAlertController(title:"logout",message:"確定登出？",preferredStyle: .alert)
+        let cancle =  UIAlertAction(title: "取消",style: .cancel)
+        let signOut = UIAlertAction(title: "登出",style: .default){
+            (alertAction)in
+            
+            self.userDefault.removeObject(forKey:"user")
+            self.userDefault.removeObject(forKey:"userHead")
+            self.userDefault.synchronize()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil) //storyboard
+            let destination = storyboard.instantiateViewController(withIdentifier:"SignInViewController")
+            self.present(destination,animated:true,completion:nil)
+//            let appDelegate = UIApplication.shared.delegate
+//            appDelegate?.window??.rootViewController = signInPage
         }
+        alertController.addAction(signOut)
+        alertController.addAction(cancle)
+        self.present(alertController,animated: true,completion: nil)
     }
-            @IBAction func btLogout(_ sender: Any) {
-                //        let text : String? = ""
-                //        let account = Account(text!,text!,text!,text!,text!)
-                //        saveInfo(account)
-                //
-                //        var requestParam = [String: String]()
-                //        requestParam["userId"] = text
-                //        requestParam["password"] = text
-                //        _ = saveUser(requestParam)
-                
-// DispatchQueue.main.async {
-// let storyboard = UIStoryboard(name: "Main", bundle: nil) //storyboard
-// let destination = storyboard.instantiateViewController(withIdentifier:"SignInViewController")
-//                    self.present(destination,animated:true,completion:nil)
-//                }
-                
-                
-            }
+
 }
+
+
+

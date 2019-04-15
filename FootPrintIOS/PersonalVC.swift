@@ -6,8 +6,10 @@ class PersonalVC: UIViewController {
 //    let userDefault = UserDefaults.standard
     let url_server = URL(string:common_url + "AccountServlet")
     let user = loadData()
-    let userHead = loadHead()
+   let userHead = UIImage(data: loadHead())
+    
     var userInfo : User?
+    
     @IBOutlet weak var p1: UISegmentedControl!
     @IBOutlet weak var ivSelfie: UIImageView!
     @IBOutlet weak var lbAccount: UILabel!
@@ -18,9 +20,20 @@ class PersonalVC: UIViewController {
     @IBOutlet weak var viewNotify: UIView!
     @IBOutlet weak var viewExchange: UIView!
     
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
-        ivSelfie.image = UIImage(data: userHead)
+     
+        //設定邊框顏色
+        let myColor : UIColor = UIColor.lightGray
+        ivSelfie.layer.borderColor = myColor.cgColor
+        //設定圖片邊框粗細
+        ivSelfie.layer.borderWidth = 3.0
+        //設定圖片圓形
+        ivSelfie.layer.cornerRadius = ivSelfie.frame.width/2
+        
+//        ivSelfie.image(userHead, for: .normal)
+//        ivSelfie.image = UIImage()
+        ivSelfie.image = userHead
         viewRecord.isHidden = false
         viewCollect.isHidden = true
         viewNotify.isHidden = true
@@ -84,7 +97,7 @@ class PersonalVC: UIViewController {
                         
                         self.lbAccount.text = Info?.nickname
                         let integral = String(describing: Info!.integral!)
-                        self.lbPoint.text = "\(integral) Point"
+                        self.lbPoint.text = "\(integral)\nPoint"
                     }
                 }
             } else {
