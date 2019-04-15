@@ -97,7 +97,7 @@ class PersonalVC: UIViewController {
                         
                         self.lbAccount.text = Info?.nickname
                         let integral = String(describing: Info!.integral!)
-                        self.lbPoint.text = "\(integral) Point"
+                        self.lbPoint.text = "\(integral)\nPoint"
                     }
                 }
             } else {
