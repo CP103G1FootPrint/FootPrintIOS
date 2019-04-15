@@ -17,7 +17,7 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
     var allLocation = [LandMark]()
     var currentLocations = [LandMark]() // update table
     var cameraLandMark : LandMark?
-    
+    var getCurrentButton: Int?
     
     //GPS
     var requestParam = [String: Double]()
@@ -25,7 +25,7 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        print("get current \(getCurrentButton)")
         //run
         activityIndicatorView = UIActivityIndicatorView(style: .gray)
         self.findLocationTableView.tableFooterView = UIView()
@@ -65,7 +65,7 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
         cell.nearLocationName.text = nearLocation.name
         cell.nearLocationAddress.text = nearLocation.address
         cell.nearLocationType.text = nearLocation.type
-        findImage(nearLocation.id!,cell)
+//        findImage(nearLocation.id!,cell)
         return cell
         
     }
@@ -75,7 +75,7 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
         
         //發送通知
         let notificationName = Notification.Name("Planlocation")
-        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["Planlocation": cameraLandMark as Any])
+        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["Planlocation": cameraLandMark as Any, "getCurrentButton":getCurrentButton as Any])
         dismiss(animated: true, completion: nil)
     }
     

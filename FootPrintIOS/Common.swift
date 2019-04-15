@@ -2,12 +2,14 @@ import Foundation
 import UIKit
 
 // 實機
-
 let URL_SERVER = "http://192.168.0.101:8080/FootPrint/"
 // 模擬器
 let common_url = "http://127.0.0.1:8080/FootPrint/"
 //實機
 //let common_url = "http://192.168.0.111:8080/FootPrint/"
+
+//Socket
+let url_server_schedule = "ws://127.0.0.1:8080/FootPrint/ScheduleDayServer/"
 
 func executeTask(_ url_server: URL, _ requestParam: [String: Any], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
     // requestParam值為Any就必須使用JSONSerialization.data()，而非JSONEncoder.encode()

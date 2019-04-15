@@ -17,6 +17,7 @@
 		024A43FA226108C0003360E6 /* PlanFindLandMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024A43F9226108C0003360E6 /* PlanFindLandMarkViewController.swift */; };
 		024A43FC226115C6003360E6 /* HomeTripMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024A43FB226115C6003360E6 /* HomeTripMapViewController.swift */; };
 		024A43FE226115DB003360E6 /* HomeTripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024A43FD226115DB003360E6 /* HomeTripDetailViewController.swift */; };
+		024A44002261ADC2003360E6 /* ScheduleDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024A43FF2261ADC2003360E6 /* ScheduleDay.swift */; };
 		02627CE7225E38D4006CC749 /* FindLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02627CE6225E38D4006CC749 /* FindLocationViewController.swift */; };
 		027A64D42252F5A8002476D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027A64D32252F5A8002476D4 /* AppDelegate.swift */; };
 		027DFC1122327F1F00E9E097 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027DFC1022327F1F00E9E097 /* MapViewController.swift */; };
@@ -127,6 +128,7 @@
 		024A43F9226108C0003360E6 /* PlanFindLandMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFindLandMarkViewController.swift; sourceTree = "<group>"; };
 		024A43FB226115C6003360E6 /* HomeTripMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTripMapViewController.swift; sourceTree = "<group>"; };
 		024A43FD226115DB003360E6 /* HomeTripDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTripDetailViewController.swift; sourceTree = "<group>"; };
+		024A43FF2261ADC2003360E6 /* ScheduleDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDay.swift; sourceTree = "<group>"; };
 		02627CE6225E38D4006CC749 /* FindLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationViewController.swift; sourceTree = "<group>"; };
 		027A64D32252F5A8002476D4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		027DFC1022327F1F00E9E097 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				AFE8DBC02250C43F005F585A /* SegmentGroupTableViewController.swift */,
 				AF9F0EB12258813400DF17E5 /* ScheduleFriendsTableViewController.swift */,
 				024A43F8226081AE003360E6 /* Plan */,
+				024A43FF2261ADC2003360E6 /* ScheduleDay.swift */,
 			);
 			name = Schedule;
 			sourceTree = "<group>";
@@ -776,6 +779,7 @@
 				AFDDF36A225395E500198321 /* ChatMessage.swift in Sources */,
 				024A43FE226115DB003360E6 /* HomeTripDetailViewController.swift in Sources */,
 				D4A773AC2250FAB400C3867C /* PersonalPictureCollectionViewCell.swift in Sources */,
+				024A44002261ADC2003360E6 /* ScheduleDay.swift in Sources */,
 				AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */,
 				D4A17FB52264179100C78F58 /* SearchFriendTableViewCell.swift in Sources */,
 				028DDF3F22544277006DD7EB /* LandMark.swift in Sources */,
