@@ -28,19 +28,48 @@ class ChatViewController: UIViewController,UITableViewDataSource {
         if friendMessage.sender == user.account{
             let cell = tableView.dequeueReusableCell(withIdentifier: "rightcell") as! RightChatTableViewCell
             cell.lb_ChatLabel.text  = friendMessage.content
-            cell.lb_ChatLabel.layer.cornerRadius = 10
-//          cell.lb_ChatLabel.layer.borderWidth = 1
-            cell.lb_ChatLabel.layer.masksToBounds = true
+//            cell.lb_ChatLabel.layer.cornerRadius = 10
+//            cell.lb_ChatLabel.layer.masksToBounds = true
+            cell.lb_ChatLabel.numberOfLines = 0
+            cell.lb_ChatLabel.textColor = .black
+
+            
+//            let constraintRect = CGSize(width: 0.66 * cell.frame.width,
+//                                        height: .greatestFiniteMagnitude)
+//            let boundingBox = friendMessage.content!.boundingRect(with: constraintRect,
+//                                                 options: .usesLineFragmentOrigin,
+//                                                 attributes: [.font: cell.lb_ChatLabel.font!],
+//                                                 context: nil)
+//           cell.lb_ChatLabel.frame.size = CGSize(width: ceil(boundingBox.width),height: ceil(boundingBox.height))
+//           let bubbleImageSize = CGSize(width: cell.lb_ChatLabel.frame.width + 28,height: cell.lb_ChatLabel.frame.height + 20)
+//           let outgoingMessageView = UIImageView(frame:
+//                CGRect(x: cell.frame.width - bubbleImageSize.width,
+//                       y: cell.frame.height - bubbleImageSize.height,
+//                       width: bubbleImageSize.width,
+//                       height: bubbleImageSize.height))
+//           let bubbleImage = UIImage(named: "outgoing-message-bubble")?
+//                .resizableImage(withCapInsets: UIEdgeInsets(top: 17, left: 21, bottom: 17, right: 21),
+//                                resizingMode: .stretch)
+//            .withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+//            outgoingMessageView.image = bubbleImage
+//
+////            let green = UIColor(red: 30/255, green: 222/255, blue: 38/255, alpha: 1)
+//            outgoingMessageView.tintColor = .darkGray
+//            cell.addSubview(outgoingMessageView)
+////            cell.imageView = UIImageView(frame: outgoingMessageView)
+////            cell.lb_ChatLabel.backgroundColor = UIColor(patternImage: bubbleImage!)
+////            chatTableView.addSubview(outgoingMessageView)
+//            cell.lb_ChatLabel.center = outgoingMessageView.center
+////            tableView.addSubview(cell.lb_ChatLabel)
 
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "leftcell") as! LeftChatTableViewCell
             cell.lb_ChatLabel.text  = friendMessage.content
-            
+            cell.lb_ChatLabel.numberOfLines = 0
             cell.lb_ChatLabel.layer.cornerRadius = 10
             cell.lb_ChatLabel.layer.masksToBounds = true
-//            cell.lb_ChatLabel.layer.borderWidth = 1
-            
+
             //抓取頭像
             let url_server = URL(string: common_url + "PicturesServlet")
             var requestParam = [String: Any]()
@@ -157,8 +186,6 @@ class ChatViewController: UIViewController,UITableViewDataSource {
                 }
             }
         }
-          // 隱藏鍵盤
-          // tfMessage.resignFirstResponder()
     }
     
     func addSocketCallBacks() {
@@ -173,9 +200,44 @@ class ChatViewController: UIViewController,UITableViewDataSource {
             }
         }
     }
-    
-    
-    
-    
-    
+    @IBAction func tap(_ sender: Any) {
+//        hideKeyboard()
+    }
 }
+
+//extension ChatViewController {
+//    func hideKeyboard() {
+//        tf_ChatMessage.resignFirstResponder()
+//    }
+//
+//    func addKeyboardObserver() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//
+//    @objc func keyboardWillShow(notification: Notification) {
+//        // 能取得鍵盤高度就讓view上移鍵盤高度，否則上移view的1/3高度
+//        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//            let keyboardRect = keyboardFrame.cgRectValue
+//            let keyboardHeight = keyboardRect.height
+//            view.frame.origin.y = -keyboardHeight / 2
+//        } else {
+//            view.frame.origin.y = -view.frame.height / 2
+//        }
+//    }
+//
+//    @objc func keyboardWillHide(notification: Notification) {
+//        view.frame.origin.y = 0
+//    }
+//
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(true)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+
+    
+//}
+
+
+
