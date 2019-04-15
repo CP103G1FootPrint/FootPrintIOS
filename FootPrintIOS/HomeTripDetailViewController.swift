@@ -18,22 +18,33 @@ class HomeTripDetailViewController: UIViewController,UIScrollViewDelegate,UITabl
     var numberOfButtons :Int?
     var tripID :Int?
     var homeTripForDetail: Trip!
-    var placeSelected: LandMark?
+    var placeSelected: Int?
+    var placeSelecteds: [LandMark]?
     var result : LandMark?
     var currentButton: Int?
+    var activityIndicatorView: UIActivityIndicatorView!
     
     @IBOutlet weak var mScrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //run
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        self.uiTableView.tableFooterView = UIView()
+        self.uiTableView.backgroundView = activityIndicatorView
+        
         setdata()
-        print("detail \(String(describing: homeTripForDetail.days))")
-        print("detail \(String(describing: homeTripForDetail.title))")
+//        print("detail \(String(describing: homeTripForDetail.days))")
+//        print("detail \(String(describing: homeTripForDetail.title))")
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.dynamicButtonCreation()
+        //run
+        if currentArray.count == 0 {
+            activityIndicatorView.startAnimating()
+        }
     }
     
     func dynamicButtonCreation() {
@@ -77,6 +88,9 @@ class HomeTripDetailViewController: UIViewController,UIScrollViewDelegate,UITabl
     
     @objc func scrollButtonAction(sender: UIButton) {
         changeDataLandMark(tripID!, sender.tag - 1)
+        //發送通知
+        let notificationName = Notification.Name("HomeTripMapChange")
+        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["TripID": tripID as Any, "Day":sender.tag - 1 as Any])
     }
 
     
@@ -100,7 +114,8 @@ class HomeTripDetailViewController: UIViewController,UIScrollViewDelegate,UITabl
     //送回地圖
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath  = uiTableView.indexPathForSelectedRow{
-            placeSelected = currentArray[indexPath.row]
+            placeSelected = indexPath.row
+            placeSelecteds = currentArray
         }
     }
     //cell height
@@ -132,8 +147,14 @@ class HomeTripDetailViewController: UIViewController,UIScrollViewDelegate,UITabl
                     if let result = try? JSONDecoder().decode([LandMark].self, from: data!) {
                         self.currentArray = result
                         DispatchQueue.main.async {
+                            self.activityIndicatorView.stopAnimating()
                             self.uiTableView.reloadData()
                         }
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.activityIndicatorView.stopAnimating()
+                        self.uiTableView.reloadData()
                     }
                 }
             }

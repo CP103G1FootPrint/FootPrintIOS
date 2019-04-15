@@ -220,6 +220,8 @@ class HomeNewsTableViewController: UITableViewController {
                     }
                 }
             }
+            
+
 //            let landmark = LandMark(new.landMarkName!, new.landMarkID!)
 //            controller.location = landmark
 //            navigationController?.pushViewController(controller, animated: true)
