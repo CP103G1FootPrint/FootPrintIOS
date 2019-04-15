@@ -28,6 +28,7 @@
 		0783AF48225C6BE200677526 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF47225C6BE200677526 /* Record.swift */; };
 		0783AF4A225C6CA200677526 /* PersonalCollectionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */; };
 		0783AF4C225C6CC400677526 /* Collect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF4B225C6CC400677526 /* Collect.swift */; };
+		07D4CD2A2264842E00713C80 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4CD292264842E00713C80 /* test.swift */; };
 		523BD923965BC87BE8613FBD /* Pods_FootPrintIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B091C17AA193086CA73D36 /* Pods_FootPrintIOS.framework */; };
 		AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0BD165222D1796006FC80A /* AppDelegate.swift */; };
 		AF0BD168222D1796006FC80A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0BD167222D1796006FC80A /* ViewController.swift */; };
@@ -130,6 +131,7 @@
 		0783AF47225C6BE200677526 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCollectionTVCell.swift; sourceTree = "<group>"; };
 		0783AF4B225C6CC400677526 /* Collect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collect.swift; sourceTree = "<group>"; };
+		07D4CD292264842E00713C80 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		46B091C17AA193086CA73D36 /* Pods_FootPrintIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FootPrintIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF0BD162222D1796006FC80A /* FootPrintIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootPrintIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF0BD165222D1796006FC80A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				AF0BD19B222E9A60006FC80A /* Assets.xcassets */,
 				AF0BD16E222D1798006FC80A /* LaunchScreen.storyboard */,
 				AF0BD171222D1798006FC80A /* Info.plist */,
+				07D4CD292264842E00713C80 /* test.swift */,
 			);
 			path = FootPrintIOS;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				028DDF3B22544219006DD7EB /* NearLocationTableViewCell.swift in Sources */,
 				AFE8DBC12250C43F005F585A /* SegmentGroupTableViewController.swift in Sources */,
 				AF1DA0BD224B460C00B80E09 /* Likes.swift in Sources */,
+				07D4CD2A2264842E00713C80 /* test.swift in Sources */,
 				D4A7739C224E8D1300C3867C /* NewsCommentTableViewCell.swift in Sources */,
 				D4363605225B109F00052CE2 /* AddFriendViewController.swift in Sources */,
 				022022EF225237C600856352 /* AccountCreateViewController.swift in Sources */,
