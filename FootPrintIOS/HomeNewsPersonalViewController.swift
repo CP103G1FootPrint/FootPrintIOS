@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeNewsPersonalViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var iv_HeadPicture: UIImageView!
     @IBOutlet weak var lb_Userid: UILabel!
@@ -22,6 +22,7 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
     var user = loadInfo()
     var image: UIImage?
     var friendship = [Friends]()
+    var personalId: String?
     
     let fullScreenSize = UIScreen.main.bounds.size
     @IBOutlet weak var collectionlayout: UICollectionViewFlowLayout!
@@ -31,12 +32,22 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         iv_HeadPicture.image = self.headimage
+        //設定邊框顏色
+        let myColor : UIColor = UIColor.green
+        iv_HeadPicture.layer.borderColor = myColor.cgColor
+        //設定圖片邊框粗細
+        iv_HeadPicture.layer.borderWidth = 5.0
         //設定圖片圓形
-        iv_HeadPicture.layer.cornerRadius = iv_HeadPicture.frame.width/2
-        lb_Userid.text = news.userID
-        lb_UserNickName.text = news.nickName
-        navationitem.title = news.nickName
-        lb_Birthday.text = user.birthday
+        
+        if news != nil  {
+            iv_HeadPicture.layer.cornerRadius = iv_HeadPicture.frame.width/2
+            lb_Userid.text = news.userID
+            lb_UserNickName.text = news.nickName
+            navationitem.title = news.nickName
+            lb_Birthday.text = user.birthday
+            personalId = news.userID
+        }
+       
         //設置上下左右的間距
         collectionlayout.sectionInset = UIEdgeInsets(top: 5, left: 2, bottom: 5, right: 2)
         //設置cell與cell的間距
@@ -48,19 +59,22 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         //設置header的尺寸
         collectionlayout.headerReferenceSize = CGSize(width: fullScreenSize.width, height: 40)
         
+        getAllPicturesId()
+
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        getAllPicturesId()
-        if user.account == news.userID{
-            
+        super.viewWillAppear(animated)
+        if user.account == personalId{
+
         }else{
             let url_server = URL(string: common_url + "FriendsServlet")
             var requestparam = [String:String]()
             requestparam["action"] = "findFriendId"
             requestparam["userId"] = user.account
             requestparam["inviteeId"] = news.userID
-            
+
             executeTask(url_server!, requestparam) { (data, response, error) in
                 if error == nil{
                     if data != nil{
@@ -106,16 +120,21 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
     
     
     @objc func getAllPicturesId() {
+        
         let url_server = URL(string: common_url + "PicturesServlet")
         var requestParam = [String: String]()
         requestParam["action"] = "findPersonalImageId"
-        requestParam["userId"] = news.userID
+        requestParam["userId"] = personalId
         executeTask(url_server!, requestParam) {(data, response, error) in
             if error == nil {
                 if data != nil {
 //                  print("input: \(String(data: data!, encoding: .utf8)!)")
                     if let result = try? JSONDecoder().decode([PersonalPicture].self, from: data!){
                         self.pictures = result
+                        print("pic count", self.pictures.count)
+                        self.pictures.forEach({ (pic) in
+                            print(pic.imageID)
+                        })
                         DispatchQueue.main.async {
                             self.tableview.reloadData()
                         }
@@ -140,8 +159,12 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
         requestParam["id"] = picture.imageID
+        // requestParam["id"] = 7
+        print("cellForItemAt ", picture.imageID)
         requestParam["imageSize"] = cell.frame.width
+        cell.tag = indexPath.item
 //        var image: UIImage?
+        
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -152,7 +175,10 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
                     self.image = UIImage(named: "noImage.jpg")
                 }
                 DispatchQueue.main.async {
-                    cell.iv_Pictures.image = self.image
+                    if cell.tag == indexPath.item {
+                        cell.iv_Pictures.image = self.image
+
+                    }
                 }
             }else{
                 print(error!.localizedDescription)
@@ -164,7 +190,7 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDelegate
     @objc func AddFriend(_ sender: UIButton) {
         if let controller = storyboard?.instantiateViewController(withIdentifier: "AddFriendViewController") as? AddFriendViewController{
             controller.headimage = headimage
-            controller.friend = news.userID
+            controller.friend = personalId
             navigationController?.pushViewController(controller, animated: true)
         }
     }

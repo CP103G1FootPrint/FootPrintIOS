@@ -14,12 +14,12 @@ class FriendViewController: UIViewController, UIScrollViewDelegate{
     @IBOutlet weak var scrollViewController: UIScrollView!
     @IBOutlet weak var container_Friends: UIView!
     @IBOutlet weak var container_Message: UIView!
+    
     let friendsViewController = FriendsViewController()
     var tv_TableView: FriendsViewController?
+   
     let user = loadData()
     var friends = [Friends]()
-//    let serialQueue: DispatchQueue = DispatchQueue(label: "serialQueue")
-//    let queue = ispatch
     let myDataQueue = DispatchQueue(label: "ConcurrentQueue",
                                           qos: .background,
                                           attributes: .concurrent,
@@ -35,9 +35,8 @@ class FriendViewController: UIViewController, UIScrollViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        getAllFriends()
         scrollViewController.delegate = self
-//        tv_TableView = storyboard?.instantiateViewController(withIdentifier: "FriendsViewController") as? FriendsViewController
+//      tv_TableView = storyboard?.instantiateViewController(withIdentifier: "FriendsViewController") as? FriendsViewController
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,13 +57,26 @@ class FriendViewController: UIViewController, UIScrollViewDelegate{
                         
                         self.myDataQueue.async(flags: .barrier) {
                             self.friends = result
-//                            let tv_TableView = storyboard?.instantiateViewController(withIdentifier: "FriendsViewController") as! FriendsViewController
-//                            let tv_TableView = self.friendsViewController.tv_TableView
-//                            DispatchQueue.main.async {
-//                                self.friendsViewController.tv_TableView.reloadData()
-////                            self.tv_TableView!.tv_TableView.reloadData()
-//                                print("123run")
-//                            }
+                            
+                            DispatchQueue.main.async {
+                                let friendsViewController = self.children[0] as! FriendsViewController
+                                friendsViewController.friends = self.friends
+                                friendsViewController.tv_TableView.reloadData()
+                                friendsViewController.lb_FriendsCounter.text = "好友數量:\(self.friends.count)人"
+                                
+                                let friendsMessageTableViewController = self.children[1] as! FriendsMessageTableViewController
+                                friendsMessageTableViewController.friends = self.friends
+                                friendsMessageTableViewController.getAllFriendsMessage()
+                            }
+                           
+                            
+//                          let tv_TableView = storyboard?.instantiateViewController(withIdentifier: "FriendsViewController") as! FriendsViewController
+//                          let tv_TableView = self.friendsViewController.tv_TableView
+//                          DispatchQueue.main.async {
+//                          self.friendsViewController.tv_TableView.reloadData()
+//                          self.tv_TableView!.tv_TableView.reloadData()
+//                          print("123run")
+//                          }
 //                            print("123run")
             
 //                        self.serialQueue.sync {

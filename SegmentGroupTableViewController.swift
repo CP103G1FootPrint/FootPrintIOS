@@ -59,17 +59,18 @@ class SegmentGroupTableViewController: UITableViewController {
                     
                     if let result = try? JSONDecoder().decode([Trip].self, from: data!) {
                         self.trips = result
-//                        if result.isEmpty{
-//                            
-//                
-//                        }
+                      
 //                        self.trips.reverse()
 //                        _ = try? JSONDecoder().decode(String.self, from: data!)
+                        if result.isEmpty{
+                            self.tableView.setEmptyView(title: "You don't have any trip.", message: "Start creating your trip", messageImage: UIImage(named: "airplane1")!)
+                        }
+                        
     
                         DispatchQueue.main.async {
                             if let control = self.tableView.refreshControl {
                                 self.activityIndicatorView.stopAnimating()
-                                self.tableView.setEmptyView(title: "You don't have any trip.", message: "Start creating your trip", messageImage: UIImage(named: "airplane1")!)
+//                                self.tableView.setEmptyView(title: "You don't have any trip.", message: "Start creating your trip", messageImage: UIImage(named: "airplane1")!)
                                 if control.isRefreshing {
                                     // 停止下拉更新動作
                                     control.endRefreshing()
@@ -121,7 +122,7 @@ class SegmentGroupTableViewController: UITableViewController {
         requestParam["action"] = "getImage"
         requestParam["id"] = trip.tripID
         // 圖片寬度為tableViewCell的1/4，ImageView的寬度也建議在storyboard加上比例設定的constraint
-        requestParam["imageSize"] = cell.frame.width / 4
+        requestParam["imageSize"] = cell.frame.width
         var image: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -129,7 +130,7 @@ class SegmentGroupTableViewController: UITableViewController {
                     image = UIImage(data: data!)
                 }
                 if image == nil {
-                    image = UIImage(named: "noImage.jpg")
+                    image = UIImage(named: "noimage.jpg")
                 }
                 DispatchQueue.main.async { cell.photoImageView.image = image }
             } else {
@@ -288,16 +289,18 @@ class SegmentGroupTableViewController: UITableViewController {
             navigationController?.pushViewController(controller, animated: true)
         }
         
+    }
         
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "groupplanDetail" {
-                /* indexPath(for:)可以取得UITableViewCell的indexPath */
-                let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
-                let trip = trips[indexPath!.row]
-                let detailVC = segue.destination as! PlanViewController
-                detailVC.trip = trip
-            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "groupplanDetail" {
+            /* indexPath(for:)可以取得UITableViewCell的indexPath */
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+            let trip = trips[indexPath!.row]
+            let detailVC = segue.destination as! PlanViewController
+            detailVC.trip = trip
         }
+    }
+        
         
 
     /*
@@ -344,8 +347,10 @@ class SegmentGroupTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    }
- 
+    
+    
+    
+    
 }
 //客制tableView 往左滑UIView
 //extension UIView {

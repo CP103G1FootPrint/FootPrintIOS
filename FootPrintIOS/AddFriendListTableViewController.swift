@@ -77,7 +77,7 @@ class AddFriendListTableViewController: UITableViewController {
                                 if control.isRefreshing {
                                     // 停止下拉更新動作
                                     control.endRefreshing()
-                                    self.tableView.setEmptyView(title: "No friends to show.", message: "", messageImage: UIImage(named: "friendship")!)
+                                    self.tableView.setEmptyView(title: "No friends to show.", message: "", messageImage: UIImage(named: "login")!)
                                 }
                             }
                             /* 抓到資料後重刷table view */
@@ -268,6 +268,9 @@ class AddFriendListTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        
        let controller = segue.destination as? CreateTripViewController
         
         controller?.tripfriend = addfriend

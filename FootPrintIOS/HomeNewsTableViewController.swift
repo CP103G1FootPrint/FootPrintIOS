@@ -12,8 +12,6 @@ class HomeNewsTableViewController: UITableViewController {
     var news = [News]()
     let user = loadData()
     var imageDic = [Int : UIImage]()
-
-    
     @IBOutlet weak var nv: UINavigationItem!
     
     let url_server = URL(string: common_url + "PicturesServlet")
@@ -22,6 +20,7 @@ class HomeNewsTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.tableFooterView =  UIView()
         tableViewAddRefreshControl()
+        showAllNews()
     }
     
     /** tableView加上下拉更新功能 */
@@ -33,7 +32,7 @@ class HomeNewsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        showAllNews()
+//        showAllNews()
     }
     
     @objc func showAllNews() {
@@ -90,6 +89,7 @@ class HomeNewsTableViewController: UITableViewController {
         cell.bt_HeadPicture.tag = indexPath.row
         cell.bt_LandMark.tag = indexPath.row
         cell.bt_NickName.tag = indexPath.row
+        cell.bt_LandMark.tag = indexPath.row
         
         //存圖片
         if let image = self.imageDic[new.imageID!]{
@@ -97,12 +97,10 @@ class HomeNewsTableViewController: UITableViewController {
         }else{
             cell.iv_NewsPicture.image = nil
         
-        
         // 尚未取得圖片，另外開啟task請求
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
         requestParam["id"] = new.imageID
-        //requestParam["findUserHeadImage"] = new.userID
         // 圖片寬度為tableViewCell的1/4，ImageView的寬度也建議在storyboard加上比例設定的constraint
         requestParam["imageSize"] = cell.frame.width
         var image: UIImage?
@@ -199,6 +197,34 @@ class HomeNewsTableViewController: UITableViewController {
             controller.headImage = image
             navigationController?.pushViewController(controller, animated: true)
 //          present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func bt_LandMark(_ sender: UIButton) {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "LandMarkDetailViewController") as? LandMarkDetailViewController{
+            let new = news[sender.tag]
+            let url_server = URL(string: common_url + "LocationServlet")
+            var requestParam = [String: Any]()
+            requestParam["action"] = "findLandMarkInfo"
+            requestParam["landMarkId"] = new.landMarkID
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        // 將輸入資料列印出來除錯用
+                        // print("input: \(String(data: data!, encoding: .utf8)!)")
+                        if let result = try? JSONDecoder().decode([LandMark].self, from: data!) {
+                            let location = result
+                            controller.location = location.first
+                            DispatchQueue.main.async { self.navigationController?.pushViewController(controller, animated: true) }
+                        }
+                    }
+                }
+            }
+            
+
+//            let landmark = LandMark(new.landMarkName!, new.landMarkID!)
+//            controller.location = landmark
+//            navigationController?.pushViewController(controller, animated: true)
         }
     }
 }

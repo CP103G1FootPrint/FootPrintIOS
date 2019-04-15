@@ -10,9 +10,9 @@ import UIKit
 
 class GroupAlbumCollectionViewController: UICollectionViewController,
     UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-//    var a: UIImage?
+
     
-    
+    var imageDic = [Int: UIImage]()
     var activityIndicatorView: UIActivityIndicatorView!
     var groupAlbums = [GroupAlbum]()
     var pickedImage = UIImage()
@@ -126,20 +126,27 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
         // 圖片寬度為tableViewCell的1/4，ImageView的寬度也建議在storyboard加上比例設定的constraint
         requestParam["imageSize"] = cell.frame.width / 4
         var image: UIImage?
+        
+        if let image = self.imageDic[groupAlbum.albumID]{
+            cell.imageViewCell.image = image
+        }else{
+            cell.imageViewCell.image = nil
+        
+        
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
                     image = UIImage(data: data!)
                 }
                 if image == nil {
-                    image = UIImage(named: "noImage.jpg")
+                    image = UIImage(named: "noimage.jpg")
                 }
                 DispatchQueue.main.async { cell.imageViewCell.image = image }
             } else {
                 print(error!.localizedDescription)
             }
         }
-        
+        }
         return cell
     }
 
@@ -198,7 +205,7 @@ class GroupAlbumCollectionViewController: UICollectionViewController,
         // 有圖才上傳 圖轉乘的imageBase64 字串
         if pickedImage != nil {
             print("!!!!!!5")
-            requestParam["imageBase64"] = pickedImage.jpegData(compressionQuality: 0.5)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
+            requestParam["imageBase64"] = pickedImage.jpegData(compressionQuality: 1.0)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
         }
         print("!!!!!!3")
         executeTask(self.url_server!, requestParam) { (data, response, error) in
