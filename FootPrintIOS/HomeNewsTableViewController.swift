@@ -203,9 +203,26 @@ class HomeNewsTableViewController: UITableViewController {
     @IBAction func bt_LandMark(_ sender: UIButton) {
         if let controller = storyboard?.instantiateViewController(withIdentifier: "LandMarkDetailViewController") as? LandMarkDetailViewController{
             let new = news[sender.tag]
-            let landmark = LandMark(new.landMarkName!, new.landMarkID!)
-            controller.location = landmark
-            navigationController?.pushViewController(controller, animated: true)
+            let url_server = URL(string: common_url + "LocationServlet")
+            var requestParam = [String: Any]()
+            requestParam["action"] = "findLandMarkInfo"
+            requestParam["landMarkId"] = new.landMarkID
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        // 將輸入資料列印出來除錯用
+                        // print("input: \(String(data: data!, encoding: .utf8)!)")
+                        if let result = try? JSONDecoder().decode([LandMark].self, from: data!) {
+                            let location = result
+                            controller.location = location.first
+                            DispatchQueue.main.async { self.navigationController?.pushViewController(controller, animated: true) }
+                        }
+                    }
+                }
+            }
+//            let landmark = LandMark(new.landMarkName!, new.landMarkID!)
+//            controller.location = landmark
+//            navigationController?.pushViewController(controller, animated: true)
         }
     }
 }

@@ -360,7 +360,7 @@
         <scene sceneID="rl5-8E-xGb">
             <objects>
                 <viewController storyboardIdentifier="NewsCommentViewController" autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="shj-gJ-6D3" customClass="NewsCommentViewController" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="41n-uU-gxq">
+                    <view key="view" contentMode="scaleToFill" id="41n-uU-gxq" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -508,6 +508,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.41377118925808504" green="0.81178419874404284" blue="0.73526871408344252" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="NoD-Em-fME" firstAttribute="top" secondItem="g0F-fu-IpX" secondAttribute="top" constant="5" id="7hA-cj-mdd"/>
                             <constraint firstItem="XBb-VV-lst" firstAttribute="leading" secondItem="g0F-fu-IpX" secondAttribute="leading" id="GY6-pN-ZyE"/>
