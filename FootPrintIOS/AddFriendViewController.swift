@@ -54,5 +54,6 @@ class AddFriendViewController: UIViewController {
            self.socket.write(string: text!)
            tf_Message.text = nil
        }
+       
     }
 }

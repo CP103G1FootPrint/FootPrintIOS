@@ -22,7 +22,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let a:URL  = URL(string: common_url )!
-        print("123=\(String(describing: a))")
+//        print("123=\(String(describing: a))")
         fbButton.readPermissions = ["email"]
         fbButton.delegate = self
         
@@ -31,7 +31,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             //fetchProfile()
         }
         //自動登入
-//                loadDataLogin()
+                loadDataLogin()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -61,14 +61,14 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     //                    print("input: \(String(data: data!, encoding: .utf8)!)")
                     if String(data:data!,encoding: .utf8)! == "true" {
                         //儲存使用者資訊到userdefault
-                        self.findUserInfo(account: self.account!)
-                        self.findUserHead(account: self.account!)
-                        let bool = saveUser(requestParam)
-                        print("user save : \(bool)")
+                            self.findUserInfo(account: self.account!)
+                            self.findUserHead(account: self.account!) // 進入首頁
+                            let bool = saveUser(requestParam)
+//                            print("user save : \(bool)")
                         // 進入首頁
-                        DispatchQueue.main.async {
-                            self.performSegue(withIdentifier: "next", sender: self)
-                        }
+//                        DispatchQueue.main.async {
+//                            self.performSegue(withIdentifier: "next", sender: self)
+//                        }
                         
                     } else {
                         DispatchQueue.main.async {
@@ -248,11 +248,17 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
                     image = UIImage(data: data!)
                     let headData = image?.pngData()
                     saveUserHead(userHead: headData!)
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "next", sender: self)
+                    }
                 }
                 if image == nil {
                     image = UIImage(named: "user2.png")
                     let headData = image?.pngData()
                     saveUserHead(userHead: headData!)
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "next", sender: self)
+                    }
                 }
             } else {
                 //                print(error!.localizedDescription)

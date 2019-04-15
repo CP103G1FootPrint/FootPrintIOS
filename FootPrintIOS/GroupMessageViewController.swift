@@ -10,6 +10,7 @@ import UIKit
 
 class GroupMessageViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
+    @IBOutlet weak var stackViewBottomConstraint: NSLayoutConstraint!
     var trips: Trip!
     var chatmessages = [ChatMessage]()
     var headImage: UIImage?
@@ -28,7 +29,7 @@ class GroupMessageViewController: UIViewController,UITableViewDataSource,UITable
         
 
         //鍵盤
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -162,20 +163,50 @@ class GroupMessageViewController: UIViewController,UITableViewDataSource,UITable
     */
     
     //鍵盤
+    /*
     @objc func keyboardWillShow(notification: Notification) {
+        
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRect = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRect.height
             view.frame.origin.y = -keyboardHeight
+            
         } else {
             view.frame.origin.y = -view.frame.height / 3
         }
+        
+        tv_tableView.contentOffset.y
+
     }
+    */
+    
+    
+    @objc func keyboardWasShown(_ notificiation: NSNotification) {
+        guard let info = notificiation.userInfo,
+            let keyboardFrameValue =
+            info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue
+            else { return }
+        
+        let keyboardFrame = keyboardFrameValue.cgRectValue
+        let keyboardSize = keyboardFrame.size
+        
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0,
+                                         bottom: keyboardSize.height, right: 0.0)
+        tv_tableView.contentInset = contentInsets
+        tv_tableView.scrollIndicatorInsets = contentInsets
+        stackViewBottomConstraint.constant = -10 -
+            keyboardSize.height
+    }
+    
     @objc func keyboardWillHide(notification: Notification) {
-        view.frame.origin.y = 0
+         //view.frame.origin.y = 0
+         tv_tableView.contentInset = .zero
+         tv_tableView.scrollIndicatorInsets = .zero
+         stackViewBottomConstraint.constant = -10
     }
     deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        //NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     @IBAction func tapGesture(_ sender: Any) {

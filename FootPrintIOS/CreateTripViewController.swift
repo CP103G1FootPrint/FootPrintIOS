@@ -11,6 +11,7 @@ import UIKit
 class CreateTripViewController: UIViewController ,UIPickerViewDataSource,UIPickerViewDelegate,
 UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     var requestParam = [String: String]()
+    
     var tripfriend = [String]()
     let url_server = URL(string: common_url + "/TripServlet")
     
@@ -213,7 +214,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         requestParam["trip"] = try! String(data: JSONEncoder().encode(trip), encoding: .utf8) //主轉成jason 字串 只有文字沒有圖
         // 有圖才上傳 圖轉乘的imageBase64 字串
         if self.image != nil {
-            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 0.5)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
+            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
         }
         executeTask(self.url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -242,12 +243,17 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 
     }
     
+    
+    
+    
     @IBAction func clickCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     
     @IBAction func unwindToCreateTripViewController(segue: UIStoryboardSegue){
+        
+        
         
         friendListTextView.text = tripfriend.joined(separator: ",")
     }

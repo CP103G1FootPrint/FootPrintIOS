@@ -229,6 +229,24 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
         alertController.addAction(cancle)
         self.present(alertController,animated: true,completion: nil)
     }
+            @IBAction func btLogout(_ sender: Any) {
+                //        let text : String? = ""
+                //        let account = Account(text!,text!,text!,text!,text!)
+                //        saveInfo(account)
+                //
+                //        var requestParam = [String: String]()
+                //        requestParam["userId"] = text
+                //        requestParam["password"] = text
+                //        _ = saveUser(requestParam)
+                
+// DispatchQueue.main.async {
+// let storyboard = UIStoryboard(name: "Main", bundle: nil) //storyboard
+// let destination = storyboard.instantiateViewController(withIdentifier:"SignInViewController")
+//                    self.present(destination,animated:true,completion:nil)
+//                }
+                
+                
+            }
 }
 
 

@@ -172,5 +172,4 @@ class LandMarkDetailViewController: UIViewController,UICollectionViewDelegate, U
         starUILable.text = String(format:"%.1f", location!.star!)
         typeUILable.text = location?.type
     }
-    
 }
