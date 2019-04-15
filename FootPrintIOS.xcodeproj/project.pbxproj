@@ -101,6 +101,8 @@
 		D4363605225B109F00052CE2 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4363604225B109F00052CE2 /* AddFriendViewController.swift */; };
 		D4363608225B334E00052CE2 /* NotifyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4363607225B334E00052CE2 /* NotifyTableViewCell.swift */; };
 		D4440D9C224B9C9500E83240 /* NewsCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */; };
+		D4A17FB32264174C00C78F58 /* SearchFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A17FB22264174C00C78F58 /* SearchFriendViewController.swift */; };
+		D4A17FB52264179100C78F58 /* SearchFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A17FB42264179100C78F58 /* SearchFriendTableViewCell.swift */; };
 		D4A7739C224E8D1300C3867C /* NewsCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A7739B224E8D1300C3867C /* NewsCommentTableViewCell.swift */; };
 		D4A7739E224E8D3D00C3867C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A7739D224E8D3D00C3867C /* Comment.swift */; };
 		D4A773A82250F6A500C3867C /* HomeNewsPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A773A72250F6A500C3867C /* HomeNewsPersonalViewController.swift */; };
@@ -214,6 +216,8 @@
 		D4363604225B109F00052CE2 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		D4363607225B334E00052CE2 /* NotifyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyTableViewCell.swift; sourceTree = "<group>"; };
 		D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentViewController.swift; sourceTree = "<group>"; };
+		D4A17FB22264174C00C78F58 /* SearchFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendViewController.swift; sourceTree = "<group>"; };
+		D4A17FB42264179100C78F58 /* SearchFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendTableViewCell.swift; sourceTree = "<group>"; };
 		D4A7739B224E8D1300C3867C /* NewsCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentTableViewCell.swift; sourceTree = "<group>"; };
 		D4A7739D224E8D3D00C3867C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		D4A773A72250F6A500C3867C /* HomeNewsPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsPersonalViewController.swift; sourceTree = "<group>"; };
@@ -535,6 +539,7 @@
 				D4A773B422520E8400C3867C /* FriendsViewController.swift */,
 				D4A773B622520EA400C3867C /* FriendsMessageTableViewController.swift */,
 				D4363602225ADECE00052CE2 /* ChatViewController.swift */,
+				D4A17FB22264174C00C78F58 /* SearchFriendViewController.swift */,
 			);
 			name = Friend;
 			sourceTree = "<group>";
@@ -546,6 +551,7 @@
 				D4A773BA225211F800C3867C /* FriendsMessageListTableViewCell.swift */,
 				D43635FC2254A95600052CE2 /* LeftChatTableViewCell.swift */,
 				D43635FE2254A96A00052CE2 /* RightChatTableViewCell.swift */,
+				D4A17FB42264179100C78F58 /* SearchFriendTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -710,7 +716,6 @@
 				D4A773B32252079D00C3867C /* FriendViewController.swift in Sources */,
 				AF0BD19F222F6F66006FC80A /* ScheduleTableViewController.swift in Sources */,
 				028DDF3D22544266006DD7EB /* CameraImage.swift in Sources */,
-				AFB16070224E1A8400F675E5 /* SelfieEditVC.swift in Sources */,
 				02627CE7225E38D4006CC749 /* FindLocationViewController.swift in Sources */,
 				D4A773A82250F6A500C3867C /* HomeNewsPersonalViewController.swift in Sources */,
 				AF47E682223B8BA8007AD656 /* News.swift in Sources */,
@@ -757,6 +762,7 @@
 				020777F72257126E001BE30A /* FindLocationTableViewController.swift in Sources */,
 				028DDF3B22544219006DD7EB /* NearLocationTableViewCell.swift in Sources */,
 				024A43F522607D77003360E6 /* PlanTableViewCell.swift in Sources */,
+				D4A17FB32264174C00C78F58 /* SearchFriendViewController.swift in Sources */,
 				AFE8DBC12250C43F005F585A /* SegmentGroupTableViewController.swift in Sources */,
 				AF1DA0BD224B460C00B80E09 /* Likes.swift in Sources */,
 				D4A7739C224E8D1300C3867C /* NewsCommentTableViewCell.swift in Sources */,
@@ -771,6 +777,7 @@
 				024A43FE226115DB003360E6 /* HomeTripDetailViewController.swift in Sources */,
 				D4A773AC2250FAB400C3867C /* PersonalPictureCollectionViewCell.swift in Sources */,
 				AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */,
+				D4A17FB52264179100C78F58 /* SearchFriendTableViewCell.swift in Sources */,
 				028DDF3F22544277006DD7EB /* LandMark.swift in Sources */,
 				AF47E680223B8B92007AD656 /* HomeNewsTableViewController.swift in Sources */,
 				027A64D42252F5A8002476D4 /* AppDelegate.swift in Sources */,

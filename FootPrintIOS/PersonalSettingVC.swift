@@ -219,9 +219,9 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
                 //        requestParam["password"] = text
                 //        _ = saveUser(requestParam)
                 
-//                DispatchQueue.main.async {
-//                    let storyboard = UIStoryboard(name: "Main", bundle: nil) //storyboard
-//                    let destination = storyboard.instantiateViewController(withIdentifier:"SignInViewController")
+// DispatchQueue.main.async {
+// let storyboard = UIStoryboard(name: "Main", bundle: nil) //storyboard
+// let destination = storyboard.instantiateViewController(withIdentifier:"SignInViewController")
 //                    self.present(destination,animated:true,completion:nil)
 //                }
                 
