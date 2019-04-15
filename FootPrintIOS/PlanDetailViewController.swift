@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Starscream
 
 class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableViewDataSource, UITableViewDelegate {
 
@@ -18,29 +19,44 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
     var numberOfButtons :Int?
     var tripID :Int?
     var tripForDetail: Trip!
-    var placeSelected: LandMark?
-    var result : LandMark?
-    var currentButton: Int?
+    var currentButton:Int = 0
+    var socket: WebSocket!
+    var user = loadData()
+    var receiver:String?
+    var placeSelected: Int?
+    var placeSelecteds: [LandMark]?
+    var activityIndicatorView: UIActivityIndicatorView!
     
     @IBOutlet weak var mScrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setdata()
-        print("detail \(String(describing: tripForDetail.days))")
-        print("detail \(String(describing: tripForDetail.title))")
+        //run
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+        self.uiTableView.tableFooterView = UIView()
+        self.uiTableView.backgroundView = activityIndicatorView
         
+        print("\(self) \(#function)" )
+        setdata()
         
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognized(_:)))
         uiTableView.addGestureRecognizer(longpress)
         
         let notificationName = Notification.Name("Planlocation")
-        NotificationCenter.default.addObserver(self, selector: #selector(songUpdated(noti:)), name: notificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(locationUpdated(noti:)), name: notificationName, object: nil)
+        
+        socket = WebSocket(url: URL(string: url_server_schedule + user.account)!)
+        addSocketCallBacks()
+        socket.connect()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.dynamicButtonCreation()
+        //run
+        if currentArray.count == 0 {
+            activityIndicatorView.startAnimating()
+        }
     }
     
     func dynamicButtonCreation() {
@@ -85,11 +101,16 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
     @objc func scrollButtonAction(sender: UIButton) {
         changeDataLandMark(tripID!, sender.tag - 1)
         currentButton = sender.tag - 1
+        //發送通知
+        let notificationName = Notification.Name("ScheduleTripMapChange")
+        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["TripID": tripID as Any, "Day":sender.tag - 1 as Any])
     }
     
     @IBAction func addDay(_ sender: Any) {
         numberOfButtons = numberOfButtons! + 1
-        dayUpdate(self.tripID!, self.numberOfButtons!)
+        // message
+        let addMessage = ScheduleDay("ScheduleDay", "dayChangeAdd", self.user.account, receiver!, 1, self.numberOfButtons!)
+        dayUpdate(self.tripID!, self.numberOfButtons!,addMessage)
         DispatchQueue.main.async {
             self.viewWillAppear(true)
         }
@@ -97,11 +118,14 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
     
     @IBAction func miday(_ sender: Any) {
         if numberOfButtons! > 1 {
+            
             //Alert確認是否刪除資料
             let alert = UIAlertController(title: "note", message: "確定要減少一天嗎？", preferredStyle: .alert)
             let confirmAction = UIAlertAction(title: "Confirm", style: .default,handler: { action in
                 self.numberOfButtons = self.numberOfButtons! - 1
-                self.dayUpdate(self.tripID!, self.numberOfButtons!)
+                // message
+                let addMessage = ScheduleDay("ScheduleDay", "dayChangeLess", self.user.account, self.receiver!, 1, self.numberOfButtons!)
+                self.dayUpdate(self.tripID!, self.numberOfButtons!, addMessage)
                 self.dayLandMarkDelete(self.tripID!, self.numberOfButtons!)
             })
             let cancelAction = UIAlertAction(title: "Cancel", style: .default)
@@ -134,10 +158,12 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
 //        print("\(indexPath.row)")
         performSegue(withIdentifier: "unwindsegueMapController", sender: self)
     }
-    //送回地圖
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //送回地圖
         if let indexPath  = uiTableView.indexPathForSelectedRow{
-            placeSelected = currentArray[indexPath.row]
+            placeSelected = indexPath.row
+            placeSelecteds = currentArray
         }
     }
     //cell height
@@ -164,7 +190,8 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
     //增加地標按鍵的動作
     @objc func addLandMarkAction(sender: UIButton) {
         let detailVC = storyboard!.instantiateViewController(withIdentifier: "PlanFindLocationViewController") as! PlanFindLocationViewController
-
+        detailVC.getCurrentButton = currentButton
+        print("prepare \(currentButton)")
         navigationController!.pushViewController(detailVC, animated: true)
     }
 
@@ -172,7 +199,10 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         currentArray.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
-        deletOneLandMark("changePositionLandMarkInSchedulePlanDay", tripID!, numberOfButtons! - 1 , currentArray)
+        // message
+        let location = try! String(data: JSONEncoder().encode(currentArray), encoding: .utf8)
+        let addMessage = ScheduleDay("ScheduleDayRecycle", currentButton, "judgmentDay", user.account, receiver!, 1, tripID!, location!)
+        deletOneLandMark("changePositionLandMarkInSchedulePlanDay", tripID!, currentButton , currentArray, addMessage)
     }
     //delet title
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
@@ -185,10 +215,14 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         numberOfButtons = tripForDetail.days
         //id
         tripID = tripForDetail.tripID
+        //get friend
+        getFriends(tripID!)
+        //init table
         changeDataLandMark(tripID!,0)
+        
     }
     
-    //move
+    //table can move roll
     @objc func longPressGestureRecognized(_ gestureRecognizer: UIGestureRecognizer) {
         let longPress = gestureRecognizer as! UILongPressGestureRecognizer
         let state = longPress.state
@@ -242,7 +276,10 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
                     currentArray.insert(currentArray.remove(at: Path.initialIndexPath!.row), at: indexPath!.row)
                     uiTableView.moveRow(at: Path.initialIndexPath!, to: indexPath!)
                     Path.initialIndexPath = indexPath
-                    deletOneLandMark("changePositionLandMarkInSchedulePlanDay", tripID!, numberOfButtons! - 1 , currentArray)
+                    // message
+                    let location = try! String(data: JSONEncoder().encode(currentArray), encoding: .utf8)
+                    let addMessage = ScheduleDay("ScheduleDayRecycle", currentButton, "judgmentDay", user.account, receiver!, 1, tripID!, location!)
+                    deletOneLandMark("changePositionLandMarkInSchedulePlanDay", tripID!, currentButton , currentArray, addMessage)
                 }
             }
         default:
@@ -285,8 +322,30 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         return cellSnapshot
     }
 
+    //取得行程好友
+    func getFriends(_ tripID:Int) {
+        let url_trip = URL(string: common_url + "TripServlet")
+        var requesrParam = [String: Any]()
+        requesrParam["action"] = "getTripFriends"
+        requesrParam["tripId"] = tripID
+        
+        executeTask(url_trip!, requesrParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    // 將輸入資料列印出來除錯用
+//                    print("input1: \(String(data: data!, encoding: .utf8)!)")
+                    if let result = try? JSONDecoder().decode([String].self, from: data!) {
+                        self.receiver = try! String(data: JSONEncoder().encode(result), encoding: .utf8)
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
     //天數增減
-    func dayUpdate(_ tripID:Int, _ day:Int) {
+    func dayUpdate(_ tripID:Int, _ day:Int, _ addMessage:ScheduleDay) {
         var requestParam = [String: Any]()
         let url_server = URL(string: common_url + "TripServlet")
         requestParam["action"] = "dayUpdate"
@@ -300,6 +359,11 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
                     if let result = String(data: data!, encoding: .utf8) {
                         if let count = Int(result) {
                             if count != 0 {
+                                //socket
+                                if let jsonData = try? JSONEncoder().encode(addMessage) {
+                                    let text = String(data: jsonData, encoding: .utf8)
+                                    self.socket.write(string: text!)
+                                }
                                 DispatchQueue.main.async {
                                     self.viewWillAppear(true)
                                 }
@@ -352,8 +416,14 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
                     if let result = try? JSONDecoder().decode([LandMark].self, from: data!) {
                         self.currentArray = result
                         DispatchQueue.main.async {
+                            self.activityIndicatorView.stopAnimating()
                             self.uiTableView.reloadData()
                         }
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.activityIndicatorView.stopAnimating()
+                        self.uiTableView.reloadData()
                     }
                 }
             }
@@ -387,7 +457,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
     }
     
     //刪除地標行程地標
-    func deletOneLandMark(_ action:String, _ tripID:Int, _ day:Int, _ landMarks:[LandMark]) {
+    func deletOneLandMark(_ action:String, _ tripID:Int, _ day:Int, _ landMarks:[LandMark], _ addMessage:ScheduleDay) {
         var requestParam = [String: Any]()
         let url_server = URL(string: common_url + "LocationServlet")
         requestParam["action"] = action
@@ -399,10 +469,18 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
                 if data != nil {
                     // 將輸入資料列印出來除錯用
                     // print("input: \(String(data: data!, encoding: .utf8)!)")
-                    if let result = try? JSONDecoder().decode([LandMark].self, from: data!) {
-                        self.currentArray = result
-                        DispatchQueue.main.async {
-                            self.uiTableView.reloadData()
+                    if let result = String(data: data!, encoding: .utf8) {
+                        if let count = Int(result) {
+                            if count != 0 {
+                                //socket
+                                if let jsonData = try? JSONEncoder().encode(addMessage) {
+                                    let text = String(data: jsonData, encoding: .utf8)
+                                    self.socket.write(string: text!)
+                                }
+                                DispatchQueue.main.async {
+                                    self.uiTableView.reloadData()
+                                }
+                            }
                         }
                     }
                 }
@@ -411,7 +489,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
     }
     
     //地標加入行程
-    func addLandMarktoLocation (_ action:String, _ tripID:Int, _ day:Int, _ landMarkID:Int) {
+    func addLandMarktoLocation (_ action:String, _ tripID:Int, _ day:Int, _ landMarkID:Int, _ addMessage:ScheduleDay) {
         var requestParam = [String: Any]()
         let url_server = URL(string: common_url + "LocationServlet")
         requestParam["action"] = action
@@ -426,6 +504,11 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
                     if let result = String(data: data!, encoding: .utf8) {
                         if let count = Int(result) {
                             if count != 0 {
+                                //socket
+                                if let jsonData = try? JSONEncoder().encode(addMessage) {
+                                    let text = String(data: jsonData, encoding: .utf8)
+                                    self.socket.write(string: text!)
+                                }
                                 DispatchQueue.main.async {
                                     self.uiTableView.reloadData()
                                 }
@@ -443,17 +526,81 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
        
     }
     
-    @objc func songUpdated(noti:Notification) {
-        result = noti.userInfo!["Planlocation"] as? LandMark
-        currentArray.append(result!)
-//        print("resulr \(result?.name)")
-//        print("day \(currentButton)")
-        if currentButton == nil {
-            currentButton = 0
-        }
-        addLandMarktoLocation("insertLandMarkInSchedulePlanDay", tripID!, currentButton!, result!.id!)
+    @objc func locationUpdated(noti:Notification) {
+        let resultlandMark = noti.userInfo!["Planlocation"] as? LandMark
+        let getnumber = noti.userInfo!["getCurrentButton"] as? Int
+        currentArray.append(resultlandMark!)
+
+        print("fin \(getnumber)")
+        // message
+        let location = try! String(data: JSONEncoder().encode(currentArray), encoding: .utf8)
+        let addMessage = ScheduleDay("ScheduleDayRecycle", currentButton, "judgmentDay", user.account, receiver!, 1, tripID!, location!)
+        
+        addLandMarktoLocation("insertLandMarkInSchedulePlanDay", tripID!, getnumber!, resultlandMark!.id!,addMessage)
         DispatchQueue.main.async {
             self.uiTableView.reloadData()
+        }
+    }
+    
+    // 也可使用closure偵測WebSocket狀態
+    func addSocketCallBacks() {
+        
+        socket.onText = { (text: String) in
+            if let stateMessage = try? JSONDecoder().decode(ScheduleDay.self, from: text.data(using: .utf8)!) {
+                let dayType = stateMessage.messageType
+                let scheduleDay = stateMessage.numberOfDay
+//                let tripId = stateMessage.tripId
+                let tabCount =  stateMessage.tabCount
+                let result = stateMessage.landMarkList
+                
+                switch dayType {
+                
+                case "updateMap" :
+                    
+                    break
+                
+                case "dayChangeAdd" :
+                    self.numberOfButtons = tabCount
+                    DispatchQueue.main.async {
+                        self.viewWillAppear(true)
+                        self.uiTableView.reloadData()
+                    }
+                    break
+                    
+                case "dayChangeLess" :
+                    self.numberOfButtons = tabCount
+                    DispatchQueue.main.async {
+                        self.viewWillAppear(true)
+                        self.uiTableView.reloadData()
+                    }
+                    break
+                    
+                case "judgmentDay" :
+                    if self.currentButton == scheduleDay{
+                        if result != nil {
+                            let data = result!.data(using: .utf8)!
+                            let resultlocations = try? JSONDecoder().decode([LandMark].self, from: data)
+                            self.currentArray = resultlocations!
+                            DispatchQueue.main.async {
+                                self.viewWillAppear(true)
+                                self.uiTableView.reloadData()
+                            }
+                        }
+                    }
+                    break
+                default:
+                    break
+                }
+                
+            }
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if self.isMovingFromParent{
+            if socket.isConnected{
+                socket.disconnect()
+            }
         }
     }
 }
