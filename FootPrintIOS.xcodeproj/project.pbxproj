@@ -682,7 +682,6 @@
 				D4A773B32252079D00C3867C /* FriendViewController.swift in Sources */,
 				AF0BD19F222F6F66006FC80A /* ScheduleTableViewController.swift in Sources */,
 				028DDF3D22544266006DD7EB /* CameraImage.swift in Sources */,
-				AFB16070224E1A8400F675E5 /* SelfieEditVC.swift in Sources */,
 				02627CE7225E38D4006CC749 /* FindLocationViewController.swift in Sources */,
 				D4A773A82250F6A500C3867C /* HomeNewsPersonalViewController.swift in Sources */,
 				AF47E682223B8BA8007AD656 /* News.swift in Sources */,
@@ -903,7 +902,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4MHD7B3F6Y;
+				DEVELOPMENT_TEAM = CRYR872K7A;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -925,7 +924,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4MHD7B3F6Y;
+				DEVELOPMENT_TEAM = CRYR872K7A;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
