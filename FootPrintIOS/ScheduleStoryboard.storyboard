@@ -290,17 +290,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="G3Y-0H-kom">
-                                            <rect key="frame" x="15" y="8" width="340" height="40"/>
+                                            <rect key="frame" x="15" y="8" width="132" height="45"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="柯基" translatesAutoresizingMaskIntoConstraints="NO" id="9RH-ih-S1v">
-                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user2.png" translatesAutoresizingMaskIntoConstraints="NO" id="9RH-ih-S1v">
+                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="Glb-wY-LjF"/>
-                                                        <constraint firstAttribute="width" constant="40" id="Zis-3K-nvC"/>
+                                                        <constraint firstAttribute="height" constant="45" id="Glb-wY-LjF"/>
+                                                        <constraint firstAttribute="width" constant="45" id="Zis-3K-nvC"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tom" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7n9-3X-Nhm">
-                                                    <rect key="frame" x="82" y="0.0" width="258" height="40"/>
+                                                    <rect key="frame" x="87" y="0.0" width="45" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -309,10 +309,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="G3Y-0H-kom" secondAttribute="bottom" constant="20.666666666666671" id="5Ni-6h-zQv"/>
-                                        <constraint firstItem="G3Y-0H-kom" firstAttribute="leading" secondItem="gXK-zs-Wy0" secondAttribute="leading" constant="15" id="VL8-zp-XBV"/>
-                                        <constraint firstItem="G3Y-0H-kom" firstAttribute="top" secondItem="gXK-zs-Wy0" secondAttribute="top" constant="8" id="eyv-0Z-EiA"/>
-                                        <constraint firstAttribute="trailing" secondItem="G3Y-0H-kom" secondAttribute="trailing" constant="20" id="xON-tU-ZGL"/>
+                                        <constraint firstAttribute="trailing" secondItem="G3Y-0H-kom" secondAttribute="trailing" constant="228" id="9XU-3Z-o6D"/>
+                                        <constraint firstItem="G3Y-0H-kom" firstAttribute="top" secondItem="gXK-zs-Wy0" secondAttribute="top" constant="8" id="Bmd-Xh-i4b"/>
+                                        <constraint firstAttribute="bottom" secondItem="G3Y-0H-kom" secondAttribute="bottom" constant="15.666666666666671" id="Mbq-fN-EwB"/>
+                                        <constraint firstItem="G3Y-0H-kom" firstAttribute="leading" secondItem="gXK-zs-Wy0" secondAttribute="leading" constant="15" id="N3K-zY-Wc1"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -359,7 +359,7 @@
                                     <segment title="All"/>
                                     <segment title="Group"/>
                                 </segments>
-                                <color key="tintColor" red="0.3222967243" green="0.8398040926" blue="0.67676015290000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.29411764705882354" green="0.73333333333333328" blue="0.64313725490196072" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="switchCustom:" destination="xRD-Mc-hDM" eventType="valueChanged" id="780-Qk-N31"/>
                                 </connections>
@@ -655,17 +655,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="wlX-uC-r1l">
-                                            <rect key="frame" x="30" y="8" width="295" height="40"/>
+                                            <rect key="frame" x="30" y="8" width="132" height="45"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="柯基" translatesAutoresizingMaskIntoConstraints="NO" id="LaD-eZ-5K5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user.png" translatesAutoresizingMaskIntoConstraints="NO" id="LaD-eZ-5K5">
+                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="SqX-sf-aiY"/>
-                                                        <constraint firstAttribute="height" constant="40" id="scb-QS-aDD"/>
+                                                        <constraint firstAttribute="width" constant="45" id="SqX-sf-aiY"/>
+                                                        <constraint firstAttribute="height" constant="45" id="scb-QS-aDD"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tom" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9N7-tw-cMH">
-                                                    <rect key="frame" x="82" y="0.0" width="213" height="40"/>
+                                                    <rect key="frame" x="87" y="0.0" width="45" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -674,10 +674,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="wlX-uC-r1l" firstAttribute="top" secondItem="09N-AT-ET0" secondAttribute="top" constant="8" id="7jc-7r-YTC"/>
-                                        <constraint firstAttribute="trailing" secondItem="wlX-uC-r1l" secondAttribute="trailing" constant="50" id="aAL-yB-cU6"/>
-                                        <constraint firstItem="wlX-uC-r1l" firstAttribute="leading" secondItem="09N-AT-ET0" secondAttribute="leading" constant="30" id="orj-Of-pve"/>
-                                        <constraint firstAttribute="bottom" secondItem="wlX-uC-r1l" secondAttribute="bottom" constant="20.666666666666671" id="rwh-Tu-bNm"/>
+                                        <constraint firstAttribute="bottom" secondItem="wlX-uC-r1l" secondAttribute="bottom" constant="15.666666666666671" id="JWW-eJ-Ejy"/>
+                                        <constraint firstAttribute="trailing" secondItem="wlX-uC-r1l" secondAttribute="trailing" constant="213" id="Vfj-1h-nUV"/>
+                                        <constraint firstItem="wlX-uC-r1l" firstAttribute="top" secondItem="09N-AT-ET0" secondAttribute="top" constant="8" id="dri-MM-hBs"/>
+                                        <constraint firstItem="wlX-uC-r1l" firstAttribute="leading" secondItem="09N-AT-ET0" secondAttribute="leading" constant="30" id="vAO-qs-Dpr"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1194,7 +1194,6 @@
         <image name="trip1.jpeg" width="301" height="167"/>
         <image name="user.png" width="828" height="855"/>
         <image name="user2.png" width="280" height="280"/>
-        <image name="柯基" width="168" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JRl-cK-sXm"/>

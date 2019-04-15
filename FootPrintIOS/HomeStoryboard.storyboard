@@ -623,7 +623,7 @@
                                 <segment title="行程"/>
                                 <segment title="地圖"/>
                             </segments>
-                            <color key="tintColor" red="0.29482674599999997" green="0.73458498719999998" blue="0.64313232899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="0.29411764705882354" green="0.73333333333333328" blue="0.64313725490196072" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="segmentController:" destination="XGx-29-nQl" eventType="valueChanged" id="lCt-kp-K4q"/>
                             </connections>
