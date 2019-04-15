@@ -1145,6 +1145,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1155,7 +1156,7 @@
                             <constraint firstItem="QRR-Gz-w6E" firstAttribute="height" secondItem="gqT-ka-A8b" secondAttribute="height" constant="-45" id="7Tt-Ja-Zof"/>
                             <constraint firstItem="7YQ-MR-FKy" firstAttribute="bottom" secondItem="gqT-ka-A8b" secondAttribute="bottom" constant="-10" id="INR-ZK-PlB"/>
                             <constraint firstItem="QRR-Gz-w6E" firstAttribute="trailing" secondItem="gqT-ka-A8b" secondAttribute="trailing" id="Sw8-Ji-rot"/>
-                            <constraint firstItem="QRR-Gz-w6E" firstAttribute="top" secondItem="gqT-ka-A8b" secondAttribute="top" constant="8" symbolic="YES" id="aqN-9F-Kc8"/>
+                            <constraint firstItem="QRR-Gz-w6E" firstAttribute="top" secondItem="gqT-ka-A8b" secondAttribute="top" symbolic="YES" id="aqN-9F-Kc8"/>
                             <constraint firstItem="QRR-Gz-w6E" firstAttribute="leading" secondItem="gqT-ka-A8b" secondAttribute="leading" id="h95-Pc-hom"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gqT-ka-A8b"/>

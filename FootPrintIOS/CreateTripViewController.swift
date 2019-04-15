@@ -11,6 +11,7 @@ import UIKit
 class CreateTripViewController: UIViewController ,UIPickerViewDataSource,UIPickerViewDelegate,
 UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     var requestParam = [String: String]()
+    
     var tripfriend = [String]()
     let url_server = URL(string: common_url + "/TripServlet")
     
@@ -242,12 +243,17 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 
     }
     
+    
+    
+    
     @IBAction func clickCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     
     @IBAction func unwindToCreateTripViewController(segue: UIStoryboardSegue){
+        
+        
         
         friendListTextView.text = tripfriend.joined(separator: ",")
     }
