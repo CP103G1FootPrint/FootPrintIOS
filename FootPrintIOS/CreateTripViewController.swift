@@ -224,8 +224,10 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
                             DispatchQueue.main.async {
                                 // 新增成功則回前頁
                                 if count != 0 {
-//                                    let detailVC = self.storyboard!.instantiateViewController(withIdentifier: "scheduleMain") as! ScheduleTableViewController
-//                                    detailVC.tableView.reloadData()
+//                                    let alertController = UIAlertController(title: "insert success",
+//                                                                            message: nil, preferredStyle: .alert)
+//                                    self.present(alertController, animated: true, completion: nil)
+                                    
                                     self.navigationController?.popViewController(animated: true)
                                 } else {
 //                                    let alertController = UIAlertController(title: "insert fail",
@@ -248,8 +250,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     }
     
     
-    
-    
+        
     @IBAction func clickCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

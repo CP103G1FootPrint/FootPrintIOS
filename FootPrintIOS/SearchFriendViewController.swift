@@ -41,9 +41,6 @@ class SearchFriendViewController: UIViewController, UITableViewDataSource, UITab
                     if let result = try? JSONDecoder().decode([String].self, from: data!) {
                         self.userId = result
                         self.currentuserid = self.userId
-//                        DispatchQueue.main.async {
-//                            self.tableview_FindUser.reloadData()
-//                        }
                     }
                 }
             }
@@ -59,31 +56,63 @@ class SearchFriendViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCell(withIdentifier:
             "findfriendcell", for: indexPath) as! SearchFriendTableViewCell
         let friend = cu[indexPath.row]
+        
+        
+        
+        //抓使用者暱稱
+        var requestParam = [String: String]()
+        let url_server = URL(string: common_url + "PicturesServlet")
+        requestParam["action"] = "findUserNickName"
+        requestParam["id"] = friend
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    // 將輸入資料列印出來除錯用
+                    // print("input: \(String(data: data!, encoding: .utf8)!)")
+                    let result = String(data: data!, encoding: .utf8)!
+                    DispatchQueue.main.async {
+                        cell.lb_UserNickName.text = result
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+        
+        //抓留言者頭像
+        let url_server2 = URL(string: common_url + "PicturesServlet")
+        var requestParam2 = [String: Any]()
+        requestParam2["action"] = "findUserHeadImage"
+        requestParam2["userId"] = friend
+        requestParam2["imageSize"] = cell.frame.width / 10
+        var headImage2: UIImage?
+        executeTask(url_server2!, requestParam2) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    headImage2 = UIImage(data: data!)
+                }
+                if headImage2 == nil {
+                    headImage2 = UIImage(named: "album")
+                }
+                DispatchQueue.main.async {
+                    cell.iv_headpicture.image = headImage2
+                    cell.iv_headpicture.layer.cornerRadius = cell.iv_headpicture.frame.width/2
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
         cell.lb_userId.text = friend
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        cameraLandMark = currentLocations[indexPath.row]
-//        let cameraid = cu[indexPath.row]
         let storyboard = UIStoryboard(name: "HomeStoryboard", bundle: nil)
         let friend = storyboard.instantiateViewController(withIdentifier: "HomeNewsPersonalViewController") as! HomeNewsPersonalViewController
         let cameraid = cu[indexPath.row]
         friend.personalId = cameraid
-        self.present(friend, animated: true, completion: nil)
-//        if let controller = storyboard?.instantiateViewController(withIdentifier: "HomeNewsPersonalViewController") as? HomeNewsPersonalViewController{
-//            let cameraid = cu[indexPath.row]
-//            controller.news.userID = cameraid
-//            navigationController?.pushViewController(controller, animated: true)
-//        }
-        
-        
-        
-//        //發送通知
-//        let notificationName = Notification.Name("Planlocation")
-//        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["Planlocation": cameraid as Any])
-//        dismiss(animated: true, completion: nil)
+        navigationController?.pushViewController(friend, animated: true)
     }
     
     func setUpSearchBar() {
@@ -105,8 +134,6 @@ class SearchFriendViewController: UIViewController, UITableViewDataSource, UITab
         })
         if searchText.isEmpty{
             cu.removeAll()
-//            self.tableview_FindUser.reloadData()
-
         }
         self.tableview_FindUser.reloadData()
     }

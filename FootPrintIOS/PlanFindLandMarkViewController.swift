@@ -93,11 +93,11 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        let findLocationViewController = segue.destination as? CreateLocationViewController
-        //        if requestParam["latitude"] != nil && requestParam["longitude"] != nil {
-        //            findLocationViewController!.requestCreateLocation["latitude"] = requestParam["latitude"]
-        //            findLocationViewController!.requestCreateLocation["longitude"] = requestParam["longitude"]
-        //        }
+//                let findLocationViewController = segue.destination as? CreateLocationViewController
+//                if requestParam["latitude"] != nil && requestParam["longitude"] != nil {
+//                    findLocationViewController!.requestCreateLocation["latitude"] = requestParam["latitude"]
+//                    findLocationViewController!.requestCreateLocation["longitude"] = requestParam["longitude"]
+//                }
     }
     
     //取得地標圖片
@@ -107,7 +107,7 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
         requestParam["action"] = "getImage"
         requestParam["id"] = landMarkID
         requestParam["imageSize"] = 1024
-        //        requestParam["imageSize"] = "\(UIScreen.main.bounds)"
+//                requestParam["imageSize"] = "\(UIScreen.main.bounds)"
         var image: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {

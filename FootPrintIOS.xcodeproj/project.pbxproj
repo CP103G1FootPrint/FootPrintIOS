@@ -100,13 +100,13 @@
 		AFFAC23F2247965F00386107 /* TripPlanFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFAC23E2247965F00386107 /* TripPlanFriend.swift */; };
 		D43635F922534A7400052CE2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43635F822534A7400052CE2 /* Message.swift */; };
 		D43635FD2254A95600052CE2 /* LeftChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43635FC2254A95600052CE2 /* LeftChatTableViewCell.swift */; };
-		D43635FF2254A96A00052CE2 /* RightChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43635FE2254A96A00052CE2 /* RightChatTableViewCell.swift */; };
 		D4363603225ADECE00052CE2 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4363602225ADECE00052CE2 /* ChatViewController.swift */; };
 		D4363605225B109F00052CE2 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4363604225B109F00052CE2 /* AddFriendViewController.swift */; };
 		D4363608225B334E00052CE2 /* NotifyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4363607225B334E00052CE2 /* NotifyTableViewCell.swift */; };
 		D4440D9C224B9C9500E83240 /* NewsCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */; };
 		D4A17FB32264174C00C78F58 /* SearchFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A17FB22264174C00C78F58 /* SearchFriendViewController.swift */; };
 		D4A17FB52264179100C78F58 /* SearchFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A17FB42264179100C78F58 /* SearchFriendTableViewCell.swift */; };
+		D4A17FB72265D75A00C78F58 /* RightChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A17FB62265D75A00C78F58 /* RightChatTableViewCell.swift */; };
 		D4A7739C224E8D1300C3867C /* NewsCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A7739B224E8D1300C3867C /* NewsCommentTableViewCell.swift */; };
 		D4A7739E224E8D3D00C3867C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A7739D224E8D3D00C3867C /* Comment.swift */; };
 		D4A773A82250F6A500C3867C /* HomeNewsPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A773A72250F6A500C3867C /* HomeNewsPersonalViewController.swift */; };
@@ -219,13 +219,13 @@
 		D40C7CEA223A909C00812C3C /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		D43635F822534A7400052CE2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D43635FC2254A95600052CE2 /* LeftChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftChatTableViewCell.swift; sourceTree = "<group>"; };
-		D43635FE2254A96A00052CE2 /* RightChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightChatTableViewCell.swift; sourceTree = "<group>"; };
 		D4363602225ADECE00052CE2 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D4363604225B109F00052CE2 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		D4363607225B334E00052CE2 /* NotifyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyTableViewCell.swift; sourceTree = "<group>"; };
 		D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentViewController.swift; sourceTree = "<group>"; };
 		D4A17FB22264174C00C78F58 /* SearchFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendViewController.swift; sourceTree = "<group>"; };
 		D4A17FB42264179100C78F58 /* SearchFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendTableViewCell.swift; sourceTree = "<group>"; };
+		D4A17FB62265D75A00C78F58 /* RightChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightChatTableViewCell.swift; sourceTree = "<group>"; };
 		D4A7739B224E8D1300C3867C /* NewsCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentTableViewCell.swift; sourceTree = "<group>"; };
 		D4A7739D224E8D3D00C3867C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		D4A773A72250F6A500C3867C /* HomeNewsPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsPersonalViewController.swift; sourceTree = "<group>"; };
@@ -401,11 +401,11 @@
 				D4A773AF225204D500C3867C /* cell */,
 				AF47E67F223B8B92007AD656 /* HomeNewsTableViewController.swift */,
 				D4A773A72250F6A500C3867C /* HomeNewsPersonalViewController.swift */,
-				AF1DA0C0224B470000B80E09 /* HomeTripTableViewController.swift */,
-				D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */,
 				D4363604225B109F00052CE2 /* AddFriendViewController.swift */,
 				024A43FB226115C6003360E6 /* HomeTripMapViewController.swift */,
+				AF1DA0C0224B470000B80E09 /* HomeTripTableViewController.swift */,
 				024A43FD226115DB003360E6 /* HomeTripDetailViewController.swift */,
+				D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */,
 			);
 			name = HomeNews;
 			sourceTree = "<group>";
@@ -562,8 +562,8 @@
 				D4A773B8225211D200C3867C /* FriendShipListTableViewCell.swift */,
 				D4A773BA225211F800C3867C /* FriendsMessageListTableViewCell.swift */,
 				D43635FC2254A95600052CE2 /* LeftChatTableViewCell.swift */,
-				D43635FE2254A96A00052CE2 /* RightChatTableViewCell.swift */,
 				D4A17FB42264179100C78F58 /* SearchFriendTableViewCell.swift */,
+				D4A17FB62265D75A00C78F58 /* RightChatTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -739,6 +739,7 @@
 				AFB1606E224E1A4700F675E5 /* PersonalSettingVC.swift in Sources */,
 				AFB1607F224E29F100F675E5 /* PersonalQRcode.swift in Sources */,
 				AF28AA91223CEF910081DE1A /* AddFriendListTableViewController.swift in Sources */,
+				D4A17FB72265D75A00C78F58 /* RightChatTableViewCell.swift in Sources */,
 				AF1DA0BF224B46C700B80E09 /* TripPlansTableViewCell.swift in Sources */,
 				AFB1607B224E298600F675E5 /* ExchangeTVCell.swift in Sources */,
 				D4A773BB225211F800C3867C /* FriendsMessageListTableViewCell.swift in Sources */,
@@ -786,7 +787,6 @@
 				0283E999225B918400F491B4 /* LandMarkImagesTableViewCell.swift in Sources */,
 				AFB16084224E2ACD00F675E5 /* PersonalRecordCVCell.swift in Sources */,
 				028DDF37225441DE006DD7EB /* CreateLocationViewController.swift in Sources */,
-				D43635FF2254A96A00052CE2 /* RightChatTableViewCell.swift in Sources */,
 				D4A773C1225214A200C3867C /* Friends.swift in Sources */,
 				AFDDF36A225395E500198321 /* ChatMessage.swift in Sources */,
 				024A43FE226115DB003360E6 /* HomeTripDetailViewController.swift in Sources */,
@@ -958,7 +958,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CRYR872K7A;
+				DEVELOPMENT_TEAM = 4MHD7B3F6Y;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -980,7 +980,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CRYR872K7A;
+				DEVELOPMENT_TEAM = 4MHD7B3F6Y;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
