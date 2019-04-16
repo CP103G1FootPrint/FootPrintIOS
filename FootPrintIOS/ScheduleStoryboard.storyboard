@@ -344,7 +344,7 @@
         <!--Trip Tab View Controller-->
         <scene sceneID="tbG-wa-tk9">
             <objects>
-                <viewController id="xRD-Mc-hDM" customClass="TripTabViewController" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TripTabViewController" id="xRD-Mc-hDM" customClass="TripTabViewController" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mIY-rV-jIX"/>
                         <viewControllerLayoutGuide type="bottom" id="Cg1-YJ-9gf"/>
@@ -730,21 +730,21 @@
             <objects>
                 <viewController id="rC2-P5-3Jb" customClass="PlanViewController" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dyT-ck-VCi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="689"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="685"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zhz-TN-lZ8">
-                                <rect key="frame" x="0.0" y="44" width="375" height="285.66666666666669"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="283.66666666666669"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L35-Fe-Xfz">
-                                <rect key="frame" x="0.0" y="329.66666666666669" width="375" height="30"/>
+                                <rect key="frame" x="0.0" y="327.66666666666669" width="375" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="boQ-Hi-JGe"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UmM-DQ-C4d">
-                                <rect key="frame" x="0.0" y="359.66666666666674" width="375" height="295.33333333333326"/>
+                                <rect key="frame" x="0.0" y="357.66666666666669" width="375" height="244.33333333333331"/>
                                 <connections>
                                     <segue destination="A9g-Ej-mSf" kind="embed" identifier="planDetailViewController" id="7te-KT-eGn"/>
                                 </connections>
@@ -786,11 +786,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Thx-7P-Hxn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fYV-7I-fUy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="295.33333333333326"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="244.33333333333331"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M7n-Sf-Ncg">
-                                <rect key="frame" x="0.0" y="48.000000000000014" width="375" height="247.33333333333337"/>
+                                <rect key="frame" x="0.0" y="48.000000000000014" width="375" height="196.33333333333337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanDetailCell" rowHeight="80" id="z7P-yw-gWA" customClass="PlanTableViewCell" customModule="FootPrintIOS" customModuleProvider="target">
@@ -1020,7 +1020,7 @@
                                             <outlet property="nearLocationAddress" destination="CMR-ii-dUG" id="Z45-6h-mcC"/>
                                             <outlet property="nearLocationName" destination="227-Dy-WYD" id="H11-cJ-EMN"/>
                                             <outlet property="nearLocationType" destination="qYG-pR-ax1" id="pCK-E5-z3M"/>
-                                            <segue destination="LtM-os-g4L" kind="unwind" unwindAction="resultToLocationWithSegue:" id="5UP-Xi-DUP"/>
+                                            <segue destination="LtM-os-g4L" kind="unwind" identifier="resultToLocation" unwindAction="resultToLocationWithSegue:" id="xF6-ib-EXj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1196,6 +1196,6 @@
         <image name="user2.png" width="280" height="280"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JRl-cK-sXm"/>
+        <segue reference="4sM-nv-Uhm"/>
     </inferredMetricsTieBreakers>
 </document>
