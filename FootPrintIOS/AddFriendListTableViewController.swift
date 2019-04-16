@@ -76,8 +76,8 @@ class AddFriendListTableViewController: UITableViewController {
                                 self.activityIndicatorView.stopAnimating()
                                 if control.isRefreshing {
                                     // 停止下拉更新動作
-                                    control.endRefreshing()
-                                    self.tableView.setEmptyView(title: "No friends to show.", message: "", messageImage: UIImage(named: "login")!)
+//                                    control.endRefreshing()
+//                                    self.tableView.setEmptyView(title: "No friends to show.", message: "", messageImage: UIImage(named: "login")!)
                                 }
                             }
                             /* 抓到資料後重刷table view */
@@ -154,7 +154,7 @@ class AddFriendListTableViewController: UITableViewController {
         //抓取頭像
         requestParam["action"] = "findUserHeadImage"
         requestParam["userId"] = friend
-        requestParam["imageSize"] = "30"
+        requestParam["imageSize"] = "50"
         var headImage: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -268,6 +268,9 @@ class AddFriendListTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        
        let controller = segue.destination as? CreateTripViewController
         
         controller?.tripfriend = addfriend

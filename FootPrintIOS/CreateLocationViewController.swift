@@ -1,7 +1,8 @@
 import UIKit
 import MapKit
+import CoreLocation
 
-class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
+class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate,CLLocationManagerDelegate {
     
     @IBOutlet weak var nameUITextField: UITextField!
     @IBOutlet weak var addressUITextField: UITextField!
@@ -23,9 +24,16 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
     var resultCount = 0
     var requestCreateLocation = [String: Double]()
     var landMarkID :Int = 0
+    var locationManager: CLLocationManager?
+    var fromLocation: CLLocation?
+    var gpslatitude: Double?
+    var gpslongitude: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //locationManager
+        locationManagers()
         
         //id
         findLandMarkID()
@@ -69,6 +77,7 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
     @IBAction func evaluationSender(_ sender: UIStepper) {
         evaluationValue = Double(sender.value)   // Stepper回傳的是float所以需要轉成Double
         evaluationUITextView.text = String(evaluationValue) // Text為文字，所以將數字再轉為字串後顯示
+        print(" latitude create: \(self.gpslatitude)")
     }
     
     // 新建地標
@@ -96,8 +105,8 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
                     latitude = location2d.coordinate.latitude
                     longitude = location2d.coordinate.longitude
                 }else {
-                    latitude = self.requestCreateLocation["latitude"]
-                    longitude = self.requestCreateLocation["longitude"]
+                    latitude = self.gpslatitude
+                    longitude = self.gpslongitude
                 }
 
                 if name!.isEmpty {
@@ -123,11 +132,11 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
                     self.alertNote(text)
                 }else {
                     let locationall = LandMark(self.landMarkID + 1,name!,address!,latitude!,longitude!,description!,sumOpenHours!,self.chooseType,self.evaluationValue)
-                    self.insertLandMark(landMark: locationall)
-                    
-                    let notificationName = Notification.Name("locationCreate")
+//                    self.insertLandMark(landMark: locationall)
+                    print("123 \(locationall.address)")
+                    let notificationName = Notification.Name("locationCreateLandMark")
                     //發送通知
-                    NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["location":locationall])
+                    NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["locationLandMark":locationall])
                     if let controller = self.storyboard?.instantiateViewController(withIdentifier: "camera") {
                         self.present(controller, animated: true, completion: nil)
                     }
@@ -283,5 +292,35 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
         nameUITextField.resignFirstResponder()
         addressUITextField.resignFirstResponder()
         descriptionUITextField.resignFirstResponder()
+    }
+    
+    func locationManagers() {
+        //取得問位置管理權限
+        locationManager = CLLocationManager()
+        //請求user同意時取的位置
+        locationManager?.requestWhenInUseAuthorization()
+        //監聽器
+        locationManager?.delegate = self
+        //精準度
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        //位置移動多少後再去抓新值 會去呼叫 didUpdateLocations方法
+        locationManager?.distanceFilter = 10
+        //開始更新
+        locationManager?.startUpdatingLocation()
+    }
+    
+    /* 實作CLLocationManagerDelegate */
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        /* 若無起點，就將第一次更新取得的位置當作起點 */
+        let newLocation = locations[0]
+        if fromLocation == nil {
+            fromLocation = newLocation
+            gpslatitude = fromLocation?.coordinate.latitude
+            gpslongitude = fromLocation?.coordinate.longitude
+        }else {
+            fromLocation = locations.last!
+            gpslatitude = fromLocation?.coordinate.latitude
+            gpslongitude = fromLocation?.coordinate.longitude
+        }
     }
 }
