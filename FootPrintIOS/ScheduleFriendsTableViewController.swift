@@ -254,7 +254,7 @@ class ScheduleFriendsTableViewController: UITableViewController {
         //抓取頭像
         requestParam["action"] = "findUserHeadImage"
         requestParam["userId"] = finally
-        requestParam["imageSize"] = "30"
+        requestParam["imageSize"] = "50"
         var headImage: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {

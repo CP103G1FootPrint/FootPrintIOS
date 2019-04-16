@@ -223,7 +223,12 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
                         if let count = Int(result) {
                             DispatchQueue.main.async {
                                 // 新增成功則回前頁
-                                if count != 0 {                                            self.navigationController?.popViewController(animated: true)
+                                if count != 0 {
+//                                    let alertController = UIAlertController(title: "insert success",
+//                                                                            message: nil, preferredStyle: .alert)
+//                                    self.present(alertController, animated: true, completion: nil)
+                                    
+                                    self.navigationController?.popViewController(animated: true)
                                 } else {
                                     let alertController = UIAlertController(title: "insert fail",
                                                                             message: nil, preferredStyle: .alert)
@@ -240,12 +245,10 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
                 print(error!.localizedDescription)
             }
         }
-
     }
     
     
-    
-    
+        
     @IBAction func clickCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
