@@ -11,6 +11,8 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
+    @IBOutlet weak var gifImageView: UIImageView!
+    
     
     let url_server = URL(string: common_url + "AccountServlet")
     var account:String? = ""
@@ -21,6 +23,8 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var passwordTextFild: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        gifImageView.loadGif(name: "planeplane")
 //        let a:URL  = URL(string: common_url )!
 //        print("123=\(String(describing: a))")
         fbButton.readPermissions = ["email"]
