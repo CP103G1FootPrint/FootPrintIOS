@@ -75,7 +75,7 @@ class HomeTripDetailViewController: UIViewController,UIScrollViewDelegate,UITabl
                 let Button = UIButton()
                 Button.tag = count
                 Button.frame = CGRect(x: px+10, y: py, width: 80, height: 48)
-                Button.backgroundColor = UIColor(red: 155.0/255.0, green: 245.0/255.0, blue: 207.0/255.0, alpha: 1.0)
+                Button.backgroundColor = UIColor(red: 75.0/255.0, green: 187.0/255.0, blue: 164.0/255.0, alpha: 1.0)
                 Button.setTitle("第\(j)天", for: .normal)
                 Button.addTarget(self, action: #selector(scrollButtonAction), for: .touchUpInside)
                 mScrollView.addSubview(Button)

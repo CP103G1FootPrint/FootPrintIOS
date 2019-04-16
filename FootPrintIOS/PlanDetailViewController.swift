@@ -87,7 +87,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
                 let Button = UIButton()
                 Button.tag = count
                 Button.frame = CGRect(x: px+10, y: py, width: 80, height: 48)
-                Button.backgroundColor = UIColor(red: 155.0/255.0, green: 245.0/255.0, blue: 207.0/255.0, alpha: 1.0)
+                Button.backgroundColor = UIColor(red: 75.0/255.0, green: 187.0/255.0, blue: 164.0/255.0, alpha: 1.0)
                 Button.setTitle("第\(j)天", for: .normal)
                 Button.addTarget(self, action: #selector(scrollButtonAction), for: .touchUpInside)
                 mScrollView.addSubview(Button)
@@ -173,10 +173,18 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
     
     //增加地標按鍵的框
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50))
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width - 20, height: 60))
         let Button = UIButton()
-        Button.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 50)
-        Button.backgroundColor = UIColor(red: 155.0/255.0, green: 245.0/255.0, blue: 207.0/255.0, alpha: 1.0)
+        Button.frame = CGRect(x: 10, y: 10, width: tableView.frame.size.width - 20, height: 60)
+        Button.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        let myColor : UIColor = UIColor(red: 75.0/255.0, green: 187.0/255.0, blue: 164.0/255.0, alpha: 1.0)
+        Button.layer.borderColor = myColor.cgColor
+        Button.layer.cornerRadius = 30
+        //設定圖片邊框粗細
+        Button.layer.borderWidth = 5.0
+        //設定圖片圓形
+//        Button.layer.cornerRadius = Button.frame.width/2
+        Button.setTitleColor(myColor, for: .normal)
         Button.setTitle("Add LandMark", for: .normal)
         Button.addTarget(self, action: #selector(addLandMarkAction), for: .touchUpInside)
         footerView.addSubview(Button)
