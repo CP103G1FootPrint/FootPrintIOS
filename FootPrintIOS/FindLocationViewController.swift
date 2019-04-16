@@ -189,6 +189,7 @@ class FindLocationViewController: UIViewController, UITableViewDataSource, UITab
 
     func setUpSearchBar() {
         locationSearchBar.delegate = self
+//       let myColor : UIColor = UIColor(red: 75.0/255.0, green: 187.0/255.0, blue: 164.0/255.0, alpha: 1.0) locationSearchBar.setScopeBarButtonTitleTextAttributes(myColor, for: .normal)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
