@@ -165,6 +165,4 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
         })
         self.findLocationTableView.reloadData()
     }
-        
-    
 }

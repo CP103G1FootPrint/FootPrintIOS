@@ -34,6 +34,7 @@
 		0783AF48225C6BE200677526 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF47225C6BE200677526 /* Record.swift */; };
 		0783AF4A225C6CA200677526 /* PersonalCollectionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */; };
 		0783AF4C225C6CC400677526 /* Collect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF4B225C6CC400677526 /* Collect.swift */; };
+		07D4CD2A2264842E00713C80 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4CD292264842E00713C80 /* test.swift */; };
 		523BD923965BC87BE8613FBD /* Pods_FootPrintIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B091C17AA193086CA73D36 /* Pods_FootPrintIOS.framework */; };
 		AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0BD165222D1796006FC80A /* AppDelegate.swift */; };
 		AF0BD168222D1796006FC80A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0BD167222D1796006FC80A /* ViewController.swift */; };
@@ -102,6 +103,8 @@
 		D4363605225B109F00052CE2 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4363604225B109F00052CE2 /* AddFriendViewController.swift */; };
 		D4363608225B334E00052CE2 /* NotifyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4363607225B334E00052CE2 /* NotifyTableViewCell.swift */; };
 		D4440D9C224B9C9500E83240 /* NewsCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */; };
+		D4A17FB32264174C00C78F58 /* SearchFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A17FB22264174C00C78F58 /* SearchFriendViewController.swift */; };
+		D4A17FB52264179100C78F58 /* SearchFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A17FB42264179100C78F58 /* SearchFriendTableViewCell.swift */; };
 		D4A7739C224E8D1300C3867C /* NewsCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A7739B224E8D1300C3867C /* NewsCommentTableViewCell.swift */; };
 		D4A7739E224E8D3D00C3867C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A7739D224E8D3D00C3867C /* Comment.swift */; };
 		D4A773A82250F6A500C3867C /* HomeNewsPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A773A72250F6A500C3867C /* HomeNewsPersonalViewController.swift */; };
@@ -143,6 +146,7 @@
 		0783AF47225C6BE200677526 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCollectionTVCell.swift; sourceTree = "<group>"; };
 		0783AF4B225C6CC400677526 /* Collect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collect.swift; sourceTree = "<group>"; };
+		07D4CD292264842E00713C80 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		46B091C17AA193086CA73D36 /* Pods_FootPrintIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FootPrintIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF0BD162222D1796006FC80A /* FootPrintIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootPrintIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF0BD165222D1796006FC80A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -216,6 +220,8 @@
 		D4363604225B109F00052CE2 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		D4363607225B334E00052CE2 /* NotifyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyTableViewCell.swift; sourceTree = "<group>"; };
 		D4440D9B224B9C9500E83240 /* NewsCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentViewController.swift; sourceTree = "<group>"; };
+		D4A17FB22264174C00C78F58 /* SearchFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendViewController.swift; sourceTree = "<group>"; };
+		D4A17FB42264179100C78F58 /* SearchFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendTableViewCell.swift; sourceTree = "<group>"; };
 		D4A7739B224E8D1300C3867C /* NewsCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentTableViewCell.swift; sourceTree = "<group>"; };
 		D4A7739D224E8D3D00C3867C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		D4A773A72250F6A500C3867C /* HomeNewsPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsPersonalViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +331,7 @@
 				AF0BD19B222E9A60006FC80A /* Assets.xcassets */,
 				AF0BD16E222D1798006FC80A /* LaunchScreen.storyboard */,
 				AF0BD171222D1798006FC80A /* Info.plist */,
+				07D4CD292264842E00713C80 /* test.swift */,
 			);
 			path = FootPrintIOS;
 			sourceTree = "<group>";
@@ -538,6 +545,7 @@
 				D4A773B422520E8400C3867C /* FriendsViewController.swift */,
 				D4A773B622520EA400C3867C /* FriendsMessageTableViewController.swift */,
 				D4363602225ADECE00052CE2 /* ChatViewController.swift */,
+				D4A17FB22264174C00C78F58 /* SearchFriendViewController.swift */,
 			);
 			name = Friend;
 			sourceTree = "<group>";
@@ -549,6 +557,7 @@
 				D4A773BA225211F800C3867C /* FriendsMessageListTableViewCell.swift */,
 				D43635FC2254A95600052CE2 /* LeftChatTableViewCell.swift */,
 				D43635FE2254A96A00052CE2 /* RightChatTableViewCell.swift */,
+				D4A17FB42264179100C78F58 /* SearchFriendTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -759,8 +768,10 @@
 				020777F72257126E001BE30A /* FindLocationTableViewController.swift in Sources */,
 				028DDF3B22544219006DD7EB /* NearLocationTableViewCell.swift in Sources */,
 				024A43F522607D77003360E6 /* PlanTableViewCell.swift in Sources */,
+				D4A17FB32264174C00C78F58 /* SearchFriendViewController.swift in Sources */,
 				AFE8DBC12250C43F005F585A /* SegmentGroupTableViewController.swift in Sources */,
 				AF1DA0BD224B460C00B80E09 /* Likes.swift in Sources */,
+				07D4CD2A2264842E00713C80 /* test.swift in Sources */,
 				D4A7739C224E8D1300C3867C /* NewsCommentTableViewCell.swift in Sources */,
 				D4363605225B109F00052CE2 /* AddFriendViewController.swift in Sources */,
 				022022EF225237C600856352 /* AccountCreateViewController.swift in Sources */,
@@ -774,6 +785,7 @@
 				D4A773AC2250FAB400C3867C /* PersonalPictureCollectionViewCell.swift in Sources */,
 				024A44002261ADC2003360E6 /* ScheduleDay.swift in Sources */,
 				AF0BD166222D1796006FC80A /* AppDelegate.swift in Sources */,
+				D4A17FB52264179100C78F58 /* SearchFriendTableViewCell.swift in Sources */,
 				028DDF3F22544277006DD7EB /* LandMark.swift in Sources */,
 				AF47E680223B8B92007AD656 /* HomeNewsTableViewController.swift in Sources */,
 				027A64D42252F5A8002476D4 /* AppDelegate.swift in Sources */,
@@ -938,7 +950,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CRYR872K7A;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -960,7 +972,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CRYR872K7A;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -268,6 +268,9 @@ class AddFriendListTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        
        let controller = segue.destination as? CreateTripViewController
         
         controller?.tripfriend = addfriend
