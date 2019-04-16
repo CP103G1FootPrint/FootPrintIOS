@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wVs-3p-1LP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wVs-3p-1LP">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.47"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +35,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="HomeTableViewController" title="HomeTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0JS-4F-tZc" customClass="HomeNewsTableViewController" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="569" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="k6n-bF-Mwe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="723"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -575,25 +575,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="spatial" directionalLockEnabled="YES" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdm-RO-z7F">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="723"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zmi-Ae-nPx">
-                                        <rect key="frame" x="0.0" y="0.0" width="1242" height="808"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1242" height="723"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVD-zi-fQm">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="723"/>
                                                 <connections>
                                                     <segue destination="0JS-4F-tZc" kind="embed" id="crD-KJ-EqI"/>
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-YQ-yZZ">
-                                                <rect key="frame" x="414" y="0.0" width="414" height="808"/>
+                                                <rect key="frame" x="414" y="0.0" width="414" height="723"/>
                                                 <connections>
                                                     <segue destination="8ud-Ox-L1a" kind="embed" id="MSH-2N-P3u"/>
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnu-e0-oh1">
-                                                <rect key="frame" x="828" y="0.0" width="414" height="808"/>
+                                                <rect key="frame" x="828" y="0.0" width="414" height="723"/>
                                                 <connections>
                                                     <segue destination="d8b-OS-kKj" kind="embed" id="RQO-NI-fk2"/>
                                                 </connections>
@@ -614,7 +614,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="gdm-RO-z7F" secondAttribute="bottom" id="Geh-TF-qu8"/>
+                            <constraint firstAttribute="bottom" secondItem="gdm-RO-z7F" secondAttribute="bottom" constant="85" id="Geh-TF-qu8"/>
                             <constraint firstItem="gdm-RO-z7F" firstAttribute="trailing" secondItem="wA2-wn-d4l" secondAttribute="trailing" id="Maf-tx-TDg"/>
                             <constraint firstItem="gdm-RO-z7F" firstAttribute="top" secondItem="wA2-wn-d4l" secondAttribute="top" id="peb-tx-ScV"/>
                             <constraint firstItem="gdm-RO-z7F" firstAttribute="leading" secondItem="wA2-wn-d4l" secondAttribute="leading" id="xdD-Lw-Uhg"/>
@@ -656,14 +656,14 @@
             <objects>
                 <viewController storyboardIdentifier="MapViewController" id="d8b-OS-kKj" customClass="MapViewController" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xIv-nY-Qd3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="723"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="e7Q-cx-Rqk">
-                                <rect key="frame" x="20" y="44" width="374" height="681"/>
+                                <rect key="frame" x="20" y="44" width="374" height="596"/>
                             </mapView>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHM-ZW-Vfe">
-                                <rect key="frame" x="336" y="557" width="48" height="48"/>
+                                <rect key="frame" x="336" y="472" width="48" height="48"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="46c-cn-8PS"/>
@@ -677,6 +677,9 @@
                                         <integer key="value" value="24"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="goButtonTapped:" destination="d8b-OS-kKj" eventType="touchUpInside" id="fOb-gO-X14"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -704,7 +707,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="HomeTripTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8ud-Ox-L1a" customClass="HomeTripTableViewController" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UsB-nx-Kp4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="723"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -1156,21 +1159,21 @@
             <objects>
                 <viewController storyboardIdentifier="HomeTripMapViewController" id="CI4-1y-u2g" customClass="HomeTripMapViewController" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="br0-Dm-9xr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="723"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xpM-AU-TFO">
-                                <rect key="frame" x="0.0" y="44" width="414" height="345"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="302.5"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JzW-4I-mjl">
-                                <rect key="frame" x="0.0" y="389" width="414" height="30"/>
+                                <rect key="frame" x="0.0" y="346.5" width="414" height="30"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5Vi-ip-V8H"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SX2-M5-oa7">
-                                <rect key="frame" x="0.0" y="419" width="414" height="355"/>
+                                <rect key="frame" x="0.0" y="376.5" width="414" height="312.5"/>
                                 <connections>
                                     <segue destination="vvr-SQ-hBB" kind="embed" id="vCM-i5-rI3"/>
                                 </connections>
@@ -1212,11 +1215,11 @@
                         <viewControllerLayoutGuide type="bottom" id="sO2-rs-Xyk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bm0-N0-bwm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="355"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="312.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yAu-Xr-ikG">
-                                <rect key="frame" x="0.0" y="48" width="414" height="307"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="264.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanDetailCell" rowHeight="80" id="MJF-vR-B3u" customClass="PlanTableViewCell" customModule="FootPrintIOS" customModuleProvider="target">
