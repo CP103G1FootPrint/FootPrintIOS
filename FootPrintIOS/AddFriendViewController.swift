@@ -22,6 +22,7 @@ class AddFriendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("friendname\(friend!)")
+        addKeyboardObserver()
         iv_HeadPicture.image = headimage
         iv_HeadPicture.layer.cornerRadius = iv_HeadPicture.frame.width/2
         socket = WebSocket(url: URL(string: url_server + user.account)!)
@@ -54,6 +55,55 @@ class AddFriendViewController: UIViewController {
            self.socket.write(string: text!)
            tf_Message.text = nil
        }
-       
+//        if let controller = storyboard?.instantiateViewController(withIdentifier: "HomeNewsPersonalViewController") as? HomeNewsPersonalViewController{
+//            navigationController?.pushViewController(controller, animated: true)
+//        }
+        let friendcontroller = storyboard?.instantiateViewController(withIdentifier: "HomeNewsPersonalViewController") as! HomeNewsPersonalViewController
+        friendcontroller.personalId = friend
+        self.navigationController?.popViewController(animated: true)
+        
+        // 隱藏鍵盤
+        tf_Message.resignFirstResponder()
+
+    }
+        override func viewWillDisappear(_ animated: Bool) {
+            if socket.isConnected{
+                socket.disconnect()
+            }
+        }
+    
+    @IBAction func tap(_ sender: Any) {
+        hideKeyboard()
+    }
+}
+extension AddFriendViewController{
+    func hideKeyboard() {
+        tf_Message.resignFirstResponder()
+    }
+    
+    func addKeyboardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        // 能取得鍵盤高度就讓view上移鍵盤高度，否則上移view的1/3高度
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRect = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRect.height / 3
+            view.frame.origin.y = -keyboardHeight
+        } else {
+            view.frame.origin.y = -view.frame.height / 3
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        view.frame.origin.y = 0
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }

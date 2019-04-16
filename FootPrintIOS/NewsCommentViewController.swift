@@ -22,6 +22,9 @@ class NewsCommentViewController: UIViewController,UITableViewDataSource{
     let user = loadData()
     
     @IBOutlet weak var nvitem_comment: UINavigationItem!
+    
+    @IBOutlet weak var buttonLayoutConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         lb_description.text = news.description
@@ -36,6 +39,10 @@ class NewsCommentViewController: UIViewController,UITableViewDataSource{
         iv_PersonalHeadPicture.layer.cornerRadius = iv_PersonalHeadPicture.frame.width/2
 //        showAllNews()
         
+        
+        //鍵盤
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,7 +69,6 @@ class NewsCommentViewController: UIViewController,UITableViewDataSource{
                                 let index = IndexPath(row: self.comments.count - 1, section: 0)
                                 self.tv_TableView.scrollToRow(at: index, at: .bottom, animated: true)
                             }
-                            
                         }
                     }
                 }
@@ -157,5 +163,40 @@ class NewsCommentViewController: UIViewController,UITableViewDataSource{
             }
         }
         return cell
+    }
+    
+    @objc func keyboardWasShown(_ notificiation: NSNotification) {
+        guard let info = notificiation.userInfo,
+            let keyboardFrameValue =
+            info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue
+            else { return }
+        
+        let keyboardFrame = keyboardFrameValue.cgRectValue
+        let keyboardSize = keyboardFrame.size
+        
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0,
+                                         bottom: keyboardSize.height + 100, right: 0.0)
+        tv_TableView.contentInset = contentInsets
+        tv_TableView.scrollIndicatorInsets = contentInsets
+        buttonLayoutConstraint.constant = 330
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        //view.frame.origin.y = 0
+        tv_TableView.contentInset = .zero
+        tv_TableView.scrollIndicatorInsets = .zero
+        buttonLayoutConstraint.constant = 0
+    }
+    deinit {
+        //NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    @IBAction func tap(_ sender: Any) {
+        hideKeyboard()
+
+    }
+    func hideKeyboard(){
+        tf_Comment.resignFirstResponder()
     }
 }
