@@ -51,6 +51,10 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         socket.connect()
     }
     
+    deinit {
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.dynamicButtonCreation()
         //run
@@ -199,7 +203,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
     @objc func addLandMarkAction(sender: UIButton) {
         let detailVC = storyboard!.instantiateViewController(withIdentifier: "PlanFindLocationViewController") as! PlanFindLocationViewController
         detailVC.getCurrentButton = currentButton
-        print("prepare \(currentButton)")
+//        print("prepare \(currentButton)")
         navigationController!.pushViewController(detailVC, animated: true)
     }
 
@@ -539,7 +543,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         let getnumber = noti.userInfo!["getCurrentButton"] as? Int
         currentArray.append(resultlandMark!)
 
-        print("fin \(getnumber)")
+//        print("fin \(getnumber)")
         // message
         let location = try! String(data: JSONEncoder().encode(currentArray), encoding: .utf8)
         let addMessage = ScheduleDay("ScheduleDayRecycle", currentButton, "judgmentDay", user.account, receiver!, 1, tripID!, location!)
@@ -548,6 +552,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         DispatchQueue.main.async {
             self.uiTableView.reloadData()
         }
+        
     }
     
     // 也可使用closure偵測WebSocket狀態
@@ -610,5 +615,15 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
                 socket.disconnect()
             }
         }
+        if (navigationController == nil) {
+            let notificationName = Notification.Name("Planlocation")
+            NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+        }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+    }
+    
+    
 }

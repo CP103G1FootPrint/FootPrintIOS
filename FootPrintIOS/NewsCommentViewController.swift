@@ -137,14 +137,17 @@ class NewsCommentViewController: UIViewController,UITableViewDataSource{
                 print(error!.localizedDescription)
             }
         }
-
+        var headImage2: UIImage?
+        if headImage2 == nil{
+            cell.iv_HeadPicture.setImage(nil, for: .normal)
+        }
         //抓留言者頭像
         let url_server2 = URL(string: common_url + "PicturesServlet")
         var requestParam2 = [String: Any]()
         requestParam2["action"] = "findUserHeadImage"
         requestParam2["userId"] = comment.userId
         requestParam2["imageSize"] = cell.frame.width / 10
-        var headImage2: UIImage?
+//        var headImage2: UIImage?
         executeTask(url_server2!, requestParam2) { (data, response, error) in
             if error == nil {
                 if data != nil {

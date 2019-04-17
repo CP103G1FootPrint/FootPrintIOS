@@ -12,6 +12,7 @@ class HomeNewsTableViewController: UITableViewController {
     var news = [News]()
     let user = loadData()
     var imageDic = [Int : UIImage]()
+    var headimageDic = [String : UIImage]()
     @IBOutlet weak var nv: UINavigationItem!
     
     let url_server = URL(string: common_url + "PicturesServlet")
@@ -108,6 +109,7 @@ class HomeNewsTableViewController: UITableViewController {
             if error == nil {
                 if data != nil {
                     image = UIImage(data: data!)
+                    self.imageDic[new.imageID!] = image
                 }
                 if image == nil {
                     image = UIImage(named: "noImage.jpg")
@@ -117,8 +119,14 @@ class HomeNewsTableViewController: UITableViewController {
                 print(error!.localizedDescription)
             }
         }
+        }
         
+        if let headImage = self.headimageDic[new.userID!]{
+            cell.bt_HeadPicture.setImage(headImage, for: .normal)
+        }else{
+            cell.bt_HeadPicture.setImage(nil, for: .normal)
         //抓取頭像
+        var requestParam = [String: Any]()
         requestParam["action"] = "findUserHeadImage"
         requestParam["userId"] = new.userID
         requestParam["imageSize"] = cell.frame.width
@@ -127,6 +135,7 @@ class HomeNewsTableViewController: UITableViewController {
             if error == nil {
                 if data != nil {
                     headImage = UIImage(data: data!)
+                    self.headimageDic[new.userID!] = headImage
                 }
                 if headImage == nil {
                     headImage = UIImage(named: "album")

@@ -74,7 +74,7 @@
                                                     <rect key="frame" x="100" y="16.5" width="30" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <connections>
-                                                        <action selector="bt_LandMark:" destination="0JS-4F-tZc" eventType="touchUpInside" id="Pdx-z2-HDp"/>
+                                                        <action selector="bt_LandMark:" destination="0JS-4F-tZc" eventType="touchUpInside" id="p7f-gU-DTz"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
