@@ -126,5 +126,6 @@ class PersonalRecordVC: UICollectionViewController {
     }
     
     
+    
 }
 
