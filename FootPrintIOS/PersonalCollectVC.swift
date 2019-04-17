@@ -116,5 +116,5 @@ class PersonalCollectVC: UICollectionViewController {
         }
         return cell
     }
+    
 }
-
