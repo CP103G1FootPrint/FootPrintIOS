@@ -65,7 +65,7 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
         cell.nearLocationName.text = nearLocation.name
         cell.nearLocationAddress.text = nearLocation.address
         cell.nearLocationType.text = nearLocation.type
-//        findImage(nearLocation.id!,cell)
+        findImage(nearLocation.id!,cell)
         return cell
         
     }
@@ -77,6 +77,7 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
         let notificationName = Notification.Name("Planlocation")
         NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["Planlocation": cameraLandMark as Any, "getCurrentButton":getCurrentButton as Any])
         dismiss(animated: true, completion: nil)
+
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

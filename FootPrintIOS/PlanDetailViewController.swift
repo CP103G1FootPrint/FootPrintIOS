@@ -151,7 +151,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         cell?.planLocationName.text = location.name
         cell?.planLocationAddress.text = location.address
         cell?.planLocationType.text = location.type
-//        findImage(location.id!, cell!)
+        findImage(location.id!, cell!)
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

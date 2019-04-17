@@ -180,7 +180,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRect = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRect.height
-            view.frame.origin.y = -keyboardHeight
+            view.frame.origin.y = -180
         } else {
             view.frame.origin.y = -view.frame.height / 3
         }
