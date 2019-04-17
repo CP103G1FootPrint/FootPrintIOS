@@ -14,7 +14,7 @@ class ScheduleTableViewController: UITableViewController {
     var activityIndicatorView: UIActivityIndicatorView!
     var trips = [Trip]()
     let url_server = URL(string: common_url + "/TripServlet")
-    
+    var emptyView: UIView!
     
     override func loadView() {
         super.loadView()
@@ -63,14 +63,22 @@ class ScheduleTableViewController: UITableViewController {
                         self.trips = result
 //                        self.trips.reverse()
 //                        _ = try? JSONDecoder().decode(String.self, from: data!)
-//                        if result.isEmpty{
-//                             self.tableView.setEmptyView(title: "You don't have any trip.", message: "Start creating your trip", messageImage: UIImage(named: "airplane1")!)
-//                        }
+//                        
               
                         DispatchQueue.main.async {
                             if let control = self.tableView.refreshControl {
                                 self.activityIndicatorView.stopAnimating()
-                               self.tableView.setEmptyView(title: "You don't have any trip.", message: "Start creating your trip", messageImage: UIImage(named: "airplane1")!)
+                                // if emptyview is empty
+                                if self.emptyView == nil {
+                                    self.emptyView = self.tableView.setEmptyView(title: "You don't have any trip.", message: "Start creating your trip", messageImage: UIImage(named: "airplane1")!)
+                                }
+                                
+                                if self.trips.count > 0 || !self.trips.isEmpty {
+                                    if self.emptyView != nil {
+                                       
+                                        self.emptyView.isHidden = true
+                                    }
+                                }
                                 
                                 if control.isRefreshing {
                                     // 停止下拉更新動作

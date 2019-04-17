@@ -41,7 +41,7 @@ class HomeTripTableViewController: UITableViewController {
                     
                     if let result = try? JSONDecoder().decode([Trip].self, from: data!) {
                         self.trips = result
-                        print(self.trips)
+//                        print(self.trips)
 //                        _ = try? JSONDecoder().decode(String.self, from: data!)
                         
                         DispatchQueue.main.async {
@@ -98,6 +98,7 @@ class HomeTripTableViewController: UITableViewController {
         requestParam["userId"] = trip.createID
         requestParam["imageSize"] = cell.frame.width
         var headImage: UIImage?
+        cell.iv_HeadPicture.image = nil
         executeTask(url_server2!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -146,7 +147,6 @@ class HomeTripTableViewController: UITableViewController {
             /* indexPath(for:)可以取得UITableViewCell的indexPath */
             let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
             let trip = trips[indexPath!.row]
-            print("a1 \(trip.title)")
             let detailVC = segue.destination as! HomeTripMapViewController
             detailVC.tripMap = trip
         }

@@ -266,7 +266,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
     
     @objc func songUpdated(noti:Notification) {
         result = noti.userInfo!["location"] as? LandMark
-        print("result \(result?.address)")
+//        print("result \(result?.address)")
         showLocationUILabel.text = result?.address
 //        DispatchQueue.main.async {
 //            self.showLocationUILabel.text = self.result?.address
@@ -276,7 +276,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
     
     @objc func LandMarkUpdated(noti:Notification) {
         result = noti.userInfo!["locationLandMark"] as? LandMark
-        print("result \(result?.address)")
+//        print("result \(result?.address)")
 //        showLocationUILabel.text = result?.address
         DispatchQueue.main.async {
             self.showLocationUILabel.text = self.result?.address

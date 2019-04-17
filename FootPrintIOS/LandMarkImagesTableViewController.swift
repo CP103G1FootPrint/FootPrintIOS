@@ -97,6 +97,7 @@ class LandMarkImagesTableViewController: UITableViewController {
         requestParam3["imageSize"] = 512
         //        requestParam["imageSize"] = "\(UIScreen.main.bounds)"
         var image: UIImage?
+        cell.userImageView.image = nil
         executeTask(url_server3!, requestParam3) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -124,6 +125,7 @@ class LandMarkImagesTableViewController: UITableViewController {
         requestParam2["imageSize"] = 512
         //        requestParam["imageSize"] = "\(UIScreen.main.bounds)"
         var image: UIImage?
+        cell.locationImageView.image = nil
         executeTask(url_server2!, requestParam2) { (data, response, error) in
             if error == nil {
                 if data != nil {
