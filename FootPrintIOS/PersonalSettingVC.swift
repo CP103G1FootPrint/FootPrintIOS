@@ -160,9 +160,10 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
                     if data != nil {
                         
                         DispatchQueue.main.async {
-                            let storyboard = UIStoryboard(name: "Main", bundle:nil)
-                            let home = storyboard.instantiateViewController(withIdentifier: "PersonalVC")
-                            self.present(home,animated: true,completion: nil)
+//                            let storyboard = UIStoryboard(name: "Main", bundle:nil)
+//                            let home = storyboard.instantiateViewController(withIdentifier: "PersonalVC")
+                            self.dismiss(animated: true, completion: nil)
+//                            self.present(home,animated: true,completion: nil)
                         }
                     }
                 } else {

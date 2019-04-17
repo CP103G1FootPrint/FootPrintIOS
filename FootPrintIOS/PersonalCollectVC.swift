@@ -16,13 +16,14 @@ class PersonalCollectVC: UICollectionViewController {
         
         let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
         //距離螢幕邊框
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 1.3, left: 0, bottom: 0, right: 0)
         //CELL大小
-        layout.itemSize = CGSize(width: (fullScreenSize.width)/3, height:(fullScreenSize.width)/3 )
+        layout.itemSize = CGSize(width: (fullScreenSize.width-4)/3, height:(fullScreenSize.width)/3 )
         //上下CELL間距
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 1.3
         //左右CELL間距
-        layout.minimumInteritemSpacing = 0
+        layout.minimumInteritemSpacing = 1
+        
         //捲動方向
         layout.scrollDirection = .vertical
         //header 距離螢幕上方。 footer 距離螢幕下方
