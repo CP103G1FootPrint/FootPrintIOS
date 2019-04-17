@@ -34,6 +34,7 @@
 		02BCDBBB2265F57500690055 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BCDBBA2265F57500690055 /* Gif.swift */; };
 		02BCDBBF2265F8AC00690055 /* plane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02BCDBBE2265F8AC00690055 /* plane.gif */; };
 		02BCDBC12265FC6C00690055 /* planeplane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02BCDBC02265FC6C00690055 /* planeplane.gif */; };
+		02BCDBC522671AA100690055 /* noalpha.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02BCDBC422671AA100690055 /* noalpha.gif */; };
 		071608302266C9CF00346A65 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0716082F2266C9CF00346A65 /* test.swift */; };
 		0783AF48225C6BE200677526 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF47225C6BE200677526 /* Record.swift */; };
 		0783AF4A225C6CA200677526 /* PersonalCollectionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */; };
@@ -150,6 +151,7 @@
 		02BCDBBA2265F57500690055 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		02BCDBBE2265F8AC00690055 /* plane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = plane.gif; sourceTree = "<group>"; };
 		02BCDBC02265FC6C00690055 /* planeplane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = planeplane.gif; sourceTree = "<group>"; };
+		02BCDBC422671AA100690055 /* noalpha.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = noalpha.gif; sourceTree = "<group>"; };
 		0716082F2266C9CF00346A65 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		0783AF47225C6BE200677526 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCollectionTVCell.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				02BCDBC02265FC6C00690055 /* planeplane.gif */,
 				022022F02252390900856352 /* facebook_logo.png */,
 				AF1BC92822354AC200C0E2F1 /* trip1.jpeg */,
+				02BCDBC422671AA100690055 /* noalpha.gif */,
 				AF5A3512222FD67B003838E8 /* paristrip.jpeg */,
 				022022F22252391200856352 /* 375.png */,
 				AFF81AB02260B9E500598AC4 /* noimage.png */,
@@ -662,6 +665,7 @@
 				02BCDBC12265FC6C00690055 /* planeplane.gif in Resources */,
 				AF0BD19C222E9A61006FC80A /* Assets.xcassets in Resources */,
 				AFDDF36622535AA300198321 /* paper.jpg in Resources */,
+				02BCDBC522671AA100690055 /* noalpha.gif in Resources */,
 				AF2C76562232443A0008F84A /* CameraStoryboard.storyboard in Resources */,
 				022022F12252390900856352 /* facebook_logo.png in Resources */,
 				AF0BD16B222D1796006FC80A /* Main.storyboard in Resources */,
