@@ -5,18 +5,18 @@
         "mode" : "9-part",
         "center" : {
           "mode" : "tile",
-          "width" : 1,
+          "width" : 93,
           "height" : 1
         },
         "cap-insets" : {
-          "bottom" : 70,
-          "top" : 71,
-          "right" : 81,
-          "left" : 59
+          "bottom" : 19,
+          "top" : 19,
+          "right" : 27,
+          "left" : 44
         }
       },
       "idiom" : "universal",
-      "filename" : "chatright.png",
+      "filename" : "聊天泡泡右.png",
       "scale" : "1x"
     },
     {
