@@ -28,6 +28,8 @@ class PersonalCollectVC: UICollectionViewController {
         layout.scrollDirection = .vertical
         //header 距離螢幕上方。 footer 距離螢幕下方
         //        layout.headerReferenceSize = CGSize( width: fullScreenSize.width, height: 40)
+        
+        
     }
     /** tableView加上下拉更新功能 */
     
@@ -36,6 +38,10 @@ class PersonalCollectVC: UICollectionViewController {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(getImage), for: .valueChanged)
         self.collectionView.refreshControl = refreshControl
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getImage()
     }
     
     @objc func getImage(){

@@ -584,7 +584,7 @@
         <!--PersonalQ Rcode-->
         <scene sceneID="X1M-cM-mBz">
             <objects>
-                <viewController id="K7c-iS-tUh" customClass="PersonalQRcode" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QR" id="K7c-iS-tUh" customClass="PersonalQRcode" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KCY-JF-N2t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
