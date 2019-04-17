@@ -180,7 +180,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRect = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRect.height
-            view.frame.origin.y = -keyboardHeight
+            view.frame.origin.y = -180
         } else {
             view.frame.origin.y = -view.frame.height / 3
         }
@@ -254,7 +254,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         let url_server = URL(string: common_url + "AccountServlet")
         requestParam["action"] = "accountInsertNotFB"
         requestParam["account"] = try! String(data: JSONEncoder().encode(account), encoding: .utf8)
-        requestParam["imageBase64"] = image.jpegData(compressionQuality: 1.0)!.base64EncodedString()
+        requestParam["imageBase64"] = image.jpegData(compressionQuality: 0.0)!.base64EncodedString()
         //1.0品質最好 0.0品質最差
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {

@@ -18,7 +18,7 @@ class ChatViewController: UIViewController,UITableViewDataSource {
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var tf_ChatMessage: UITextField!
     @IBOutlet weak var ng_Item: UINavigationItem!
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friendMessages.count
     }
@@ -26,42 +26,14 @@ class ChatViewController: UIViewController,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let friendMessage = friendMessages[indexPath.row]
         if friendMessage.sender == user.account{
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "rightcell") as! RightChatTableViewCell
             let cell = tableView.dequeueReusableCell(withIdentifier: "rightcell") as! RightChatTableViewCell
-            cell.lb_ChatLabel.text  = friendMessage.content
-//            cell.lb_ChatLabel.layer.cornerRadius = 10
-//            cell.lb_ChatLabel.layer.masksToBounds = true
-            cell.lb_ChatLabel.numberOfLines = 0
-            cell.lb_ChatLabel.textColor = .black
-
-            
-//            let constraintRect = CGSize(width: 0.66 * cell.frame.width,
-//                                        height: .greatestFiniteMagnitude)
-//            let boundingBox = friendMessage.content!.boundingRect(with: constraintRect,
-//                                                 options: .usesLineFragmentOrigin,
-//                                                 attributes: [.font: cell.lb_ChatLabel.font!],
-//                                                 context: nil)
-//           cell.lb_ChatLabel.frame.size = CGSize(width: ceil(boundingBox.width),height: ceil(boundingBox.height))
-//           let bubbleImageSize = CGSize(width: cell.lb_ChatLabel.frame.width + 28,height: cell.lb_ChatLabel.frame.height + 20)
-//           let outgoingMessageView = UIImageView(frame:
-//                CGRect(x: cell.frame.width - bubbleImageSize.width,
-//                       y: cell.frame.height - bubbleImageSize.height,
-//                       width: bubbleImageSize.width,
-//                       height: bubbleImageSize.height))
-//           let bubbleImage = UIImage(named: "outgoing-message-bubble")?
-//                .resizableImage(withCapInsets: UIEdgeInsets(top: 17, left: 21, bottom: 17, right: 21),
-//                                resizingMode: .stretch)
-//            .withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-//            outgoingMessageView.image = bubbleImage
-//
-////            let green = UIColor(red: 30/255, green: 222/255, blue: 38/255, alpha: 1)
-//            outgoingMessageView.tintColor = .darkGray
-//            cell.addSubview(outgoingMessageView)
-////            cell.imageView = UIImageView(frame: outgoingMessageView)
-////            cell.lb_ChatLabel.backgroundColor = UIColor(patternImage: bubbleImage!)
-////            chatTableView.addSubview(outgoingMessageView)
-//            cell.lb_ChatLabel.center = outgoingMessageView.center
-////            tableView.addSubview(cell.lb_ChatLabel)
-
+            cell.lb_RightMessage.text = friendMessage.content
+//            cell.tv_RightMessage.text = friendMessage.content
+//            cell.lb_ChatLabel.text  = friendMessage.content
+//            cell.tv_RightMessage.layer.cornerRadius = 10
+////            cell.lb_ChatLabel.layer.masksToBounds = true
+            cell.lb_RightMessage.numberOfLines = 0
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "leftcell") as! LeftChatTableViewCell
@@ -89,7 +61,6 @@ class ChatViewController: UIViewController,UITableViewDataSource {
                         cell.iv_HeadPicture.image = headImage
                         cell.iv_HeadPicture.layer.cornerRadius = cell.iv_HeadPicture.frame.width/2
                     }
-                    //設定button為圓形
                 } else {
                     print(error!.localizedDescription)
                 }
@@ -121,6 +92,7 @@ class ChatViewController: UIViewController,UITableViewDataSource {
         super.viewDidLoad()
         socket = WebSocket(url: URL(string: url_server + user.account)!)
         addSocketCallBacks()
+        addKeyboardObserver()
         socket.connect()
     }
     
@@ -173,6 +145,8 @@ class ChatViewController: UIViewController,UITableViewDataSource {
             self.chatTableView.reloadData()
             self.chatTableView.scrollToRow(at: IndexPath(row: self.friendMessages.count - 1, section: 0), at: .bottom, animated: true)
             tf_ChatMessage.text = nil
+            tf_ChatMessage.resignFirstResponder()
+
         }
         
         var requestParam = [String: String]()
@@ -200,44 +174,43 @@ class ChatViewController: UIViewController,UITableViewDataSource {
             }
         }
     }
+    
     @IBAction func tap(_ sender: Any) {
-//        hideKeyboard()
+        hideKeyboard()
     }
 }
 
-//extension ChatViewController {
-//    func hideKeyboard() {
-//        tf_ChatMessage.resignFirstResponder()
-//    }
-//
-//    func addKeyboardObserver() {
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-//    }
-//
-//    @objc func keyboardWillShow(notification: Notification) {
-//        // 能取得鍵盤高度就讓view上移鍵盤高度，否則上移view的1/3高度
-//        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-//            let keyboardRect = keyboardFrame.cgRectValue
-//            let keyboardHeight = keyboardRect.height
-//            view.frame.origin.y = -keyboardHeight / 2
-//        } else {
-//            view.frame.origin.y = -view.frame.height / 2
-//        }
-//    }
-//
-//    @objc func keyboardWillHide(notification: Notification) {
-//        view.frame.origin.y = 0
-//    }
-//
-//    override func viewDidDisappear(_ animated: Bool) {
-//        super.viewDidDisappear(true)
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-//    }
+extension ChatViewController {
+    func hideKeyboard() {
+        tf_ChatMessage.resignFirstResponder()
+    }
 
-    
-//}
+    func addKeyboardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: Notification) {
+        // 能取得鍵盤高度就讓view上移鍵盤高度，否則上移view的1/3高度
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRect = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRect.height
+            view.frame.origin.y = -270
+        } else {
+            view.frame.origin.y = -view.frame.height / 2
+        }
+    }
+
+    @objc func keyboardWillHide(notification: Notification) {
+        view.frame.origin.y = 0
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
 
 
 

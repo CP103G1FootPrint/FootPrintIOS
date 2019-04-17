@@ -101,11 +101,9 @@ class FindLocationViewController: UIViewController, UITableViewDataSource, UITab
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let findLocationViewController = segue.destination as? CreateLocationViewController
-//        if requestParam["latitude"] != nil && requestParam["longitude"] != nil {
-//            findLocationViewController!.requestCreateLocation["latitude"] = requestParam["latitude"]
-//            findLocationViewController!.requestCreateLocation["longitude"] = requestParam["longitude"]
-//        }
+//        let sourceController = segue.destination as? CameraViewController
+        
+
     }
     
     //取得地標圖片
@@ -189,6 +187,7 @@ class FindLocationViewController: UIViewController, UITableViewDataSource, UITab
 
     func setUpSearchBar() {
         locationSearchBar.delegate = self
+//       let myColor : UIColor = UIColor(red: 75.0/255.0, green: 187.0/255.0, blue: 164.0/255.0, alpha: 1.0) locationSearchBar.setScopeBarButtonTitleTextAttributes(myColor, for: .normal)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){

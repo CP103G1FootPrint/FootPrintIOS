@@ -27,13 +27,22 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         locationManagers()
         
         //框顏色
-        self.chooseLocationUIButton.layer.borderWidth = 1.0
-        self.chooseLocationUIButton.layer.borderColor = UIColor.lightGray.cgColor
-        self.chooseLocationUIButton.layer.cornerRadius = 5.0
+        self.chooseLocationUIButton.layer.borderWidth = 3.0
+        let myColor : UIColor = UIColor(red: 75.0/255.0, green: 187.0/255.0, blue: 164.0/255.0, alpha: 1.0)
+        self.chooseLocationUIButton.layer.borderColor = myColor.cgColor
+        self.chooseLocationUIButton.layer.cornerRadius = 24
+        self.chooseLocationUIButton.backgroundColor = UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        self.chooseLocationUIButton.setTitleColor(myColor, for: .normal)
+        self.chooseLocationUIButton.setTitle("Choose Location", for: .normal)
         
         //鍵盤
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let notificationName = Notification.Name("locationCreate")
+        NotificationCenter.default.addObserver(self, selector: #selector(songUpdated(noti:)), name: notificationName, object: nil)
+        let notificationLandMark = Notification.Name("locationCreateLandMark")
+        NotificationCenter.default.addObserver(self, selector: #selector(LandMarkUpdated(noti:)), name: notificationLandMark, object: nil)
 
     }
     
@@ -47,8 +56,14 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
     
     //Unwind segue
     @IBAction func toresult(segue: UIStoryboardSegue) {
-        let notificationName = Notification.Name("locationCreate")
-        NotificationCenter.default.addObserver(self, selector: #selector(songUpdated(noti:)), name: notificationName, object: nil)
+//        let notificationLandMark = Notification.Name("locationCreateLandMark")
+//        NotificationCenter.default.addObserver(self, selector: #selector(LandMarkUpdated(noti:)), name: notificationLandMark, object: nil)
+//        if let page = segue.source as? CreateLocationViewController {
+//            result = page.locationFirstPage
+//            print("a\(result?.address)")
+//            showLocationUILabel.text = result?.address
+//            showLocationUILabel.text = "ak"
+//        }
     }
 
     //選照片動作
@@ -118,10 +133,12 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         //來源如果是相機
         if picker.sourceType == .camera{
             UIImageWriteToSavedPhotosAlbum(newPostImage!, nil, nil, nil)
+            newPostUIButton.setImage(newPostImage, for: .normal)
+            dismiss(animated: true, completion: nil)
+        }else {
+            newPostUIButton.setImage(newPostImage, for: .normal)
             dismiss(animated: true, completion: nil)
         }
-        newPostUIButton.setImage(newPostImage, for: .normal)
-        dismiss(animated: true, completion: nil)
     }
     /* 挑選照片過程中如果按了Cancel，關閉挑選畫面 */
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -170,7 +187,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         let url_server = URL(string: common_url + "PictureServlet")
         requestParam["action"] = "shareInsert"
         requestParam["share"] = try! String(data: JSONEncoder().encode(cameraImage), encoding: .utf8)
-        requestParam["imageBase64"] = image.jpegData(compressionQuality: 1.0)!.base64EncodedString()
+        requestParam["imageBase64"] = image.jpegData(compressionQuality: 0.3)!.base64EncodedString()
         //1.0品質最好 0.0品質最差
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -249,16 +266,27 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
     
     @objc func songUpdated(noti:Notification) {
         result = noti.userInfo!["location"] as? LandMark
+        print("result \(result?.address)")
+        showLocationUILabel.text = result?.address
+//        DispatchQueue.main.async {
+//            self.showLocationUILabel.text = self.result?.address
+//        }
+//        updateInfo()
+    }
+    
+    @objc func LandMarkUpdated(noti:Notification) {
+        result = noti.userInfo!["locationLandMark"] as? LandMark
+        print("result \(result?.address)")
 //        showLocationUILabel.text = result?.address
         DispatchQueue.main.async {
             self.showLocationUILabel.text = self.result?.address
         }
-//        updateInfo()
+        //        updateInfo()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
     
 }

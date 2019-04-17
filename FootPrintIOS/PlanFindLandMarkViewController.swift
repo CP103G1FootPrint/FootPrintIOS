@@ -65,7 +65,7 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
         cell.nearLocationName.text = nearLocation.name
         cell.nearLocationAddress.text = nearLocation.address
         cell.nearLocationType.text = nearLocation.type
-//        findImage(nearLocation.id!,cell)
+        findImage(nearLocation.id!,cell)
         return cell
         
     }
@@ -77,6 +77,7 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
         let notificationName = Notification.Name("Planlocation")
         NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["Planlocation": cameraLandMark as Any, "getCurrentButton":getCurrentButton as Any])
         dismiss(animated: true, completion: nil)
+
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -92,11 +93,11 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        let findLocationViewController = segue.destination as? CreateLocationViewController
-        //        if requestParam["latitude"] != nil && requestParam["longitude"] != nil {
-        //            findLocationViewController!.requestCreateLocation["latitude"] = requestParam["latitude"]
-        //            findLocationViewController!.requestCreateLocation["longitude"] = requestParam["longitude"]
-        //        }
+//                let findLocationViewController = segue.destination as? CreateLocationViewController
+//                if requestParam["latitude"] != nil && requestParam["longitude"] != nil {
+//                    findLocationViewController!.requestCreateLocation["latitude"] = requestParam["latitude"]
+//                    findLocationViewController!.requestCreateLocation["longitude"] = requestParam["longitude"]
+//                }
     }
     
     //取得地標圖片
@@ -106,7 +107,7 @@ class PlanFindLocationViewController: UIViewController, UITableViewDataSource, U
         requestParam["action"] = "getImage"
         requestParam["id"] = landMarkID
         requestParam["imageSize"] = 1024
-        //        requestParam["imageSize"] = "\(UIScreen.main.bounds)"
+//                requestParam["imageSize"] = "\(UIScreen.main.bounds)"
         var image: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {

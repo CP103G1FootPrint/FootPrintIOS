@@ -302,7 +302,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign.png" translatesAutoresizingMaskIntoConstraints="NO" id="WRw-f5-tb5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="375.png" translatesAutoresizingMaskIntoConstraints="NO" id="WRw-f5-tb5">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <gestureRecognizers/>
                             </imageView>
@@ -386,6 +386,7 @@
                     <connections>
                         <outlet property="accountTextFild" destination="8FC-xd-Oa4" id="jAh-v8-r2C"/>
                         <outlet property="fbButton" destination="sVY-ky-Bfv" id="PWY-mR-jfQ"/>
+                        <outlet property="gifImageView" destination="WRw-f5-tb5" id="fEi-WL-8z0"/>
                         <outlet property="passwordTextFild" destination="i9x-m7-Ldv" id="JB4-ls-eOJ"/>
                         <segue destination="9NV-mJ-psM" kind="presentation" identifier="next" id="AQ8-DG-Snm"/>
                     </connections>
@@ -401,12 +402,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="375.png" width="375" height="815"/>
         <image name="cake" width="512" height="512"/>
         <image name="galaxy" width="512" height="512"/>
         <image name="identification" width="480" height="480"/>
         <image name="lock" width="512" height="512"/>
         <image name="login" width="480" height="480"/>
-        <image name="sign.png" width="375" height="812"/>
         <image name="user.png" width="828" height="855"/>
     </resources>
 </document>

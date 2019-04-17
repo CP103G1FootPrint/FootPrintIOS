@@ -79,10 +79,12 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
         //來源如果是相機
         if picker.sourceType == .camera{
             UIImageWriteToSavedPhotosAlbum(newPostImage!, nil, nil, nil)
+            btSelfie.setImage(newPostImage, for: .normal)
+            dismiss(animated: true, completion: nil)
+        }else {
+            btSelfie.setImage(newPostImage, for: .normal)
             dismiss(animated: true, completion: nil)
         }
-        btSelfie.setImage(newPostImage, for: .normal)
-        dismiss(animated: true, completion: nil)
     }
     /* 挑選照片過程中如果按了Cancel，關閉挑選畫面 */
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

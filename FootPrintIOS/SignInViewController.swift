@@ -11,6 +11,8 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
+    @IBOutlet weak var gifImageView: UIImageView!
+    
     
     let url_server = URL(string: common_url + "AccountServlet")
     var account:String? = ""
@@ -21,7 +23,9 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var passwordTextFild: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let a:URL  = URL(string: common_url )!
+        
+        gifImageView.loadGif(name: "planeplane")
+//        let a:URL  = URL(string: common_url )!
 //        print("123=\(String(describing: a))")
         fbButton.readPermissions = ["email"]
         fbButton.delegate = self
@@ -58,7 +62,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
-                    //                    print("input: \(String(data: data!, encoding: .utf8)!)")
+                    print("input: \(String(data: data!, encoding: .utf8)!)")
                     if String(data:data!,encoding: .utf8)! == "true" {
                         //儲存使用者資訊到userdefault
                             self.findUserInfo(account: self.account!)
