@@ -24,7 +24,7 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gifImageView.loadGif(name: "planeplane")
+        gifImageView.loadGif(name: "noalpha")
 //        let a:URL  = URL(string: common_url )!
 //        print("123=\(String(describing: a))")
         fbButton.readPermissions = ["email"]
