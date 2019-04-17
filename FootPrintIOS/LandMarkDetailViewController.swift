@@ -131,6 +131,7 @@ class LandMarkDetailViewController: UIViewController,UICollectionViewDelegate, U
 //        requestParam["imageSize"] = cell.frame.width
         requestParam["imageSize"] = 1024
         var image: UIImage?
+        cell.landMarkImageCollection.image = nil
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {

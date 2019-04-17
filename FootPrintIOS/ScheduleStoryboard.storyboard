@@ -1020,7 +1020,7 @@
                                             <outlet property="nearLocationAddress" destination="CMR-ii-dUG" id="Z45-6h-mcC"/>
                                             <outlet property="nearLocationName" destination="227-Dy-WYD" id="H11-cJ-EMN"/>
                                             <outlet property="nearLocationType" destination="qYG-pR-ax1" id="pCK-E5-z3M"/>
-                                            <segue destination="LtM-os-g4L" kind="unwind" identifier="resultToLocation" unwindAction="resultToLocationWithSegue:" id="xF6-ib-EXj"/>
+                                            <segue destination="LtM-os-g4L" kind="unwind" unwindAction="resultToLocationWithSegue:" id="hcp-cn-5T1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

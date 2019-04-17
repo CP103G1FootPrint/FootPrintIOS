@@ -169,6 +169,7 @@ class HomeTripDetailViewController: UIViewController,UIScrollViewDelegate,UITabl
         requestParam["id"] = landMarkID
         requestParam["imageSize"] = 1024
         var image: UIImage?
+        cell.planLocationImage.image = nil
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
