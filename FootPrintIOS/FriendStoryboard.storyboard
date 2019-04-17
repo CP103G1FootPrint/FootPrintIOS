@@ -75,7 +75,7 @@
                                 <action selector="segmentController:" destination="jrr-Ic-FM3" eventType="valueChanged" id="G5w-YA-URJ"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="kLH-OB-2cz">
+                        <barButtonItem key="rightBarButtonItem" image="addfriend-1" id="kLH-OB-2cz">
                             <connections>
                                 <segue destination="f91-fj-Mev" kind="push" id="Lbl-La-Jwe"/>
                             </connections>
@@ -217,7 +217,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hgA-oQ-lJj">
-                                <rect key="frame" x="0.0" y="25" width="414" height="783"/>
+                                <rect key="frame" x="0.0" y="5" width="414" height="803"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="frinedShipList" rowHeight="72" id="bL3-2R-FEh" customClass="FriendShipListTableViewCell" customModule="FootPrintIOS" customModuleProvider="target">
@@ -265,19 +265,11 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yg0-TI-P4y">
-                                <rect key="frame" x="0.0" y="5" width="414" height="20"/>
+                                <rect key="frame" x="0.0" y="5" width="414" height="0.0"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gy9-tj-oXe">
-                                        <rect key="frame" x="10" y="0.0" width="32" height="20"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="好">
-                                                <attributes>
-                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <font key="NSFont" size="17" name="HannotateTC-W5"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <rect key="frame" x="10" y="0.0" width="32" height="0.0"/>
+                                        <attributedString key="attributedText"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -439,9 +431,9 @@
                                 </connections>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iad-8v-ZIa">
-                                <rect key="frame" x="10" y="733" width="331" height="30"/>
+                                <rect key="frame" x="10" y="733" width="359" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="331" id="aE9-od-1Ap"/>
+                                    <constraint firstAttribute="width" constant="359" id="aE9-od-1Ap"/>
                                     <constraint firstAttribute="height" constant="30" id="j7h-01-iG7"/>
                                 </constraints>
                                 <nil key="textColor"/>
@@ -449,7 +441,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2w-ks-3yo">
-                                <rect key="frame" x="349" y="733" width="46" height="30"/>
+                                <rect key="frame" x="377" y="733" width="29" height="30"/>
                                 <state key="normal" title="Button" image="send"/>
                                 <connections>
                                     <action selector="bt_Send:" destination="Pft-8f-I19" eventType="touchUpInside" id="Rnh-bY-cfV"/>
@@ -465,7 +457,7 @@
                             <constraint firstItem="S2w-ks-3yo" firstAttribute="top" secondItem="v2D-F8-HT8" secondAttribute="bottom" constant="20" id="Jly-oE-tHK"/>
                             <constraint firstItem="Iad-8v-ZIa" firstAttribute="leading" secondItem="SFZ-vg-yk1" secondAttribute="leading" constant="10" id="NCf-Tr-mW4"/>
                             <constraint firstItem="v2D-F8-HT8" firstAttribute="leading" secondItem="SFZ-vg-yk1" secondAttribute="leading" id="Uw1-Q9-HPv"/>
-                            <constraint firstItem="SFZ-vg-yk1" firstAttribute="trailing" secondItem="S2w-ks-3yo" secondAttribute="trailing" constant="19" id="iXz-kd-ic3"/>
+                            <constraint firstItem="SFZ-vg-yk1" firstAttribute="trailing" secondItem="S2w-ks-3yo" secondAttribute="trailing" constant="8" id="iXz-kd-ic3"/>
                             <constraint firstItem="Iad-8v-ZIa" firstAttribute="bottom" secondItem="SFZ-vg-yk1" secondAttribute="bottom" constant="-11" id="m7H-Sn-O3i"/>
                             <constraint firstItem="Iad-8v-ZIa" firstAttribute="top" secondItem="v2D-F8-HT8" secondAttribute="bottom" constant="20" id="mre-2j-DrB"/>
                             <constraint firstItem="v2D-F8-HT8" firstAttribute="top" secondItem="pLk-gp-56w" secondAttribute="top" id="o9n-xU-3Iv"/>
@@ -562,6 +554,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addfriend-1" width="37" height="22"/>
         <image name="friendship" width="25" height="20"/>
         <image name="send" width="24" height="24"/>
         <image name="聊天泡泡右右" width="43" height="42"/>
