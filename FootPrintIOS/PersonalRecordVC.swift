@@ -108,7 +108,7 @@ class PersonalRecordVC: UICollectionViewController {
         // 圖片寬度為tableViewCell的1/4，ImageView的寬度也建議在storyboard加上比例設定的constraint
         requestParam["imageSize"] = cell.frame.width / 4
         var image: UIImage?
-        
+        cell.RecordCellImage.image = nil
         executeTask(url_server!,requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {

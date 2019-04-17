@@ -37,7 +37,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         self.uiTableView.tableFooterView = UIView()
         self.uiTableView.backgroundView = activityIndicatorView
         
-        print("\(self) \(#function)" )
+//        print("\(self) \(#function)" )
         setdata()
         
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognized(_:)))
@@ -450,6 +450,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         requestParam["id"] = landMarkID
         requestParam["imageSize"] = 1024
         var image: UIImage?
+        cell.planLocationImage.image = nil
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {

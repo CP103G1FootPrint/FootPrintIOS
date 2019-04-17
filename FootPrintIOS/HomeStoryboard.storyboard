@@ -34,7 +34,7 @@
         <scene sceneID="Mhf-KC-5DK">
             <objects>
                 <tableViewController storyboardIdentifier="HomeTableViewController" title="HomeTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0JS-4F-tZc" customClass="HomeNewsTableViewController" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="569" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="k6n-bF-Mwe">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="569" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="k6n-bF-Mwe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="723"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

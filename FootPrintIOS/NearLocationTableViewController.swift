@@ -118,6 +118,7 @@ class NearLocationTableViewController: UITableViewController {
         requestParam["imageSize"] = 1024
         //        requestParam["imageSize"] = "\(UIScreen.main.bounds)"
         var image: UIImage?
+        cell.naerLocationImage.image = nil
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {

@@ -39,10 +39,13 @@ class NewsCommentViewController: UIViewController,UITableViewDataSource{
         iv_PersonalHeadPicture.layer.cornerRadius = iv_PersonalHeadPicture.frame.width/2
 //        showAllNews()
         
-        
+//        buttonLayoutConstraint.constant = 0
+
         //鍵盤
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        buttonLayoutConstraint.constant = 0
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
