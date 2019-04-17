@@ -107,68 +107,70 @@ class HomeNewsPersonalViewController: UIViewController, UICollectionViewDataSour
         collectionlayout.headerReferenceSize = CGSize(width: fullScreenSize.width, height: 40)
         
         getAllPicturesId()
-
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if user.account == personalId{
-
-        }else{
-            let url_server = URL(string: common_url + "FriendsServlet")
-            var requestparam = [String:String]()
-            requestparam["action"] = "findFriendId"
-            requestparam["userId"] = user.account
-            requestparam["inviteeId"] = personalId
-
-            executeTask(url_server!, requestparam) { (data, response, error) in
-                if error == nil{
-                    if data != nil{
-                        if let result = try? JSONDecoder().decode([Friends].self, from: data!){
-                            print("input: \(String(data: data!, encoding: .utf8)!)")
-                            // self.friendship = result
-                            if result.isEmpty{
-                                requestparam["action"] = "findFriendIdCheckFriendShip"
-                                requestparam["userId"] = self.user.account
-                                requestparam["inviteeId"] = self.personalId
-                                executeTask(url_server!, requestparam) { (data, response, error) in
-                                    if error == nil{
-                                        if data != nil{
-                                            if let result = try? JSONDecoder().decode([Friends].self, from: data!){
-                                                print("input: \(String(data: data!, encoding: .utf8)!)")
-                                                if result.isEmpty{
-                                                    DispatchQueue.main.async {
-                                                        let addFriendButton = UIButton(type: .custom)
-                                                        addFriendButton.setImage(UIImage (named: "addfriend-1"), for: .normal)
-                                                        addFriendButton.addTarget(self, action: #selector(self.AddFriend), for: .touchUpInside)
-                                                        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addFriendButton)
-                                                        self.view.layoutIfNeeded()
-
-                                                    }
-                                                }else{
-                                                    DispatchQueue.main.async {
-                                                        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage (named: "friendshipcheck"), style: .plain, target: nil, action: nil)
-                                                        self.view.layoutIfNeeded()
-
+    }
+    override func viewDidAppear(_ animated: Bool) {
+                if user.account == personalId{
+                }else{
+                    let url_server = URL(string: common_url + "FriendsServlet")
+                    var requestparam = [String:String]()
+                    requestparam["action"] = "findFriendId"
+                    requestparam["userId"] = user.account
+                    requestparam["inviteeId"] = personalId
+                    executeTask(url_server!, requestparam) { (data, response, error) in
+                        if error == nil{
+                            if data != nil{
+                                if let result = try? JSONDecoder().decode([Friends].self, from: data!){
+                                    print("input: \(String(data: data!, encoding: .utf8)!)")
+                                    // self.friendship = result
+                                    if result.isEmpty{
+                                        requestparam["action"] = "findFriendIdCheckFriendShip"
+                                        requestparam["userId"] = self.user.account
+                                        requestparam["inviteeId"] = self.personalId
+                                        executeTask(url_server!, requestparam) { (data, response, error) in
+                                            if error == nil{
+                                                if data != nil{
+                                                    if let result = try? JSONDecoder().decode([Friends].self, from: data!){
+                                                        print("input: \(String(data: data!, encoding: .utf8)!)")
+                                                        if result.isEmpty{
+                                                            // friendShipCheck = 0 兩人非好友
+        //                                                    friendShipCheck = 0
+                                                            DispatchQueue.main.async {
+                                                                let addFriendButton = UIButton(type: .custom)
+                                                                addFriendButton.setImage(UIImage (named: "addfriend-1"), for: .normal)
+                                                                addFriendButton.addTarget(self, action: #selector(self.AddFriend), for: .touchUpInside)
+                                                                self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addFriendButton)
+                                                                self.view.layoutIfNeeded()
+                                                            }
+                                                        }else{
+                                                            //兩人有待確認好友關係 ＝ 1
+        //                                                    friendShipCheck = 1
+                                                            DispatchQueue.main.async {
+                                                                self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage (named: "friendshipcheck"), style: .plain, target: nil, action: nil)
+                                                                self.view.layoutIfNeeded()
+        
+                                                            }
+                                                        }
                                                     }
                                                 }
                                             }
                                         }
+                                    }else{
+                                        //兩人有好友關係 ＝ 2
+        //                                friendShipCheck = 2
+                                        DispatchQueue.main.async {
+                                            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage (named: "checkfriend"), style: .plain, target: nil, action: nil)
+                                            self.view.layoutIfNeeded()
+                                        }
                                     }
-                                }
-                            }else{
-                                DispatchQueue.main.async {
-                                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage (named: "checkfriend"), style: .plain, target: nil, action: nil)
-                                    self.view.layoutIfNeeded()
                                 }
                             }
                         }
                     }
                 }
-            }
-        }
     }
     
     

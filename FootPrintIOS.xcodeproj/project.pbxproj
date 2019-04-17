@@ -67,7 +67,6 @@
 		AF2E1770224C9A6E0073466E /* PhotoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E176F224C9A6E0073466E /* PhotoUploadViewController.swift */; };
 		AF2E41A02237558400558AAF /* CreateTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E419F2237558400558AAF /* CreateTripViewController.swift */; };
 		AF3C2108225DD4F100990354 /* ny.png in Resources */ = {isa = PBXBuildFile; fileRef = AF3C2107225DD4F100990354 /* ny.png */; };
-		AF418972226716F900CB6B21 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF418971226716F900CB6B21 /* File.swift */; };
 		AF47E67E223B8B50007AD656 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E67D223B8B50007AD656 /* NewsTableViewCell.swift */; };
 		AF47E680223B8B92007AD656 /* HomeNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E67F223B8B92007AD656 /* HomeNewsTableViewController.swift */; };
 		AF47E682223B8BA8007AD656 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E681223B8BA8007AD656 /* News.swift */; };
@@ -187,7 +186,6 @@
 		AF2E176F224C9A6E0073466E /* PhotoUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadViewController.swift; sourceTree = "<group>"; };
 		AF2E419F2237558400558AAF /* CreateTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewController.swift; sourceTree = "<group>"; };
 		AF3C2107225DD4F100990354 /* ny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ny.png; sourceTree = "<group>"; };
-		AF418971226716F900CB6B21 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		AF47E67D223B8B50007AD656 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		AF47E67F223B8B92007AD656 /* HomeNewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNewsTableViewController.swift; sourceTree = "<group>"; };
 		AF47E681223B8BA8007AD656 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
@@ -382,7 +380,6 @@
 				AF0BD19E222F6F66006FC80A /* ScheduleTableViewController.swift */,
 				AF2E419F2237558400558AAF /* CreateTripViewController.swift */,
 				AF28AA90223CEF910081DE1A /* AddFriendListTableViewController.swift */,
-				AF418971226716F900CB6B21 /* File.swift */,
 				AFFAC23E2247965F00386107 /* TripPlanFriend.swift */,
 				AFE8DBC22251B83D005F585A /* CreateTripFriends.swift */,
 				AF28AA92223CEFCE0081DE1A /* AddFriendListTableViewCell.swift */,
@@ -758,7 +755,6 @@
 				AFB1607B224E298600F675E5 /* ExchangeTVCell.swift in Sources */,
 				D4A17FB92266A01D00C78F58 /* ChatImageView.swift in Sources */,
 				D4A773BB225211F800C3867C /* FriendsMessageListTableViewCell.swift in Sources */,
-				AF418972226716F900CB6B21 /* File.swift in Sources */,
 				D4A773B9225211D200C3867C /* FriendShipListTableViewCell.swift in Sources */,
 				AFDDF36C225420EA00198321 /* GroupMessageTableViewCell.swift in Sources */,
 				AFB1606C224E19DF00F675E5 /* User.swift in Sources */,
