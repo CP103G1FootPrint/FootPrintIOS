@@ -89,7 +89,7 @@ func loadInfo() -> (account : String, password : String, nickName : String, birt
 
 extension UITableView {
     
-    func setEmptyView(title: String, message: String, messageImage: UIImage) {
+    func setEmptyView(title: String, message: String, messageImage: UIImage) -> UIView{
         
         let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
         
@@ -146,6 +146,7 @@ extension UITableView {
         
         self.backgroundView = emptyView
         self.separatorStyle = .none
+        return emptyView
     }
     
     func restore() {

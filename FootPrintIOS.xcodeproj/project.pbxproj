@@ -34,6 +34,7 @@
 		02BCDBBB2265F57500690055 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BCDBBA2265F57500690055 /* Gif.swift */; };
 		02BCDBBF2265F8AC00690055 /* plane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02BCDBBE2265F8AC00690055 /* plane.gif */; };
 		02BCDBC12265FC6C00690055 /* planeplane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02BCDBC02265FC6C00690055 /* planeplane.gif */; };
+		071608302266C9CF00346A65 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0716082F2266C9CF00346A65 /* test.swift */; };
 		0783AF48225C6BE200677526 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF47225C6BE200677526 /* Record.swift */; };
 		0783AF4A225C6CA200677526 /* PersonalCollectionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */; };
 		0783AF4C225C6CC400677526 /* Collect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF4B225C6CC400677526 /* Collect.swift */; };
@@ -107,6 +108,7 @@
 		D4A17FB32264174C00C78F58 /* SearchFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A17FB22264174C00C78F58 /* SearchFriendViewController.swift */; };
 		D4A17FB52264179100C78F58 /* SearchFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A17FB42264179100C78F58 /* SearchFriendTableViewCell.swift */; };
 		D4A17FB72265D75A00C78F58 /* RightChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A17FB62265D75A00C78F58 /* RightChatTableViewCell.swift */; };
+		D4A17FB92266A01D00C78F58 /* ChatImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A17FB82266A01D00C78F58 /* ChatImageView.swift */; };
 		D4A7739C224E8D1300C3867C /* NewsCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A7739B224E8D1300C3867C /* NewsCommentTableViewCell.swift */; };
 		D4A7739E224E8D3D00C3867C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A7739D224E8D3D00C3867C /* Comment.swift */; };
 		D4A773A82250F6A500C3867C /* HomeNewsPersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A773A72250F6A500C3867C /* HomeNewsPersonalViewController.swift */; };
@@ -148,6 +150,7 @@
 		02BCDBBA2265F57500690055 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		02BCDBBE2265F8AC00690055 /* plane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = plane.gif; sourceTree = "<group>"; };
 		02BCDBC02265FC6C00690055 /* planeplane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = planeplane.gif; sourceTree = "<group>"; };
+		0716082F2266C9CF00346A65 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		0783AF47225C6BE200677526 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCollectionTVCell.swift; sourceTree = "<group>"; };
 		0783AF4B225C6CC400677526 /* Collect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collect.swift; sourceTree = "<group>"; };
@@ -226,6 +229,7 @@
 		D4A17FB22264174C00C78F58 /* SearchFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendViewController.swift; sourceTree = "<group>"; };
 		D4A17FB42264179100C78F58 /* SearchFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendTableViewCell.swift; sourceTree = "<group>"; };
 		D4A17FB62265D75A00C78F58 /* RightChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightChatTableViewCell.swift; sourceTree = "<group>"; };
+		D4A17FB82266A01D00C78F58 /* ChatImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatImageView.swift; sourceTree = "<group>"; };
 		D4A7739B224E8D1300C3867C /* NewsCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentTableViewCell.swift; sourceTree = "<group>"; };
 		D4A7739D224E8D3D00C3867C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		D4A773A72250F6A500C3867C /* HomeNewsPersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsPersonalViewController.swift; sourceTree = "<group>"; };
@@ -336,6 +340,7 @@
 				AF0BD16E222D1798006FC80A /* LaunchScreen.storyboard */,
 				AF0BD171222D1798006FC80A /* Info.plist */,
 				02BCDBBA2265F57500690055 /* Gif.swift */,
+				0716082F2266C9CF00346A65 /* test.swift */,
 			);
 			path = FootPrintIOS;
 			sourceTree = "<group>";
@@ -573,6 +578,7 @@
 			children = (
 				D4A773C0225214A200C3867C /* Friends.swift */,
 				D43635F822534A7400052CE2 /* Message.swift */,
+				D4A17FB82266A01D00C78F58 /* ChatImageView.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -735,6 +741,7 @@
 				AF47E682223B8BA8007AD656 /* News.swift in Sources */,
 				AF2E00EA2234FAFA006B9A5A /* ScheduleTableViewCell.swift in Sources */,
 				028DDF35225441BF006DD7EB /* CameraViewController.swift in Sources */,
+				071608302266C9CF00346A65 /* test.swift in Sources */,
 				AFB1607D224E29C100F675E5 /* PersonalExchangeVC.swift in Sources */,
 				AFB1606E224E1A4700F675E5 /* PersonalSettingVC.swift in Sources */,
 				AFB1607F224E29F100F675E5 /* PersonalQRcode.swift in Sources */,
@@ -742,6 +749,7 @@
 				D4A17FB72265D75A00C78F58 /* RightChatTableViewCell.swift in Sources */,
 				AF1DA0BF224B46C700B80E09 /* TripPlansTableViewCell.swift in Sources */,
 				AFB1607B224E298600F675E5 /* ExchangeTVCell.swift in Sources */,
+				D4A17FB92266A01D00C78F58 /* ChatImageView.swift in Sources */,
 				D4A773BB225211F800C3867C /* FriendsMessageListTableViewCell.swift in Sources */,
 				D4A773B9225211D200C3867C /* FriendShipListTableViewCell.swift in Sources */,
 				AFDDF36C225420EA00198321 /* GroupMessageTableViewCell.swift in Sources */,

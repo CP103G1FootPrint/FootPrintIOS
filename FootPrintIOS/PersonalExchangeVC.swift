@@ -88,7 +88,13 @@ class PersonalExchangeVC: UIViewController,UITableViewDataSource,UITableViewDele
         
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "QR") as? PersonalQRcode{
+            let indexPath = self.exchangeTBV.indexPathForSelectedRow
+            controller.productName = goods[indexPath!.row].productId
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "QRcode" {
             let controller = segue.destination as? PersonalQRcode
