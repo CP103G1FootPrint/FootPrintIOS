@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yZW-Q0-ktH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yZW-Q0-ktH">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.47"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -555,7 +555,6 @@
                                             <outlet property="productName" destination="bhV-Ha-a18" id="ICA-SA-GEf"/>
                                             <outlet property="productPic" destination="IHb-kz-Dfm" id="0FC-3G-2NS"/>
                                             <outlet property="productScr" destination="a16-eD-WPm" id="KpI-sw-EVd"/>
-                                            <segue destination="K7c-iS-tUh" kind="show" identifier="QRcode" id="ito-5M-SYb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -585,26 +584,26 @@
         <!--PersonalQ Rcode-->
         <scene sceneID="X1M-cM-mBz">
             <objects>
-                <viewController id="K7c-iS-tUh" customClass="PersonalQRcode" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QR" id="K7c-iS-tUh" customClass="PersonalQRcode" customModule="FootPrintIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KCY-JF-N2t">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="636"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode" translatesAutoresizingMaskIntoConstraints="NO" id="nil-lp-GoL">
-                                <rect key="frame" x="52" y="168" width="310" height="310"/>
+                                <rect key="frame" x="52" y="298" width="310" height="310"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="310" id="4ZA-gu-Chl"/>
                                     <constraint firstAttribute="height" constant="310" id="Lz1-wk-Bzg"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您兌換的商品：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3y-bh-s38">
-                                <rect key="frame" x="128.5" y="79" width="157" height="27"/>
+                                <rect key="frame" x="128.5" y="209" width="157" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPhoneSE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O38-L2-RVz">
-                                <rect key="frame" x="139" y="120" width="136.5" height="39.5"/>
+                                <rect key="frame" x="139" y="250" width="136.5" height="39.5"/>
                                 <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
@@ -629,7 +628,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57s-XW-XUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2453.6231884057975" y="4918.8616071428569"/>
+            <point key="canvasLocation" x="2459" y="5006"/>
         </scene>
         <!--Personal NotifyVC-->
         <scene sceneID="iZ0-g4-mWI">

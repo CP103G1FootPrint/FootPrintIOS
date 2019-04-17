@@ -37,7 +37,7 @@ class AddFriendViewController: UIViewController {
             return
         }
         let sender = loadData()
-        let addfriendMessage = Friends("chat", sender.account, friend!, message!, "text")
+        let addfriendMessage = Friends("notify", sender.account, friend!, message!, "text")
         let addfriend = Friends(sender.account,friend!,message!)
 
         var requestParam = [String: String]()

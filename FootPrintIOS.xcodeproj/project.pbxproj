@@ -34,6 +34,8 @@
 		02BCDBBB2265F57500690055 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BCDBBA2265F57500690055 /* Gif.swift */; };
 		02BCDBBF2265F8AC00690055 /* plane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02BCDBBE2265F8AC00690055 /* plane.gif */; };
 		02BCDBC12265FC6C00690055 /* planeplane.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02BCDBC02265FC6C00690055 /* planeplane.gif */; };
+		02BCDBC522671AA100690055 /* noalpha.gif in Resources */ = {isa = PBXBuildFile; fileRef = 02BCDBC422671AA100690055 /* noalpha.gif */; };
+		071608302266C9CF00346A65 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0716082F2266C9CF00346A65 /* test.swift */; };
 		0783AF48225C6BE200677526 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF47225C6BE200677526 /* Record.swift */; };
 		0783AF4A225C6CA200677526 /* PersonalCollectionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */; };
 		0783AF4C225C6CC400677526 /* Collect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0783AF4B225C6CC400677526 /* Collect.swift */; };
@@ -65,6 +67,7 @@
 		AF2E1770224C9A6E0073466E /* PhotoUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E176F224C9A6E0073466E /* PhotoUploadViewController.swift */; };
 		AF2E41A02237558400558AAF /* CreateTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E419F2237558400558AAF /* CreateTripViewController.swift */; };
 		AF3C2108225DD4F100990354 /* ny.png in Resources */ = {isa = PBXBuildFile; fileRef = AF3C2107225DD4F100990354 /* ny.png */; };
+		AF418972226716F900CB6B21 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF418971226716F900CB6B21 /* File.swift */; };
 		AF47E67E223B8B50007AD656 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E67D223B8B50007AD656 /* NewsTableViewCell.swift */; };
 		AF47E680223B8B92007AD656 /* HomeNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E67F223B8B92007AD656 /* HomeNewsTableViewController.swift */; };
 		AF47E682223B8BA8007AD656 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF47E681223B8BA8007AD656 /* News.swift */; };
@@ -149,6 +152,8 @@
 		02BCDBBA2265F57500690055 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		02BCDBBE2265F8AC00690055 /* plane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = plane.gif; sourceTree = "<group>"; };
 		02BCDBC02265FC6C00690055 /* planeplane.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = planeplane.gif; sourceTree = "<group>"; };
+		02BCDBC422671AA100690055 /* noalpha.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = noalpha.gif; sourceTree = "<group>"; };
+		0716082F2266C9CF00346A65 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		0783AF47225C6BE200677526 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		0783AF49225C6CA200677526 /* PersonalCollectionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCollectionTVCell.swift; sourceTree = "<group>"; };
 		0783AF4B225C6CC400677526 /* Collect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collect.swift; sourceTree = "<group>"; };
@@ -182,6 +187,7 @@
 		AF2E176F224C9A6E0073466E /* PhotoUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadViewController.swift; sourceTree = "<group>"; };
 		AF2E419F2237558400558AAF /* CreateTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripViewController.swift; sourceTree = "<group>"; };
 		AF3C2107225DD4F100990354 /* ny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ny.png; sourceTree = "<group>"; };
+		AF418971226716F900CB6B21 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		AF47E67D223B8B50007AD656 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		AF47E67F223B8B92007AD656 /* HomeNewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNewsTableViewController.swift; sourceTree = "<group>"; };
 		AF47E681223B8BA8007AD656 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
@@ -338,6 +344,7 @@
 				AF0BD16E222D1798006FC80A /* LaunchScreen.storyboard */,
 				AF0BD171222D1798006FC80A /* Info.plist */,
 				02BCDBBA2265F57500690055 /* Gif.swift */,
+				0716082F2266C9CF00346A65 /* test.swift */,
 			);
 			path = FootPrintIOS;
 			sourceTree = "<group>";
@@ -349,6 +356,7 @@
 				02BCDBC02265FC6C00690055 /* planeplane.gif */,
 				022022F02252390900856352 /* facebook_logo.png */,
 				AF1BC92822354AC200C0E2F1 /* trip1.jpeg */,
+				02BCDBC422671AA100690055 /* noalpha.gif */,
 				AF5A3512222FD67B003838E8 /* paristrip.jpeg */,
 				022022F22252391200856352 /* 375.png */,
 				AFF81AB02260B9E500598AC4 /* noimage.png */,
@@ -374,6 +382,7 @@
 				AF0BD19E222F6F66006FC80A /* ScheduleTableViewController.swift */,
 				AF2E419F2237558400558AAF /* CreateTripViewController.swift */,
 				AF28AA90223CEF910081DE1A /* AddFriendListTableViewController.swift */,
+				AF418971226716F900CB6B21 /* File.swift */,
 				AFFAC23E2247965F00386107 /* TripPlanFriend.swift */,
 				AFE8DBC22251B83D005F585A /* CreateTripFriends.swift */,
 				AF28AA92223CEFCE0081DE1A /* AddFriendListTableViewCell.swift */,
@@ -659,6 +668,7 @@
 				02BCDBC12265FC6C00690055 /* planeplane.gif in Resources */,
 				AF0BD19C222E9A61006FC80A /* Assets.xcassets in Resources */,
 				AFDDF36622535AA300198321 /* paper.jpg in Resources */,
+				02BCDBC522671AA100690055 /* noalpha.gif in Resources */,
 				AF2C76562232443A0008F84A /* CameraStoryboard.storyboard in Resources */,
 				022022F12252390900856352 /* facebook_logo.png in Resources */,
 				AF0BD16B222D1796006FC80A /* Main.storyboard in Resources */,
@@ -738,6 +748,7 @@
 				AF47E682223B8BA8007AD656 /* News.swift in Sources */,
 				AF2E00EA2234FAFA006B9A5A /* ScheduleTableViewCell.swift in Sources */,
 				028DDF35225441BF006DD7EB /* CameraViewController.swift in Sources */,
+				071608302266C9CF00346A65 /* test.swift in Sources */,
 				AFB1607D224E29C100F675E5 /* PersonalExchangeVC.swift in Sources */,
 				AFB1606E224E1A4700F675E5 /* PersonalSettingVC.swift in Sources */,
 				AFB1607F224E29F100F675E5 /* PersonalQRcode.swift in Sources */,
@@ -747,6 +758,7 @@
 				AFB1607B224E298600F675E5 /* ExchangeTVCell.swift in Sources */,
 				D4A17FB92266A01D00C78F58 /* ChatImageView.swift in Sources */,
 				D4A773BB225211F800C3867C /* FriendsMessageListTableViewCell.swift in Sources */,
+				AF418972226716F900CB6B21 /* File.swift in Sources */,
 				D4A773B9225211D200C3867C /* FriendShipListTableViewCell.swift in Sources */,
 				AFDDF36C225420EA00198321 /* GroupMessageTableViewCell.swift in Sources */,
 				AFB1606C224E19DF00F675E5 /* User.swift in Sources */,
@@ -962,7 +974,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4MHD7B3F6Y;
+				DEVELOPMENT_TEAM = CRYR872K7A;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -984,7 +996,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4MHD7B3F6Y;
+				DEVELOPMENT_TEAM = CRYR872K7A;
 				INFOPLIST_FILE = FootPrintIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (

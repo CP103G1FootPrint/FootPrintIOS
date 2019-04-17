@@ -20,6 +20,15 @@ class PersonalVC: UIViewController {
     @IBOutlet weak var viewNotify: UIView!
     @IBOutlet weak var viewExchange: UIView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+                viewRecord.isHidden = false
+                viewCollect.isHidden = true
+                viewNotify.isHidden = true
+                viewExchange.isHidden = true
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
      
@@ -34,10 +43,7 @@ class PersonalVC: UIViewController {
 //        ivSelfie.image(userHead, for: .normal)
 //        ivSelfie.image = UIImage()
         ivSelfie.image = userHead
-        viewRecord.isHidden = false
-        viewCollect.isHidden = true
-        viewNotify.isHidden = true
-        viewExchange.isHidden = true
+
         /*打包*/ //把要傳送的值打包
         var requsetParam = [String:String]() //[String:String]()是dicitionary是方法要加()
         requsetParam["action"] = "personalGetAll"

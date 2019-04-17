@@ -21,6 +21,7 @@ class AddFriendListTableViewController: UITableViewController {
     var friendArray: [String] = Array()
     
     var addfriend = [String]()
+    var emptyView: UIView!
     
     override func loadView() {
         super.loadView()
@@ -75,9 +76,21 @@ class AddFriendListTableViewController: UITableViewController {
                             if let control = self.tableView.refreshControl {
                                 self.activityIndicatorView.stopAnimating()
                                 if control.isRefreshing {
+                                    // if emptyview is empty
+                                    if self.emptyView == nil {
+                                        self.emptyView = self.tableView.setEmptyView(title: "No friends to show.", message: "", messageImage: UIImage(named: "login")!)
+                                    }
+                                    
+                                    if self.friendList.count > 0 || !self.friendList.isEmpty {
+                                        if self.emptyView != nil {
+                                            //                                        print("222")
+                                            self.emptyView.isHidden = true
+                                        }
+                                    }
+                                    
                                     // 停止下拉更新動作
 //                                    control.endRefreshing()
-//                                    self.tableView.setEmptyView(title: "No friends to show.", message: "", messageImage: UIImage(named: "login")!)
+                                    
                                 }
                             }
                             /* 抓到資料後重刷table view */

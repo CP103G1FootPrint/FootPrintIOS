@@ -78,7 +78,7 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
     @IBAction func evaluationSender(_ sender: UIStepper) {
         evaluationValue = Double(sender.value)   // Stepper回傳的是float所以需要轉成Double
         evaluationUITextView.text = String(evaluationValue) // Text為文字，所以將數字再轉為字串後顯示
-        print(" latitude create: \(self.gpslatitude)")
+//        print(" latitude create: \(self.gpslatitude)")
     }
     
     // 新建地標
@@ -96,8 +96,8 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
         var longitude :Double?
         let address = addressUITextField.text == nil ? "": addressUITextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        latitude = self.gpslatitude
-        longitude = self.gpslongitude
+//        latitude = self.gpslatitude
+//        longitude = self.gpslongitude
         
         if name!.isEmpty {
             let text = "name is empty"
@@ -121,56 +121,42 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
             let text = "Not Net Work"
             self.alertNote(text)
         }else {
-            let locationall = LandMark(self.landMarkID + 1,name!,address!,latitude!,longitude!,description!,sumOpenHours!,self.chooseType,self.evaluationValue)
-            self.locationFirstPage = locationall
-            //                    self.insertLandMark(landMark: locationall)
-            print("123 \(locationall.address)")
-            
-            self.navigationController?.popToRootViewController(animated: true)
-            let notificationName = Notification.Name("locationCreateLandMark")
-            //發送通知
-            NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["locationLandMark":locationall])
-//            if let controller = self.storyboard?.instantiateViewController(withIdentifier: "camera") {
-////                self.present(controller, animated: true, completion: nil)
-//            self.navigationController?.popToViewController(controller, animated: true)
-//            }
-        }
-        
-        
         //建立編碼器
-//        let geocoder = CLGeocoder()
-//        geocoder.geocodeAddressString(address!) { (placemarks, error) in
-//            if error == nil && placemarks != nil && placemarks!.count > 0 {
-//                //只取第一個結果
-//                if let placemark = placemarks!.first {
-//                    //座標
-//                    let location2d = placemark.location!
-//                    latitude = location2d.coordinate.latitude
-//                    longitude = location2d.coordinate.longitude
-//                }else {
-//                    latitude = self.gpslatitude
-//                    longitude = self.gpslongitude
-//
-//                    if self.landMarkID == 0 {
-//                        let text = "Not Net Work"
-//                        self.alertNote(text)
-//                    }else {
-//                        let locationall = LandMark(self.landMarkID + 1,name!,address!,latitude!,longitude!,description!,sumOpenHours!,self.chooseType,self.evaluationValue)
-//                        self.locationFirstPage = locationall
-//                        //                    self.insertLandMark(landMark: locationall)
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address!) { (placemarks, error) in
+            if error == nil && placemarks != nil && placemarks!.count > 0 {
+                //只取第一個結果
+                if let placemark = placemarks!.first {
+                    //座標
+                    let location2d = placemark.location!
+                    latitude = location2d.coordinate.latitude
+                    longitude = location2d.coordinate.longitude
+                }
+            }else {
+                    latitude = self.gpslatitude
+                    longitude = self.gpslongitude
+
+                    if self.landMarkID == 0 {
+                        let text = "No Net Work"
+                        self.alertNote(text)
+                    }else {
+                        let locationall = LandMark(self.landMarkID + 1,name!,address!,latitude!,longitude!,description!,sumOpenHours!,self.chooseType,self.evaluationValue)
+                        self.locationFirstPage = locationall
+                        self.insertLandMark(landMark: locationall)
 //                        print("123 \(locationall.address)")
-//                        let notificationName = Notification.Name("locationCreateLandMark")
-//                        //發送通知
-//                        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["locationLandMark":locationall])
+                        let notificationName = Notification.Name("locationCreateLandMark")
+                        //發送通知
+                        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["locationLandMark":locationall])
+                        self.navigationController?.popToRootViewController(animated: true)
 //                        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "camera") {
 //                            self.present(controller, animated: true, completion: nil)
 //                        }
-//                    }
-//                }
-//            }
-//        }
+                    }
+                }
+            }
+        
 
-
+    }
         
         
         
@@ -356,7 +342,7 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let sourceController = segue.destination as? CameraViewController
-        print("prepare \(locationFirstPage?.address)")
+//        print("prepare \(locationFirstPage?.address)")
         sourceController?.result = locationFirstPage
     }
 }

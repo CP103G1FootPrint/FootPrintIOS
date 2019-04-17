@@ -37,7 +37,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         self.uiTableView.tableFooterView = UIView()
         self.uiTableView.backgroundView = activityIndicatorView
         
-        print("\(self) \(#function)" )
+//        print("\(self) \(#function)" )
         setdata()
         
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognized(_:)))
@@ -49,6 +49,10 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         socket = WebSocket(url: URL(string: url_server_schedule + user.account)!)
         addSocketCallBacks()
         socket.connect()
+    }
+    
+    deinit {
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -199,7 +203,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
     @objc func addLandMarkAction(sender: UIButton) {
         let detailVC = storyboard!.instantiateViewController(withIdentifier: "PlanFindLocationViewController") as! PlanFindLocationViewController
         detailVC.getCurrentButton = currentButton
-        print("prepare \(currentButton)")
+//        print("prepare \(currentButton)")
         navigationController!.pushViewController(detailVC, animated: true)
     }
 
@@ -446,6 +450,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         requestParam["id"] = landMarkID
         requestParam["imageSize"] = 1024
         var image: UIImage?
+        cell.planLocationImage.image = nil
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -539,7 +544,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         let getnumber = noti.userInfo!["getCurrentButton"] as? Int
         currentArray.append(resultlandMark!)
 
-        print("fin \(getnumber)")
+//        print("fin \(getnumber)")
         // message
         let location = try! String(data: JSONEncoder().encode(currentArray), encoding: .utf8)
         let addMessage = ScheduleDay("ScheduleDayRecycle", currentButton, "judgmentDay", user.account, receiver!, 1, tripID!, location!)
@@ -548,6 +553,7 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
         DispatchQueue.main.async {
             self.uiTableView.reloadData()
         }
+        
     }
     
     // 也可使用closure偵測WebSocket狀態
@@ -610,5 +616,15 @@ class PlanDetailViewController: UIViewController,UIScrollViewDelegate,UITableVie
                 socket.disconnect()
             }
         }
+        if (navigationController == nil) {
+            let notificationName = Notification.Name("Planlocation")
+            NotificationCenter.default.removeObserver(self, name: notificationName, object: nil)
+        }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+    }
+    
+    
 }
