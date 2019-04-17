@@ -575,8 +575,7 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="createLandMarkButton:" destination="Ojs-Wi-cwI" eventType="touchUpInside" id="X0e-gU-Dp0"/>
-                                                    <segue destination="s5S-be-YCc" kind="unwind" unwindAction="toresultWithSegue:" id="W67-VS-5X4"/>
+                                                    <action selector="createLandMarkButton:" destination="Ojs-Wi-cwI" eventType="touchUpInside" id="tCc-qN-Wen"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -608,7 +607,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRu-nf-RMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="s5S-be-YCc" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="kVG-ob-vPx">
                     <connections>
                         <action selector="tapGesture:" destination="Ojs-Wi-cwI" id="niT-Tx-6o7"/>

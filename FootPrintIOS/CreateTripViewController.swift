@@ -214,7 +214,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         requestParam["trip"] = try! String(data: JSONEncoder().encode(trip), encoding: .utf8) //主轉成jason 字串 只有文字沒有圖
         // 有圖才上傳 圖轉乘的imageBase64 字串
         if self.image != nil {
-            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
+            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 0.1)!.base64EncodedString() //compressionQuality: 1.0 紙質最好的圖
         }
         executeTask(self.url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -230,12 +230,12 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
                                     
                                     self.navigationController?.popViewController(animated: true)
                                 } else {
-                                    let alertController = UIAlertController(title: "insert fail",
-                                                                            message: nil, preferredStyle: .alert)
-                                    self.present(alertController, animated: true, completion: nil)
-                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-                                        self.presentedViewController?.dismiss(animated: false, completion: nil)
-                                    }
+//                                    let alertController = UIAlertController(title: "insert fail",
+//                                                                            message: nil, preferredStyle: .alert)
+//                                    self.present(alertController, animated: true, completion: nil)
+//                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+//                                        self.presentedViewController?.dismiss(animated: false, completion: nil)
+//                                    }
                                 }
                             }
                         }
@@ -245,6 +245,8 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
                 print(error!.localizedDescription)
             }
         }
+//        self.navigationController?.popViewController(animated: true)
+
     }
     
     

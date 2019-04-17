@@ -41,7 +41,6 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         
         let notificationName = Notification.Name("locationCreate")
         NotificationCenter.default.addObserver(self, selector: #selector(songUpdated(noti:)), name: notificationName, object: nil)
-        
         let notificationLandMark = Notification.Name("locationCreateLandMark")
         NotificationCenter.default.addObserver(self, selector: #selector(LandMarkUpdated(noti:)), name: notificationLandMark, object: nil)
 
@@ -57,8 +56,14 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
     
     //Unwind segue
     @IBAction func toresult(segue: UIStoryboardSegue) {
-//        let notificationName = Notification.Name("locationCreate")
-//        NotificationCenter.default.addObserver(self, selector: #selector(songUpdated(noti:)), name: notificationName, object: nil)
+//        let notificationLandMark = Notification.Name("locationCreateLandMark")
+//        NotificationCenter.default.addObserver(self, selector: #selector(LandMarkUpdated(noti:)), name: notificationLandMark, object: nil)
+//        if let page = segue.source as? CreateLocationViewController {
+//            result = page.locationFirstPage
+//            print("a\(result?.address)")
+//            showLocationUILabel.text = result?.address
+//            showLocationUILabel.text = "ak"
+//        }
     }
 
     //選照片動作
@@ -182,7 +187,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         let url_server = URL(string: common_url + "PictureServlet")
         requestParam["action"] = "shareInsert"
         requestParam["share"] = try! String(data: JSONEncoder().encode(cameraImage), encoding: .utf8)
-        requestParam["imageBase64"] = image.jpegData(compressionQuality: 1.0)!.base64EncodedString()
+        requestParam["imageBase64"] = image.jpegData(compressionQuality: 0.3)!.base64EncodedString()
         //1.0品質最好 0.0品質最差
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -279,9 +284,9 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         //        updateInfo()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
     
 }
