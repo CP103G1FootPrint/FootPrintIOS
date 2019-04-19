@@ -1,5 +1,6 @@
 import UIKit
 import CoreLocation
+import Foundation
 
 class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate{
     
@@ -19,6 +20,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
     var showLandMark: LandMark?
     var result : LandMark?
     var landMarkID : Int?
+    var updatedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +100,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         
         let landMarkID = result?.id
         
-        if newPostImage == nil {
+        if updatedImage == nil {
             let text = "Image is empty"
             self.alertNote(text)
         }else if imageDescription!.isEmpty {
@@ -109,7 +111,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
             self.alertNote(text)
         }else{
             let cameraImage = CameraImage(0,imageDescription!,openSateText!,user.account,landMarkID!)
-            self.insertNewPost(cameraImage: cameraImage, image: newPostImage!)
+            self.insertNewPost(cameraImage: cameraImage, image: updatedImage!)
         }
         
     }
@@ -134,7 +136,9 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         if picker.sourceType == .camera{
             UIImageWriteToSavedPhotosAlbum(newPostImage!, nil, nil, nil)
             newPostUIButton.setImage(newPostImage, for: .normal)
+            updatedImage = newPostImage?.fixOrientation() 
             dismiss(animated: true, completion: nil)
+
         }else {
             newPostUIButton.setImage(newPostImage, for: .normal)
             dismiss(animated: true, completion: nil)
@@ -144,7 +148,6 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
     //鍵盤
     @objc func keyboardWillShow(notification: Notification) {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {

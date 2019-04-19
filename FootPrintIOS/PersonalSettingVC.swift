@@ -10,6 +10,7 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
     var newPostImage: UIImage?
     var image: UIImage?
     let userHead = UIImage(data: loadHead())
+    var updatedImage : UIImage?
     
     @IBOutlet weak var btSelfie: UIButton!
     @IBOutlet weak var lbAccount: UILabel!
@@ -80,6 +81,7 @@ class PersonalSettingVC: UIViewController,UIImagePickerControllerDelegate, UINav
         if picker.sourceType == .camera{
             UIImageWriteToSavedPhotosAlbum(newPostImage!, nil, nil, nil)
             btSelfie.setImage(newPostImage, for: .normal)
+            updatedImage = newPostImage?.fixOrientation()
             dismiss(animated: true, completion: nil)
         }else {
             btSelfie.setImage(newPostImage, for: .normal)

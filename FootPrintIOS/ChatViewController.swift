@@ -14,7 +14,9 @@ class ChatViewController: UIViewController,UITableViewDataSource {
     var friend: String?
     var user = loadData()
     var socket: WebSocket!
-    let url_server = "ws://127.0.0.1:8080/FootPrint/ChatServer/"
+//    let url_server = "ws://127.0.0.1:8080/FootPrint/ChatServer/"
+//    let url_server = "ws://192.168.50.4:8080/FootPrint/ChatServer/"
+    let url_server = "ws://192.168.196.217:8080/FootPrint/ChatServer/"
     @IBOutlet weak var chatTableView: UITableView!
     @IBOutlet weak var tf_ChatMessage: UITextField!
     @IBOutlet weak var ng_Item: UINavigationItem!

@@ -27,6 +27,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     var chooseConstellation: String = ""
     var chooseBirthday: String = ""
     var resultCount = 0
+    var updatedImage :UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,11 +79,15 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         //來源如果是相機
         if picker.sourceType == .camera{
             UIImageWriteToSavedPhotosAlbum(pickedImage!, nil, nil, nil)
+            buttonImage.setImage(pickedImage, for: .normal)
+            buttonImage.imageView?.layer.cornerRadius = buttonImage.frame.width/2
+            updatedImage = pickedImage!.fixOrientation()
+            dismiss(animated: true, completion: nil)
+        }else{
+            buttonImage.setImage(pickedImage, for: .normal)
+            buttonImage.imageView?.layer.cornerRadius = buttonImage.frame.width/2
             dismiss(animated: true, completion: nil)
         }
-        buttonImage.setImage(pickedImage, for: .normal)
-        buttonImage.imageView?.layer.cornerRadius = buttonImage.frame.width/2
-        dismiss(animated: true, completion: nil)
     }
     
     /* 挑選照片過程中如果按了Cancel，關閉挑選畫面 */
@@ -118,7 +123,7 @@ UIImagePickerControllerDelegate,UINavigationControllerDelegate{
         }else if pickedImage == nil {
             let text = "image is empty"
             self.alertNote(text)
-        }else if resultCount == 0 {
+        }else if resultCount == 1 {
             //
         }else{
             let account = Account(email!,password!,nickName!,chooseBirthday,chooseConstellation,0,0)

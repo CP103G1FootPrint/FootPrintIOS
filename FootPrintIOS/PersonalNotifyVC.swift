@@ -14,6 +14,8 @@ class PersonalNotifyVC: UIViewController,UITableViewDataSource {
     var user = loadData()
     var socket: WebSocket!
     let url_server = "ws://127.0.0.1:8080/FootPrint/FriendShipServer/"
+//    let url_server = "ws://192.168.50.4:8080/FootPrint/FriendShipServer/"
+//    let url_server = "ws://192.168.196.217:8080/FootPrint/FriendShipServer/"
     @IBOutlet weak var notifyTableView: UITableView!
     
     override func viewDidLoad() {

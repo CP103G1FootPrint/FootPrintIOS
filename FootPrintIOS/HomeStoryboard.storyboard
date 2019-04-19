@@ -882,8 +882,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiJ-9v-eBF">
-                                <rect key="frame" x="155" y="530" width="104" height="74"/>
+                            <button opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiJ-9v-eBF">
+                                <rect key="frame" x="155" y="530" width="104" height="30"/>
                                 <state key="normal" title="發送好友邀請"/>
                                 <connections>
                                     <action selector="bt_Send:" destination="5cm-ky-OJ2" eventType="touchUpInside" id="Omo-Vm-U7X"/>
@@ -897,7 +897,6 @@
                             <constraint firstItem="kiJ-9v-eBF" firstAttribute="leading" secondItem="p2m-Nl-gxf" secondAttribute="leading" constant="155" id="3w4-3D-SLR"/>
                             <constraint firstItem="EXI-9m-waf" firstAttribute="leading" secondItem="p2m-Nl-gxf" secondAttribute="leading" constant="57" id="C2i-sj-Aju"/>
                             <constraint firstItem="p2m-Nl-gxf" firstAttribute="trailing" secondItem="EXI-9m-waf" secondAttribute="trailing" constant="57" id="Squ-dV-35F"/>
-                            <constraint firstItem="p2m-Nl-gxf" firstAttribute="bottom" secondItem="kiJ-9v-eBF" secondAttribute="bottom" constant="258" id="Vpb-Jp-X4k"/>
                             <constraint firstItem="p2m-Nl-gxf" firstAttribute="trailing" secondItem="kiJ-9v-eBF" secondAttribute="trailing" constant="155" id="dWW-9q-KeW"/>
                             <constraint firstItem="kiJ-9v-eBF" firstAttribute="top" secondItem="Y2m-Nk-9b6" secondAttribute="bottom" constant="8" id="gdl-tS-nNW"/>
                             <constraint firstItem="EXI-9m-waf" firstAttribute="top" secondItem="p2m-Nl-gxf" secondAttribute="top" constant="119" id="sps-CR-TTR"/>

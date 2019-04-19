@@ -58,7 +58,12 @@ class SignInViewController: UIViewController, FBSDKLoginButtonDelegate {
         requestParam["userId"] = account
         requestParam["password"] = password
         let url_server = URL(string: common_url + "/AccountServlet")
+        print("executeTask", url_server)
+        
+        
+        
         executeTask(url_server!, requestParam) { (data, response, error) in
+            print("login", error, data )
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用

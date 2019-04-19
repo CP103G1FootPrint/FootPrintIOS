@@ -121,42 +121,62 @@ class CreateLocationViewController: UIViewController,UIPickerViewDataSource,UIPi
             let text = "Not Net Work"
             self.alertNote(text)
         }else {
-        //建立編碼器
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address!) { (placemarks, error) in
-            if error == nil && placemarks != nil && placemarks!.count > 0 {
-                //只取第一個結果
-                if let placemark = placemarks!.first {
-                    //座標
-                    let location2d = placemark.location!
-                    latitude = location2d.coordinate.latitude
-                    longitude = location2d.coordinate.longitude
-                }
+            latitude = self.gpslatitude
+            longitude = self.gpslongitude
+            if self.landMarkID == 0 {
+                let text = "No Net Work"
+                self.alertNote(text)
             }else {
-                    latitude = self.gpslatitude
-                    longitude = self.gpslongitude
-
-                    if self.landMarkID == 0 {
-                        let text = "No Net Work"
-                        self.alertNote(text)
-                    }else {
-                        let locationall = LandMark(self.landMarkID + 1,name!,address!,latitude!,longitude!,description!,sumOpenHours!,self.chooseType,self.evaluationValue)
-                        self.locationFirstPage = locationall
-                        self.insertLandMark(landMark: locationall)
-//                        print("123 \(locationall.address)")
-                        let notificationName = Notification.Name("locationCreateLandMark")
-                        //發送通知
-                        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["locationLandMark":locationall])
-                        self.navigationController?.popToRootViewController(animated: true)
-//                        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "camera") {
-//                            self.present(controller, animated: true, completion: nil)
-//                        }
-                    }
-                }
+                let locationall = LandMark(self.landMarkID + 1,name!,address!,latitude!,longitude!,description!,sumOpenHours!,self.chooseType,self.evaluationValue)
+                self.locationFirstPage = locationall
+                self.insertLandMark(landMark: locationall)
+                //                        print("123 \(locationall.address)")
+                let notificationName = Notification.Name("locationCreateLandMark")
+                //發送通知
+                NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["locationLandMark":locationall])
+                self.navigationController?.popToRootViewController(animated: true)
+                //                        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "camera") {
+                //                            self.present(controller, animated: true, completion: nil)
+                //                        }
+            }
+        //
+        //建立編碼器
+//        let geocoder = CLGeocoder()
+//        geocoder.geocodeAddressString(address!) { (placemarks, error) in
+//            if error == nil && placemarks != nil && placemarks!.count > 0 {
+//                //只取第一個結果
+//                if let placemark = placemarks!.first {
+//                    //座標
+//                    let location2d = placemark.location!
+//                    latitude = location2d.coordinate.latitude
+//                    longitude = location2d.coordinate.longitude
+//                }
+//            }else {
+//                    latitude = self.gpslatitude
+//                    longitude = self.gpslongitude
+//
+//                    if self.landMarkID == 0 {
+//                        let text = "No Net Work"
+//                        self.alertNote(text)
+//                    }else {
+//                        let locationall = LandMark(self.landMarkID + 1,name!,address!,latitude!,longitude!,description!,sumOpenHours!,self.chooseType,self.evaluationValue)
+//                        self.locationFirstPage = locationall
+//                        self.insertLandMark(landMark: locationall)
+////                        print("123 \(locationall.address)")
+//                        let notificationName = Notification.Name("locationCreateLandMark")
+//                        //發送通知
+//                        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["locationLandMark":locationall])
+//                        self.navigationController?.popToRootViewController(animated: true)
+////                        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "camera") {
+////                            self.present(controller, animated: true, completion: nil)
+////                        }
+//                    }
+//                }
+            //
             }
         
 
-    }
+    
         
         
         
