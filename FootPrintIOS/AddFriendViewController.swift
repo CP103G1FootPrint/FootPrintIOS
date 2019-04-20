@@ -14,7 +14,8 @@ class AddFriendViewController: UIViewController {
     var headimage: UIImage!
     var socket: WebSocket!
     var user = loadData()
-    let url_server = "ws://127.0.0.1:8080/FootPrint/FriendShipServer/"
+//    let url_server = "ws://127.0.0.1:8080/FootPrint/FriendShipServer/"
+    let url_server = "ws://sewd.no-ip.org:8080/FootPrint/FriendShipServer/"
 
     @IBOutlet weak var iv_HeadPicture: UIImageView!
     @IBOutlet weak var tf_Message: UITextField!
